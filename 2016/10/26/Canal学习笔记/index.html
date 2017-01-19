@@ -3,14 +3,60 @@
 <head>
   <meta charset="utf-8">
   
-  <title>icebear&#39;s bolg</title>
+  <title>Canal | icebear&#39;s bolg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="icebear's bolg">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1. 工作原理mysql主备复制实现:
+
+从上层来看，复制分成三步：
+
+master将改变记录到二进制日志(binary log)中（这些记录叫做二进制日志事件，binary log events，可以通过show binlog events进行查看）；
+slave将master的binary log events拷贝到它的中继日志(relay log)；
+slave重做中继日志中的事件，将改变反">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canal">
+<meta property="og:url" content="http://yoursite.com/2016/10/26/Canal学习笔记/index.html">
 <meta property="og:site_name" content="icebear's bolg">
+<meta property="og:description" content="1. 工作原理mysql主备复制实现:
+
+从上层来看，复制分成三步：
+
+master将改变记录到二进制日志(binary log)中（这些记录叫做二进制日志事件，binary log events，可以通过show binlog events进行查看）；
+slave将master的binary log events拷贝到它的中继日志(relay log)；
+slave重做中继日志中的事件，将改变反">
+<meta property="og:image" content="http://www.programering.com/images/remote/ZnJvbT1pdGV5ZSZ1cmw9Y0djcTVDTTJJak16UUROM0F6TDRBek14QWpNdlFuYmwxR2FqRkdkMEYyTHQ5Mll1OEdkakZUTnVFelp0bDJMdm9EYzBSSGE.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/46c626b4cde399db43b2634a7911a04aecf273a0/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333130372f63383762363762612d333934632d333038362d393537372d3964623035626530346339352e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/fad39e40f844ae4196035f4007e31ae2bd020616/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333132362f34393535303038352d306364322d333266612d383661362d6636373664623562353937622e6a7067">
+<meta property="og:image" content="http://kaimingwan.com/canal/_image/binlog%E6%97%A5%E5%BF%97%E8%A7%A3%E6%9E%90%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7canal%E6%BA%90%E7%A0%81%E6%B5%85%E6%9E%90%EF%BC%883\">
+<meta property="og:image" content="https://camo.githubusercontent.com/5bb9d62abfd7c35302de1a1e159a77d9d7395620/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333137332f36333861383361652d336235632d336638332d393732322d3263313931326537636163362e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/77829ab83df80538641d75e074cdcd68752f4c89/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333231342f30613266643637312d643665392d336564372d623131302d3661336237333861336362302e6a7067">
+<meta property="og:image" content="http://kaimingwan.com/canal/_image/binlog%E6%97%A5%E5%BF%97%E8%A7%A3%E6%9E%90%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7canal%E6%BA%90%E7%A0%81%E6%B5%85%E6%9E%90%EF%BC%886%EF%BC%89%EF%BC%9Astore%E6%A8%A1%E5%9D%97/14-05-44.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/8684b7499fe7d4e022b8d9ffac1768f811caed01/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333233392f34663538393132642d376338652d333764652d623762382d3130646432316161366332322e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/a43b8352e880d0bb43c02b2fc1603095d11cb5dc/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333234372f35646531633961662d373739382d336434322d626334332d3563353464383263346462662e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/930fe71532c25812966359ed35ee2371ec4664e8/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333235372f66346466333862612d353965322d333938652d623565622d3162626662656363303637362e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/db1debcfa50f4ebea1f56a1fa0e18a4e960cafcc/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333239372f39643765643133652d366138362d333836642d393266342d3835323233386334373562662e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/533903f4925be003abe78b259e77fd829fc58c2b/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333330302f37663739383665352d643863362d336131372d383739362d3731313636653662633264632e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/99854985217eb95d4faa0eea00f8fe2631fe803a/687474703a2f2f646c322e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303039302f363437392f35323062313532392d366665612d333932372d393635362d3333363661316661333337622e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/c8f1d98268a307821273e94e7eefcd29a26f9b78/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333330332f64333230326332362d653935342d333563302d613331392d3537363034313032633537642e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/3772f5e12fb46df1032685319c83c557b3f6a098/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038312f383735392f34666161376332652d656439352d333633382d613365322d3862343831633865343036302e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/8cc684cf92e22d738d57b002c356afba96bcc4f5/687474703a2f2f646c322e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303039302f363435332f39326233343335302d323566632d333162332d626361362d3865326131653763356532322e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/a9b2f3b6a6a6b08d315ca1d50edf54da825b88b1/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353139322f35306635326161322d643838362d333366322d613661362d3639343631316438363962612e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/18166478784e086d703bb7121a2d8f7e93127243/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353139362f36376439326533362d366162302d333362362d386363662d3565663362373539303564302e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/9e1bf18f449a20c5183234b45bee33fdcdce9fb0/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353230322f63303331646238302d636564302d333634662d626430312d6636613162356436333462652e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/de18dd87ba5f6a5c26b59bb9c18fefda78255440/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353232342f35633065336639372d306265392d333761342d626563662d6136373336623333316435622e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/593a6e8c7c0e9fd0ae1fc1edf1da32d1ffb02315/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353234302f35643637363930382d343261372d333966322d616333372d6537653366666538653931372e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/74a5c58b7f6eecad6e965fa466d2d71e1a72b1ba/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353234342f30376161343038392d393962312d333731642d613438632d6433633562666330616365622e6a7067">
+<meta property="og:image" content="https://camo.githubusercontent.com/320b9df34570fef32419b9034c768ff661f624d5/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038322f353235352f35333134623836352d666437392d333834652d623737302d6339613232653433366335322e6a7067">
+<meta property="og:updated_time" content="2017-01-19T07:34:45.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="icebear's bolg">
+<meta name="twitter:title" content="Canal">
+<meta name="twitter:description" content="1. 工作原理mysql主备复制实现:
+
+从上层来看，复制分成三步：
+
+master将改变记录到二进制日志(binary log)中（这些记录叫做二进制日志事件，binary log events，可以通过show binlog events进行查看）；
+slave将master的binary log events拷贝到它的中继日志(relay log)；
+slave重做中继日志中的事件，将改变反">
+<meta name="twitter:image" content="http://www.programering.com/images/remote/ZnJvbT1pdGV5ZSZ1cmw9Y0djcTVDTTJJak16UUROM0F6TDRBek14QWpNdlFuYmwxR2FqRkdkMEYyTHQ5Mll1OEdkakZUTnVFelp0bDJMdm9EYzBSSGE.jpg">
   
     <link rel="alternate" href="/atom.xml" title="icebear&#39;s bolg" type="application/atom+xml">
   
@@ -59,54 +105,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/19/hello-world/" class="article-date">
-  <time datetime="2017-01-19T06:42:50.580Z" itemprop="datePublished">2017-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/19/hello-world/" data-id="ciy4240cw00008ku5gubq5r9r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Canal学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Canal学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/26/Canal学习笔记/" class="article-date">
   <time datetime="2016-10-26T10:09:15.512Z" itemprop="datePublished">2016-10-26</time>
@@ -119,8 +118,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/26/Canal学习笔记/">Canal</a>
+    <h1 class="article-title" itemprop="name">
+      Canal
     </h1>
   
 
@@ -735,10 +734,23 @@ show binlog events  in &apos;mysql-bin.000047&apos;;
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/19/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
