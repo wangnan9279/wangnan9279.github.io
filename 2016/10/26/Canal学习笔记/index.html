@@ -1,11 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<!doctype html>
+
+
+
   
-  <title>Canal | icebear&#39;s bolg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 工作原理mysql主备复制实现:
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. 工作原理mysql主备复制实现:
 
 从上层来看，复制分成三步：
 
@@ -57,75 +136,226 @@ master将改变记录到二进制日志(binary log)中（这些记录叫做二�
 slave将master的binary log events拷贝到它的中继日志(relay log)；
 slave重做中继日志中的事件，将改变反">
 <meta name="twitter:image" content="http://www.programering.com/images/remote/ZnJvbT1pdGV5ZSZ1cmw9Y0djcTVDTTJJak16UUROM0F6TDRBek14QWpNdlFuYmwxR2FqRkdkMEYyTHQ5Mll1OEdkakZUTnVFelp0bDJMdm9EYzBSSGE.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="icebear&#39;s bolg" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
 
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/26/Canal学习笔记/"/>
+
+
+
+
+
+  <title> Canal | icebear's bolg </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">icebear&#39;s bolg</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Canal学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/26/Canal学习笔记/" class="article-date">
-  <time datetime="2016-10-26T10:09:15.512Z" itemprop="datePublished">2016-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Canal
-    </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">icebear's bolg</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/26/Canal学习笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wangnan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="icebear's bolg">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="icebear's bolg" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Canal
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-26T18:09:15+08:00">
+                2016-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <h1 id="1-工作原理"><a href="#1-工作原理" class="headerlink" title="1. 工作原理"></a>1. 工作原理</h1><p>mysql主备复制实现:</p>
 <p><img src="http://www.programering.com/images/remote/ZnJvbT1pdGV5ZSZ1cmw9Y0djcTVDTTJJak16UUROM0F6TDRBek14QWpNdlFuYmwxR2FqRkdkMEYyTHQ5Mll1OEdkakZUTnVFelp0bDJMdm9EYzBSSGE.jpg" alt="mysql主备复制实现"></p>
@@ -727,103 +957,306 @@ show binlog events  in &apos;mysql-bin.000047&apos;;
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/26/Canal学习笔记/" data-id="ciy42b5wb0000ogu5mnfe5hdq" class="article-share-link">Share</a>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/19/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
       
       
     </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
-  
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-<nav id="article-nav">
-  
-    <a href="/2017/01/19/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+  </div>
+
+
+        </div>
         
-          Hello World
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="wangnan" />
+          <p class="site-author-name" itemprop="name">wangnan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-工作原理"><span class="nav-number">1.</span> <span class="nav-text">1. 工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-架构"><span class="nav-number">2.</span> <span class="nav-text">2 架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-知识科普"><span class="nav-number">3.</span> <span class="nav-text">3 知识科普</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-EventParser设计"><span class="nav-number">4.</span> <span class="nav-text">4 EventParser设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-EventSink设计"><span class="nav-number">5.</span> <span class="nav-text">5 EventSink设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据1-n业务"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">数据1:n业务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据n-1业务"><span class="nav-number">5.0.0.0.2.</span> <span class="nav-text">数据n:1业务</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-EventStore设计"><span class="nav-number">6.</span> <span class="nav-text">6 EventStore设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Instance设计"><span class="nav-number">7.</span> <span class="nav-text">7 Instance设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Server设计"><span class="nav-number">8.</span> <span class="nav-text">8 Server设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-增量订阅-消费设计"><span class="nav-number">9.</span> <span class="nav-text">9 增量订阅/消费设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-数据对象格式：EntryProtocol-proto"><span class="nav-number">10.</span> <span class="nav-text">10 数据对象格式：EntryProtocol.proto</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-HA机制设计"><span class="nav-number">11.</span> <span class="nav-text">11 HA机制设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-mysql的配置"><span class="nav-number">12.</span> <span class="nav-text">12 mysql的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#canal-配置"><span class="nav-number">13.</span> <span class="nav-text">canal 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring配置"><span class="nav-number">13.0.1.</span> <span class="nav-text">Spring配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#properties配置文件"><span class="nav-number">13.0.2.</span> <span class="nav-text">properties配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canal-properties介绍："><span class="nav-number">13.0.3.</span> <span class="nav-text">canal.properties介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instance-properties介绍："><span class="nav-number">13.0.4.</span> <span class="nav-text">instance.properties介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instance-xml配置文件"><span class="nav-number">13.0.5.</span> <span class="nav-text">instance.xml配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-ClientAPI"><span class="nav-number">14.</span> <span class="nav-text">13 ClientAPI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-代码框架-类图设计"><span class="nav-number">15.</span> <span class="nav-text">14 代码框架 类图设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-Canal源码分析"><span class="nav-number">16.</span> <span class="nav-text">15 Canal源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16-Producer增量异常问题定位思路"><span class="nav-number">17.</span> <span class="nav-text">16 Producer增量异常问题定位思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-</nav>
+    </main>
 
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-</article>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangnan</span>
+</div>
 
-</section>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
         
-          <aside id="sidebar">
-  
-    
 
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/01/19/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/26/Canal学习笔记/">Canal</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 wangnan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
+
   
-</nav>
-    
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
 
 
-<script src="/js/script.js"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  </div>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
 </body>
 </html>
