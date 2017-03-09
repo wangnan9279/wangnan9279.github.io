@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Redis,缓存,读书笔记," />
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="reids简介redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/post/undefined/index.html">
-<meta property="og:site_name" content="icebear's bolg">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2017-01-20T06:04:11.102Z">
+<meta property="og:title" content="《redis实战》读书笔记之第一章：初识redis">
+<meta property="og:url" content="http://yoursite.com/post/redisinaction_readnote_01/index.html">
+<meta property="og:site_name" content="wangnan's bolg">
+<meta property="og:description" content="reids简介redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能">
+<meta property="og:image" content="http://yoursite.com/post/redisinaction_readnote_01/01.png">
+<meta property="og:updated_time" content="2017-03-09T08:09:02.449Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="《redis实战》读书笔记之第一章：初识redis">
+<meta name="twitter:description" content="reids简介redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能">
+<meta name="twitter:image" content="http://yoursite.com/post/redisinaction_readnote_01/01.png">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/post/undefined/"/>
+  <link rel="canonical" href="http://yoursite.com/post/redisinaction_readnote_01/"/>
 
 
 
 
 
-  <title> Hello World | icebear's bolg </title>
+  <title> 《redis实战》读书笔记之第一章：初识redis | wangnan's bolg </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +170,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">icebear's bolg</span>
+      <span class="site-title">wangnan's bolg</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -241,26 +243,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            Sitemap
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -290,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/undefined/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/redisinaction_readnote_01/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wangnan">
@@ -299,9 +281,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="icebear's bolg">
+    <meta itemprop="name" content="wangnan's bolg">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="icebear's bolg" src="">
+      <img style="display:none;" itemprop="url image" alt="wangnan's bolg" src="">
     </span>
   </span>
 
@@ -314,7 +296,7 @@
             
             
               
-                Hello World
+                《redis实战》读书笔记之第一章：初识redis
               
             
           </h1>
@@ -329,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T14:42:50+08:00">
-                2017-01-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T15:57:27+08:00">
+                2017-03-09
               </time>
             
 
@@ -340,6 +322,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -348,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/undefined/" itemprop="commentCount"></span>
+                <a href="/post/redisinaction_readnote_01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/redisinaction_readnote_01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,7 +363,7 @@
 
           
           
-             <span id="/post/undefined/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/post/redisinaction_readnote_01/" class="leancloud_visitors" data-flag-title="《redis实战》读书笔记之第一章：初识redis">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -386,16 +390,15 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a> 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="reids简介"><a href="#reids简介" class="headerlink" title="reids简介"></a>reids简介</h3><p>redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能<br><a id="more"></a> </p>
+<h3 id="redis与memcached的区别"><a href="#redis与memcached的区别" class="headerlink" title="redis与memcached的区别"></a>redis与memcached的区别</h3><p>两者都可以用于储存键值映射，彼此的性能也相差无几，但是redis能够自动以两种方式将数据写入硬盘，并且redis除了能存储普通字符串之外，还可以储存其他4种数据结构</p>
+<h3 id="redis拥有两种不同形式的持久化方法"><a href="#redis拥有两种不同形式的持久化方法" class="headerlink" title="redis拥有两种不同形式的持久化方法"></a>redis拥有两种不同形式的持久化方法</h3><p>他们都可以用小而紧凑的格式将储存在内存中的数据写入硬盘吗，第一种方法是时间点转储，转储既可以在”指定时间段内有指定数量的写操作执行”这一条件被满足时执行，又可以通过调用两条转储到硬盘的命令中的任何一条来执行，第二种持久化方法将所有修改了数据库的命令都写入一个只追加文件里面，用户可以根据数据的重要程度，将只追加写入设置为从不同步，每秒同步一次或者没写入一个命令就同步一次</p>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><img src="/post/redisinaction_readnote_01/01.png" alt="redis数据结构"></p>
+<h3 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h3><p><em>基本命令</em>：GET SET DEL<br><em>进阶</em>：自增 自减</p>
+<h3 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h3><p><em>基本命令</em>：RPUSH LRANGE LINDEX LPOP <em>进阶</em>：从列表里面移除元素，将元素插入列表中间，将列表修剪至指定长度</p>
+<h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>LIST可以存储多个相同的字符串，而SET则可以通过散列来保证自己存储的每个字符串都是各部相同的  set使用无序的方式储存<br><em>基本命令</em>：SADD SMEMBER SISMEMBER SREM<br><em>进阶</em>：SINTER SUNION SDIFF</p>
+<h3 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h3><p>储存的值既可以是字符串也可以是数字值，并且用户同样可以对散列储存的数字值执行自增操作或者自减操作  散列在很多方面就想一个微缩版的redis<br><em>基本命令</em>：HSET HGET HGETALL HDEL</p>
+<h2 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h2><p>有序集合的值被称为分值，分值必须是浮点数，有序集合是redis里面为一个既可以根据成员访问，也可以根据分值以及分值的排列顺序来访问元素的结构<br><em>基本命令</em>：ZADD ZRANGE ZRANGEBYSCORE ZREM</p>
 
       
     </div>
@@ -438,20 +441,30 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
+          
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/mastering_es_readnote_01/" rel="next" title="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
+                <i class="fa fa-chevron-left"></i> 《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介
+              </a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/mastering_es_readnote_01/" rel="prev" title="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
-                《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -477,8 +490,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="post/undefined/"
-           data-title="Hello World" data-url="http://yoursite.com/post/undefined/">
+      <div class="ds-thread" data-thread-key="post/redisinaction_readnote_01/"
+           data-title="《redis实战》读书笔记之第一章：初识redis" data-url="http://yoursite.com/post/redisinaction_readnote_01/">
       </div>
     
   </div>
@@ -534,7 +547,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -543,7 +556,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -578,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#reids简介"><span class="nav-number">1.</span> <span class="nav-text">reids简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis与memcached的区别"><span class="nav-number">2.</span> <span class="nav-text">redis与memcached的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis拥有两种不同形式的持久化方法"><span class="nav-number">3.</span> <span class="nav-text">redis拥有两种不同形式的持久化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRING"><span class="nav-number">5.</span> <span class="nav-text">STRING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIST"><span class="nav-number">6.</span> <span class="nav-text">LIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">7.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HASH"><span class="nav-number">8.</span> <span class="nav-text">HASH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZSET"><span class="nav-number"></span> <span class="nav-text">ZSET</span></a></div>
             
 
           </div>
