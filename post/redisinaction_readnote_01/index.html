@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="wangnan's bolg">
 <meta property="og:description" content="reids简介redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能">
 <meta property="og:image" content="http://yoursite.com/post/redisinaction_readnote_01/01.png">
-<meta property="og:updated_time" content="2017-03-09T10:24:37.990Z">
+<meta property="og:updated_time" content="2017-03-09T11:23:47.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《redis实战》读书笔记-第一章：初识redis">
 <meta name="twitter:description" content="reids简介redis是一个速度非常快的非关系数据库，他可以存储键与5种不同类型的值之间的映射，可以将储存在内存的键值对持久化到硬盘，可以使用复制特性来扩展读性能，还可以使用客户端分片来扩展读性能">
@@ -214,12 +214,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
@@ -234,12 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            标签
+            关于
           </a>
         </li>
       
@@ -398,7 +398,7 @@
 <h3 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h3><p><em>基本命令</em>：RPUSH LRANGE LINDEX LPOP <em>进阶</em>：从列表里面移除元素，将元素插入列表中间，将列表修剪至指定长度</p>
 <h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><p>LIST可以存储多个相同的字符串，而SET则可以通过散列来保证自己存储的每个字符串都是各部相同的  set使用无序的方式储存<br><em>基本命令</em>：SADD SMEMBER SISMEMBER SREM<br><em>进阶</em>：SINTER SUNION SDIFF</p>
 <h3 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h3><p>储存的值既可以是字符串也可以是数字值，并且用户同样可以对散列储存的数字值执行自增操作或者自减操作  散列在很多方面就想一个微缩版的redis<br><em>基本命令</em>：HSET HGET HGETALL HDEL</p>
-<h2 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h2><p>有序集合的值被称为分值，分值必须是浮点数，有序集合是redis里面为一个既可以根据成员访问，也可以根据分值以及分值的排列顺序来访问元素的结构<br><em>基本命令</em>：ZADD ZRANGE ZRANGEBYSCORE ZREM</p>
+<h3 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h3><p>有序集合的值被称为分值，分值必须是浮点数，有序集合是redis里面为一个既可以根据成员访问，也可以根据分值以及分值的排列顺序来访问元素的结构<br><em>基本命令</em>：ZADD ZRANGE ZRANGEBYSCORE ZREM</p>
 
       
     </div>
@@ -574,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#reids简介"><span class="nav-number">1.</span> <span class="nav-text">reids简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis与memcached的区别"><span class="nav-number">2.</span> <span class="nav-text">redis与memcached的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis拥有两种不同形式的持久化方法"><span class="nav-number">3.</span> <span class="nav-text">redis拥有两种不同形式的持久化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRING"><span class="nav-number">5.</span> <span class="nav-text">STRING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIST"><span class="nav-number">6.</span> <span class="nav-text">LIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">7.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HASH"><span class="nav-number">8.</span> <span class="nav-text">HASH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZSET"><span class="nav-number"></span> <span class="nav-text">ZSET</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#reids简介"><span class="nav-number">1.</span> <span class="nav-text">reids简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis与memcached的区别"><span class="nav-number">2.</span> <span class="nav-text">redis与memcached的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis拥有两种不同形式的持久化方法"><span class="nav-number">3.</span> <span class="nav-text">redis拥有两种不同形式的持久化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRING"><span class="nav-number">5.</span> <span class="nav-text">STRING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIST"><span class="nav-number">6.</span> <span class="nav-text">LIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">7.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HASH"><span class="nav-number">8.</span> <span class="nav-text">HASH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSET"><span class="nav-number">9.</span> <span class="nav-text">ZSET</span></a></li></ol></div>
             
 
           </div>
