@@ -90,10 +90,12 @@
 <meta property="og:url" content="http://yoursite.com/post/mastering_es_readnote_01/index.html">
 <meta property="og:site_name" content="icebear's bolg">
 <meta property="og:description" content="Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
-<meta property="og:updated_time" content="2017-03-09T07:39:37.651Z">
+<meta property="og:image" content="http://yoursite.com/post/mastering_es_readnote_01/about.png “test”">
+<meta property="og:updated_time" content="2017-03-09T07:47:17.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
 <meta name="twitter:description" content="Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta name="twitter:image" content="http://yoursite.com/post/mastering_es_readnote_01/about.png “test”">
 
 
 
@@ -408,7 +410,7 @@
       
 
       
-        <h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等<br><a id="more"></a> </p>
+        <h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等<br><a id="more"></a><br><img src="/post/mastering_es_readnote_01/about.png “test”" alt="图片注释"></p>
 <h3 id="lucene总体架构"><a href="#lucene总体架构" class="headerlink" title="lucene总体架构"></a>lucene总体架构</h3><p>文档（document）,字段(field),词项(term)，词条(token)</p>
 <h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>lucene将写入索引的所有信息组成一种名为倒排索引的结构，倒排索引是面向词项而不是面向文档，实际的lucene创建的索引更为复杂，也更先进，因为索引中还储存和很多其他信息，如词向量（为单个字段创建的小索引，储存改字段中所有的词条） 各字段的原始信息，文档删除标记</p>
 <h3 id="段（segment）"><a href="#段（segment）" class="headerlink" title="段（segment）"></a>段（segment）</h3><p>每个段只会被创建一次但是会被查询多次，索引期间，段经创建就不会被修改，例如，文档被删除以后，删除信息被单独的保存在一个文件中，而段本身并没有修改</p>
@@ -494,10 +496,6 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/undefined/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -570,7 +568,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
