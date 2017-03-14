@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="简介,Sublime,工具," />
+  <meta name="keywords" content="简介,Java," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="sublime 是一款小巧绿色且速度非常快的代码编辑器，下面介绍一下它的安装和插件的使用">
+<meta name="description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sublime Text 3简介">
-<meta property="og:url" content="http://yoursite.com/post/Sublime-introduction/index.html">
+<meta property="og:title" content="【转】Java注解简介">
+<meta property="og:url" content="http://yoursite.com/post/Java-annotation-introduction/index.html">
 <meta property="og:site_name" content="wangnan's bolg">
-<meta property="og:description" content="sublime 是一款小巧绿色且速度非常快的代码编辑器，下面介绍一下它的安装和插件的使用">
-<meta property="og:updated_time" content="2017-03-10T08:31:46.610Z">
+<meta property="og:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
+<meta property="og:updated_time" content="2017-03-14T08:38:23.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sublime Text 3简介">
-<meta name="twitter:description" content="sublime 是一款小巧绿色且速度非常快的代码编辑器，下面介绍一下它的安装和插件的使用">
+<meta name="twitter:title" content="【转】Java注解简介">
+<meta name="twitter:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/post/Sublime-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/post/Java-annotation-introduction/"/>
 
 
 
 
 
-  <title> Sublime Text 3简介 | wangnan's bolg </title>
+  <title> 【转】Java注解简介 | wangnan's bolg </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/Sublime-introduction/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/Java-annotation-introduction/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wangnan">
@@ -304,7 +304,7 @@
             
             
               
-                Sublime Text 3简介
+                【转】Java注解简介
               
             
           </h1>
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T16:23:13+08:00">
-                2017-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T16:35:45+08:00">
+                2017-03-14
               </time>
             
 
@@ -342,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -360,8 +360,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/Sublime-introduction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/Sublime-introduction/" itemprop="commentCount"></span>
+                <a href="/post/Java-annotation-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/Java-annotation-introduction/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,7 +371,7 @@
 
           
           
-             <span id="/post/Sublime-introduction/" class="leancloud_visitors" data-flag-title="Sublime Text 3简介">
+             <span id="/post/Java-annotation-introduction/" class="leancloud_visitors" data-flag-title="【转】Java注解简介">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -399,24 +399,44 @@
 
       
         <blockquote>
-<p>sublime 是一款小巧绿色且速度非常快的代码编辑器，下面介绍一下它的安装和插件的使用<br><a id="more"></a> </p>
+<p>有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。<br><a id="more"></a></p>
 </blockquote>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官方下载地址：<a href="http://www.sublimetext.com/3" target="_blank" rel="external">http://www.sublimetext.com/3</a> </p>
-<h1 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h1><p>打开sublime_text.exe，help-&gt;enter License<br>附 license：</p>
+<h1 id="了解注解"><a href="#了解注解" class="headerlink" title="了解注解"></a>了解注解</h1><p>对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Javadoc工具生成和源代码配套的Javadoc文档。这些@param、@return等Javadoc标签就是注解标签，它们为第三方工具提供了描述程序代码的注释信息。使用过Xdoclet的朋友，对此将更有感触，像Struts、hibernate都提供了Xdoclet标签，使用它们可以快速地生成对应程序代码的配置文件。</p>
+<p>JDK5.0注解可以看成是Javadoc标签和Xdoclet标签的延伸和发展。在JDK5.0中，我们可以自定义这些标签，并通过Java语言的反射机制中获取类中标注的注解，完成特定的功能。<br>注解是代码的附属信息，它遵循一个基本原则：注解不能直接干扰程序代码的运行，无论增加或删除注解，代码都能够正常运行。Java语言解释器会忽略这些注解，而由第三方工具负责对注解进行处理。第三方工具可以利用代码中的注解间接控制程序代码的运行，它们通过Java反射机制读取注解的信息，并根据这些信息更改目标程序的逻辑，而这正是Spring AOP对@AspectJ提供支持所采取的方法。</p>
 <blockquote>
-<p>license：<br>—– BEGIN LICENSE —–<br>K-20<br>Single User License<br>EA7E-940129<br>3A099EC1 C0B5C7C5 33EBF0CF BE82FE3B<br>EAC2164A 4F8EC954 4E87F1E5 7E4E85D6<br>C5605DE6 DAB003B4 D60CA4D0 77CB1533<br>3C47F579 FB3E8476 EB3AA9A7 68C43CD9<br>8C60B563 80FE367D 8CAD14B3 54FB7A9F<br>4123FFC4 D63312BA 141AF702 F6BBA254<br>B094B9C0 FAA4B04C 06CC9AFC FD412671<br>82E3AEE0 0F0FAAA7 8FA773C9 383A9E18<br>—— END LICENSE ——</p>
+<p>很多东西的设计都必须遵循最基本的原则，为了防止机器人伤害人类，科幻作家阿西莫夫于1940年提出了“机器人三原则”：第一，机器人不能伤害人类；第二，机器人应遵守人类的命令，与第一条违背的命令除外；第三，机器人应能保护自己，与第一条违背的命令除外。这是给机器人赋予的伦理性纲领，机器人学术界一直将这三条原则作为机器人开发的准则。</p>
 </blockquote>
-<p>更多参考：<a href="http://www.janecc.com/sublime-text-3-crack-zh-cn.html" target="_blank" rel="external">http://www.janecc.com/sublime-text-3-crack-zh-cn.html</a></p>
-<h1 id="Sublime-text-3-Package-Control"><a href="#Sublime-text-3-Package-Control" class="headerlink" title="Sublime text 3 Package Control"></a>Sublime text 3 Package Control</h1><p>Sublime text 3 Package Control是sublime安装插件的管理器</p>
-<p>安装步骤：<br><a href="http://jingyan.baidu.com/article/c14654134b8bde0bfcfc4c9a.html" target="_blank" rel="external">http://jingyan.baidu.com/article/c14654134b8bde0bfcfc4c9a.html</a></p>
-<p>emmet的前身是大名鼎鼎的Zen coding，如果你从事Web前端开发的话，对该插件一定不会陌生。它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度</p>
-<h1 id="安装emmet插件："><a href="#安装emmet插件：" class="headerlink" title="安装emmet插件："></a>安装emmet插件：</h1><p><a href="http://jingyan.baidu.com/article/ca00d56c76d0fae99eebcfdf.html" target="_blank" rel="external">http://jingyan.baidu.com/article/ca00d56c76d0fae99eebcfdf.html</a> </p>
-<p>更多参考：<br><a href="http://www.iteye.com/news/27580" target="_blank" rel="external">http://www.iteye.com/news/27580</a></p>
-<p>用emmet插件快速新建html文件，可以新建一个html文件 打开，然后输入 html加tab键</p>
-<p>更多参考：<br><a href="http://www.cnblogs.com/freeyiyi1993/p/3629905.html" target="_blank" rel="external">http://www.cnblogs.com/freeyiyi1993/p/3629905.html</a></p>
-<h1 id="格式化html代码-tag插件-Ctrl-Alt-F对代码进行格式化"><a href="#格式化html代码-tag插件-Ctrl-Alt-F对代码进行格式化" class="headerlink" title="格式化html代码 tag插件 Ctrl+Alt+F对代码进行格式化"></a>格式化html代码 tag插件 Ctrl+Alt+F对代码进行格式化</h1><p>参考：<a href="http://www.5imb.com/show-83-5884-1.html" target="_blank" rel="external">http://www.5imb.com/show-83-5884-1.html</a></p>
-<p>快捷键：删除一行 ctrl+shift+k</p>
-<p>更多快捷键，参考：<br><a href="http://www.jb51.net/softjc/180873.html" target="_blank" rel="external">http://www.jb51.net/softjc/180873.html</a></p>
+<h1 id="一个简单的注解类"><a href="#一个简单的注解类" class="headerlink" title="一个简单的注解类"></a>一个简单的注解类</h1><p>通常情况下，第三方工具不但负责处理特定的注解，本身还提供了这些注解的定义，所以我们通常仅需关注如何使用注解就可以了。但定义注解类本身并不困难，Java提供了定义注解的语法。下面，我们马上着手编写一个简单的注解类，如代码清单7-1所示：</p>
+<p>代码清单7-1 NeedTest注解类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.baobaotao.aspectj.anno;  </div><div class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;  </div><div class="line"><span class="keyword">import</span> java.lang.annotation.Retention;  </div><div class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;  </div><div class="line"><span class="keyword">import</span> java.lang.annotation.Target;  </div><div class="line"></div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME) <span class="comment">//①声明注解的保留期限  </span></div><div class="line"><span class="meta">@Target</span>(ElementType.METHOD)<span class="comment">//②声明可以使用该注解的目标类型  </span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> NeedTest &#123;<span class="comment">//③定义注解  </span></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;<span class="comment">//④声明注解成员  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java新语法规定使用@interface修饰符定义注解类，如③所示，一个注解可以拥有多个成员，成员声明和接口方法声明类似，这里，我们仅定义了一个成员，如④所示。成员的声明有以下几点限制：</p>
+<p>成员以无入参无抛出异常的方式声明，如boolean value(String str)、boolean value() throws Exception等方式是非法的；<br>可以通过default为成员指定一个默认值，如String level() default “LOW_LEVEL”、int high() default 2是合法的，当然也可以不指定默认值；<br>成员类型是受限的，合法的类型包括原始类型及其封装类、String、Class、enums、注解类型，以及上述类型的数组类型。如ForumService value()、List foo()是非法的。</p>
+<p>在①和②处，我们所看到的注解是Java预定义的注解，称为元注解（Meta-Annotation），它们被Java编译器使用，会对注解类的行为产生影响。@Retention(RetentionPolicy. RUNTIME)表示NeedTest这个注解可以在运行期被JVM读取，注解的保留期限类型在java.lang.annotation.Retention类中定义，介绍如下：</p>
+<p>SOURCE：注解信息仅保留在目标类代码的源码文件中，但对应的字节码文件将不再保留；<br>CLASS：注解信息将进入目标类代码的字节码文件中，但类加载器加载字节码文件时不会将注解加载到JVM中，也即运行期不能获取注解信息；<br>RUNTIME：注解信息在目标类加载到JVM后依然保留，在运行期可以通过反射机制读取类中注解信息。<br>Target(ElementType.METHOD)表示NeedTest这个注解只能应用到目标类的方法上，注解的应用目标在java.lang.annotation.ElementType类中定义：<br>TYPE：类、接口、注解类、Enum声明处，相应的注解称为类型注解；<br>FIELD：类成员变量或常量声明处，相应的注解称为域值注解；<br>METHOD：方法声明处，相应的注解称为方法注解；<br>PARAMETER：参数声明处，相应的注解称为参数注解；<br>CONSTRUCTOR：构造函数声明处，相应的注解称为构造函数注解；<br>LOCAL_VARIABLE：局部变量声明处，相应的注解称为局域变量注解；<br>ANNOTATION_TYPE：注解类声明处，相应的注解称为注解类注解，ElementType. TYPE包括ElementType.ANNOTATION_TYPE；<br>PACKAGE：包声明处，相应的注解称为包注解。</p>
+<p>如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号（=），如@NeedTest(true)。注解类拥有多个成员时，如果仅对value成员进行赋值则也可不使用赋值号，如果同时对多个成员进行赋值，则必须使用赋值号，如DeclareParents (value = “NaiveWaiter”, defaultImpl = SmartSeller.class)。注解类可以没有成员，没有成员的注解称为标识注解，解释程序以标识注解存在与否进行相应的处理；此外，所有的注解类都隐式继承于java.lang.annotation.Annotation，但注解不允许显式继承于其他的接口。</p>
+<p>我们希望使用NeedTest注解对业务类的方法进行标注，以便测试工具可以根据注解情况激活或关闭对业务类的测试。在编写好NeedTest注解类后，就可以在其他类中使用它了。</p>
+<h1 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h1><p>我们在ForumService中使用NeedTest注解，标注业务方法是否需要测试，如代码清单7-2所示：</p>
+<p>代码清单7-2 ForumService：使用注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.baobaotao.aspectj.anno;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForumService</span> </span>&#123;  </div><div class="line">    <span class="meta">@NeedTest</span>(value=<span class="keyword">true</span>) ①  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteForum</span><span class="params">(<span class="keyword">int</span> forumId)</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"删除论坛模块："</span>+forumId);  </div><div class="line">    &#125;  </div><div class="line">    <span class="meta">@NeedTest</span>(value=<span class="keyword">false</span>) ②  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteTopic</span><span class="params">(<span class="keyword">int</span> postId)</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"删除论坛主题："</span>+postId);  </div><div class="line">    &#125;     </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果注解类和目标类不在同一个包中，需要通过import引用的注解类。在①和②处，我们使用NeedTest分别对deleteForum()和deleteTopic()方法进行标注。在标注注解时，可以通过以下格式对注解成员进行赋值：</p>
+<blockquote>
+<p>&lt;注解名&gt;(&lt;成员名1&gt;=&lt;成员值1&gt;,&lt;成员名1&gt;=&lt;成员值1&gt;,…)</p>
+</blockquote>
+<p>如果成员是数组类型，可以通过{}进行赋值，如boolean数组的成员可以设置为{true,false,true}。下面是几个注解标注的例子：</p>
+<p>示例1，多成员的注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@AnnoExample</span>(id= <span class="number">2868724</span>, synopsis = <span class="string">"Enable time-travel"</span>,  </div><div class="line">engineer = <span class="string">"Mr. Peabody"</span>,date = <span class="string">"4/1/2007"</span>)</div></pre></td></tr></table></figure></p>
+<p>示例2，一个成员的注解，成员名为value。可以省略成员名和赋值符号：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Copyright</span>(<span class="string">"2011 bookegou.com All Right Reserved"</span>)</div></pre></td></tr></table></figure>
+<p>示例3，无成员的注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div></pre></td></tr></table></figure></p>
+<p>示例4，成员为字符串数组的注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(value=&#123;<span class="string">"unchecked"</span>,<span class="string">"fallthrough"</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>示例5，成员为注解数组类型的注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Reviews</span>(&#123;<span class="meta">@Review</span>(grade=Review.Grade.EXCELLENT,reviewer=<span class="string">"df"</span>),        </div><div class="line">           <span class="meta">@Review</span>(grade=Review.Grade.UNSATISFACTORY,reviewer=<span class="string">"eg"</span>,              comment=<span class="string">"This method needs an @Override annotation"</span>)&#125;)</div></pre></td></tr></table></figure></p>
+<p>Reviews注解拥有一个@Review注解数组类型的成员，@Review注解类型有三个成员，其中reviewer、comment都是String类型，但comment有默认值，grade是枚举类型的成员。<br>由于NeedTest注解的保留限期是RetentionPolicy.RUNTIME类型，因此当ForumService被加载到JVM时，仍就可通过反射机制访问到ForumService各方法的注解信息。</p>
+<h1 id="访问注解"><a href="#访问注解" class="headerlink" title="访问注解"></a>访问注解</h1><p>前面提到过，注解不会直接影响程序的运行，但是第三方程序或工具可以利用代码中的注解完成特殊的任务，间接控制程序的运行。对于RetentionPolicy.RUNTIME保留期限的注解，我们可以通过反射机制访问类中的注解。</p>
+<p>在JDK5.0里，Package、Class、Constructor、Method以及Field等反射对象都新增了访问注解信息的方法：T getAnnotation(Class annotationClass)，该方法支持通过泛型直接返回注解对象。</p>
+<p>下面，我们就通过反射来访问注解，得出ForumService 类中通过@NeedTest注解所承载的测试需求，如代码清单7-3所示：</p>
+<p>代码清单7-3 TestTool：访问代码中的注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.baobaotao.aspectj.anno;  </div><div class="line"><span class="keyword">import</span> java.lang.reflect.Method;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTool</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line"></div><div class="line">               <span class="comment">//①得到ForumService对应的Class对象  </span></div><div class="line">        Class clazz = ForumService.class;   </div><div class="line"></div><div class="line">                <span class="comment">//②得到ForumSerivce对应的Method数组  </span></div><div class="line">        Method[] methods = clazz.getDeclaredMethods();   </div><div class="line"></div><div class="line">        System.out.println(methods.length);  </div><div class="line">        <span class="keyword">for</span> (Method method : methods) &#123;  </div><div class="line"></div><div class="line">                        <span class="comment">//③获取方法上所标注的注解对象  </span></div><div class="line">            NeedTest nt = method.getAnnotation(NeedTest. <span class="class"><span class="keyword">class</span>)</span>;  </div><div class="line">            <span class="keyword">if</span> (nt != <span class="keyword">null</span>) &#123;  </div><div class="line">                <span class="keyword">if</span> (nt.value()) &#123;  </div><div class="line">                    System.out.println(method.getName() + <span class="string">"()需要测试"</span>);  </div><div class="line">                &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                    System.out.println(method.getName() + <span class="string">"()不需要测试"</span>);  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在③处，通过方法的反射对象，我们获取了方法上所标注的NeedTest注解对象，接着就可以访问注解对象的成员，从而得到ForumService类方法的测试需求。运行以上代码，输出以下的信息：</p>
+<blockquote>
+<p>deleteForum()需要测试<br>  deleteTopic()不需要测试</p>
+</blockquote>
 
       
     </div>
@@ -468,9 +488,7 @@
           
             <a href="/tags/简介/" rel="tag"># 简介</a>
           
-            <a href="/tags/Sublime/" rel="tag"># Sublime</a>
-          
-            <a href="/tags/工具/" rel="tag"># 工具</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -479,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/swagger-introduction/" rel="next" title="Swagger简介">
-                <i class="fa fa-chevron-left"></i> Swagger简介
+              <a href="/post/java-proxy-introduction/" rel="next" title="【转】Java代理简介">
+                <i class="fa fa-chevron-left"></i> 【转】Java代理简介
               </a>
             
           </div>
@@ -488,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/think-like-programmer-readnote/" rel="prev" title="《像程序员一样思考》读书笔记">
-                《像程序员一样思考》读书笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,8 +531,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="post/Sublime-introduction/"
-           data-title="Sublime Text 3简介" data-url="http://yoursite.com/post/Sublime-introduction/">
+      <div class="ds-thread" data-thread-key="post/Java-annotation-introduction/"
+           data-title="【转】Java注解简介" data-url="http://yoursite.com/post/Java-annotation-introduction/">
       </div>
     
   </div>
@@ -688,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#破解"><span class="nav-number">2.</span> <span class="nav-text">破解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sublime-text-3-Package-Control"><span class="nav-number">3.</span> <span class="nav-text">Sublime text 3 Package Control</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装emmet插件："><span class="nav-number">4.</span> <span class="nav-text">安装emmet插件：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#格式化html代码-tag插件-Ctrl-Alt-F对代码进行格式化"><span class="nav-number">5.</span> <span class="nav-text">格式化html代码 tag插件 Ctrl+Alt+F对代码进行格式化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#了解注解"><span class="nav-number">1.</span> <span class="nav-text">了解注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单的注解类"><span class="nav-number">2.</span> <span class="nav-text">一个简单的注解类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用注解"><span class="nav-number">3.</span> <span class="nav-text">使用注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问注解"><span class="nav-number">4.</span> <span class="nav-text">访问注解</span></a></li></ol></div>
             
 
           </div>
