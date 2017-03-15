@@ -6,6 +6,7 @@ Allow: /read-tech/
 Allow: /read-life/ 
 Allow: /about/ 
 Allow: /life/ 
+
 Disallow: /vendors/
 Disallow: /js/
 Disallow: /css/
