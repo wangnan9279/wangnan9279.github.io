@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/redisinaction_readnote_02/</loc>
+    <lastmod>2017-03-15T09:09:12.296Z</lastmod>
+    <data>
+        <display>
+        <title>《redis实战》读书笔记-第二章：使用redis构建web应用</title>
+        <pubTime>2017-03-15T08:53:44.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/youth/</loc>
     <lastmod>2017-03-15T08:46:11.586Z</lastmod>
     <data>
@@ -53,9 +77,9 @@
         <title>【转】Java反射简介</title>
         <pubTime>2017-03-13T09:36:02.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>简介</tag>
+         
+        <tag>Java</tag>
          
          
            
@@ -75,9 +99,9 @@
         <title>【转】Java代理简介</title>
         <pubTime>2017-03-13T09:58:52.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>简介</tag>
+         
+        <tag>Java</tag>
          
          
            
@@ -97,9 +121,9 @@
         <title>【转】Java注解简介</title>
         <pubTime>2017-03-14T08:35:45.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>简介</tag>
+         
+        <tag>Java</tag>
          
          
            
@@ -163,11 +187,11 @@
         <title>《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介</title>
         <pubTime>2017-03-08T04:31:23.000Z</pubTime>
         
+        <tag>读书笔记</tag>
+         
         <tag>ElasticSearch</tag>
          
         <tag>搜索引擎</tag>
-         
-        <tag>读书笔记</tag>
          
          
            
@@ -237,11 +261,11 @@
         <title>《redis实战》读书笔记-第一章：初识redis</title>
         <pubTime>2017-03-09T07:57:27.000Z</pubTime>
         
-        <tag>读书笔记</tag>
-         
         <tag>Redis</tag>
          
         <tag>缓存</tag>
+         
+        <tag>读书笔记</tag>
          
          
            
