@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-03-16T07:10:10.870Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
     
     <lastmod>2017-03-16T06:39:19.347Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://wangnan.tech/post/swagger-introduction/</loc>
     
     <lastmod>2017-03-13T03:24:33.728Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-03-13T03:16:08.061Z</lastmod>
     
   </url>
   
