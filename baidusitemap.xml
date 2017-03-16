@@ -3,16 +3,37 @@
 
 
     
+  <url>
+    <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
+    <lastmod>2017-03-16T08:50:27.682Z</lastmod>
+    <data>
+        <display>
+        <title>《像程序员一样思考》读书笔记</title>
+        <pubTime>2017-03-13T03:35:48.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="ReadingNotes" url="http://wangnan.tech/categories/ReadingNotes/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
-    <lastmod>2017-03-16T06:39:19.347Z</lastmod>
+    <lastmod>2017-03-16T08:50:18.636Z</lastmod>
     <data>
         <display>
         <title>《Thinking in Java》读书笔记之并发（二）</title>
         <pubTime>2017-03-16T06:36:33.000Z</pubTime>
         
         <tag>Java</tag>
+         
+        <tag>并发</tag>
          
         <tag>读书笔记</tag>
          
@@ -28,13 +49,15 @@
     
   <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/</loc>
-    <lastmod>2017-03-16T06:25:46.659Z</lastmod>
+    <lastmod>2017-03-16T08:50:10.645Z</lastmod>
     <data>
         <display>
         <title>《Thinking in Java》读书笔记之并发（一）</title>
         <pubTime>2017-03-16T06:19:15.000Z</pubTime>
         
         <tag>Java</tag>
+         
+        <tag>并发</tag>
          
         <tag>读书笔记</tag>
          
@@ -47,6 +70,147 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
+    <lastmod>2017-03-16T08:49:49.697Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用</title>
+        <pubTime>2017-03-16T08:11:20.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+        <tag>ORM框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
+    <lastmod>2017-03-16T08:49:11.721Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Java ThreadLocal</title>
+        <pubTime>2017-03-14T08:44:22.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/java-reflection-introduction/</loc>
+    <lastmod>2017-03-16T08:48:55.899Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Java反射简介</title>
+        <pubTime>2017-03-13T09:36:02.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>简介</tag>
+         
+        <tag>反射</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
+    <lastmod>2017-03-16T08:48:45.342Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Java代理简介</title>
+        <pubTime>2017-03-13T09:58:52.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>简介</tag>
+         
+        <tag>代理</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/java-io-introduction/</loc>
+    <lastmod>2017-03-16T08:48:31.540Z</lastmod>
+    <data>
+        <display>
+        <title>Java IO 简介</title>
+        <pubTime>2017-03-16T08:44:54.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>简介</tag>
+         
+        <tag>IO</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/Java-annotation-introduction/</loc>
+    <lastmod>2017-03-16T08:48:23.818Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Java注解简介</title>
+        <pubTime>2017-03-14T08:35:45.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>简介</tag>
+         
+        <tag>注解</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
   <url>
@@ -94,112 +258,6 @@
 
     
     
-  <url>
-    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
-    <lastmod>2017-03-14T08:47:44.050Z</lastmod>
-    <data>
-        <display>
-        <title>【转】Java ThreadLocal</title>
-        <pubTime>2017-03-14T08:44:22.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/java-reflection-introduction/</loc>
-    <lastmod>2017-03-14T08:38:40.025Z</lastmod>
-    <data>
-        <display>
-        <title>【转】Java反射简介</title>
-        <pubTime>2017-03-13T09:36:02.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>简介</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
-    <lastmod>2017-03-14T08:38:33.288Z</lastmod>
-    <data>
-        <display>
-        <title>【转】Java代理简介</title>
-        <pubTime>2017-03-13T09:58:52.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>简介</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/Java-annotation-introduction/</loc>
-    <lastmod>2017-03-14T08:38:23.025Z</lastmod>
-    <data>
-        <display>
-        <title>【转】Java注解简介</title>
-        <pubTime>2017-03-14T08:35:45.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>简介</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
-    <lastmod>2017-03-13T03:49:58.692Z</lastmod>
-    <data>
-        <display>
-        <title>《像程序员一样思考》读书笔记</title>
-        <pubTime>2017-03-13T03:35:48.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="ReadingNotes" url="http://wangnan.tech/categories/ReadingNotes/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://wangnan.tech/post/swagger-introduction/</loc>

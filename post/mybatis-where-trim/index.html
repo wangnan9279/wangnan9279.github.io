@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mybatis,ORM框架," />
 
 
 
@@ -112,15 +112,16 @@
 
 
 
-<meta name="description" content="2gether thru life">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/categories/Java/index.html">
+<meta name="description" content="今天遇到一个场景需要写一个这样的查询语句：用户对象userInfo包含下面几个字段：userName phone email qqId weiboId wxId">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用">
+<meta property="og:url" content="http://wangnan.tech/post/mybatis-where-trim/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="2gether thru life">
+<meta property="og:description" content="今天遇到一个场景需要写一个这样的查询语句：用户对象userInfo包含下面几个字段：userName phone email qqId weiboId wxId">
+<meta property="og:updated_time" content="2017-03-16T08:49:49.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
-<meta name="twitter:description" content="2gether thru life">
+<meta name="twitter:title" content="Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用">
+<meta name="twitter:description" content="今天遇到一个场景需要写一个这样的查询语句：用户对象userInfo包含下面几个字段：userName phone email qqId weiboId wxId">
 
 
 
@@ -148,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://wangnan.tech/categories/Java/"/>
+  <link rel="canonical" href="http://wangnan.tech/post/mybatis-where-trim/"/>
 
 
 
 
 
-  <title> 分类: Java | wangnan's blog </title>
+  <title> Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用 | wangnan's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -185,7 +186,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -340,159 +341,254 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Java
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/post/java-io-introduction/" itemprop="url">
-              
-                <span itemprop="name">Java IO 简介</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-16T16:44:54+08:00"
-              content="2017-03-16" >
-          03-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/post/Java-ThreadLocal/" itemprop="url">
-              
-                <span itemprop="name">【转】Java ThreadLocal</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-14T16:44:22+08:00"
-              content="2017-03-14" >
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/post/Java-annotation-introduction/" itemprop="url">
-              
-                <span itemprop="name">【转】Java注解简介</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-14T16:35:45+08:00"
-              content="2017-03-14" >
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/post/java-proxy-introduction/" itemprop="url">
-              
-                <span itemprop="name">【转】Java代理简介</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-13T17:58:52+08:00"
-              content="2017-03-13" >
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/post/java-reflection-introduction/" itemprop="url">
-              
-                <span itemprop="name">【转】Java反射简介</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-13T17:36:02+08:00"
-              content="2017-03-13" >
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/mybatis-where-trim/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wangnan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/icebear.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wangnan's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wangnan's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T16:11:20+08:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/mybatis-where-trim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/mybatis-where-trim/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/post/mybatis-where-trim/" class="leancloud_visitors" data-flag-title="Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天遇到一个场景需要写一个这样的查询语句：<br>用户对象userInfo包含下面几个字段：<br>userName phone email qqId weiboId wxId<br><a id="more"></a></p>
+</blockquote>
+<p>现在新注册用户，传过来一个注册userInfo对象，现在要到数据库中验证状态status=1 （表示激活的用户）的用户中，是否存在一个用户，只要它这些字段中至少有一个与新注册的对象对应的字段内容相同，那就说明重复注册。</p>
+<p>翻译成sql语句表示一下的意思大概就是：<br>select * from tablename where<br>(<br>userName=”xxx”<br>or phone =”xxx”<br>or …<br>)<br>and status=1</p>
+<p>一开始我是这样写的，在mybatis中的代码就是这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectBySelective"</span> <span class="attr">resultType</span>=<span class="string">"xxx.UserInfo"</span>&gt;</span></div><div class="line">   select </div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></div><div class="line">    from uc_user </div><div class="line">    <span class="tag">&lt;<span class="name">where</span>&gt;</span></div><div class="line">    (<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userName != null"</span> &gt;</span></div><div class="line">        user_name = #&#123;userName&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span> &gt;</span></div><div class="line">        or email = #&#123;email&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span> &gt;</span></div><div class="line">        or phone = #&#123;phone&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"weiboId != null"</span> &gt;</span></div><div class="line">        or weibo_id = #&#123;weiboId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"wxId != null"</span> &gt;</span></div><div class="line">        or wx_id = #&#123;wxId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"qqId != null"</span> &gt;</span></div><div class="line">        or qq_id = #&#123;qqId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span>)</div><div class="line">     <span class="tag">&lt;/<span class="name">where</span>&gt;</span></div><div class="line">     and status = 1</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这样代码看似没有什么问题但是其实是有问题的。为什么呢？<br>如果userName 为空，后面某字段不为空，最后的sql语言会成为这样：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> uc_user <span class="keyword">where</span>(<span class="keyword">or</span> email = <span class="string">"xxx"</span>) <span class="keyword">and</span> <span class="keyword">status</span> = <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>使用mybatis &lt; where &gt; 标签就是为了防止这种情况，mybatis会在第一个<br>userName 为空的情况下，帮我们去掉后面的语句的第一个”or”</p>
+<p>但是我加了where标签中加入（）后，语句会报错。因为自动去掉”or”会失效。</p>
+<p>查看了mybatis官方文档发现了另一个标签 &lt; trim &gt;可以通过自定义 trim 元素来定制我们想要的功能</p>
+<p>trim标签包围的内容可以设置几个属性：<br>prefix ：内容之前加的前缀<br>suffix ：内容之后加的后缀<br>prefixOverrides： 属性会忽略通过管道分隔的文本序列（注意此例中的空格也是必要的，多个忽略序列用“|”隔开）。它带来的结果就是所有在 prefixOverrides 属性中指定的内容将被移除。</p>
+<p>所以我修改后的代码是：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectBySelective"</span> <span class="attr">resultType</span>=<span class="string">"xxx.UserInfo"</span>&gt;</span></div><div class="line">   select </div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></div><div class="line">    from uc_user </div><div class="line">    <span class="tag">&lt;<span class="name">trim</span> <span class="attr">prefix</span>=<span class="string">"WHERE ("</span>  <span class="attr">suffix</span>=<span class="string">")"</span> <span class="attr">prefixOverrides</span>=<span class="string">"AND |OR "</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userName != null"</span> &gt;</span></div><div class="line">        user_name = #&#123;userName&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span> &gt;</span></div><div class="line">        or email = #&#123;email&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span> &gt;</span></div><div class="line">        or phone = #&#123;phone&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"weiboId != null"</span> &gt;</span></div><div class="line">        or weibo_id = #&#123;weiboId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"wxId != null"</span> &gt;</span></div><div class="line">        or wx_id = #&#123;wxId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"qqId != null"</span> &gt;</span></div><div class="line">        or qq_id = #&#123;qqId&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span>  </div><div class="line">     <span class="tag">&lt;/<span class="name">trim</span>&gt;</span></div><div class="line">     and status = 1</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="wangnan wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.png" alt="wangnan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="wangnan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
+          
+            <a href="/tags/ORM框架/" rel="tag"># ORM框架</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/thinking-in-java-readnote-concurrent-02/" rel="next" title="《Thinking in Java》读书笔记之并发（二）">
+                <i class="fa fa-chevron-left"></i> 《Thinking in Java》读书笔记之并发（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/java-io-introduction/" rel="prev" title="Java IO 简介">
+                Java IO 简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="post/mybatis-where-trim/"
+     data-title="Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用"
+     data-content=""
+     data-url="http://wangnan.tech/post/mybatis-where-trim/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
           
           </div>
@@ -500,6 +596,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/mybatis-where-trim/"
+           data-title="Mybatis 使用<where>标签时遇到的一个问题与<trim>标签的使用" data-url="http://wangnan.tech/post/mybatis-where-trim/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -749,6 +853,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

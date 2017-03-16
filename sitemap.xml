@@ -2,23 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
+    <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
     
-    <lastmod>2017-03-16T07:10:10.870Z</lastmod>
+    <lastmod>2017-03-16T08:50:27.682Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
     
-    <lastmod>2017-03-16T06:39:19.347Z</lastmod>
+    <lastmod>2017-03-16T08:50:18.636Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/</loc>
     
-    <lastmod>2017-03-16T06:25:46.659Z</lastmod>
+    <lastmod>2017-03-16T08:50:10.645Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
+    
+    <lastmod>2017-03-16T08:49:49.697Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
+    
+    <lastmod>2017-03-16T08:49:11.721Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-reflection-introduction/</loc>
+    
+    <lastmod>2017-03-16T08:48:55.899Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
+    
+    <lastmod>2017-03-16T08:48:45.342Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-io-introduction/</loc>
+    
+    <lastmod>2017-03-16T08:48:31.540Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/Java-annotation-introduction/</loc>
+    
+    <lastmod>2017-03-16T08:48:23.818Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-03-16T07:10:10.870Z</lastmod>
     
   </url>
   
@@ -51,44 +100,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
-    
-    <lastmod>2017-03-14T08:47:44.050Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-reflection-introduction/</loc>
-    
-    <lastmod>2017-03-14T08:38:40.025Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
-    
-    <lastmod>2017-03-14T08:38:33.288Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/Java-annotation-introduction/</loc>
-    
-    <lastmod>2017-03-14T08:38:23.025Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/404.html</loc>
     
     <lastmod>2017-03-13T10:16:21.550Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
-    
-    <lastmod>2017-03-13T03:49:58.692Z</lastmod>
     
   </url>
   
