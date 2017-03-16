@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ElasticSearch,搜索引擎,读书笔记," />
+  <meta name="keywords" content="Java,读书笔记," />
 
 
 
@@ -112,16 +112,16 @@
 
 
 
-<meta name="description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
+<meta name="description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
-<meta property="og:url" content="http://wangnan.tech/post/mastering_es_readnote_01/index.html">
+<meta property="og:title" content="《Thinking in Java》读书笔记之并发（一）">
+<meta property="og:url" content="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
-<meta property="og:updated_time" content="2017-03-10T08:33:03.240Z">
+<meta property="og:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
+<meta property="og:updated_time" content="2017-03-16T06:25:46.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
-<meta name="twitter:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
+<meta name="twitter:title" content="《Thinking in Java》读书笔记之并发（一）">
+<meta name="twitter:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://wangnan.tech/post/mastering_es_readnote_01/"/>
+  <link rel="canonical" href="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/"/>
 
 
 
 
 
-  <title> 《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介 | wangnan's blog </title>
+  <title> 《Thinking in Java》读书笔记之并发（一） | wangnan's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -351,7 +351,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/mastering_es_readnote_01/">
+  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wangnan">
@@ -375,7 +375,7 @@
             
             
               
-                《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介
+                《Thinking in Java》读书笔记之并发（一）
               
             
           </h1>
@@ -390,8 +390,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-08T12:31:23+08:00">
-                2017-03-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T14:19:15+08:00">
+                2017-03-16
               </time>
             
 
@@ -413,8 +413,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
-                    <span itemprop="name">ElasticSearch</span>
+                  <a href="/categories/ReadingNotes/" itemprop="url" rel="index">
+                    <span itemprop="name">ReadingNotes</span>
                   </a>
                 </span>
 
@@ -431,8 +431,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/mastering_es_readnote_01/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/mastering_es_readnote_01/" itemprop="commentCount"></span>
+                <a href="/post/thinking-in-java-readnote-concurrent-01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/thinking-in-java-readnote-concurrent-01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -442,7 +442,7 @@
 
           
           
-             <span id="/post/mastering_es_readnote_01/" class="leancloud_visitors" data-flag-title="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介">
+             <span id="/post/thinking-in-java-readnote-concurrent-01/" class="leancloud_visitors" data-flag-title="《Thinking in Java》读书笔记之并发（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -470,27 +470,35 @@
 
       
         <blockquote>
-<p>elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件<br><a id="more"></a> </p>
+<p>在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤<br>并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。<br>因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的多线程代码。</p>
 </blockquote>
-<h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等</p>
-<h3 id="lucene总体架构"><a href="#lucene总体架构" class="headerlink" title="lucene总体架构"></a>lucene总体架构</h3><p>文档（document）,字段(field),词项(term)，词条(token)</p>
-<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>lucene将写入索引的所有信息组成一种名为倒排索引的结构，倒排索引是面向词项而不是面向文档，实际的lucene创建的索引更为复杂，也更先进，因为索引中还储存和很多其他信息，如词向量（为单个字段创建的小索引，储存改字段中所有的词条） 各字段的原始信息，文档删除标记</p>
-<h3 id="段（segment）"><a href="#段（segment）" class="headerlink" title="段（segment）"></a>段（segment）</h3><p>每个段只会被创建一次但是会被查询多次，索引期间，段经创建就不会被修改，例如，文档被删除以后，删除信息被单独的保存在一个文件中，而段本身并没有修改</p>
-<h3 id="段合并"><a href="#段合并" class="headerlink" title="段合并"></a>段合并</h3><p>多个段合并在一起，要么是强制执行，要么是有lucene的内在机制决定在某个时刻执行，段合并非常消耗I/O，且合并期间有些不再使用的信息也将被清理掉，例如:被删除的文档，不要强制执行段合并，只需要配置段合并策略，剩余的事情Lucene会自行搞定</p>
-<h3 id="文档数据是如果转化为倒排索引的？"><a href="#文档数据是如果转化为倒排索引的？" class="headerlink" title="文档数据是如果转化为倒排索引的？"></a>文档数据是如果转化为倒排索引的？</h3><p>这个转换的过程称为分析（analysis），分析由分析器来执行，分析器由分词器(tokenizer)过滤器（filter）和字符映射器组成(character mapper),分词器用来切割词条，过滤器可以移除，修改词条流中的词条，甚至可以创造新的词条，字符映射器用于调用分词器之前的预处理操作，比如HTML文本去标签</p>
-<h2 id="ElasticSearch简介"><a href="#ElasticSearch简介" class="headerlink" title="ElasticSearch简介"></a>ElasticSearch简介</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件</p>
-<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>es将数据储存在一个或多个索引中，就像是sql领域的数据库，es索引可能由一个或多个lucene索引构成，具体细节由es的索引分片，复制机制及其配置决定</p>
-<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p>是es时间中的主要实体，文档之间可能由各自不同的字段集合，且文档并没有固定的模式或强制的结构，这些规则也适用于lucene文档，事实上，es的文档最后都储存为lucene文档了</p>
-<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>es每个文档都有与之对应的类型（type）定义，这允许用户在一个索引中存储多种文档类型，并为不同文档类型提供不同的映射</p>
-<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>单个es服务器实例称为节点</p>
-<h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>多个节点来协同处理</p>
-<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>es将数据散步到多个物理lucene索引上，这些索引称为分片，而散步分片的过程叫做分片处理（sharding），es会自动完成分片处理，并且让这些分片呈现出一个大索引的样子</p>
-<h3 id="副本"><a href="#副本" class="headerlink" title="副本"></a>副本</h3><p>为每个分片创建冗余的副本，处理查询时可以把这些副本用作最初的主分片</p>
-<h3 id="es架构背后的关键概念"><a href="#es架构背后的关键概念" class="headerlink" title="es架构背后的关键概念"></a>es架构背后的关键概念</h3><p>合理的默认配置，默认的分布式工作模式，对等架构可以避免单点故障，易于向集群扩充节点</p>
-<h3 id="es工作流程"><a href="#es工作流程" class="headerlink" title="es工作流程"></a>es工作流程</h3><h4 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h4><p>使用广播技术来发现同一个集群中的其他节点并与他们链接，集群中会有一个节点被选为管理节点，该节点复制集群的状态管理以及在集群拓扑变化时做出反应，分发索引分片到集群的相应节点上 </p>
-<h4 id="故障检测"><a href="#故障检测" class="headerlink" title="故障检测"></a>故障检测</h4><p>对每一个丢失的主分片，一个新的主分片将会从原来的主分片的副本中脱颖而出，新分片和副本的放置策略是可配置的，用户可以根据具体需求进行配置</p>
-<h4 id="索引数据"><a href="#索引数据" class="headerlink" title="索引数据"></a>索引数据</h4><p>索引操作只会发生在主分片上，当把一个索引请求发送至某节点时，如果该节点没有对应的主分片或者只有副本，那么这个请求会被转发到拥有正确的主分片的节点</p>
-<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><p>查询并不是一个简答的，单步骤的操作，一般来说，查询分为两个阶段，分散阶段和合并阶段</p>
+<a id="more"></a>
+<h1 id="并发的多面性"><a href="#并发的多面性" class="headerlink" title="并发的多面性"></a>并发的多面性</h1><p>用并发解决的问题大体上可以分为“速度”和“设计可管理性”两种</p>
+<p>如果程序中的某个任务因为改程序控制范围外的某些条件（通常是I/O）而导致不能继续执行，那么我们就说这个任务或线程阻塞了，如果没有并发，则整个程序都将停止下来，直至外部条件发生变化。但是，如果使用并发来编写程序，那么当一个任务发生阻塞时，程序中的其他任务还可以继续执行。因此这个任务可以保持继续向前执行。</p>
+<p>实现并发最直接的方式就是操作系统级别的使用进程。进程是运行在它自己的地址空间内的自包容程序。</p>
+<p>因此编写多线程程序最基本的困难在于协调不同线程驱动任务之间对这些资源的使用，以使得这些资源不会被多个任务访问。</p>
+<p>某些编程语言被设计为可以将并发任务彼此隔离，这些语言通常为称为函数式语言，其中每个函数调用都不会产生任何副作用（并因此而不能干涉其他函数），并因此可以当作独立的任务驱动。</p>
+<p>java的线程机制是抢占式的，这表示调度机会周期性地中断线程，将上下文切换到另一个线程，从而为每个线程都提供时间片，使得每个线程都会分配到数量合适的时间去驱动它的任务。在协作式系统中，每个任务都会自动的放弃控制，这要求程序员要有意识地在每个任务中插入某种类型的让步语句</p>
+<h1 id="基本的线程机制"><a href="#基本的线程机制" class="headerlink" title="基本的线程机制"></a>基本的线程机制</h1><p>一个线程就是在进程中一个单一的顺序控制流，因此，单个进程可以拥有多个并发执行任务</p>
+<h1 id="定义任务"><a href="#定义任务" class="headerlink" title="定义任务"></a>定义任务</h1><p>要想定义一个任务，只需要实现Runnable接口并编写run()方法</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/LiftOff.java</span></div><div class="line"><span class="comment">// Demonstration of the Runnable interface.</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LiftOff</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">  <span class="keyword">protected</span> <span class="keyword">int</span> countDown = <span class="number">10</span>; <span class="comment">// Default</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> taskCount = <span class="number">0</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id = taskCount++;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LiftOff</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LiftOff</span><span class="params">(<span class="keyword">int</span> countDown)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.countDown = countDown;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">status</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + id + <span class="string">"("</span> +</div><div class="line">      (countDown &gt; <span class="number">0</span> ? countDown : <span class="string">"Liftoff!"</span>) + <span class="string">"), "</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span>(countDown-- &gt; <span class="number">0</span>) &#123;</div><div class="line">      System.out.print(status());</div><div class="line">      Thread.yield();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">///:~</span></div></pre></td></tr></table></figure></p>
+<p>Thread.yield() 的调用时对线程调度器的一种建议，它在声明：”我已经执行完生命周期中最重要的部分了，此刻正是切换给其他任务执行一段时间的大好时机“</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/MainThread.java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainThread</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    LiftOff launch = <span class="keyword">new</span> LiftOff();</div><div class="line">    launch.run();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">#0(9), #0(8), #0(7), #0(6), #0(5), #0(4), #0(3), #0(2), #0(1), #0(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure>
+<p>当从Runable导出一个类时，它必须具有run()方法，但是这个方法并无特殊之处–它不会产生任何内在的线程能力，要实现线程行为，你必须显示的调用一个任务附着到线程上</p>
+<h1 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h1><p>Thread构造器只需要一个Runable对象，调用Thread对象的start()方法为该线程执行必须的初始化操作。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/BasicThreads.java</span></div><div class="line"><span class="comment">// The most basic use of the Thread class.</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicThreads</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> LiftOff());</div><div class="line">    t.start();</div><div class="line">    System.out.println(<span class="string">"Waiting for LiftOff"</span>);</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (90% match)</span></div><div class="line">Waiting for LiftOff</div><div class="line">#0(9), #0(8), #0(7), #0(6), #0(5), #0(4), #0(3), #0(2), #0(1), #0(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>注意：main()和LiftOff.run()是程序中与其他线程“同时”执行的代码。</p>
+<p>使用Thread与使用普通实现Runable接口对象的区别？</p>
+<p>在使用普通对象时，这对于垃圾回收来说是一场公平的游戏，但是使用Thread时，情况就不同了，每个Thread都“注册”了它自己，因此确实有一个对它的引用。而且在它的任务退出其run()并死亡之前，垃圾回收期无法清除它。因此，一个线程会创建一个单独的执行线程，在对start()的调用完成之后。它仍然会继续存在</p>
+<h1 id="使用Executor"><a href="#使用Executor" class="headerlink" title="使用Executor"></a>使用Executor</h1><p>在Java SE5的Java.util.concurrent包中的执行器（Executor）将为你管理Thread对象，Executor在客户端和任务执行之间提供了一个间接层<br>Executor在Java SE 5/6 中是启动任务的优选方法。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CachedThreadPool.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CachedThreadPool</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> LiftOff());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (Sample)</span></div><div class="line">#0(9), #0(8), #1(9), #2(9), #3(9), #4(9), #0(7), #1(8), #2(8), #3(8), #4(8), #0(6), #1(7), #2(7), #3(7), #4(7), #0(5), #1(6), #2(6), #3(6), #4(6), #0(4), #1(5), #2(5), #3(5), #4(5), #0(3), #1(4), #2(4), #3(4), #4(4), #0(2), #1(3), #2(3), #3(3), #4(3), #0(1), #1(2), #2(2), #3(2), #4(2), #0(Liftoff!), #1(1), #2(1), #3(1), #4(1), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>注意：<br>ExecutorService对象是使用静态的Executor方法创建的，这个方法可以确定Executor的类型，类型有CachedThreadPool，FixedThreadPool，<br>SingleThreadPool。</p>
+<p>shutdown()方法的调用可以防止新任务被提交给这个Executor，当前线程将继续执行在shutdown()被调用之前提交的所以任务，这个程序将在Executor中的所有任务完成之后尽快退出。</p>
+<p>FixedThreadPool使用了有限的线程集来执行所提交的任务。<br>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/FixedThreadPool.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedThreadPool</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// Constructor argument is number of threads:</span></div><div class="line">    ExecutorService exec = Executors.newFixedThreadPool(<span class="number">5</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> LiftOff());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (Sample)</span></div><div class="line">#0(9), #0(8), #1(9), #2(9), #3(9), #4(9), #0(7), #1(8), #2(8), #3(8), #4(8), #0(6), #1(7), #2(7), #3(7), #4(7), #0(5), #1(6), #2(6), #3(6), #4(6), #0(4), #1(5), #2(5), #3(5), #4(5), #0(3), #1(4), #2(4), #3(4), #4(4), #0(2), #1(3), #2(3), #3(3), #4(3), #0(1), #1(2), #2(2), #3(2), #4(2), #0(Liftoff!), #1(1), #2(1), #3(1), #4(1), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>有了FixedThreadPool在事件驱动的系统中，需要线程的事件处理器，通过直接从池中获取线程，也可以如你所愿地尽快的得到服务。你不会滥用可获得的资源。</p>
+<p>SingleThreadPool就像是数量为1的FixedThreadPool<br>向SingleThreadPool提交多个任务，那么这些任务将排队，每个任务都会在下一个任务开始之前结束。所有的任务将使用相同的线程。</p>
+<h1 id="从任务产生返回值"><a href="#从任务产生返回值" class="headerlink" title="从任务产生返回值"></a>从任务产生返回值</h1><p>Runnable不返回任何值，如果希望任务在完成时能够返回一个值。那么可以实现Callable接口,在Java SE5中引入的Callable是一种具有参数类型的泛型，它从方法call()中返回值，必须使用ExecutorService.submit()方法调用它。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CallableDemo.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskWithResult</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">TaskWithResult</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"result of TaskWithResult "</span> + id;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableDemo</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    ArrayList&lt;Future&lt;String&gt;&gt; results =</div><div class="line">      <span class="keyword">new</span> ArrayList&lt;Future&lt;String&gt;&gt;();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</div><div class="line">      results.add(exec.submit(<span class="keyword">new</span> TaskWithResult(i)));</div><div class="line">    <span class="keyword">for</span>(Future&lt;String&gt; fs : results)</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">// get() blocks until completion:</span></div><div class="line">        System.out.println(fs.get());</div><div class="line">      &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125; <span class="keyword">catch</span>(ExecutionException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        exec.shutdown();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">result of TaskWithResult 0</div><div class="line">result of TaskWithResult 1</div><div class="line">result of TaskWithResult 2</div><div class="line">result of TaskWithResult 3</div><div class="line">result of TaskWithResult 4</div><div class="line">result of TaskWithResult 5</div><div class="line">result of TaskWithResult 6</div><div class="line">result of TaskWithResult 7</div><div class="line">result of TaskWithResult 8</div><div class="line">result of TaskWithResult 9</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -540,9 +548,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
-          
-            <a href="/tags/搜索引擎/" rel="tag"># 搜索引擎</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
             <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
@@ -553,15 +559,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/post/redisinaction_readnote_02/" rel="next" title="《redis实战》读书笔记-第二章：使用redis构建web应用">
+                <i class="fa fa-chevron-left"></i> 《redis实战》读书笔记-第二章：使用redis构建web应用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/redisinaction_readnote_01/" rel="prev" title="《redis实战》读书笔记-第一章：初识redis">
-                《redis实战》读书笔记-第一章：初识redis <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -576,10 +582,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="post/mastering_es_readnote_01/"
-     data-title="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介"
+        <div class="ds-share flat" data-thread-key="post/thinking-in-java-readnote-concurrent-01/"
+     data-title="《Thinking in Java》读书笔记之并发（一）"
      data-content=""
-     data-url="http://wangnan.tech/post/mastering_es_readnote_01/">
+     data-url="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -606,8 +612,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="post/mastering_es_readnote_01/"
-           data-title="《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介" data-url="http://wangnan.tech/post/mastering_es_readnote_01/">
+      <div class="ds-thread" data-thread-key="post/thinking-in-java-readnote-concurrent-01/"
+           data-title="《Thinking in Java》读书笔记之并发（一）" data-url="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
       </div>
     
   </div>
@@ -763,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-Lucence简介"><span class="nav-number">1.</span> <span class="nav-text">Apache Lucence简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lucene总体架构"><span class="nav-number">1.2.</span> <span class="nav-text">lucene总体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒排索引"><span class="nav-number">1.3.</span> <span class="nav-text">倒排索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#段（segment）"><span class="nav-number">1.4.</span> <span class="nav-text">段（segment）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#段合并"><span class="nav-number">1.5.</span> <span class="nav-text">段合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档数据是如果转化为倒排索引的？"><span class="nav-number">1.6.</span> <span class="nav-text">文档数据是如果转化为倒排索引的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElasticSearch简介"><span class="nav-number">2.</span> <span class="nav-text">ElasticSearch简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">2.2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档"><span class="nav-number">2.3.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">2.4.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点"><span class="nav-number">2.5.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群"><span class="nav-number">2.6.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分片"><span class="nav-number">2.7.</span> <span class="nav-text">分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#副本"><span class="nav-number">2.8.</span> <span class="nav-text">副本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es架构背后的关键概念"><span class="nav-number">2.9.</span> <span class="nav-text">es架构背后的关键概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es工作流程"><span class="nav-number">2.10.</span> <span class="nav-text">es工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动过程"><span class="nav-number">2.10.1.</span> <span class="nav-text">启动过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#故障检测"><span class="nav-number">2.10.2.</span> <span class="nav-text">故障检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引数据"><span class="nav-number">2.10.3.</span> <span class="nav-text">索引数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询操作"><span class="nav-number">2.10.4.</span> <span class="nav-text">查询操作</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#并发的多面性"><span class="nav-number">1.</span> <span class="nav-text">并发的多面性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本的线程机制"><span class="nav-number">2.</span> <span class="nav-text">基本的线程机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义任务"><span class="nav-number">3.</span> <span class="nav-text">定义任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread类"><span class="nav-number">4.</span> <span class="nav-text">Thread类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Executor"><span class="nav-number">5.</span> <span class="nav-text">使用Executor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从任务产生返回值"><span class="nav-number">6.</span> <span class="nav-text">从任务产生返回值</span></a></li></ol></div>
             
 
           </div>

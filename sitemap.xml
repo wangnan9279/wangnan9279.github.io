@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/</loc>
+    
+    <lastmod>2017-03-16T06:25:46.659Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/read-life/index.html</loc>
     
     <lastmod>2017-03-16T02:41:06.427Z</lastmod>
