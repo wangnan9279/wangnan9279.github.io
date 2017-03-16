@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/read-life/index.html</loc>
+    
+    <lastmod>2017-03-16T02:41:06.427Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/redisinaction_readnote_02/</loc>
     
     <lastmod>2017-03-15T09:09:12.296Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://wangnan.tech/post/youth/</loc>
     
     <lastmod>2017-03-15T08:46:11.586Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/read-life/index.html</loc>
-    
-    <lastmod>2017-03-14T10:22:37.603Z</lastmod>
     
   </url>
   
