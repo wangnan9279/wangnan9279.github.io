@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
+    
+    <lastmod>2017-03-17T03:31:45.977Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
     
     <lastmod>2017-03-16T10:05:51.098Z</lastmod>

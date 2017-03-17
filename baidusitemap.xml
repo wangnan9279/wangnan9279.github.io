@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
+    <lastmod>2017-03-17T03:31:45.977Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch如何评分?-Apache Lucene默认评分公式解释</title>
+        <pubTime>2017-03-17T03:24:39.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
     <lastmod>2017-03-16T10:05:51.098Z</lastmod>
     <data>
@@ -124,9 +148,9 @@
         <title>【转】Java反射简介</title>
         <pubTime>2017-03-13T09:36:02.000Z</pubTime>
         
-        <tag>简介</tag>
-         
         <tag>Java</tag>
+         
+        <tag>简介</tag>
          
         <tag>反射</tag>
          
@@ -148,9 +172,9 @@
         <title>【转】Java代理简介</title>
         <pubTime>2017-03-13T09:58:52.000Z</pubTime>
         
-        <tag>简介</tag>
-         
         <tag>Java</tag>
+         
+        <tag>简介</tag>
          
         <tag>代理</tag>
          
@@ -172,9 +196,9 @@
         <title>Java IO 简介</title>
         <pubTime>2017-03-16T08:44:54.000Z</pubTime>
         
-        <tag>简介</tag>
-         
         <tag>Java</tag>
+         
+        <tag>简介</tag>
          
         <tag>IO</tag>
          
@@ -196,9 +220,9 @@
         <title>【转】Java注解简介</title>
         <pubTime>2017-03-14T08:35:45.000Z</pubTime>
         
-        <tag>简介</tag>
-         
         <tag>Java</tag>
+         
+        <tag>简介</tag>
          
         <tag>注解</tag>
          

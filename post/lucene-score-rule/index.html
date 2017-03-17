@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ElasticSearch,搜索引擎,读书笔记," />
 
 
 
@@ -112,15 +112,19 @@
 
 
 
-<meta name="description" content="2gether thru life">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/tags/Sublime/index.html">
+<meta name="description" content="elasticsearch使用了lucene的评分功能,lucene默认评分机制：TF/IDF(词频/逆文档频率)算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
+<meta property="og:url" content="http://wangnan.tech/post/lucene-score-rule/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="2gether thru life">
+<meta property="og:description" content="elasticsearch使用了lucene的评分功能,lucene默认评分机制：TF/IDF(词频/逆文档频率)算法">
+<meta property="og:image" content="http://wangnan.tech/post/lucene-score-rule/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/lucene-score-rule/02.png">
+<meta property="og:updated_time" content="2017-03-17T03:31:45.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
-<meta name="twitter:description" content="2gether thru life">
+<meta name="twitter:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
+<meta name="twitter:description" content="elasticsearch使用了lucene的评分功能,lucene默认评分机制：TF/IDF(词频/逆文档频率)算法">
+<meta name="twitter:image" content="http://wangnan.tech/post/lucene-score-rule/01.png">
 
 
 
@@ -148,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://wangnan.tech/tags/Sublime/"/>
+  <link rel="canonical" href="http://wangnan.tech/post/lucene-score-rule/"/>
 
 
 
 
 
-  <title> 标签: Sublime | wangnan's blog </title>
+  <title> Elasticsearch如何评分?-Apache Lucene默认评分公式解释 | wangnan's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -185,7 +189,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -340,46 +344,272 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Sublime
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/lucene-score-rule/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wangnan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/icebear.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wangnan's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wangnan's blog" src="">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Elasticsearch如何评分?-Apache Lucene默认评分公式解释
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T11:24:39+08:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/lucene-score-rule/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/lucene-score-rule/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/post/lucene-score-rule/" class="leancloud_visitors" data-flag-title="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>elasticsearch使用了lucene的评分功能,lucene默认评分机制：TF/IDF(词频/逆文档频率)算法</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><a href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释" class="headerlink" title="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释"></a>lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</h1><h2 id="何时文档被匹配上"><a href="#何时文档被匹配上" class="headerlink" title="何时文档被匹配上"></a>何时文档被匹配上</h2><p>当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，<strong>同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的</strong>，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的数目，词项所在字段，以及用于查询规范化的匹配类型等。</p>
+<h3 id="计算文档得分需要考虑以下因子"><a href="#计算文档得分需要考虑以下因子" class="headerlink" title="计算文档得分需要考虑以下因子"></a>计算文档得分需要考虑以下因子</h3><ul>
+<li><p>文档权重（document boost）：<strong>索引期</strong>赋予某个文档的权重值</p>
+</li>
+<li><p>字段权重（field boost）:<strong>查询期</strong>赋予某个字段的权重值</p>
+</li>
+<li><p>协调因子（coord）：基于文档中词项命中个数的协调因子，<strong>一个文档中命中了查询中的词项越多，得分越高</strong><br>(<em>比如：查询关键词被分词为A和B,如果文档1命中了A和B,文档2命中了A,那么在这个项目上，文档1的分数更高</em>)</p>
+</li>
+<li><p>逆文档频率(inverse document frequency):一个基于词项的因子,用来告诉评分公式该词项有多么<strong>罕见</strong>，逆文档频率越低，词项越罕见，评分公式利用该因子为包含罕见词项的文档加权<br>(<em>比如：查询关键词是A和B,如果文档1命中了A,文档2命中了B,但是在整个文档范围内，A出现的次数比B少，那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>长度范数(length norm):每个字段的基于词项个数的归一化因子，一个字段包含的词项越多，改因子的权重越低，<em>*这意味着lucene评分公式更”喜欢”包含更少词项的字段</em><br>(<em>比如：查询关键词是A,文档1和2都匹配上了A,但是文档1内容长度比文档1短，那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>词频：一个基于词项的因子，用来表示一个词项在某个文档中出现多少次，<strong>词频越高，文档得分越高</strong><br>(<em>比如：查询关键词是A，文档1和文档1都匹配上了，但是文档1中出现了2次A,文档2中出现了1次A,那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>查询范数（query norm）：一个基于查询的归一化因子，它等于<strong>查询中词项的权重平方和</strong>，<strong>查询范数使得不同查询的得分能相互比较，尽管这种比较通常是困难且不可行的</strong></p>
+</li>
+</ul>
+<h2 id="TF-IDF评分公式"><a href="#TF-IDF评分公式" class="headerlink" title="TF/IDF评分公式"></a>TF/IDF评分公式</h2><h3 id="Lucene理论评分公式"><a href="#Lucene理论评分公式" class="headerlink" title="Lucene理论评分公式"></a>Lucene理论评分公式</h3><p>注意，你并不需要深入理解这个公式的来龙去脉，了解它的工作原理非常重要<br><img src="/post/lucene-score-rule/01.png" alt=""><br>上面的公式理论形式糅合了布尔检索模型和向量空间检索模型，我们可以不讨论这个理论评分公式，直接跳到lucene实际评分公式</p>
+<h3 id="Lucene实际评分公式"><a href="#Lucene实际评分公式" class="headerlink" title="Lucene实际评分公式"></a>Lucene实际评分公式</h3><p>现在让我来看看Lucene实际评分公式：<br><img src="/post/lucene-score-rule/02.png" alt=""></p>
+<p>解释：这是一个关于<strong>查询q</strong>和<strong>文档d</strong>的函数，有两个因子coord和queryNorm并不直接依赖查询词项，而是与查询词项的一个<strong>求和公式</strong>相乘，<strong>求和公式</strong>中的每个加数由以下因子连乘所得：词频 逆文档频率 词项权重 长度范数</p>
+<p>由这个公式我们可以导出一些规则：</p>
+<ul>
+<li>越多罕见的词项被匹配上，文档分数越高</li>
+<li>文档字段越短，文档分数越高</li>
+<li>权重越高（无论是索引期还查询期赋予的权重值），文档得分越高</li>
+</ul>
+<h2 id="elasticsearch如何看评分"><a href="#elasticsearch如何看评分" class="headerlink" title="elasticsearch如何看评分"></a>elasticsearch如何看评分</h2><p>elasticsearch使用了lucene的评分功能，但是好在<strong>我们可以替换默认的评分算法</strong>，<strong>elasticsearch使用了Lucene的评分功能但是不仅限于lucene的评分功能</strong>，用户可以<strong>使用各种不同的查询类型</strong>以精确控制文档的评分计算，如custom_boost_factor查询、constant_score查询，custom_score查询）还可以通过使用<strong>脚本（scrpting）</strong>来改变文档得分，还可以使用<strong>二次评分</strong>功能，通过在返回文档集合之上执行另外一个查询，重新计算前N个文档得分</p>
+<p>（注：内容整理自《深入理解elasticsearch》，斜体为本人添加的理解）</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/post/Sublime-introduction/" itemprop="url">
-              
-                <span itemprop="name">Sublime Text 3简介</span>
-              
-            </a>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="wangnan wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.png" alt="wangnan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="wangnan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-10T16:23:13+08:00"
-              content="2017-03-10" >
-          03-10
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+          
+            <a href="/tags/搜索引擎/" rel="tag"># 搜索引擎</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/java-io-introduction/" rel="next" title="Java IO 简介">
+                <i class="fa fa-chevron-left"></i> Java IO 简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="post/lucene-score-rule/"
+     data-title="Elasticsearch如何评分?-Apache Lucene默认评分公式解释"
+     data-content=""
+     data-url="http://wangnan.tech/post/lucene-score-rule/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
           
           </div>
@@ -387,6 +617,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/lucene-score-rule/"
+           data-title="Elasticsearch如何评分?-Apache Lucene默认评分公式解释" data-url="http://wangnan.tech/post/lucene-score-rule/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -406,8 +644,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/icebear.png"
@@ -519,6 +766,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><span class="nav-number">1.</span> <span class="nav-text">lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#何时文档被匹配上"><span class="nav-number">1.1.</span> <span class="nav-text">何时文档被匹配上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算文档得分需要考虑以下因子"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算文档得分需要考虑以下因子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TF-IDF评分公式"><span class="nav-number">1.2.</span> <span class="nav-text">TF/IDF评分公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lucene理论评分公式"><span class="nav-number">1.2.1.</span> <span class="nav-text">Lucene理论评分公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lucene实际评分公式"><span class="nav-number">1.2.2.</span> <span class="nav-text">Lucene实际评分公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elasticsearch如何看评分"><span class="nav-number">1.3.</span> <span class="nav-text">elasticsearch如何看评分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -634,6 +897,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
