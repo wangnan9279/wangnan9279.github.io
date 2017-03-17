@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    <lastmod>2017-03-17T08:24:00.966Z</lastmod>
+    <data>
+        <display>
+        <title>Redis进阶内容</title>
+        <pubTime>2017-03-17T08:20:39.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/redis-data-safety/</loc>
-    <lastmod>2017-03-17T08:15:31.062Z</lastmod>
+    <lastmod>2017-03-17T08:21:01.242Z</lastmod>
     <data>
         <display>
         <title>Redis数据安全与性能保障</title>

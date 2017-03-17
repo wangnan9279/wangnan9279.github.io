@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://wangnan.tech/post/redis-data-safety/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/redis-data-safety/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/redis-data-safety/04.png">
-<meta property="og:updated_time" content="2017-03-17T08:15:31.062Z">
+<meta property="og:updated_time" content="2017-03-17T08:21:01.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis数据安全与性能保障">
 <meta name="twitter:description" content="持久化选项 复制 处理系统故障 redis事务 非事务型流水线">
@@ -483,7 +483,8 @@
 <h2 id="处理系统故障"><a href="#处理系统故障" class="headerlink" title="处理系统故障"></a>处理系统故障</h2><p><img src="/post/redis-data-safety/03.png" alt="03"></p>
 <h2 id="redis事务"><a href="#redis事务" class="headerlink" title="redis事务"></a>redis事务</h2><p><img src="/post/redis-data-safety/04.png" alt="04"></p>
 <h2 id="非事务型流水线"><a href="#非事务型流水线" class="headerlink" title="非事务型流水线"></a>非事务型流水线</h2><p>可以接受多个参数的添加命令和更新命令，比如：MGET,MSET,HMGET,HMSET,RPUSH,LPUSH,SADD,ZADD,这些命令简化了那些需要重复执行相同命令的操作，而极大的提升了性能</p>
-<h2 id="性能方面注意事项"><a href="#性能方面注意事项" class="headerlink" title="性能方面注意事项"></a>性能方面注意事项</h2><p>可以用性能测试程序redis-benchmark来测试<br>（注：内容整理自《redis实战》）</p>
+<h2 id="性能方面注意事项"><a href="#性能方面注意事项" class="headerlink" title="性能方面注意事项"></a>性能方面注意事项</h2><p>可以用性能测试程序redis-benchmark来测试</p>
+<p>（注：内容整理自《redis实战》）</p>
 
       
     </div>
@@ -504,7 +505,7 @@
       
         
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <div>支持博主喝杯咖啡继续搬砖！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
@@ -555,6 +556,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/redis-progression/" rel="prev" title="Redis进阶内容">
+                Redis进阶内容 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -647,7 +652,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

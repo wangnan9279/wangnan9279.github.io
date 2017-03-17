@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    
+    <lastmod>2017-03-17T08:24:00.966Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/redis-data-safety/</loc>
     
-    <lastmod>2017-03-17T08:15:31.062Z</lastmod>
+    <lastmod>2017-03-17T08:21:01.242Z</lastmod>
     
   </url>
   
