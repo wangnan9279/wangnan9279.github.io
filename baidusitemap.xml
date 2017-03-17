@@ -4,6 +4,221 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/mastering_es_readnote_01/</loc>
+    <lastmod>2017-03-17T06:03:57.874Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch简介</title>
+        <pubTime>2017-03-08T04:31:23.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
+    <lastmod>2017-03-17T06:03:07.904Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch如何评分?-Apache Lucene默认评分公式解释</title>
+        <pubTime>2017-03-17T03:24:39.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+        <tag>Lucene</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
+    <lastmod>2017-03-17T06:02:57.113Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch地理位置查询</title>
+        <pubTime>2017-03-17T05:50:17.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/youth/</loc>
+    <lastmod>2017-03-17T05:35:51.360Z</lastmod>
+    <data>
+        <display>
+        <title>《年轻可以一无所有》读书笔记</title>
+        <pubTime>2017-03-15T08:45:10.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>鸡汤</tag>
+         
+         
+           
+             
+              <breadCrumb title="ReadingNotes" url="http://wangnan.tech/categories/ReadingNotes/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/redisinaction_readnote_02/</loc>
+    <lastmod>2017-03-17T05:35:10.689Z</lastmod>
+    <data>
+        <display>
+        <title>使用Redis构建web应用</title>
+        <pubTime>2017-03-15T08:53:44.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/redisinaction_readnote_01/</loc>
+    <lastmod>2017-03-17T05:34:39.175Z</lastmod>
+    <data>
+        <display>
+        <title>Redis初识</title>
+        <pubTime>2017-03-09T07:57:27.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
+    <lastmod>2017-03-17T05:33:48.897Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis使用where标签时遇到的一个问题与trim标签的使用</title>
+        <pubTime>2017-03-16T08:11:20.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+        <tag>ORM框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
+    <lastmod>2017-03-17T05:31:52.675Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Java ThreadLocal 简介</title>
+        <pubTime>2017-03-14T08:44:22.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/getting-started-mybatis/</loc>
+    <lastmod>2017-03-17T05:31:14.911Z</lastmod>
+    <data>
+        <display>
+        <title>Java项目中使用Mybatis入门程序</title>
+        <pubTime>2017-03-09T09:35:41.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Mybatis</tag>
+         
+        <tag>ORM框架</tag>
+         
+        <tag>入门</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
     <lastmod>2017-03-17T03:47:06.747Z</lastmod>
     <data>
@@ -52,53 +267,6 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
-    <lastmod>2017-03-17T03:31:45.977Z</lastmod>
-    <data>
-        <display>
-        <title>Elasticsearch如何评分?-Apache Lucene默认评分公式解释</title>
-        <pubTime>2017-03-17T03:24:39.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
-    <lastmod>2017-03-16T10:05:51.098Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis 使用where标签时遇到的一个问题与trim标签的使用</title>
-        <pubTime>2017-03-16T08:11:20.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-        <tag>ORM框架</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
     <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
     <lastmod>2017-03-16T08:50:27.682Z</lastmod>
     <data>
@@ -112,28 +280,6 @@
            
              
               <breadCrumb title="ReadingNotes" url="http://wangnan.tech/categories/ReadingNotes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/Java-ThreadLocal/</loc>
-    <lastmod>2017-03-16T08:49:11.721Z</lastmod>
-    <data>
-        <display>
-        <title>【转】Java ThreadLocal</title>
-        <pubTime>2017-03-14T08:44:22.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
           
         </display>
     </data>
@@ -237,50 +383,6 @@
 
     
     
-  <url>
-    <loc>http://wangnan.tech/post/redisinaction_readnote_02/</loc>
-    <lastmod>2017-03-15T09:09:12.296Z</lastmod>
-    <data>
-        <display>
-        <title>《redis实战》读书笔记-第二章：使用redis构建web应用</title>
-        <pubTime>2017-03-15T08:53:44.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-        <tag>Redis</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/youth/</loc>
-    <lastmod>2017-03-15T08:46:11.586Z</lastmod>
-    <data>
-        <display>
-        <title>《年轻可以一无所有》读书笔记</title>
-        <pubTime>2017-03-15T08:45:10.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="ReadingNotes" url="http://wangnan.tech/categories/ReadingNotes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
     
     
   <url>
@@ -306,56 +408,6 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/mastering_es_readnote_01/</loc>
-    <lastmod>2017-03-10T08:33:03.240Z</lastmod>
-    <data>
-        <display>
-        <title>《深入理解Elasticsearch》读书笔记之第一章：Elasticsearch简介</title>
-        <pubTime>2017-03-08T04:31:23.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/getting-started-mybatis/</loc>
-    <lastmod>2017-03-10T08:32:23.909Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis入门-Java项目中使用Mybatis入门程序</title>
-        <pubTime>2017-03-09T09:35:41.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Mybatis</tag>
-         
-        <tag>ORM框架</tag>
-         
-        <tag>入门</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wangnan.tech/post/Sublime-introduction/</loc>
     <lastmod>2017-03-10T08:31:46.610Z</lastmod>
     <data>
@@ -373,30 +425,6 @@
            
              
               <breadCrumb title="Tools" url="http://wangnan.tech/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/redisinaction_readnote_01/</loc>
-    <lastmod>2017-03-10T08:29:05.555Z</lastmod>
-    <data>
-        <display>
-        <title>《redis实战》读书笔记-第一章：初识redis</title>
-        <pubTime>2017-03-09T07:57:27.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-        <tag>Redis</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
           
         </display>
     </data>
