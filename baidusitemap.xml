@@ -4,6 +4,78 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-study-note/</loc>
+    <lastmod>2017-03-17T06:54:57.747Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch学习笔记</title>
+        <pubTime>2017-03-17T06:51:47.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-completion-suggester/</loc>
+    <lastmod>2017-03-17T06:39:53.982Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch自动补齐建议-completion suggester</title>
+        <pubTime>2017-03-17T06:37:49.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
+    <lastmod>2017-03-17T06:32:33.205Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch地理位置查询-Geo Distance Range Query</title>
+        <pubTime>2017-03-17T05:50:17.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/mastering_es_readnote_01/</loc>
     <lastmod>2017-03-17T06:03:57.874Z</lastmod>
     <data>
@@ -42,30 +114,6 @@
         <tag>读书笔记</tag>
          
         <tag>Lucene</tag>
-         
-         
-           
-             
-              <breadCrumb title="Elasticsearch" url="http://wangnan.tech/categories/Elasticsearch/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
-    <lastmod>2017-03-17T06:02:57.113Z</lastmod>
-    <data>
-        <display>
-        <title>Elasticsearch地理位置查询</title>
-        <pubTime>2017-03-17T05:50:17.000Z</pubTime>
-        
-        <tag>Elasticsearch</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>读书笔记</tag>
          
          
            

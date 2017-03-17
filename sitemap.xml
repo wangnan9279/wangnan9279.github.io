@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-study-note/</loc>
+    
+    <lastmod>2017-03-17T06:54:57.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-completion-suggester/</loc>
+    
+    <lastmod>2017-03-17T06:39:53.982Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
+    
+    <lastmod>2017-03-17T06:32:33.205Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/mastering_es_readnote_01/</loc>
     
     <lastmod>2017-03-17T06:03:57.874Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
     
     <lastmod>2017-03-17T06:03:07.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
-    
-    <lastmod>2017-03-17T06:02:57.113Z</lastmod>
     
   </url>
   
