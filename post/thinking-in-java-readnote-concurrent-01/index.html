@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,并发,读书笔记," />
+  <meta name="keywords" content="Java,并发,多线程," />
 
 
 
@@ -114,13 +114,13 @@
 
 <meta name="description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Thinking in Java》读书笔记之并发（一）">
+<meta property="og:title" content="Java多线程简介之基本概念、Thread类、Executor">
 <meta property="og:url" content="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/index.html">
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
-<meta property="og:updated_time" content="2017-03-16T08:50:10.645Z">
+<meta property="og:updated_time" content="2017-03-17T03:46:59.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Thinking in Java》读书笔记之并发（一）">
+<meta name="twitter:title" content="Java多线程简介之基本概念、Thread类、Executor">
 <meta name="twitter:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的">
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <title> 《Thinking in Java》读书笔记之并发（一） | wangnan's blog </title>
+  <title> Java多线程简介之基本概念、Thread类、Executor | wangnan's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -375,7 +375,7 @@
             
             
               
-                《Thinking in Java》读书笔记之并发（一）
+                Java多线程简介之基本概念、Thread类、Executor
               
             
           </h1>
@@ -413,8 +413,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ReadingNotes/" itemprop="url" rel="index">
-                    <span itemprop="name">ReadingNotes</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -442,7 +442,7 @@
 
           
           
-             <span id="/post/thinking-in-java-readnote-concurrent-01/" class="leancloud_visitors" data-flag-title="《Thinking in Java》读书笔记之并发（一）">
+             <span id="/post/thinking-in-java-readnote-concurrent-01/" class="leancloud_visitors" data-flag-title="Java多线程简介之基本概念、Thread类、Executor">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -499,6 +499,7 @@
 <p>SingleThreadPool就像是数量为1的FixedThreadPool<br>向SingleThreadPool提交多个任务，那么这些任务将排队，每个任务都会在下一个任务开始之前结束。所有的任务将使用相同的线程。</p>
 <h1 id="从任务产生返回值"><a href="#从任务产生返回值" class="headerlink" title="从任务产生返回值"></a>从任务产生返回值</h1><p>Runnable不返回任何值，如果希望任务在完成时能够返回一个值。那么可以实现Callable接口,在Java SE5中引入的Callable是一种具有参数类型的泛型，它从方法call()中返回值，必须使用ExecutorService.submit()方法调用它。</p>
 <p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CallableDemo.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskWithResult</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">TaskWithResult</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"result of TaskWithResult "</span> + id;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableDemo</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    ArrayList&lt;Future&lt;String&gt;&gt; results =</div><div class="line">      <span class="keyword">new</span> ArrayList&lt;Future&lt;String&gt;&gt;();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</div><div class="line">      results.add(exec.submit(<span class="keyword">new</span> TaskWithResult(i)));</div><div class="line">    <span class="keyword">for</span>(Future&lt;String&gt; fs : results)</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">// get() blocks until completion:</span></div><div class="line">        System.out.println(fs.get());</div><div class="line">      &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125; <span class="keyword">catch</span>(ExecutionException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        exec.shutdown();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">result of TaskWithResult 0</div><div class="line">result of TaskWithResult 1</div><div class="line">result of TaskWithResult 2</div><div class="line">result of TaskWithResult 3</div><div class="line">result of TaskWithResult 4</div><div class="line">result of TaskWithResult 5</div><div class="line">result of TaskWithResult 6</div><div class="line">result of TaskWithResult 7</div><div class="line">result of TaskWithResult 8</div><div class="line">result of TaskWithResult 9</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>（注：内容整理自《Thinking in Java》）</p>
 
       
     </div>
@@ -552,7 +553,7 @@
           
             <a href="/tags/并发/" rel="tag"># 并发</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -571,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/thinking-in-java-readnote-concurrent-02/" rel="prev" title="《Thinking in Java》读书笔记之并发（二）">
-                《Thinking in Java》读书笔记之并发（二） <i class="fa fa-chevron-right"></i>
+              <a href="/post/thinking-in-java-readnote-concurrent-02/" rel="prev" title="Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源">
+                Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -589,7 +590,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="post/thinking-in-java-readnote-concurrent-01/"
-     data-title="《Thinking in Java》读书笔记之并发（一）"
+     data-title="Java多线程简介之基本概念、Thread类、Executor"
      data-content=""
      data-url="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
   <div class="ds-share-inline">
@@ -619,7 +620,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="post/thinking-in-java-readnote-concurrent-01/"
-           data-title="《Thinking in Java》读书笔记之并发（一）" data-url="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
+           data-title="Java多线程简介之基本概念、Thread类、Executor" data-url="http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/">
       </div>
     
   </div>
@@ -684,7 +685,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

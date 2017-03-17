@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
+    
+    <lastmod>2017-03-17T03:47:06.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/</loc>
+    
+    <lastmod>2017-03-17T03:46:59.103Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/lucene-score-rule/</loc>
     
     <lastmod>2017-03-17T03:31:45.977Z</lastmod>
@@ -26,20 +40,6 @@
     <loc>http://wangnan.tech/post/think-like-programmer-readnote/</loc>
     
     <lastmod>2017-03-16T08:50:27.682Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-02/</loc>
-    
-    <lastmod>2017-03-16T08:50:18.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/thinking-in-java-readnote-concurrent-01/</loc>
-    
-    <lastmod>2017-03-16T08:50:10.645Z</lastmod>
     
   </url>
   
