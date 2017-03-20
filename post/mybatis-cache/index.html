@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="简介,Swagger," />
+  <meta name="keywords" content="Mybatis,ORM框架,缓存," />
 
 
 
@@ -112,19 +112,18 @@
 
 
 
-<meta name="description" content="Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。">
+<meta name="description" content="MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swagger简介">
-<meta property="og:url" content="http://wangnan.tech/post/swagger-introduction/index.html">
+<meta property="og:title" content="MyBatis二级缓存">
+<meta property="og:url" content="http://wangnan.tech/post/mybatis-cache/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。">
-<meta property="og:image" content="http://wangnan.tech/post/swagger-introduction/01.png">
-<meta property="og:image" content="http://wangnan.tech/post/swagger-introduction/02.png">
-<meta property="og:updated_time" content="2017-03-20T02:51:59.156Z">
+<meta property="og:description" content="MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-cache/01.png">
+<meta property="og:updated_time" content="2017-03-20T07:22:49.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swagger简介">
-<meta name="twitter:description" content="Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。">
-<meta name="twitter:image" content="http://wangnan.tech/post/swagger-introduction/01.png">
+<meta name="twitter:title" content="MyBatis二级缓存">
+<meta name="twitter:description" content="MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。">
+<meta name="twitter:image" content="http://wangnan.tech/post/mybatis-cache/01.png">
 
 
 
@@ -152,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://wangnan.tech/post/swagger-introduction/"/>
+  <link rel="canonical" href="http://wangnan.tech/post/mybatis-cache/"/>
 
 
 
 
 
-  <title> Swagger简介 | wangnan's blog </title>
+  <title> MyBatis二级缓存 | wangnan's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -354,7 +353,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/swagger-introduction/">
+  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/mybatis-cache/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wangnan">
@@ -378,7 +377,7 @@
             
             
               
-                Swagger简介
+                MyBatis二级缓存
               
             
           </h1>
@@ -393,8 +392,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T15:05:04+08:00">
-                2017-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T15:19:03+08:00">
+                2017-03-20
               </time>
             
 
@@ -416,8 +415,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swagger/" itemprop="url" rel="index">
-                    <span itemprop="name">Swagger</span>
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -434,8 +433,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/swagger-introduction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/swagger-introduction/" itemprop="commentCount"></span>
+                <a href="/post/mybatis-cache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/mybatis-cache/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -445,7 +444,7 @@
 
           
           
-             <span id="/post/swagger-introduction/" class="leancloud_visitors" data-flag-title="Swagger简介">
+             <span id="/post/mybatis-cache/" class="leancloud_visitors" data-flag-title="MyBatis二级缓存">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -473,41 +472,25 @@
 
       
         <blockquote>
-<p>Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。<a id="more"></a> 如果想深入分析项目源码，了解更多内容，见参考资料。Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger 让部署管理和使用功能强大的API从未如此简单。</p>
+<p>MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。</p>
 </blockquote>
-<h1 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h1><h2 id="什么是swagger"><a href="#什么是swagger" class="headerlink" title="什么是swagger"></a>什么是swagger</h2><p>Swagger™的目标是为REST APIs 定义一个标准的，与语言无关的接口，使人和计算机在看不到源码或者看不到文档或者不能通过网络流量检测的情况下能发现和理解各种服务的功能。当服务通过Swagger定义，消费者就能与远程的服务互动通过少量的实现逻辑。类似于低级编程接口，Swagger去掉了调用服务时的很多猜测。 浏览 Swagger-Spec 去了解更多关于Swagger 项目的信息，包括附加的支持其他语言的库。</p>
-<h2 id="如何集成Swagger-springmvc到我们的项目中"><a href="#如何集成Swagger-springmvc到我们的项目中" class="headerlink" title="如何集成Swagger-springmvc到我们的项目中?"></a>如何集成Swagger-springmvc到我们的项目中?</h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mangofactory<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-springmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><pre><code>repositories {
-jcenter()
-}
-compile &quot;com.mangofactory:swagger-springmvc:0.9.4&quot;
-</code></pre><p>要最快捷地启动swagger-springmvc项目并且使用默认设置，推荐的方式是使用SwaggerSpringMvc插件</p>
-<h3 id="Spring-Java-Configuration"><a href="#Spring-Java-Configuration" class="headerlink" title="Spring Java Configuration"></a>Spring Java Configuration</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableWebMvc</span></div><div class="line"><span class="meta">@EnableSwagger</span></div><div class="line"><span class="meta">@ComponentScan</span>(<span class="string">"com.myapp.packages"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebAppConfig</span> </span>&#123;</div><div class="line"> ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Spring-xml-Configuration"><a href="#Spring-xml-Configuration" class="headerlink" title="Spring xml Configuration"></a>Spring xml Configuration</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span> <span class="comment">&lt;!-- Required so swagger-springmvc can access spring's RequestMappingHandlerMapping  --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.mangofactory.swagger.configuration.SpringSwaggerConfig"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="SwaggerSpringMvcPlugin-XML-Configuration"><a href="#SwaggerSpringMvcPlugin-XML-Configuration" class="headerlink" title="SwaggerSpringMvcPlugin XML Configuration"></a>SwaggerSpringMvcPlugin XML Configuration</h3><p>为了使用这个插件，你需要创造一个spring Java配置类。使用spring的 @Configuration ，这个配置类必须被定义到你的xml上下文<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Required so swagger-springmvc can access spring's RequestMappingHandlerMapping  --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.yourapp.configuration.MySwaggerConfig"</span>/&gt;</div><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableSwagger</span> <span class="comment">//Loads the spring beans required by the framework</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySwaggerConfig</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">private</span> SpringSwaggerConfig springSwaggerConfig;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* Required to autowire SpringSwaggerConfig</div><div class="line">*/</div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSpringSwaggerConfig</span><span class="params">(SpringSwaggerConfig springSwaggerConfig)</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.springSwaggerConfig = springSwaggerConfig;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* Every SwaggerSpringMvcPlugin bean is picked up by the swagger-mvc framework - allowing for multiple</div><div class="line">* swagger groups i.e. same code base multiple swagger resource listings.</div><div class="line"> */</div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> SwaggerSpringMvcPlugin <span class="title">customImplementation</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> SwaggerSpringMvcPlugin(<span class="keyword">this</span>.springSwaggerConfig)</div><div class="line">          .includePatterns(<span class="string">".*pet.*"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="SwaggerSpringMvcPlugin-Spring-Java-Configuration"><a href="#SwaggerSpringMvcPlugin-Spring-Java-Configuration" class="headerlink" title="SwaggerSpringMvcPlugin Spring Java Configuration"></a>SwaggerSpringMvcPlugin Spring Java Configuration</h3><p>使用@EnableSwagger注解<br>自动注入SpringSwaggerConfig<br>定义一个或多个SwaggerSpringMvcPlugin实例，通过springs @Bean注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableWebMvc</span></div><div class="line"><span class="meta">@EnableSwagger</span></div><div class="line"><span class="meta">@ComponentScan</span>(<span class="string">"com.myapp.controllers"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomJavaPluginConfig</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">private</span> SpringSwaggerConfig springSwaggerConfig;</div><div class="line"></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSpringSwaggerConfig</span><span class="params">(SpringSwaggerConfig springSwaggerConfig)</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.springSwaggerConfig = springSwaggerConfig;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Bean</span> <span class="comment">//Don't forget the @Bean annotation</span></div><div class="line"><span class="function"><span class="keyword">public</span> SwaggerSpringMvcPlugin <span class="title">customImplementation</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> SwaggerSpringMvcPlugin(<span class="keyword">this</span>.springSwaggerConfig)</div><div class="line">        .apiInfo(apiInfo())</div><div class="line">        .includePatterns(<span class="string">".*pet.*"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</div><div class="line">  ApiInfo apiInfo = <span class="keyword">new</span> ApiInfo(</div><div class="line">          <span class="string">"My Apps API Title"</span>,</div><div class="line">          <span class="string">"My Apps API Description"</span>,</div><div class="line">          <span class="string">"My Apps API terms of service"</span>,</div><div class="line">          <span class="string">"My Apps API Contact Email"</span>,</div><div class="line">          <span class="string">"My Apps API Licence Type"</span>,</div><div class="line">          <span class="string">"My Apps API License URL"</span></div><div class="line">    );</div><div class="line">  <span class="keyword">return</span> apiInfo;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h1><h2 id="关于-API注解"><a href="#关于-API注解" class="headerlink" title="关于@API注解"></a>关于@API注解</h2><p>在Swagger Annotation中： </p>
-<p>API表示一个开放的API，可以通过description简要描述该API的功能。<br>在一个@API下，可有多个@ApiOperation，表示针对该API的CRUD操作。在ApiOperation Annotation中可以通过value，notes描述该操作的作用，response描述正常情况下该请求的返回对象类型。 在一个ApiOperation下，可以通过ApiResponses描述该API操作可能出现的异常情况。 </p>
-<p>ApiParam用于描述该API操作接受的参数类型<br>再接着，为项目的Model对象添加Swagger Annotation，这样Swagger Scanner可以获取更多关于Model对象的信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ApiModel</span>(value = <span class="string">"A SayingRepresentation is a representation of greeting"</span>)</div><div class="line"><span class="meta">@JsonSerialize</span>(include = JsonSerialize.Inclusion.NON_NULL)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SayingRepresentation</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">long</span> id;</div><div class="line"><span class="meta">@ApiModelProperty</span>(value = <span class="string">"greeting content"</span>, required = <span class="keyword">true</span>)</div><div class="line"><span class="keyword">private</span> String content;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">SayingRepresentation</span><span class="params">(<span class="keyword">long</span> id, String content)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.content = content;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> content;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过上面的步骤，项目已经具备了提供Swagger格式的API信息的能力，接下来，我们把这些信息和Swagger UI集成，以非常美观，实用的方式把这些API信息展示出来。</p>
-<p>##和Swagger UI的集成<br>首先，从github(<a href="https://github.com/wordnik/swagger-ui)上下载Swagger-UI" target="_blank" rel="external">https://github.com/wordnik/swagger-ui)上下载Swagger-UI</a>, 把该项目dist目录下的内容拷贝到项目的resources的目录assets下。</p>
-<p>然后，修改index.html, 把Swagger UI对象中的URL替换为自己的API路径。</p>
-<pre><code>window.swaggerUi = new SwaggerUi({
-url: &quot;/api/api-docs&quot;,
-dom_id: &quot;swagger-ui-container&quot;,
-</code></pre><p>最后，为了能访问到该页面，还需要在Service的Initialize方法中，添加AssetsBundle</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(Bootstrap&lt;HelloWorldConfiguration&gt; bootstrap)</span> </span>&#123;</div><div class="line">    <span class="comment">//指定配置文件的名字</span></div><div class="line">    bootstrap.setName(<span class="string">"helloWorld"</span>);</div><div class="line">    bootstrap.addBundle(<span class="keyword">new</span> AssetsBundle(<span class="string">"/assets"</span>, <span class="string">"/"</span>, <span class="string">"index.html"</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后的效果图：<br><img src="/post/swagger-introduction/01.png" alt="01"><br><img src="/post/swagger-introduction/02.png" alt="02"></p>
-<h1 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h1><p>Swagger可以充当前后端交流的重要桥梁，方便快捷。很实用。</p>
-<p>Swagger项目允许你生产，显示和消费你自己的RESTful服务。不需要代理和第三方服务。是一个依赖自由的资源集合，它能通过Swagger API动态的生成漂亮的文档和沙盒,因为Swagger UI没有依赖，你可以把他部署到任何服务器环境或者是你自己的机器。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>官网：<a href="http://swagger.io/" target="_blank" rel="external">http://swagger.io/</a></p>
-<p>GitHub：<br>swagger-springmvc:<a href="https://github.com/martypitt/swagger-springmvc" target="_blank" rel="external">https://github.com/martypitt/swagger-springmvc</a></p>
-<p>swagger-ui:<a href="https://github.com/swagger-api/swagger-ui" target="_blank" rel="external">https://github.com/swagger-api/swagger-ui</a></p>
-<p>swagger-core:<a href="https://github.com/swagger-api/swagger-core" target="_blank" rel="external">https://github.com/swagger-api/swagger-core</a></p>
-<p>swagger-spec：<a href="https://github.com/swagger-api/swagger-spec" target="_blank" rel="external">https://github.com/swagger-api/swagger-spec</a></p>
+<a id="more"></a>
+<p>MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。</p>
+<h2 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h2><h3 id="配置pom-xml，添加依赖。"><a href="#配置pom-xml，添加依赖。" class="headerlink" title="配置pom.xml，添加依赖。"></a>配置pom.xml，添加依赖。</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.caches<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-memcached<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="全局开关"><a href="#全局开关" class="headerlink" title="全局开关"></a>全局开关</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"cacheEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="配置需要缓存的mapper-xml"><a href="#配置需要缓存的mapper-xml" class="headerlink" title="配置需要缓存的mapper.xml"></a>配置需要缓存的mapper.xml</h3><p>二级缓存是Mapper级别的，可以针对具体的mapper.xml开启二级缓存。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"org.acme.FooMapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.memcached.MemcachedCache"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>开启后，则mapper中所有的select语句默认都将被缓存，此命名空间下所有insert、update、delete语句将会导致空间下的缓存被清空。</p>
+<p>可以针对具体某条语句禁用缓存。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"retObj"</span> <span class="attr">resultMap</span>=<span class="string">"results"</span> <span class="attr">useCache</span>=<span class="string">"false"</span> &gt;</span></div><div class="line">    select id, name, sex from employee   </div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>也可针对某条语句触发刷新动作（默认对应所有插入、更新、删除语句）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"retObj"</span> <span class="attr">resultMap</span>=<span class="string">"results"</span> <span class="attr">flushCache</span>=<span class="string">"true"</span> &gt;</span></div><div class="line">    select id, name, sex from employee   </div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="配置参数在memcached-properties中设置，如果缺失则使用缺省设置。"><a href="#配置参数在memcached-properties中设置，如果缺失则使用缺省设置。" class="headerlink" title="配置参数在memcached.properties中设置，如果缺失则使用缺省设置。"></a>配置参数在memcached.properties中设置，如果缺失则使用缺省设置。</h3><p>以下是配置参数：<br><img src="/post/mybatis-cache/01.png" alt="01"></p>
+<h3 id="如果需要记录cache操作日志，可由如下配置实现"><a href="#如果需要记录cache操作日志，可由如下配置实现" class="headerlink" title="如果需要记录cache操作日志，可由如下配置实现"></a>如果需要记录cache操作日志，可由如下配置实现</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"org.acme.FooMapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.memcached.LoggingMemcachedCache"</span> /&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>缓存在Memcached中的类需要实现Serializable接口，否则会报错java.io.NotSerializableException。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.iteye.com/topic/1112327" target="_blank" rel="external">MyBatis 缓存机制深度解剖 / 自定义二级缓存</a></p>
+<p><a href="http://blog.csdn.net/luanlouis/article/details/41408341" target="_blank" rel="external">MyBatis的二级缓存的设计原理</a></p>
+<p><a href="https://dzone.com/articles/caching-over-mybatis-memcached" target="_blank" rel="external">Caching over MyBatis : Memcached Performance Tuning Over MyBatis</a></p>
 
       
     </div>
@@ -557,9 +540,11 @@ dom_id: &quot;swagger-ui-container&quot;,
       
         <div class="post-tags">
           
-            <a href="/tags/简介/" rel="tag"># 简介</a>
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
           
-            <a href="/tags/Swagger/" rel="tag"># Swagger</a>
+            <a href="/tags/ORM框架/" rel="tag"># ORM框架</a>
+          
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
           
         </div>
       
@@ -568,8 +553,8 @@ dom_id: &quot;swagger-ui-container&quot;,
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/getting-started-mybatis/" rel="next" title="Java项目中使用Mybatis入门程序">
-                <i class="fa fa-chevron-left"></i> Java项目中使用Mybatis入门程序
+              <a href="/post/redis-progression/" rel="next" title="Redis进阶内容">
+                <i class="fa fa-chevron-left"></i> Redis进阶内容
               </a>
             
           </div>
@@ -577,10 +562,6 @@ dom_id: &quot;swagger-ui-container&quot;,
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/Sublime-introduction/" rel="prev" title="Sublime Text 3简介">
-                Sublime Text 3简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,10 +576,10 @@ dom_id: &quot;swagger-ui-container&quot;,
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="post/swagger-introduction/"
-     data-title="Swagger简介"
+        <div class="ds-share flat" data-thread-key="post/mybatis-cache/"
+     data-title="MyBatis二级缓存"
      data-content=""
-     data-url="http://wangnan.tech/post/swagger-introduction/">
+     data-url="http://wangnan.tech/post/mybatis-cache/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -625,8 +606,8 @@ dom_id: &quot;swagger-ui-container&quot;,
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="post/swagger-introduction/"
-           data-title="Swagger简介" data-url="http://wangnan.tech/post/swagger-introduction/">
+      <div class="ds-thread" data-thread-key="post/mybatis-cache/"
+           data-title="MyBatis二级缓存" data-url="http://wangnan.tech/post/mybatis-cache/">
       </div>
     
   </div>
@@ -764,7 +745,7 @@ dom_id: &quot;swagger-ui-container&quot;,
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用介绍"><span class="nav-number">1.</span> <span class="nav-text">使用介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是swagger"><span class="nav-number">1.1.</span> <span class="nav-text">什么是swagger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何集成Swagger-springmvc到我们的项目中"><span class="nav-number">1.2.</span> <span class="nav-text">如何集成Swagger-springmvc到我们的项目中?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven"><span class="nav-number">1.2.1.</span> <span class="nav-text">Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Java-Configuration"><span class="nav-number">1.2.3.</span> <span class="nav-text">Spring Java Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-xml-Configuration"><span class="nav-number">1.2.4.</span> <span class="nav-text">Spring xml Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwaggerSpringMvcPlugin-XML-Configuration"><span class="nav-number">1.2.5.</span> <span class="nav-text">SwaggerSpringMvcPlugin XML Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwaggerSpringMvcPlugin-Spring-Java-Configuration"><span class="nav-number">1.2.6.</span> <span class="nav-text">SwaggerSpringMvcPlugin Spring Java Configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#碰到的问题"><span class="nav-number">2.</span> <span class="nav-text">碰到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-API注解"><span class="nav-number">2.1.</span> <span class="nav-text">关于@API注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评价"><span class="nav-number">3.</span> <span class="nav-text">评价</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用配置"><span class="nav-number">1.</span> <span class="nav-text">使用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置pom-xml，添加依赖。"><span class="nav-number">1.1.</span> <span class="nav-text">配置pom.xml，添加依赖。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局开关"><span class="nav-number">1.2.</span> <span class="nav-text">全局开关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置需要缓存的mapper-xml"><span class="nav-number">1.3.</span> <span class="nav-text">配置需要缓存的mapper.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置参数在memcached-properties中设置，如果缺失则使用缺省设置。"><span class="nav-number">1.4.</span> <span class="nav-text">配置参数在memcached.properties中设置，如果缺失则使用缺省设置。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果需要记录cache操作日志，可由如下配置实现"><span class="nav-number">1.5.</span> <span class="nav-text">如果需要记录cache操作日志，可由如下配置实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">1.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">2.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>

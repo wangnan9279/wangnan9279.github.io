@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
+    
+    <lastmod>2017-03-20T07:22:49.881Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/tags/index.html</loc>
     
     <lastmod>2017-03-20T02:51:59.363Z</lastmod>

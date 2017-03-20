@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[MyBatis二级缓存]]></title>
+      <url>%2Fpost%2Fmybatis-cache%2F</url>
+      <content type="text"><![CDATA[MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。 MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。 使用配置配置pom.xml，添加依赖。123456789&lt;dependencies&gt; ... &lt;dependency&gt; &lt;groupId&gt;org.mybatis.caches&lt;/groupId&gt; &lt;artifactId&gt;mybatis-memcached&lt;/artifactId&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;/dependency&gt; ...&lt;/dependencies&gt; 全局开关123&lt;settings&gt; &lt;setting name="cacheEnabled" value="true"/&gt;&lt;/settings&gt; 配置需要缓存的mapper.xml二级缓存是Mapper级别的，可以针对具体的mapper.xml开启二级缓存。 123&lt;mapper namespace="org.acme.FooMapper"&gt; &lt;cache type="org.mybatis.caches.memcached.MemcachedCache" /&gt;&lt;/mapper&gt; 开启后，则mapper中所有的select语句默认都将被缓存，此命名空间下所有insert、update、delete语句将会导致空间下的缓存被清空。 可以针对具体某条语句禁用缓存。 123&lt;select id="retObj" resultMap="results" useCache="false" &gt; select id, name, sex from employee &lt;/select&gt; 也可针对某条语句触发刷新动作（默认对应所有插入、更新、删除语句）。 123&lt;select id="retObj" resultMap="results" flushCache="true" &gt; select id, name, sex from employee &lt;/select&gt; 配置参数在memcached.properties中设置，如果缺失则使用缺省设置。以下是配置参数： 如果需要记录cache操作日志，可由如下配置实现1234&lt;mapper namespace="org.acme.FooMapper"&gt; &lt;cache type="org.mybatis.caches.memcached.LoggingMemcachedCache" /&gt; ...&lt;/mapper&gt; 注意事项缓存在Memcached中的类需要实现Serializable接口，否则会报错java.io.NotSerializableException。 参考文档MyBatis 缓存机制深度解剖 / 自定义二级缓存 MyBatis的二级缓存的设计原理 Caching over MyBatis : Memcached Performance Tuning Over MyBatis]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Redis进阶内容]]></title>
       <url>%2Fpost%2Fredis-progression%2F</url>
       <content type="text"><![CDATA[减低内存占用 扩展Redis （注：内容整理自《redis实战》）]]></content>

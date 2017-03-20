@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
+    <lastmod>2017-03-20T07:22:49.881Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis二级缓存</title>
+        <pubTime>2017-03-20T07:19:03.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+        <tag>ORM框架</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
     
@@ -155,9 +179,9 @@
         
         <tag>读书笔记</tag>
          
-        <tag>Redis</tag>
-         
         <tag>缓存</tag>
+         
+        <tag>Redis</tag>
          
          
            
@@ -179,9 +203,9 @@
         
         <tag>读书笔记</tag>
          
-        <tag>Redis</tag>
-         
         <tag>缓存</tag>
+         
+        <tag>Redis</tag>
          
          
            
@@ -203,9 +227,9 @@
         
         <tag>读书笔记</tag>
          
-        <tag>Redis</tag>
-         
         <tag>缓存</tag>
+         
+        <tag>Redis</tag>
          
          
            
@@ -227,9 +251,9 @@
         
         <tag>读书笔记</tag>
          
-        <tag>Redis</tag>
-         
         <tag>缓存</tag>
+         
+        <tag>Redis</tag>
          
          
            
@@ -251,9 +275,9 @@
         
         <tag>读书笔记</tag>
          
-        <tag>Redis</tag>
-         
         <tag>缓存</tag>
+         
+        <tag>Redis</tag>
          
          
            
