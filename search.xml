@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[Elasticsearch排序]]></title>
+      <url>%2Fpost%2Felasticsearch-sort%2F</url>
+      <content type="text"><![CDATA[当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式 下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序 也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为 基于多值字段的排序某些文档的release-dates字段里面储存了多个电影上映日期（同一部电影在不同国家的上映日期不同）我们可以构造查询请求：例子中es将基于每个文档的release_dates字段的最小值进行排序mode参数可以设置为以上值： min 按照该字段最小值排序 max 按照该字段最大值进行排序 avg 按照多个字段平均值排序 sum 按照字段总和进行排序 后面两个选项只对数值类型有效 基于多值geo字段的排序es提供了基于多维坐标系数据的排序，我们通过一个实例了解这种类型的排序例如，要查找特点国家里离自己最近的一个机构我们使用下面的这个映射：查询如图：查询结果：我们可以看到，返回结果包含这个值：“sort”：[0.0]这是因为返回文档的地理坐标和查询中的坐标精确匹配还可以设置mode属性为max，min，avg例如avg代表：此时基于字段中的地理位置坐标与查询坐标的距离的均值排序 基于嵌套对象的排序继续嵌套对象的排序，对以下两种情形都适用： 适用了显式嵌套映射(在映射中配置type=“nested”)的文档 使用了对象类型的文档两者之间的一些细微区别需要注意假设我们索引如下数据：查询：查询返回结果按照嵌套对象的usert字段最小值降序如果将子文档视为一种数据类型，则可以将查询简化为如下形式：当我们使用对象类型时，可以简化查询，这是因为整个对象结构被当成一个lucene文档进行储存有些时候，使用nested_path属性会更加便捷按照下面的方式构造查询：我们也可以使用nested_filter参数，改参数只对嵌套文档有效，利用这个参数，我们可以在排序前就已经通过一个过滤器在检索期排除了某些文档，而不是检索结果文档集中过滤它们（注：内容整理自《深入理解Elasticsearch》）]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Elasticsearch批量操作]]></title>
+      <url>%2Fpost%2Felasticsearch-bulk%2F</url>
+      <content type="text"><![CDATA[elasticsearch提供了批量操作来读取数据和检索 批量取可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，而不论这些文档可用于搜索还是暂时对查询不可见 查看下面的操作：elasticsearch返回如下形式的文档：前面的范例还可以写成如下的更紧凑的形式：这种形式便于获取不同文档有不同目标索引及类型我们来看下面这个查询：该查询返回了id为1和3的两个文档，但是第一个文档从索引library_backup中获取，第二个文档则从索引library中获取（因为url中定义索引名为library，因此将它作为默认值），而且第一个文档我们限制只返回otitle字段 批量查询允许用户将多个查询请求打包到一组，elasticsearch将输入解析成一行一行的文本，而文本行包含了目标索引、其他参数以及查询串等信息范例：查询请求被发送到_msearch端点，请求的偶数行复制携带真正的查询结果：批量查询允许我们将多个独立的查询打包到一个请求中（注：内容整理自《深入理解Elasticsearch》）]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Elasticsearch二次评分]]></title>
+      <url>%2Fpost%2Felasticsearch-rescore%2F</url>
+      <content type="text"><![CDATA[二次评分给了用户很多机会来定制业务逻辑 理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分 二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响 查询范例如下： 改查询将每一个文档的得分改写为该文档的year字段中的值 返回结果： 二次评分参数配置在resource对象中，必须配置下面的参数： window_size 窗口大小，默认值是from和size参数值之和，它指定了每个分片上参与二次评分的文档个数 query_weight 查询权重，默认值是1，原始查询得分与二次评分的得分相加之前将乘以改值 rescore_query_weight 二次评分查询的权重值，默认值是1，二次评分查询得分在与原始查询得分相加之前，乘以该值 rescore_mode 二次评分模式，默认为total，可用的选项有total、max、min、avg和mutiply total 得分是两种查询之he max 两种查询中的最大值 min 两种查询中的最小值 avg 两种查询的平均值 multiply 两种查询的乘积 小结 有时候，我们需要显示查询结果，并且使得页面上靠前文档的顺序能受到一些额外的规则控制，但遗憾的是，我们并不能通过二次评分来实现，也许有些读者会想到window-size参数，然而实际上这个参数与返回列表中靠前文档并无关系，他只是制定了每个分片应该返回的文档数，而且window_size不能小于页面大小 二次评分功能并不能与排序一起使用，这是因为排序发生在二次评分之前，所以排序没有考虑后续新计算出来的文档得分 （注：内容整理自《深入理解Elasticsearch》）]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[MyBatis二级缓存]]></title>
       <url>%2Fpost%2Fmybatis-cache%2F</url>
       <content type="text"><![CDATA[MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。 MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。 使用配置配置pom.xml，添加依赖。123456789&lt;dependencies&gt; ... &lt;dependency&gt; &lt;groupId&gt;org.mybatis.caches&lt;/groupId&gt; &lt;artifactId&gt;mybatis-memcached&lt;/artifactId&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;/dependency&gt; ...&lt;/dependencies&gt; 全局开关123&lt;settings&gt; &lt;setting name="cacheEnabled" value="true"/&gt;&lt;/settings&gt; 配置需要缓存的mapper.xml二级缓存是Mapper级别的，可以针对具体的mapper.xml开启二级缓存。 123&lt;mapper namespace="org.acme.FooMapper"&gt; &lt;cache type="org.mybatis.caches.memcached.MemcachedCache" /&gt;&lt;/mapper&gt; 开启后，则mapper中所有的select语句默认都将被缓存，此命名空间下所有insert、update、delete语句将会导致空间下的缓存被清空。 可以针对具体某条语句禁用缓存。 123&lt;select id="retObj" resultMap="results" useCache="false" &gt; select id, name, sex from employee &lt;/select&gt; 也可针对某条语句触发刷新动作（默认对应所有插入、更新、删除语句）。 123&lt;select id="retObj" resultMap="results" flushCache="true" &gt; select id, name, sex from employee &lt;/select&gt; 配置参数在memcached.properties中设置，如果缺失则使用缺省设置。以下是配置参数： 如果需要记录cache操作日志，可由如下配置实现1234&lt;mapper namespace="org.acme.FooMapper"&gt; &lt;cache type="org.mybatis.caches.memcached.LoggingMemcachedCache" /&gt; ...&lt;/mapper&gt; 注意事项缓存在Memcached中的类需要实现Serializable接口，否则会报错java.io.NotSerializableException。 参考文档MyBatis 缓存机制深度解剖 / 自定义二级缓存 MyBatis的二级缓存的设计原理 Caching over MyBatis : Memcached Performance Tuning Over MyBatis]]></content>
