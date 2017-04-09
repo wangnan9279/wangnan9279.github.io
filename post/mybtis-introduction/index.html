@@ -1,0 +1,1176 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+
+
+
+
+  <meta name="baidu-site-verification" content="F5K33b55XZ" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mybatis,ORM框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较">
+<meta property="og:url" content="http://wangnan.tech/post/mybtis-introduction/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景">
+<meta property="og:image" content="http://wangnan.tech/post/mybtis-introduction/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybtis-introduction/02.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybtis-introduction/03.png">
+<meta property="og:updated_time" content="2017-04-09T09:19:00.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较">
+<meta name="twitter:description" content="主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景">
+<meta name="twitter:image" content="http://wangnan.tech/post/mybtis-introduction/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangnan.tech/post/mybtis-introduction/"/>
+
+
+
+
+
+  <title> Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较 | wangnan's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wangnan's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wangnan.tech/post/mybtis-introduction/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wangnan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/icebear.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wangnan's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wangnan's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T16:17:20+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/mybtis-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/mybtis-introduction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p>Java程序是通过JDBC(Java Data Base Connectivity)连接数据库的，JDBC是由SUN公司提出的一系列规范，但是它只定义了接口的规范，而具体的实现是交给了各个数据库厂商去实现的，JDBC是一种典型的桥接模式</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>使用JDBC编程需要连接数据库，注册驱动和数据库信息</li>
+<li>操作Connection,打开Statement对象</li>
+<li>通过Statement执行SQL,返回结果到ResultSet对象</li>
+<li>使用ResultSet读取数据，然后通过代码转换为具体的POJO对象</li>
+<li>关闭数据库相关资源</li>
+</ol>
+<p><strong>JDBC弊端</strong></p>
+<ol>
+<li>工作量大</li>
+<li>编程复杂</li>
+</ol>
+<h1 id="ORM模型"><a href="#ORM模型" class="headerlink" title="ORM模型"></a>ORM模型</h1><p>ORM取代了JDBC,所有的ORM模型都是基于JDBC进行封装的，不同ORM模型对JDBC封装的强度是不一样的</p>
+<p><strong>ORM</strong><br>对象关系映射(Object Relational Mapping),简单的说ORM框架就是数据库的表和简单Java对象的映射关系模型，我们通过这层映射关系就可以简单迅速地把数据库表的数据转化为POJO</p>
+<p>如图<br><img src="/post/mybtis-introduction/01.png" alt=""></p>
+<h1 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate"></a>Hibernate</h1><p>Hibername一问世就成为了Java世界首选的ORM框架，它是建立在POJO和数据库表模型的直接映射关系上的</p>
+<p><img src="/post/mybtis-introduction/02.png" alt=""></p>
+<p><strong>Hibernate优势</strong></p>
+<ul>
+<li>消除了代码的映射规则，它全部被分离到了XML或者注解里面去配置</li>
+<li>无需再管理数据库连接，它也可以配置在XML里面</li>
+<li>一个会话中，不要操作多个对象，只要操作Session对象即可</li>
+<li>关闭资源只需要关闭一个Session便可</li>
+</ul>
+<p><strong>Hibernate缺陷</strong></p>
+<ul>
+<li>全表映射带来了不便，比如更新时需要发送所有的字段</li>
+<li>无法根据不同的条件组装不同的SQL</li>
+<li>对多表关联和复杂SQL查询支持较差，需要自己写SQL，返回后，需要自己将数据组装为POJO</li>
+<li>不能有效支持存储过程</li>
+<li>虽然有HQL，但是性能较差， 大型互联网系统往往需要优化SQL，而hibernate做不到</li>
+</ul>
+<h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><p>为了解决Hibernate的不足，一个半自动映射的框架MyBatis应运而生</p>
+<p>mybatis是一个java持久层框架，它封装少、高性能·可优化、维护简单等优点成为了目前java移动互联网网站服务的首选持久层框架，它特别适合分布式和大数据网络数据库编程</p>
+<p>之所以称它为半自动，是因为它需要手工匹配提供POJO、SQL和映射关系，而全表映射的Hibernate只需要提供POJO和映射关系便可</p>
+<p><strong>历史</strong><br>Mybaits的前身是Apache的一个开源项目iBatis，2010年这个项目由apache software foundation 迁移到了 google code 并且改名为Mybatis，2013年11月迁移到Github,目前mybaits是由Github维护的</p>
+<p><strong>名称</strong><br>iBatis一词来源于“internet”和“abatis”的组合</p>
+<p>mybaits所需要提供的映射文件包含以下三个部分</p>
+<ul>
+<li>SQL</li>
+<li>映射规则</li>
+<li>POJO</li>
+</ul>
+<p><img src="/post/mybtis-introduction/03.png" alt=""></p>
+<p><strong>什么时候用mybaits</strong></p>
+<ul>
+<li>hibernate只适用于场景不太复杂，要求性能不太苛刻的时候</li>
+<li>mybatis拥有动态列，动态表名，存储过程支持，同时提供了简易的缓存、日志、级联，但是它的缺陷是需要你提供映射规则和sql，所以它的开发工作量比Hibernate略大一些</li>
+</ul>
+<p>（注：内容整理自《深入浅出MyBatis技术原理与实战》）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="wangnan wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>支持博主喝杯咖啡继续搬砖！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.png" alt="wangnan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="wangnan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
+          
+            <a href="/tags/ORM框架/" rel="tag"># ORM框架</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/soup02/" rel="next" title="干了这碗毒鸡汤(02)">
+                <i class="fa fa-chevron-left"></i> 干了这碗毒鸡汤(02)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/mybatis-lifecycle/" rel="prev" title="Mybaits-基本构成和生命周期">
+                Mybaits-基本构成和生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="post/mybtis-introduction/"
+     data-title="Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较"
+     data-content=""
+     data-url="http://wangnan.tech/post/mybtis-introduction/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/mybtis-introduction/"
+           data-title="Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较" data-url="http://wangnan.tech/post/mybtis-introduction/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/icebear.png"
+               alt="wangnan" />
+          <p class="site-author-name" itemprop="name">wangnan</p>
+          <p class="site-description motion-element" itemprop="description">2gether thru life</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangnan9279" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wangnan9279" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/cold5magic/" target="_blank" title="Instgram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instgram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/wangnan9279" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-file"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ginobefunny.com/" title="ginobefunny.com" target="_blank">ginobefunny.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes.iissnan.com/" title="notes.iissnan.com" target="_blank">notes.iissnan.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.oneonecity.xyz/" title="oneonecity.xyz" target="_blank">oneonecity.xyz</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.5941740.cn/" title="5941740.cn" target="_blank">5941740.cn</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://lannly.github.io/" title="lannly.github.io" target="_blank">lannly.github.io</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jeyzhang.com/" title="jeyzhang.com" target="_blank">jeyzhang.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lzblog.cn/" title="lzblog.cn" target="_blank">lzblog.cn</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ixirong.com/" title="ixirong.com" target="_blank">ixirong.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.arao.me/" title="arao.me" target="_blank">arao.me</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.franktly.com/" title="franktly.com" target="_blank">franktly.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yikun.github.io/archives/" title="yikun.github.io" target="_blank">yikun.github.io</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cduyzh.com/" title="cduyzh.com" target="_blank">cduyzh.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hui-wang.info/" title="hui-wang.info" target="_blank">hui-wang.info</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuan-ji.me/" title="yuan-ji.me" target="_blank">yuan-ji.me</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://youthyblog.com/" title="youthyblog.com" target="_blank">youthyblog.com</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dingxuewen.com/" title="dingxuewen.com" target="_blank">dingxuewen.com</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC"><span class="nav-number">1.</span> <span class="nav-text">JDBC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ORM模型"><span class="nav-number">2.</span> <span class="nav-text">ORM模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hibernate"><span class="nav-number">3.</span> <span class="nav-text">Hibernate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis"><span class="nav-number">4.</span> <span class="nav-text">Mybatis</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangnan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div class="theme-info">
+<span id="busuanzi_container_site_pv">
+    访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+    访客数<span id="busuanzi_value_site_uv"></span>人
+</span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangnan9279"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementById('footer')
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!--<script type="text/javascript" src="/js/src/particle.js"></script>-->
+<!-- 小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script>-->
+</html>
