@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/soup13/</loc>
+    
+    <lastmod>2017-05-24T06:36:36.222Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
+    
+    <lastmod>2017-05-24T06:35:18.153Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/soup12/</loc>
+    
+    <lastmod>2017-05-24T06:32:40.585Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/read/index.html</loc>
     
     <lastmod>2017-05-24T01:52:07.274Z</lastmod>
@@ -313,13 +334,6 @@
     <loc>http://wangnan.tech/post/elasticsearc-filtered/</loc>
     
     <lastmod>2017-05-24T01:52:07.222Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.221Z</lastmod>
     
   </url>
   

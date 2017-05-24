@@ -173,6 +173,130 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-elasticsearch-update"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/elasticsearch-update/">Elasticsearch数据更新API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/elasticsearch-update/" class="article-date">
+	  <time datetime="2017-03-22T08:26:59.000Z" itemprop="datePublished">2017-03-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<ul>
+<li>简单字段更新</li>
+<li>使用脚本按条件更新</li>
+<li>使用更新api创建或删除文档</li>
+</ul>
+</blockquote>
+        <!-- 
+
+
+简单字段更新
+使用脚本按条件更新
+使用更新api创建或删除文档
+
+
+
+为什么我们无法真的更新索引中的文档在索引一个新文档的时候，lucene会对每个字段进行分析并产生词条流，词条流中的词条可以会经过过滤器的额外处理，而没有过滤掉的词条会写入倒排索引中，索引过程中，一些不需要的信息可能被抛弃，这些信息包括：
+
+某些特殊的词条位置（当词向量没有储存时）
+特定词汇（停用词或同义词）
+词条的变......  -->
+        <p class="article-more-link">
+          <a href="/post/elasticsearch-update/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-elasticsearch-sort"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/elasticsearch-sort/">Elasticsearch排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/elasticsearch-sort/" class="article-date">
+	  <time datetime="2017-03-21T03:02:09.000Z" itemprop="datePublished">2017-03-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
+</blockquote>
+<p>下面的例子就容易做到：<br><img src="/post/elasticsearch-sort/01.png" alt="01"><br>该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序</p>
+<p><strong>也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为</strong><br><img src="/post/elasticsearch-sort/02.png" alt="02"></p>
+        <!-- 
+
+当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
+
+下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
+也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为
+
+基于多值字段的排序某些文档的release......  -->
+        <p class="article-more-link">
+          <a href="/post/elasticsearch-sort/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-elasticsearch-bulk"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -332,117 +456,6 @@ MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较�
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-redis-progression"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/redis-progression/">Redis进阶内容</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/redis-progression/" class="article-date">
-	  <time datetime="2017-03-17T08:20:39.000Z" itemprop="datePublished">2017-03-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Redis/">Redis</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://onxkn9cbz.bkt.clouddn.com/redis.png">http://onxkn9cbz.bkt.clouddn.com/redis.png</a></p>
-<blockquote>
-<p>减低内存占用 扩展Redis</p>
-</blockquote>
-        <!-- http://onxkn9cbz.bkt.clouddn.com/redis.png
-
-减低内存占用 扩展Redis
-
-
-
-（注：内容整理自《redis实战》）
-...  -->
-        <p class="article-more-link">
-          <a href="/post/redis-progression/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-redis-data-safety"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/redis-data-safety/">Redis数据安全与性能保障</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/redis-data-safety/" class="article-date">
-	  <time datetime="2017-03-17T08:14:12.000Z" itemprop="datePublished">2017-03-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Redis/">Redis</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://onxkn9cbz.bkt.clouddn.com/redis.png">http://onxkn9cbz.bkt.clouddn.com/redis.png</a></p>
-<h2 id="持久化选项"><a href="#持久化选项" class="headerlink" title="持久化选项"></a>持久化选项</h2><p><img src="/post/redis-data-safety/01.png" alt="01"></p>
-<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><p><img src="/post/redis-data-safety/02.png" alt="02"></p>
-        <!-- http://onxkn9cbz.bkt.clouddn.com/redis.png
-持久化选项
-复制
-
-处理系统故障
-redis事务
-非事务型流水线可以接受多个参数的添加命令和更新命令，比如：MGET,MSET,HMGET,HMSET,RPUSH,LPUSH,SADD,ZADD,这些命令简化了那些需要重复执行相同命令的操作，而极大的提升了性能
-性能方面注意事项可以用性能测试程序redis-......  -->
-        <p class="article-more-link">
-          <a href="/post/redis-data-safety/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
 
     </footer>
   </div>

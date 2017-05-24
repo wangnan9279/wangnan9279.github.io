@@ -173,6 +173,131 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-java8-action-as-para"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/java8-action-as-para/">Java8-行为参数化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java8-action-as-para/" class="article-date">
+	  <time datetime="2017-05-02T08:49:47.000Z" itemprop="datePublished">2017-05-02</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<blockquote>
+<p>在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变<br>行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。</p>
+</blockquote>
+<p>它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用</p>
+<p>我们看一个例子，我们通过不断改进这个例子，展示行为参数化</p>
+<h1 id="版本1-1-筛选绿苹果"><a href="#版本1-1-筛选绿苹果" class="headerlink" title="版本1.1 筛选绿苹果"></a>版本1.1 筛选绿苹果</h1><p><img src="/post/java8-action-as-para/01.png" alt=""><br>如果要筛选红苹果怎么办呢?</p>
+        <!-- 
+
+在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。
+
+它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用
+我们看一个例子，我们通过不断改进这个例子，展示行为参数化
+版本1.1 筛选绿苹果如果要筛选红苹果怎么办呢?
+
+版本1.2 把颜色作为参数如果要筛选重量大于150克的苹果......  -->
+        <p class="article-more-link">
+          <a href="/post/java8-action-as-para/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-java8-general"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/java8-general/">Java8-概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java8-general/" class="article-date">
+	  <time datetime="2017-04-21T08:52:18.000Z" itemprop="datePublished">2017-04-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p><strong>为什么你应该关系java8？</strong></p>
+<ul>
+<li>因为java8所做的改变，在许多方面比java历史上任何一次改变都深远</li>
+</ul>
+<p>再也不哟写下面这种啰嗦的程序了(按苹果重量排序)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Collections.sort(inventory,new Comparator&lt;Apple&gt;)()&#123;</div><div class="line">   public int compare(Apple a1,Apple a2)&#123;</div><div class="line">       return a1.getWeight().compareTo(a2.getWeight())</div><div class="line">   &#125; </div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
+<p>java8中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inventory.sort(Comparing(Apple::getWeight()))</div></pre></td></tr></table></figure></p>
+<p>java8对cpu核的利用率提高.</p>
+<ul>
+<li><p>StreamAPI<br>支持许多处理数据的并行操作，避免用synchronized编写代码</p>
+</li>
+<li><p>把代码传递给方法的简洁方式(方法引用，Lambda)，行为参数化</p>
+</li>
+<li>接口中的默认方法</li>
+</ul>
+        <!-- 
+1.概述为什么你应该关系java8？
+
+因为java8所做的改变，在许多方面比java历史上任何一次改变都深远
+
+再也不哟写下面这种啰嗦的程序了(按苹果重量排序)12345Collections.sort(inventory,new Comparator&lt;Apple&gt;)()&#123;   public int compare(Apple a1,Apple a2)&#123; ......  -->
+        <p class="article-more-link">
+          <a href="/post/java8-general/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-soup07"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -347,139 +472,6 @@ ifif元素是最常用的判断语句，它常常与test属性联合使用
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mybatis-mapper"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybatis-mapper/">Mybatis映射器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/mybatis-mapper/" class="article-date">
-	  <time datetime="2017-04-13T05:40:42.000Z" itemprop="datePublished">2017-04-13</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
-<h1 id="映射器主要元素"><a href="#映射器主要元素" class="headerlink" title="映射器主要元素"></a>映射器主要元素</h1><ul>
-<li>select  查询（可以自定义参数,返回结果集）</li>
-<li>insert 插入（执行后返回一个整数，代表插入的条数）</li>
-<li>update 更新 （执行后返回一个整数，代表更新的条数）</li>
-<li>delete 删除 （执行后返回一个整数，代表删除的条数）</li>
-<li>parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） </li>
-<li>sql  表的列名，一次定义多个sql使用</li>
-<li>resultMap 从结果集中加载对象，提供映射规则</li>
-<li>cache 给定命名空间的缓存配置</li>
-<li>cache-ref 其他命名空间缓存配置</li>
-</ul>
-        <!-- 
-映射器主要元素
-select  查询（可以自定义参数,返回结果集）
-insert 插入（执行后返回一个整数，代表插入的条数）
-update 更新 （执行后返回一个整数，代表更新的条数）
-delete 删除 （执行后返回一个整数，代表删除的条数）
-parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） 
-sql  表的列名，一次定义多个sql使用
-resultMap ......  -->
-        <p class="article-more-link">
-          <a href="/post/mybatis-mapper/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-soup05"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup05/">干了这碗毒鸡汤(05)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/soup05/" class="article-date">
-	  <time datetime="2017-04-12T02:47:58.000Z" itemprop="datePublished">2017-04-12</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>人们嫉妒的不是远远超过自己的人，往往是身边的略微比自己强的人。</li>
-</ul>
-<ul>
-<li><p>你不尝试着做些能力之外的事情，就永远无法成长。</p>
-</li>
-<li><p>凡是你排斥的，就是你要面对的。</p></li></ul>
-        <!-- 
-人们嫉妒的不是远远超过自己的人，往往是身边的略微比自己强的人。
-
-
-你不尝试着做些能力之外的事情，就永远无法成长。
-
-凡是你排斥的，就是你要面对的。
-
-
-及时而漂亮的撤退与漂亮的进攻同样重要。
-
-
-
-认识自己的无知是认识世界的最可靠的方法。
-
-
-为了自己想过的生活，勇于放弃一些东西。这个世界没有公正之处，你也永远得不到两全之计。若要自由，就得牺牲安全。若要闲散，就不能获得别人评价中的成就。......  -->
-        <p class="article-more-link">
-          <a href="/post/soup05/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
 
     </footer>
   </div>
