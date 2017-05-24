@@ -4,8 +4,112 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/read-youth/</loc>
+    <lastmod>2017-05-24T08:49:37.085Z</lastmod>
+    <data>
+        <display>
+        <title>《年轻可以一无所有》读书笔记</title>
+        <pubTime>2017-03-15T08:45:10.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>
+    <lastmod>2017-05-24T08:49:25.622Z</lastmod>
+    <data>
+        <display>
+        <title>《像程序员一样思考》读书笔记</title>
+        <pubTime>2017-03-13T03:35:48.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/read-how-google-work/</loc>
+    <lastmod>2017-05-24T08:49:16.532Z</lastmod>
+    <data>
+        <display>
+        <title>《重新定义公司：谷歌是如何运营的》读书笔记</title>
+        <pubTime>2017-03-28T09:25:23.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/redis-command/</loc>
+    <lastmod>2017-05-24T08:48:49.775Z</lastmod>
+    <data>
+        <display>
+        <title>Redis命令</title>
+        <pubTime>2017-03-17T07:59:50.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
+    <lastmod>2017-05-24T08:48:45.998Z</lastmod>
+    <data>
+        <display>
+        <title>Redis数据安全与性能保障</title>
+        <pubTime>2017-03-17T08:14:12.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/redis-introduction/</loc>
-    <lastmod>2017-05-24T08:46:27.968Z</lastmod>
+    <lastmod>2017-05-24T08:48:42.673Z</lastmod>
     <data>
         <display>
         <title>Redis初识</title>
@@ -27,33 +131,11 @@
     
   <url>
     <loc>http://wangnan.tech/post/redis-progression/</loc>
-    <lastmod>2017-05-24T08:46:24.359Z</lastmod>
+    <lastmod>2017-05-24T08:48:38.823Z</lastmod>
     <data>
         <display>
         <title>Redis进阶内容</title>
         <pubTime>2017-03-17T08:20:39.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
-    <lastmod>2017-05-24T08:46:20.446Z</lastmod>
-    <data>
-        <display>
-        <title>Redis数据安全与性能保障</title>
-        <pubTime>2017-03-17T08:14:12.000Z</pubTime>
         
         <tag>Redis</tag>
          
@@ -374,28 +456,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://wangnan.tech/post/redis-command/</loc>
-    <lastmod>2017-05-24T01:52:07.267Z</lastmod>
-    <data>
-        <display>
-        <title>Redis命令</title>
-        <pubTime>2017-03-17T07:59:50.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://wangnan.tech/post/rabbitMQ-vhost/</loc>
@@ -1279,66 +1339,6 @@
            
              
               <breadCrumb title="工具" url="http://wangnan.tech/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/read-youth/</loc>
-    <lastmod>2017-05-23T07:45:28.959Z</lastmod>
-    <data>
-        <display>
-        <title>《年轻可以一无所有》读书笔记</title>
-        <pubTime>2017-03-15T08:45:10.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>
-    <lastmod>2017-05-23T07:45:28.950Z</lastmod>
-    <data>
-        <display>
-        <title>《像程序员一样思考》读书笔记</title>
-        <pubTime>2017-03-13T03:35:48.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/read-how-google-work/</loc>
-    <lastmod>2017-05-23T07:45:28.942Z</lastmod>
-    <data>
-        <display>
-        <title>《重新定义公司：谷歌是如何运营的》读书笔记</title>
-        <pubTime>2017-03-28T09:25:23.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://wangnan.tech/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>

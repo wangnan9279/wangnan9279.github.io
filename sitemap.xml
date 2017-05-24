@@ -2,23 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wangnan.tech/post/redis-introduction/</loc>
+    <loc>http://wangnan.tech/post/read-youth/</loc>
     
-    <lastmod>2017-05-24T08:46:27.968Z</lastmod>
+    <lastmod>2017-05-24T08:49:37.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>
     
-    <lastmod>2017-05-24T08:46:24.359Z</lastmod>
+    <lastmod>2017-05-24T08:49:25.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/read-how-google-work/</loc>
+    
+    <lastmod>2017-05-24T08:49:16.532Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-command/</loc>
+    
+    <lastmod>2017-05-24T08:48:49.775Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/redis-data-safety/</loc>
     
-    <lastmod>2017-05-24T08:46:20.446Z</lastmod>
+    <lastmod>2017-05-24T08:48:45.998Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-introduction/</loc>
+    
+    <lastmod>2017-05-24T08:48:42.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    
+    <lastmod>2017-05-24T08:48:38.823Z</lastmod>
     
   </url>
   
@@ -138,13 +166,6 @@
     <loc>http://wangnan.tech/read/index.html</loc>
     
     <lastmod>2017-05-24T01:52:07.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-command/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.267Z</lastmod>
     
   </url>
   
@@ -439,27 +460,6 @@
     <loc>http://wangnan.tech/post/tool-Sublime-introduction/</loc>
     
     <lastmod>2017-05-23T07:45:29.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/read-youth/</loc>
-    
-    <lastmod>2017-05-23T07:45:28.959Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>
-    
-    <lastmod>2017-05-23T07:45:28.950Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/read-how-google-work/</loc>
-    
-    <lastmod>2017-05-23T07:45:28.942Z</lastmod>
     
   </url>
   
