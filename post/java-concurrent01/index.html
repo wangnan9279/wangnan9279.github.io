@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java多线程简介之基本概念、thread类、executor | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程简介之基本概念、Thread类、Executor">
+<meta property="og:url" content="http://wangnan.tech/post/java-concurrent01/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java多线程简介之基本概念、Thread类、Executor">
+<meta name="twitter:description" content="在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-java-concurrent01" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Java多线程简介之基本概念、Thread类、Executor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java-concurrent01/" class="article-date">
+	  <time datetime="2017-03-16T06:19:15.000Z" itemprop="datePublished">2017-03-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java.png" alt=""></p>
+<blockquote>
+<p>在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤<br>并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。<br>因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的多线程代码。</p>
+</blockquote>
+<h1 id="并发的多面性"><a href="#并发的多面性" class="headerlink" title="并发的多面性"></a>并发的多面性</h1><p>用并发解决的问题大体上可以分为“速度”和“设计可管理性”两种</p>
+<p>如果程序中的某个任务因为改程序控制范围外的某些条件（通常是I/O）而导致不能继续执行，那么我们就说这个任务或线程阻塞了，如果没有并发，则整个程序都将停止下来，直至外部条件发生变化。但是，如果使用并发来编写程序，那么当一个任务发生阻塞时，程序中的其他任务还可以继续执行。因此这个任务可以保持继续向前执行。</p>
+<a id="more"></a>
+<p>实现并发最直接的方式就是操作系统级别的使用进程。进程是运行在它自己的地址空间内的自包容程序。</p>
+<p>因此编写多线程程序最基本的困难在于协调不同线程驱动任务之间对这些资源的使用，以使得这些资源不会被多个任务访问。</p>
+<p>某些编程语言被设计为可以将并发任务彼此隔离，这些语言通常为称为函数式语言，其中每个函数调用都不会产生任何副作用（并因此而不能干涉其他函数），并因此可以当作独立的任务驱动。</p>
+<p>java的线程机制是抢占式的，这表示调度机会周期性地中断线程，将上下文切换到另一个线程，从而为每个线程都提供时间片，使得每个线程都会分配到数量合适的时间去驱动它的任务。在协作式系统中，每个任务都会自动的放弃控制，这要求程序员要有意识地在每个任务中插入某种类型的让步语句</p>
+<h1 id="基本的线程机制"><a href="#基本的线程机制" class="headerlink" title="基本的线程机制"></a>基本的线程机制</h1><p>一个线程就是在进程中一个单一的顺序控制流，因此，单个进程可以拥有多个并发执行任务</p>
+<h1 id="定义任务"><a href="#定义任务" class="headerlink" title="定义任务"></a>定义任务</h1><p>要想定义一个任务，只需要实现Runnable接口并编写run()方法</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/LiftOff.java</span></div><div class="line"><span class="comment">// Demonstration of the Runnable interface.</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LiftOff</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">  <span class="keyword">protected</span> <span class="keyword">int</span> countDown = <span class="number">10</span>; <span class="comment">// Default</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> taskCount = <span class="number">0</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id = taskCount++;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LiftOff</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LiftOff</span><span class="params">(<span class="keyword">int</span> countDown)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.countDown = countDown;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">status</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + id + <span class="string">"("</span> +</div><div class="line">      (countDown &gt; <span class="number">0</span> ? countDown : <span class="string">"Liftoff!"</span>) + <span class="string">"), "</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span>(countDown-- &gt; <span class="number">0</span>) &#123;</div><div class="line">      System.out.print(status());</div><div class="line">      Thread.yield();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">///:~</span></div></pre></td></tr></table></figure></p>
+<p>Thread.yield() 的调用时对线程调度器的一种建议，它在声明：”我已经执行完生命周期中最重要的部分了，此刻正是切换给其他任务执行一段时间的大好时机“</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/MainThread.java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainThread</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    LiftOff launch = <span class="keyword">new</span> LiftOff();</div><div class="line">    launch.run();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">#0(9), #0(8), #0(7), #0(6), #0(5), #0(4), #0(3), #0(2), #0(1), #0(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure>
+<p>当从Runable导出一个类时，它必须具有run()方法，但是这个方法并无特殊之处–它不会产生任何内在的线程能力，要实现线程行为，你必须显示的调用一个任务附着到线程上</p>
+<h1 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h1><p>Thread构造器只需要一个Runable对象，调用Thread对象的start()方法为该线程执行必须的初始化操作。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/BasicThreads.java</span></div><div class="line"><span class="comment">// The most basic use of the Thread class.</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicThreads</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> LiftOff());</div><div class="line">    t.start();</div><div class="line">    System.out.println(<span class="string">"Waiting for LiftOff"</span>);</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (90% match)</span></div><div class="line">Waiting for LiftOff</div><div class="line">#0(9), #0(8), #0(7), #0(6), #0(5), #0(4), #0(3), #0(2), #0(1), #0(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>注意：main()和LiftOff.run()是程序中与其他线程“同时”执行的代码。</p>
+<p>使用Thread与使用普通实现Runable接口对象的区别？</p>
+<p>在使用普通对象时，这对于垃圾回收来说是一场公平的游戏，但是使用Thread时，情况就不同了，每个Thread都“注册”了它自己，因此确实有一个对它的引用。而且在它的任务退出其run()并死亡之前，垃圾回收期无法清除它。因此，一个线程会创建一个单独的执行线程，在对start()的调用完成之后。它仍然会继续存在</p>
+<h1 id="使用Executor"><a href="#使用Executor" class="headerlink" title="使用Executor"></a>使用Executor</h1><p>在Java SE5的Java.util.concurrent包中的执行器（Executor）将为你管理Thread对象，Executor在客户端和任务执行之间提供了一个间接层<br>Executor在Java SE 5/6 中是启动任务的优选方法。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CachedThreadPool.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CachedThreadPool</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> LiftOff());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (Sample)</span></div><div class="line">#0(9), #0(8), #1(9), #2(9), #3(9), #4(9), #0(7), #1(8), #2(8), #3(8), #4(8), #0(6), #1(7), #2(7), #3(7), #4(7), #0(5), #1(6), #2(6), #3(6), #4(6), #0(4), #1(5), #2(5), #3(5), #4(5), #0(3), #1(4), #2(4), #3(4), #4(4), #0(2), #1(3), #2(3), #3(3), #4(3), #0(1), #1(2), #2(2), #3(2), #4(2), #0(Liftoff!), #1(1), #2(1), #3(1), #4(1), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>注意：<br>ExecutorService对象是使用静态的Executor方法创建的，这个方法可以确定Executor的类型，类型有CachedThreadPool，FixedThreadPool，<br>SingleThreadPool。</p>
+<p>shutdown()方法的调用可以防止新任务被提交给这个Executor，当前线程将继续执行在shutdown()被调用之前提交的所以任务，这个程序将在Executor中的所有任务完成之后尽快退出。</p>
+<p>FixedThreadPool使用了有限的线程集来执行所提交的任务。<br>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/FixedThreadPool.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedThreadPool</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// Constructor argument is number of threads:</span></div><div class="line">    ExecutorService exec = Executors.newFixedThreadPool(<span class="number">5</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> LiftOff());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (Sample)</span></div><div class="line">#0(9), #0(8), #1(9), #2(9), #3(9), #4(9), #0(7), #1(8), #2(8), #3(8), #4(8), #0(6), #1(7), #2(7), #3(7), #4(7), #0(5), #1(6), #2(6), #3(6), #4(6), #0(4), #1(5), #2(5), #3(5), #4(5), #0(3), #1(4), #2(4), #3(4), #4(4), #0(2), #1(3), #2(3), #3(3), #4(3), #0(1), #1(2), #2(2), #3(2), #4(2), #0(Liftoff!), #1(1), #2(1), #3(1), #4(1), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>有了FixedThreadPool在事件驱动的系统中，需要线程的事件处理器，通过直接从池中获取线程，也可以如你所愿地尽快的得到服务。你不会滥用可获得的资源。</p>
+<p>SingleThreadPool就像是数量为1的FixedThreadPool<br>向SingleThreadPool提交多个任务，那么这些任务将排队，每个任务都会在下一个任务开始之前结束。所有的任务将使用相同的线程。</p>
+<h1 id="从任务产生返回值"><a href="#从任务产生返回值" class="headerlink" title="从任务产生返回值"></a>从任务产生返回值</h1><p>Runnable不返回任何值，如果希望任务在完成时能够返回一个值。那么可以实现Callable接口,在Java SE5中引入的Callable是一种具有参数类型的泛型，它从方法call()中返回值，必须使用ExecutorService.submit()方法调用它。</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CallableDemo.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskWithResult</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">TaskWithResult</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"result of TaskWithResult "</span> + id;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableDemo</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    ArrayList&lt;Future&lt;String&gt;&gt; results =</div><div class="line">      <span class="keyword">new</span> ArrayList&lt;Future&lt;String&gt;&gt;();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</div><div class="line">      results.add(exec.submit(<span class="keyword">new</span> TaskWithResult(i)));</div><div class="line">    <span class="keyword">for</span>(Future&lt;String&gt; fs : results)</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">// get() blocks until completion:</span></div><div class="line">        System.out.println(fs.get());</div><div class="line">      &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125; <span class="keyword">catch</span>(ExecutionException e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        exec.shutdown();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">result of TaskWithResult 0</div><div class="line">result of TaskWithResult 1</div><div class="line">result of TaskWithResult 2</div><div class="line">result of TaskWithResult 3</div><div class="line">result of TaskWithResult 4</div><div class="line">result of TaskWithResult 5</div><div class="line">result of TaskWithResult 6</div><div class="line">result of TaskWithResult 7</div><div class="line">result of TaskWithResult 8</div><div class="line">result of TaskWithResult 9</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>（注：内容整理自《Thinking in Java》）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/java-concurrent01/" data-title="Java多线程简介之基本概念、Thread类、Executor" data-url="http://wangnan.tech/post/java-concurrent01/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/java-concurrent02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/redis-webapp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">使用Redis构建web应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#并发的多面性"><span class="nav-number">1.</span> <span class="nav-text">并发的多面性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本的线程机制"><span class="nav-number">2.</span> <span class="nav-text">基本的线程机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义任务"><span class="nav-number">3.</span> <span class="nav-text">定义任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread类"><span class="nav-number">4.</span> <span class="nav-text">Thread类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Executor"><span class="nav-number">5.</span> <span class="nav-text">使用Executor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从任务产生返回值"><span class="nav-number">6.</span> <span class="nav-text">从任务产生返回值</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

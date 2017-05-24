@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《像程序员一样思考》读书笔记 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="这本书的第一章阐述了一些解决问题的策略，举了几个例子，还是挺有趣的，之后还用c++演示了一些具体的解决问题的方法，有兴趣可以读一下
+
+
+
+认识到一个已解决的问题和一个未解决的问题之间可供利用的相似之处。如果我们发现问题A的一个特性与已经解决的问题B的一个特性有相似之处，就为解决A奠定了良好的基础。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《像程序员一样思考》读书笔记">
+<meta property="og:url" content="http://wangnan.tech/post/read-think-like-programmer/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="这本书的第一章阐述了一些解决问题的策略，举了几个例子，还是挺有趣的，之后还用c++演示了一些具体的解决问题的方法，有兴趣可以读一下
+
+
+
+认识到一个已解决的问题和一个未解决的问题之间可供利用的相似之处。如果我们发现问题A的一个特性与已经解决的问题B的一个特性有相似之处，就为解决A奠定了良好的基础。">
+<meta property="og:image" content="http://wangnan.tech/post/read-think-like-programmer/01.png">
+<meta property="og:updated_time" content="2017-05-23T07:45:28.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《像程序员一样思考》读书笔记">
+<meta name="twitter:description" content="这本书的第一章阐述了一些解决问题的策略，举了几个例子，还是挺有趣的，之后还用c++演示了一些具体的解决问题的方法，有兴趣可以读一下
+
+
+
+认识到一个已解决的问题和一个未解决的问题之间可供利用的相似之处。如果我们发现问题A的一个特性与已经解决的问题B的一个特性有相似之处，就为解决A奠定了良好的基础。">
+<meta name="twitter:image" content="http://wangnan.tech/post/read-think-like-programmer/01.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-read-think-like-programmer" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      《像程序员一样思考》读书笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/read-think-like-programmer/" class="article-date">
+	  <time datetime="2017-03-13T03:35:48.000Z" itemprop="datePublished">2017-03-13</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这本书的第一章阐述了一些解决问题的策略，举了几个例子，还是挺有趣的，之后还用c++演示了一些具体的解决问题的方法，有兴趣可以读一下</p>
+</blockquote>
+<p><img src="/post/read-think-like-programmer/01.png" alt="01"></p>
+<blockquote>
+<p>认识到一个已解决的问题和一个未解决的问题之间可供利用的相似之处。如果我们发现问题A的一个特性与已经解决的问题B的一个特性有相似之处，就为解决A奠定了良好的基础。</p>
+</blockquote>
+<a id="more"></a> 
+<blockquote>
+<p>用更形象化的方式重新陈述问题是一种非常出色的技巧，可以让我们拥有对问题更好的洞察力。许多程序员设法与其他程序员一起讨论问题，并不仅仅是因为对方可能已经有了答案，而是因为清晰的陈述问题常常会激发有用的新思路。重新陈述问题就相当于与其他程序员讨论问题，只不过现在一个人分饰两角。</p>
+<p>在解决编程问题时，有时会出现无法看到通向解决方案的清晰道路的情况，但这决不能成为跳过计划和采用系统性方法的借口。更好的办法是采用一种策略，而不是通过简单地反复尝试和失败来解决问题。</p>
+<p> 在面临一个复杂的问题时，我常常会对这个问题的削减版本进行试验。这些试验常常能够产生有价值的思路。花时间研究怎样对问题进行细分通常是非常合算的，即使无法找到一种清晰的细分，仍然有助于增强对问题的理解，可以促进这个问题的解决。在解决问题时，头脑里已经有一个特点的目标总比随机的尝试要好得多，无论最终是否能够实现这个目标。</p>
+<p> 应该从最显而易见的那部分任务开始着手，如果可以解决这个部分的问题，就可以在此基础上继续执行其他可以完成的任务，通过审视自己的代码，可能会激发自己的想象力，从而解决剩余部分的问题。</p>
+<p> 基本的问题解决技巧： </p>
+<ol>
+<li>总是要指定计划<br>这也许是最重要的规则，我们事先必须要制定计划，而不是直接进行漫无方向的尝试。 </li>
+<li>重新陈述问题<br>即使重新陈述问题并没有直接让我们获得新思路，它仍然可能在其他方面提供帮助。例如，如果我们碰到一个问题（又上级或者指导老师指派），我们可以把问题重新陈述给指派这个任务的人，以确定自己的理解无误，另外，重新重述问题对于使用其他常用的技巧也可能是一个必要的先决步骤，例如削减和划分问题。</li>
+<li>划分问题</li>
+<li>从自己所知的开始 </li>
+<li>削减问题 </li>
+<li>寻找类比 </li>
+<li>试验 </li>
+<li>避免陷入挫折感 如果你觉得继续干下去会陷入挫折感时，可以休息一会，一个诀窍是让手头上处理的问题不止一个，这样，如果你对一个问题感到无可奈何，可以把精力转向另一个问题，注意，如果成功的划分了问题，就可以对单个问题应用这种技巧，只要把陷入僵局的那部分问题仍到一边，转而解决其他部分问题就可以了，如果没哟可以处理其他问题，也可以离开椅子做一些其他的事情，可以热热身，放松一下脑子，例如散步。洗衣服。做伸展运动，在休息结束之前。不在考虑那个问题。</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/read-think-like-programmer/" data-title="《像程序员一样思考》读书笔记" data-url="http://wangnan.tech/post/read-think-like-programmer/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/java-reflection-introduction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          【转】Java反射简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/tool-Sublime-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Sublime Text 3简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="artnav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

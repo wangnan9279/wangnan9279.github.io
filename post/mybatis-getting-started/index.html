@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java项目中使用mybatis入门程序 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java项目中使用Mybatis入门程序">
+<meta property="og:url" content="http://wangnan.tech/post/mybatis-getting-started/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-getting-started/01.jpg">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java项目中使用Mybatis入门程序">
+<meta name="twitter:description" content="MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-mybatis-getting-started" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Java项目中使用Mybatis入门程序
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/mybatis-getting-started/" class="article-date">
+	  <time datetime="2017-03-09T09:35:41.000Z" itemprop="datePublished">2017-03-09</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<blockquote>
+<p>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。<br><a id="more"></a> </p>
+</blockquote>
+<h1 id="什么是-MyBatis"><a href="#什么是-MyBatis" class="headerlink" title="什么是 MyBatis ?"></a>什么是 MyBatis ?</h1><p>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。</p>
+<h2 id="MyBatis-github"><a href="#MyBatis-github" class="headerlink" title="MyBatis github"></a>MyBatis github</h2><p><a href="https://github.com/mybatis/mybatis-3" target="_blank" rel="external">https://github.com/mybatis/mybatis-3</a></p>
+<h2 id="MyBatis-文档"><a href="#MyBatis-文档" class="headerlink" title="MyBatis 文档"></a>MyBatis 文档</h2><p><a href="http://mybatis.github.io/mybatis-3/zh/index.html" target="_blank" rel="external">http://mybatis.github.io/mybatis-3/zh/index.html</a></p>
+<h1 id="入门程序"><a href="#入门程序" class="headerlink" title="入门程序"></a>入门程序</h1><p>想要使用 MyBatis 只需将 mybatis-x.x.x.jar 文件置于 classpath 中。<br>如果使用 Maven 构建项目，则需将下面的 dependency 置于 pom.xml 中：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </div><div class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我选择第二种，在Eclipse中新建一个maven项目 </p>
+<h2 id="项目结构："><a href="#项目结构：" class="headerlink" title="项目结构："></a>项目结构：</h2><p><img src="/post/mybatis-getting-started/01.jpg" alt="项目结构"></p>
+<h2 id="各文件介绍："><a href="#各文件介绍：" class="headerlink" title="各文件介绍："></a>各文件介绍：</h2><ul>
+<li>pom文件：由于使用了mySQL数据库，这里还依赖了一个mySQL驱动包</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span>  </div><div class="line"> <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span>  </div><div class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>Mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </div><div class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span> </div><div class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </div><div class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </div><div class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </div><div class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </div><div class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </div><div class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.34<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </div><div class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> </div><div class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>实体类User ：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybatis.domain;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">       <span class="keyword">private</span> String name;</div><div class="line">       <span class="keyword">private</span> Integer age;</div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">return</span> name;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">       <span class="keyword">this</span>.name = name;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> age;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</div><div class="line">          <span class="keyword">this</span>.age = age;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>UserMapper接口：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybatis.mapper; </div><div class="line"><span class="keyword">import</span> com.mybatis.domain.User; </div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123; </div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findById</span><span class="params">(String Id)</span></span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>UserMapper接口的实现，userMapper.xml：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt; <span class="meta">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span> <span class="comment">&lt;!--相当于UserMapper接口的实现 namespace必须是UserMapper类路径--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.mybatis.mapper.UserMapper"</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!-- findById必须和接口中的方法名一样 返回一个User--&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findById"</span> <span class="attr">parameterType</span>=<span class="string">"String"</span></span></div><div class="line">    <span class="attr">resultType</span>=<span class="string">"com.mybatis.domain.User"</span>&gt; </div><div class="line">    select * from user where id=#&#123;id&#125; </div><div class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>数据源配置 configuration.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt; </div><div class="line"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!--数据源配置 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span> </div><div class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"jdbc"</span> /&gt;</span> </div><div class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span> </div><div class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span> </div><div class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/test"</span> /&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span> /&gt;</span> </div><div class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span> /&gt;</span> </div><div class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span> <span class="tag">&lt;<span class="name">mappers</span>&gt;</span> </div><div class="line">        <span class="comment">&lt;!--userMapper.xml装载进来 --&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"userMapper.xml"</span> /&gt;</span> </div><div class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>测试类MyBatisTest：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybatis.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.mybatis.domain.User;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.mybatis.mapper.UserMapper;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</div><div class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</div><div class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</div><div class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBatisTest</span> </span>&#123;</div><div class="line">    <span class="comment">/** * MyBatis SqlSessionFactory * SqlSessionFactory????SqlSession????????????SqlSession??????????commit?rollback?close???? * <span class="doctag">@return</span> */</span> <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory <span class="title">getSessionFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">        SqlSessionFactory sessionFactory = <span class="keyword">null</span>;</div><div class="line">        String resource = <span class="string">"configuration.xml"</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(Resources.getResourceAsReader(</div><div class="line">                        resource));</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sessionFactory;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SqlSession sqlSession = getSessionFactory().openSession();</div><div class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</div><div class="line">        User user = userMapper.findById(<span class="string">"1"</span>);</div><div class="line">        System.out.println(user.getName());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>数据库中插入条数据：<br>id=”1” name=”wn” age=”23”</p>
+<p>运行测试类，在控制台看到结果：wn</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/mybatis-getting-started/" data-title="Java项目中使用Mybatis入门程序" data-url="http://wangnan.tech/post/mybatis-getting-started/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/tool-swagger-introduction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Swagger简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/redis-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Redis初识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是-MyBatis"><span class="nav-number">1.</span> <span class="nav-text">什么是 MyBatis ?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-github"><span class="nav-number">1.1.</span> <span class="nav-text">MyBatis github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-文档"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis 文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入门程序"><span class="nav-number">2.</span> <span class="nav-text">入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构："><span class="nav-number">2.1.</span> <span class="nav-text">项目结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各文件介绍："><span class="nav-number">2.2.</span> <span class="nav-text">各文件介绍：</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

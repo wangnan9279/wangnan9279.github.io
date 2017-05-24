@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>elasticsearch如何评分?-apache lucene默认评分公式解释 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释何时文档被匹配上当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
+<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释何时文档被匹配上当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/02.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
+<meta name="twitter:description" content="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释何时文档被匹配上当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-elasticsearch-lucene-score-rule" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Elasticsearch如何评分?-Apache Lucene默认评分公式解释
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/elasticsearch-lucene-score-rule/" class="article-date">
+	  <time datetime="2017-03-17T03:24:39.000Z" itemprop="datePublished">2017-03-17</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<h1 id="lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><a href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释" class="headerlink" title="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释"></a>lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</h1><h2 id="何时文档被匹配上"><a href="#何时文档被匹配上" class="headerlink" title="何时文档被匹配上"></a>何时文档被匹配上</h2><p>当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，<strong>同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的</strong>，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的数目，词项所在字段，以及用于查询规范化的匹配类型等。</p>
+<a id="more"></a>
+<h3 id="计算文档得分需要考虑以下因子"><a href="#计算文档得分需要考虑以下因子" class="headerlink" title="计算文档得分需要考虑以下因子"></a>计算文档得分需要考虑以下因子</h3><ul>
+<li><p>文档权重（document boost）：<strong>索引期</strong>赋予某个文档的权重值</p>
+</li>
+<li><p>字段权重（field boost）:<strong>查询期</strong>赋予某个字段的权重值</p>
+</li>
+<li><p>协调因子（coord）：基于文档中词项命中个数的协调因子，<strong>一个文档中命中了查询中的词项越多，得分越高</strong><br>(<em>比如：查询关键词被分词为A和B,如果文档1命中了A和B,文档2命中了A,那么在这个项目上，文档1的分数更高</em>)</p>
+</li>
+<li><p>逆文档频率(inverse document frequency):一个基于词项的因子,用来告诉评分公式该词项有多么<strong>罕见</strong>，逆文档频率越低，词项越罕见，评分公式利用该因子为包含罕见词项的文档加权<br>(<em>比如：查询关键词是A和B,如果文档1命中了A,文档2命中了B,但是在整个文档范围内，A出现的次数比B少，那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>长度范数(length norm):每个字段的基于词项个数的归一化因子，一个字段包含的词项越多，改因子的权重越低，<em>*这意味着lucene评分公式更”喜欢”包含更少词项的字段</em><br>(<em>比如：查询关键词是A,文档1和2都匹配上了A,但是文档1内容长度比文档1短，那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>词频：一个基于词项的因子，用来表示一个词项在某个文档中出现多少次，<strong>词频越高，文档得分越高</strong><br>(<em>比如：查询关键词是A，文档1和文档1都匹配上了，但是文档1中出现了2次A,文档2中出现了1次A,那么在这个项目中，文档1分数更高</em>)</p>
+</li>
+<li><p>查询范数（query norm）：一个基于查询的归一化因子，它等于<strong>查询中词项的权重平方和</strong>，<strong>查询范数使得不同查询的得分能相互比较，尽管这种比较通常是困难且不可行的</strong></p>
+</li>
+</ul>
+<h2 id="TF-IDF评分公式"><a href="#TF-IDF评分公式" class="headerlink" title="TF/IDF评分公式"></a>TF/IDF评分公式</h2><h3 id="Lucene理论评分公式"><a href="#Lucene理论评分公式" class="headerlink" title="Lucene理论评分公式"></a>Lucene理论评分公式</h3><p>注意，你并不需要深入理解这个公式的来龙去脉，了解它的工作原理非常重要<br><img src="/post/elasticsearch-lucene-score-rule/01.png" alt=""><br>上面的公式理论形式糅合了布尔检索模型和向量空间检索模型，我们可以不讨论这个理论评分公式，直接跳到lucene实际评分公式</p>
+<h3 id="Lucene实际评分公式"><a href="#Lucene实际评分公式" class="headerlink" title="Lucene实际评分公式"></a>Lucene实际评分公式</h3><p>现在让我来看看Lucene实际评分公式：<br><img src="/post/elasticsearch-lucene-score-rule/02.png" alt=""></p>
+<p>解释：这是一个关于<strong>查询q</strong>和<strong>文档d</strong>的函数，有两个因子coord和queryNorm并不直接依赖查询词项，而是与查询词项的一个<strong>求和公式</strong>相乘，<strong>求和公式</strong>中的每个加数由以下因子连乘所得：词频 逆文档频率 词项权重 长度范数</p>
+<p>由这个公式我们可以导出一些规则：</p>
+<ul>
+<li>越多罕见的词项被匹配上，文档分数越高</li>
+<li>文档字段越短，文档分数越高</li>
+<li>权重越高（无论是索引期还查询期赋予的权重值），文档得分越高</li>
+</ul>
+<h2 id="elasticsearch如何看评分"><a href="#elasticsearch如何看评分" class="headerlink" title="elasticsearch如何看评分"></a>elasticsearch如何看评分</h2><p>elasticsearch使用了lucene的评分功能，但是好在<strong>我们可以替换默认的评分算法</strong>，<strong>elasticsearch使用了Lucene的评分功能但是不仅限于lucene的评分功能</strong>，用户可以<strong>使用各种不同的查询类型</strong>以精确控制文档的评分计算，如custom_boost_factor查询、constant_score查询，custom_score查询）还可以通过使用<strong>脚本（scrpting）</strong>来改变文档得分，还可以使用<strong>二次评分</strong>功能，通过在返回文档集合之上执行另外一个查询，重新计算前N个文档得分</p>
+<p>（注：内容整理自《深入理解elasticsearch》，斜体为本人添加的理解）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/elasticsearch-lucene-score-rule/" data-title="Elasticsearch如何评分?-Apache Lucene默认评分公式解释" data-url="http://wangnan.tech/post/elasticsearch-lucene-score-rule/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lucene/">Lucene</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/elasticsearch-geo-distance-query/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Elasticsearch地理位置查询-Geo Distance Range Query
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/java-io-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Java IO 简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><span class="nav-number">1.</span> <span class="nav-text">lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#何时文档被匹配上"><span class="nav-number">1.1.</span> <span class="nav-text">何时文档被匹配上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算文档得分需要考虑以下因子"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算文档得分需要考虑以下因子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TF-IDF评分公式"><span class="nav-number">1.2.</span> <span class="nav-text">TF/IDF评分公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lucene理论评分公式"><span class="nav-number">1.2.1.</span> <span class="nav-text">Lucene理论评分公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lucene实际评分公式"><span class="nav-number">1.2.2.</span> <span class="nav-text">Lucene实际评分公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elasticsearch如何看评分"><span class="nav-number">1.3.</span> <span class="nav-text">elasticsearch如何看评分</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

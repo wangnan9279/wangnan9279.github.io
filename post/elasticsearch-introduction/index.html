@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>elasticsearch简介 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
+
+Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch简介">
+<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-introduction/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
+
+Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.228Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch简介">
+<meta name="twitter:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
+
+Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-elasticsearch-introduction" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Elasticsearch简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/elasticsearch-introduction/" class="article-date">
+	  <time datetime="2017-03-08T04:31:23.000Z" itemprop="datePublished">2017-03-08</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件</p>
+</blockquote>
+<h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等<br><a id="more"></a> </p>
+<h3 id="lucene总体架构"><a href="#lucene总体架构" class="headerlink" title="lucene总体架构"></a>lucene总体架构</h3><p>文档（document）,字段(field),词项(term)，词条(token)</p>
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>lucene将写入索引的所有信息组成一种名为倒排索引的结构，倒排索引是面向词项而不是面向文档，实际的lucene创建的索引更为复杂，也更先进，因为索引中还储存和很多其他信息，如词向量（为单个字段创建的小索引，储存改字段中所有的词条） 各字段的原始信息，文档删除标记</p>
+<h3 id="段（segment）"><a href="#段（segment）" class="headerlink" title="段（segment）"></a>段（segment）</h3><p>每个段只会被创建一次但是会被查询多次，索引期间，段经创建就不会被修改，例如，文档被删除以后，删除信息被单独的保存在一个文件中，而段本身并没有修改</p>
+<h3 id="段合并"><a href="#段合并" class="headerlink" title="段合并"></a>段合并</h3><p>多个段合并在一起，要么是强制执行，要么是有lucene的内在机制决定在某个时刻执行，段合并非常消耗I/O，且合并期间有些不再使用的信息也将被清理掉，例如:被删除的文档，不要强制执行段合并，只需要配置段合并策略，剩余的事情Lucene会自行搞定</p>
+<h3 id="文档数据是如果转化为倒排索引的？"><a href="#文档数据是如果转化为倒排索引的？" class="headerlink" title="文档数据是如果转化为倒排索引的？"></a>文档数据是如果转化为倒排索引的？</h3><p>这个转换的过程称为分析（analysis），分析由分析器来执行，分析器由分词器(tokenizer)过滤器（filter）和字符映射器组成(character mapper),分词器用来切割词条，过滤器可以移除，修改词条流中的词条，甚至可以创造新的词条，字符映射器用于调用分词器之前的预处理操作，比如HTML文本去标签</p>
+<h2 id="ElasticSearch简介"><a href="#ElasticSearch简介" class="headerlink" title="ElasticSearch简介"></a>ElasticSearch简介</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>es将数据储存在一个或多个索引中，就像是sql领域的数据库，es索引可能由一个或多个lucene索引构成，具体细节由es的索引分片，复制机制及其配置决定</p>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p>是es时间中的主要实体，文档之间可能由各自不同的字段集合，且文档并没有固定的模式或强制的结构，这些规则也适用于lucene文档，事实上，es的文档最后都储存为lucene文档了</p>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>es每个文档都有与之对应的类型（type）定义，这允许用户在一个索引中存储多种文档类型，并为不同文档类型提供不同的映射</p>
+<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>单个es服务器实例称为节点</p>
+<h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>多个节点来协同处理</p>
+<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>es将数据散步到多个物理lucene索引上，这些索引称为分片，而散步分片的过程叫做分片处理（sharding），es会自动完成分片处理，并且让这些分片呈现出一个大索引的样子</p>
+<h3 id="副本"><a href="#副本" class="headerlink" title="副本"></a>副本</h3><p>为每个分片创建冗余的副本，处理查询时可以把这些副本用作最初的主分片</p>
+<h3 id="es架构背后的关键概念"><a href="#es架构背后的关键概念" class="headerlink" title="es架构背后的关键概念"></a>es架构背后的关键概念</h3><p>合理的默认配置，默认的分布式工作模式，对等架构可以避免单点故障，易于向集群扩充节点</p>
+<h3 id="es工作流程"><a href="#es工作流程" class="headerlink" title="es工作流程"></a>es工作流程</h3><h4 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h4><p>使用广播技术来发现同一个集群中的其他节点并与他们链接，集群中会有一个节点被选为管理节点，该节点复制集群的状态管理以及在集群拓扑变化时做出反应，分发索引分片到集群的相应节点上 </p>
+<h4 id="故障检测"><a href="#故障检测" class="headerlink" title="故障检测"></a>故障检测</h4><p>对每一个丢失的主分片，一个新的主分片将会从原来的主分片的副本中脱颖而出，新分片和副本的放置策略是可配置的，用户可以根据具体需求进行配置</p>
+<h4 id="索引数据"><a href="#索引数据" class="headerlink" title="索引数据"></a>索引数据</h4><p>索引操作只会发生在主分片上，当把一个索引请求发送至某节点时，如果该节点没有对应的主分片或者只有副本，那么这个请求会被转发到拥有正确的主分片的节点</p>
+<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><p>查询并不是一个简答的，单步骤的操作，一般来说，查询分为两个阶段，分散阶段和合并阶段</p>
+<p>（注：内容整理自《深入理解Elasticsearch》）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/elasticsearch-introduction/" data-title="Elasticsearch简介" data-url="http://wangnan.tech/post/elasticsearch-introduction/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/redis-introduction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Redis初识
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-Lucence简介"><span class="nav-number">1.</span> <span class="nav-text">Apache Lucence简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lucene总体架构"><span class="nav-number">1.2.</span> <span class="nav-text">lucene总体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒排索引"><span class="nav-number">1.3.</span> <span class="nav-text">倒排索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#段（segment）"><span class="nav-number">1.4.</span> <span class="nav-text">段（segment）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#段合并"><span class="nav-number">1.5.</span> <span class="nav-text">段合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档数据是如果转化为倒排索引的？"><span class="nav-number">1.6.</span> <span class="nav-text">文档数据是如果转化为倒排索引的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElasticSearch简介"><span class="nav-number">2.</span> <span class="nav-text">ElasticSearch简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">2.2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档"><span class="nav-number">2.3.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">2.4.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点"><span class="nav-number">2.5.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群"><span class="nav-number">2.6.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分片"><span class="nav-number">2.7.</span> <span class="nav-text">分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#副本"><span class="nav-number">2.8.</span> <span class="nav-text">副本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es架构背后的关键概念"><span class="nav-number">2.9.</span> <span class="nav-text">es架构背后的关键概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es工作流程"><span class="nav-number">2.10.</span> <span class="nav-text">es工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动过程"><span class="nav-number">2.10.1.</span> <span class="nav-text">启动过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#故障检测"><span class="nav-number">2.10.2.</span> <span class="nav-text">故障检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引数据"><span class="nav-number">2.10.3.</span> <span class="nav-text">索引数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询操作"><span class="nav-number">2.10.4.</span> <span class="nav-text">查询操作</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

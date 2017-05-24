@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用redis构建web应用 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="http://onxkn9cbz.bkt.clouddn.com/redis.png
+目录
+登录和cookie缓存cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务
+对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Redis构建web应用">
+<meta property="og:url" content="http://wangnan.tech/post/redis-webapp/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="http://onxkn9cbz.bkt.clouddn.com/redis.png
+目录
+登录和cookie缓存cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务
+对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（s">
+<meta property="og:image" content="http://wangnan.tech/post/redis-webapp/00.png">
+<meta property="og:image" content="http://wangnan.tech/post/redis-webapp/01.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.272Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Redis构建web应用">
+<meta name="twitter:description" content="http://onxkn9cbz.bkt.clouddn.com/redis.png
+目录
+登录和cookie缓存cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务
+对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（s">
+<meta name="twitter:image" content="http://wangnan.tech/post/redis-webapp/00.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-redis-webapp" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      使用Redis构建web应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/redis-webapp/" class="article-date">
+	  <time datetime="2017-03-15T08:53:44.000Z" itemprop="datePublished">2017-03-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://onxkn9cbz.bkt.clouddn.com/redis.png" target="_blank" rel="external">http://onxkn9cbz.bkt.clouddn.com/redis.png</a></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="/post/redis-webapp/00.png" alt="01"></p>
+<h2 id="登录和cookie缓存"><a href="#登录和cookie缓存" class="headerlink" title="登录和cookie缓存"></a>登录和cookie缓存</h2><p>cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务</p>
+<p>对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（signed）cookie一种是令牌（token）cookie</p>
+<a id="more"></a>
+<p>签名cookie通常会储存用户名，还可能有用户ID，用户最后一次成功登录的时间，以及网站觉得有用的其他信息，除此之外，cookie还会包含一个签名，服务器可以用它来验证浏览器发生的信息是否被改动（比如cookie中的登录用户名改成另一个用户）</p>
+<p>令牌cookie会在cookie里面储存一串随机字节作为令牌，服务器可以根据令牌在数据库中查找令牌的拥有者，随着时间的推移，旧令牌会被新令牌取代</p>
+<p> <img src="/post/redis-webapp/01.png" alt="01"></p>
+<p>redis实现令牌登录cookie：首先，我们将使用一个hash来储存登录cookie令牌和已登录用户之间的映射，要检查一个用户是否已经登录，需要根据给定的令牌来查找与之对应的用户，并在用户已经登录的情况下，返回该用户的id</p>
+<p>尝试获取并返回令牌对应的用户<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_token</span><span class="params">(conn,token)</span>:</span></div><div class="line">	<span class="keyword">return</span> conn.hget(<span class="string">'login:'</span>,token)</div></pre></td></tr></table></figure></p>
+<p>更新令牌：用户每次浏览页面的时候，程序都会对用户存储在登录hash里面的信息进行更新，并将用户的令牌和当前时间戳添加到记录最近登录用户的有序集合里面，如果用户正在浏览一个商品页面，那么程序还会将这个商品添加到记录这个用户最近浏览过的商品的有序集合里面，并在被记录的商品的数量超过25个时，对这个有序集合进行修剪</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_token</span><span class="params">(conn,token,user,item=None)</span>:</span></div><div class="line"> timestamp = time.time()  //获取当前时间戳</div><div class="line">	conn.hset(<span class="string">'login:'</span>,token,user) //维持令牌与用户之间的映射</div><div class="line">	conn.zadd(<span class="string">'recent'</span>,token,timestamp)//记录令牌最后一次出现的时间</div><div class="line">    	<span class="keyword">if</span> item：</div><div class="line">     	conn.zadd(<span class="string">'viewed:'</span>+token,item,timestamp) //记录用户浏览过的商品</div><div class="line">      conn.zremrangebyrank(<span class="string">'viewed:'</span>+token,<span class="number">0</span>,<span class="number">-26</span>)//移除旧的记录，只保存用户浏览过的<span class="number">25</span>个商品</div></pre></td></tr></table></figure>
+<p>储存会话的数据所需的内存会随着时间的推移不断增加，需要清理旧数据，只保存1000万个，清理程序是一个循环，检查集合的大小，超过了限制就移除最多100个旧令牌，并移除记录用户信息的hash信息，并清除浏览信息。如果没有要清理的，休眠1秒，在检查(附：使用redis过期时间，就可以在一段时间之后让redis自动删除他们)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">  QUIT = <span class="keyword">False</span></div><div class="line">  LIMIT = <span class="number">10000000</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">clean_sessions</span><span class="params">(conn)</span>:</span></div><div class="line">  	<span class="keyword">while</span> <span class="keyword">not</span> QUIT:</div><div class="line">//找出目前已有令牌的数量</div><div class="line">size = conn.zcard(<span class="string">'recent:'</span>)  </div><div class="line">//令牌数量未超过限制，休眠并在之后重新检查</div><div class="line"><span class="keyword">if</span> size &lt;= LIMIT:</div><div class="line">	time.sleep(<span class="number">1</span>)</div><div class="line">	<span class="keyword">continue</span></div><div class="line">//获取需要移除的令牌id</div><div class="line">end_index = min(size-LIMIT,<span class="number">100</span>)</div><div class="line">tokens = conn.zrange(<span class="string">'recent:'</span>,<span class="number">0</span>,end_index<span class="number">-1</span>)</div><div class="line">//为那些要被删除的令牌构建键名</div><div class="line">session_keys = []</div><div class="line">	<span class="keyword">for</span> token <span class="keyword">in</span> tokens:</div><div class="line">	session_keys.append(‘viewed:’+token)</div><div class="line">//移除旧的那些令牌</div><div class="line">conn,delete(*session_keys)</div><div class="line">conn.hdel(<span class="string">'login:'</span>,*tokens)</div><div class="line">conn.zrem(<span class="string">'recent'</span>,*tokens)</div></pre></td></tr></table></figure>
+<h2 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h2><p>每个用户的购物车是一个散列，这个散列储存了商品ID与商品订购数量之间的映射，对商品数量验证的工作由web应用程序复杂，我们要做的是在商品的订购数量发生变化的时候，对购物车进行更新<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   def add_to_cart(conn,session,count)</div><div class="line">if count &lt;=0;</div><div class="line"> conn.hrem('cart:'+session,item)</div><div class="line">else</div><div class="line"> conn.hset('cart:'+session,item,count)</div></pre></td></tr></table></figure></p>
+<h2 id="网页缓存"><a href="#网页缓存" class="headerlink" title="网页缓存"></a>网页缓存</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cache_request</span><span class="params">(conn,request,callback)</span>:</span></div><div class="line"> //对于不用背缓存的请求，直接调用回调函数</div><div class="line"> <span class="keyword">if</span> <span class="keyword">not</span> can_cache(conn,request);</div><div class="line">  <span class="keyword">return</span> callback(request)</div><div class="line"> //将请求装换成一个简单的字符串建。方便之后进	行查找</div><div class="line"> page_key = <span class="string">'cache:'</span>+hash_request(request)</div><div class="line"> //查找被缓存的页面</div><div class="line"> content = conn.get(request)</div><div class="line"> //如果页面还没有被缓存，那么生成页面</div><div class="line"> <span class="keyword">if</span> <span class="keyword">not</span> content:</div><div class="line">  content=callback(request)</div><div class="line">  //将新生成的页面放到缓存里</div><div class="line">  conn.setex(page_key,content,<span class="number">300</span>)</div><div class="line"> <span class="keyword">return</span> content</div></pre></td></tr></table></figure>
+<h2 id="数据行缓存"><a href="#数据行缓存" class="headerlink" title="数据行缓存"></a>数据行缓存</h2><p>为了应对促销活动带来的大量负载，我们需要对数据进行缓存，具体的做法是：编写一个持续运行的守护进程函数，让这个函数将指定数据行缓存到redis里面，并不定期地对缓存进行更新，数据将被转为json储存在redis的字符串里</p>
+<p>程序使用了两个zset，来记录应该在何时何地对缓存进行更新：第一个有序集合为调度有序集合，它的成员为数据行的行id，而分值是一个时间戳，记录了应该在何时将指定的数据行缓存到redis里面，第二个有序集合为延时zset，它的成员也是数据行的行id，而分值则记录了指定数据行的缓存需要每隔多少秒更新一次</p>
+<p>调度缓存和终止缓存的函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">schedule_row_cache</span><span class="params">(conn,row_id,delay)</span>:</span></div><div class="line"> //先设置数据行的延迟值</div><div class="line"> conn.zadd(<span class="string">'delay'</span>,row_id,delay)</div><div class="line">	//立即对需要缓存的数据进行调度</div><div class="line"> conn.zadd(<span class="string">'schedule‘，row_id,time.time())</span></div></pre></td></tr></table></figure></p>
+<p>复杂缓存数据的函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cache_rows</span><span class="params">(conn)</span>:</span></div><div class="line">   	<span class="keyword">while</span> <span class="keyword">not</span> QUIT:</div><div class="line">	    //尝试获取下一个需要被缓存的数据行以及该行的调度时间戳，命令会返回一个包含零个或一个元组的列表</div><div class="line">	next = conn.zrange(<span class="string">'schedule:'</span>,<span class="number">0</span>,<span class="number">0</span>,withscores=Ture)</div><div class="line">       now =  time.time()</div><div class="line">   //暂时没有行需要被缓存，休眠<span class="number">60</span>ms后重试 </div><div class="line">       <span class="keyword">if</span> <span class="keyword">not</span> next <span class="keyword">or</span> next[<span class="number">0</span>][<span class="number">1</span>]&gt;row</div><div class="line">    time.sleep(<span class="number">.05</span>)</div><div class="line">    <span class="keyword">continue</span></div><div class="line">        row_id = next[<span class="number">0</span>][<span class="number">0</span>]</div><div class="line">   //提前获取下一次调度的延迟时间</div><div class="line">           delay=conn.zscore(<span class="string">'delay'</span>,row_id)</div><div class="line">            <span class="keyword">if</span> delay &lt;=<span class="number">0</span>:</div><div class="line">        //不必缓存这个行，从他从缓存中移除</div><div class="line">        conn.zrem(<span class="string">'delay:'</span>,row_id)</div><div class="line">           conn.zrem(<span class="string">'schedule:'</span>,row_id)</div><div class="line">        conn.delete(<span class="string">'inv:'</span>+row_id)</div><div class="line">   	    <span class="keyword">continue</span></div><div class="line">   </div><div class="line">           //读取数据行，更新调度时间并设置缓存值</div><div class="line">           row = Inventory.get(row_id)</div><div class="line">           conn.zadd(<span class="string">'schedule:'</span>,row_id,now+delay)</div><div class="line">           conn.set(<span class="string">'inv'</span>+row_id,json.dump(row.to_dict()))</div></pre></td></tr></table></figure></p>
+<h2 id="网页分析"><a href="#网页分析" class="headerlink" title="网页分析"></a>网页分析</h2><p>在原来的update_token中<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">update_token</span><span class="params">(conn,token,user,item=None)</span>:</span></div><div class="line">    timestamp = time.time()  //获取当前时间戳</div><div class="line">    conn.hset(<span class="string">'login:'</span>,token,user) //维持令牌与用户之间的映射</div><div class="line">    conn.zadd(<span class="string">'recent'</span>,token,timestamp)//记录令牌最后一次出现的时间</div><div class="line"><span class="keyword">if</span> item：</div><div class="line">   conn.zadd(<span class="string">'viewed:'</span>+token,item,timestamp) //记录用户浏览过的商品</div><div class="line">   conn.zremrangebyrank(<span class="string">'viewed:'</span>+token,<span class="number">0</span>,<span class="number">-26</span>)//移除旧的记录，只保存用户浏览过的<span class="number">25</span>个商品</div><div class="line">   conn.zincrby(<span class="string">'viewed:'</span>item,<span class="number">-1</span>)</div></pre></td></tr></table></figure></p>
+<p>新添加的代码记录了商品的浏览次数，并根据浏览次数对商品进行了排序，被浏览的最多的商品将被放在有序集合的索引0的位置上，并且具有最少的分值<br>为了让商品浏览次数保持最新，我们需要定期修剪有序集合的长度并调整已有元素的分值，从而使得新流行的商品也可以在排行榜里面占据一席之地</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def rescale_viewed(conn);</div><div class="line"> while not QUIT:</div><div class="line">  //删除所有牌面在2万名之后的商品</div><div class="line">  conn.zremrangebyrank('viewed',0,-20001)</div><div class="line">  //将浏览次数降低为原来的一般</div><div class="line">  conn,zinterstore('viewed:' .5)</div><div class="line">        time.sleep(300)</div></pre></td></tr></table></figure>
+<p>修改之前的的can_cache()函数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  def can_cache(conn request);</div><div class="line">  	//尝试从页面里面获取商品id</div><div class="line">   item_id = extract_itrm_id(request)</div><div class="line">   //检查这个页面能否被缓存已经这个页面是否为商品页面</div><div class="line">   if not item_id or is_dynamic(request);</div><div class="line">return False</div><div class="line">      //获取商品的浏览次数牌面    </div><div class="line">      rank = conn,zrank('viewed',item_id)</div><div class="line">   根据排名判断是否需要被缓存</div><div class="line">      return rank is not None and rank&lt;10000</div></pre></td></tr></table></figure></p>
+<p>（注：内容整理自《redis实战》）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/redis-webapp/" data-title="使用Redis构建web应用" data-url="http://wangnan.tech/post/redis-webapp/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/java-concurrent01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Java多线程简介之基本概念、Thread类、Executor
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/read-youth/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">《年轻可以一无所有》读书笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录和cookie缓存"><span class="nav-number">2.</span> <span class="nav-text">登录和cookie缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#购物车"><span class="nav-number">3.</span> <span class="nav-text">购物车</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页缓存"><span class="nav-number">4.</span> <span class="nav-text">网页缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据行缓存"><span class="nav-number">5.</span> <span class="nav-text">数据行缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页分析"><span class="nav-number">6.</span> <span class="nav-text">网页分析</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

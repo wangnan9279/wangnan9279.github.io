@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java8-流-简介 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java8-流-简介">
+<meta property="og:url" content="http://wangnan.tech/post/java8-stream-introduction/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/02.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/03.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/04.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/05.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/06.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-introduction/07.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java8-流-简介">
+<meta name="twitter:description" content="几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-java8-stream-introduction" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Java8-流-简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java8-stream-introduction/" class="article-date">
+	  <time datetime="2017-05-08T05:33:09.000Z" itemprop="datePublished">2017-05-08</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<blockquote>
+<p>几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>很多业务逻辑都涉及类似于数据库的操作，比如对几道菜按照类别进行分组，查找出最贵的菜，大部分数据库都允许你声明式地指定这些操作，你不需要实现如何筛选，你只需要表达你想要的，都替你办好了，<strong>怎么到了集合就不能这样了呢？</strong></li>
+<li><strong>如果要处理大量元素该怎么办？为了提高性能，你需要并行处理</strong> ，并利用多核架构，但是写并行代码比迭代器还复制，调试困难</li>
+</ul>
+<p>为了解决这些问题，java语言的设计者做做些什么.你可能已经猜到了，答案就是<strong>流</strong></p>
+<h1 id="流是什么"><a href="#流是什么" class="headerlink" title="流是什么"></a>流是什么</h1><p>流是Java API的新成员，它允许你以声明性的方式处理数据集合（通过查询语句来表达，而不是临时写一个实现），你可以把他们看成遍历数据集的高级迭代器，此外，流还可以透明的并行处理，你无需写任何多线程的代码了</p>
+<h2 id="比较java7与java8"><a href="#比较java7与java8" class="headerlink" title="比较java7与java8"></a>比较java7与java8</h2><p>写一段返回低热量菜肴名称，并按照卡路里排序的代码</p>
+<p>java7：<br><img src="/post/java8-stream-introduction/01.png" alt=""></p>
+<p>java8:<br><img src="/post/java8-stream-introduction/02.png" alt=""><br>为了利用多核架构并行执行这段代码，你只需要把stream()缓存parallelStream()<br><img src="/post/java8-stream-introduction/03.png" alt=""></p>
+<h2 id="java8优势"><a href="#java8优势" class="headerlink" title="java8优势"></a>java8优势</h2><ul>
+<li>代码时声明式的，说明你想要完成什么，而不是说明如何实现</li>
+<li>你可以把几个基础操作连接起来，来表达复杂的数据操作流水线</li>
+<li>用不着为了任务并行而去操心线程和锁了，streamAPI都帮你做好了</li>
+</ul>
+<p>简而言之，java8 Stream</p>
+<ul>
+<li>声明性–更简洁，更易读</li>
+<li>可复用–更灵活</li>
+<li>可并行–性能更好</li>
+</ul>
+<h2 id="流简介"><a href="#流简介" class="headerlink" title="流简介"></a>流简介</h2><p>要讨论流我们先来谈谈集合，这是最容易上手的方式了，java8中的集合支持一歌新的stream方法，会返回一个流，<strong>当然还有很多其他的方法可以得到流，比如利用数据范围或从I/O资源生成流元素</strong></p>
+<h2 id="流定义"><a href="#流定义" class="headerlink" title="流定义"></a>流定义</h2><p>简单的定义就是，从支持数据处理操作的源生成的元素序列</p>
+<ul>
+<li>元素序列–集合讲的是数据，流讲的是计算</li>
+<li>源–流会使用一个提供数据的源，有序集合和列表生成的流，元素顺序会被执</li>
+<li>流水线 很多流操作本身返回一个流，这样多个操作就可以链接起来，形成一个大的流水线</li>
+<li>内部迭代–流的迭代操作是在背后进行的</li>
+</ul>
+<h1 id="流与集合对比"><a href="#流与集合对比" class="headerlink" title="流与集合对比"></a>流与集合对比</h1><p>粗略的说，集合与流之间的差异在于什么时候进行计算</p>
+<p>集合是一个内存中的数据结构，它包含数据解雇中目前所有的值</p>
+<p>流则是在概念上固定的数据结构，元素是按需计算的，那些值，在看不见的地方，只会按需生成，这是一种生产者-消费者关系，从另一个角度来说，流就是像一个延迟创建的集合，只有在消费者要求的时候才会计算值</p>
+<p>用DVD对比在线流媒体的例子展示流与集合之间的差异<br><img src="/post/java8-stream-introduction/04.png" alt=""></p>
+<h2 id="只能遍历一次"><a href="#只能遍历一次" class="headerlink" title="只能遍历一次"></a>只能遍历一次</h2><p><strong>流只能遍历一次，遍历完了之后，我们说这个流已经被消费掉了</strong><br>你可以从原始数据哪里再获得一个新的流来重新遍历一遍，就想迭代器一样</p>
+<h2 id="外部迭代与内部迭代"><a href="#外部迭代与内部迭代" class="headerlink" title="外部迭代与内部迭代"></a>外部迭代与内部迭代</h2><p><img src="/post/java8-stream-introduction/05.png" alt=""></p>
+<h1 id="流操作"><a href="#流操作" class="headerlink" title="流操作"></a>流操作</h1><p>流操作可以分为两大类，我们看下前面的例子：<br><img src="/post/java8-stream-introduction/06.png" alt=""></p>
+<ul>
+<li>filter、map、limit可以连成一条流水线</li>
+<li>collect触发流水线执行并关闭它</li>
+</ul>
+<p>可以连接起来的流操作称为<strong>中间操作</strong>，关闭流的操作称为<strong>终端操作</strong></p>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><p>触发流水线上触发一个终端操作，否则中间操作不会执行任何处理，<strong>他们很懒，这是因为中间操作一般都可以合并起来，在终端操作时一次性全部处理，只使用一次遍历</strong></p>
+<h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><p>终端操作会从流的流水线生成结果，其结果是任何不是流的值，比如List，Integer,甚至是void</p>
+<h2 id="使用流"><a href="#使用流" class="headerlink" title="使用流"></a>使用流</h2><p>流的使用一般包括三件事：</p>
+<ul>
+<li>一个数据源来执行一个查询</li>
+<li>一个中间操作链，形成一条流的流水线</li>
+<li>一个终端操作，执行流水线，并生成结果</li>
+</ul>
+<p>操作列表(不完全，以后还会介绍更多)：<br><img src="/post/java8-stream-introduction/07.png" alt=""></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>流是“从支持数据处理操作的源生成的一系列元素”</li>
+<li>流利用内部迭代</li>
+<li>流操作有两类：中间操作和终端操作</li>
+<li>中间操作返回一个流，并可以链接在一起，可以用他们来设置一条流水线，但并不会生成任何结果</li>
+<li>终端操作会返回一个非流的值，并处理流水线的返回结构</li>
+<li>流中的元素是按需计算的</li>
+</ul>
+<p>（注：内容整理自《Java8实战》）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/java8-stream-introduction/" data-title="Java8-流-简介" data-url="http://wangnan.tech/post/java8-stream-introduction/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/java8-stream-use/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Java8-流-使用流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/java8-lambda/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Java8-Lambda表达式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#流是什么"><span class="nav-number">1.</span> <span class="nav-text">流是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较java7与java8"><span class="nav-number">1.1.</span> <span class="nav-text">比较java7与java8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java8优势"><span class="nav-number">1.2.</span> <span class="nav-text">java8优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流简介"><span class="nav-number">1.3.</span> <span class="nav-text">流简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流定义"><span class="nav-number">1.4.</span> <span class="nav-text">流定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流与集合对比"><span class="nav-number">2.</span> <span class="nav-text">流与集合对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#只能遍历一次"><span class="nav-number">2.1.</span> <span class="nav-text">只能遍历一次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部迭代与内部迭代"><span class="nav-number">2.2.</span> <span class="nav-text">外部迭代与内部迭代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流操作"><span class="nav-number">3.</span> <span class="nav-text">流操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间操作"><span class="nav-number">3.1.</span> <span class="nav-text">中间操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端操作"><span class="nav-number">3.2.</span> <span class="nav-text">终端操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用流"><span class="nav-number">3.3.</span> <span class="nav-text">使用流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>

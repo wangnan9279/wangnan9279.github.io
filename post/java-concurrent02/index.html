@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源 | wangnan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="test" />
+  
+  
+    <meta name="google-site-verification" content="m-83mQd_WNC6HTi4p9F2Y_kgNL2y7M-9WFGfJYml1xg" />
+  
+  
+    <meta name="baidu-site-verification" content="true" />
+  
+  
+  <meta name="description" content="休眠影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。例程：123456789101112131415161718192021222324252627//: concurrency/SleepingTask.java// Calling sleep() to pause for a while.import java.util.concurrent.*;public cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源">
+<meta property="og:url" content="http://wangnan.tech/post/java-concurrent02/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="休眠影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。例程：123456789101112131415161718192021222324252627//: concurrency/SleepingTask.java// Calling sleep() to pause for a while.import java.util.concurrent.*;public cl">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
+<meta property="og:updated_time" content="2017-05-24T01:52:07.238Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源">
+<meta name="twitter:description" content="休眠影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。例程：123456789101112131415161718192021222324252627//: concurrency/SleepingTask.java// Calling sleep() to pause for a while.import java.util.concurrent.*;public cl">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
+  
+  <link rel="icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  <link rel="apple-touch-icon" href="/http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://onxkn9cbz.bkt.clouddn.com/coldplay.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/read">阅读</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-java-concurrent02" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java-concurrent02/" class="article-date">
+	  <time datetime="2017-03-16T06:36:33.000Z" itemprop="datePublished">2017-03-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java.png" alt=""></p>
+<h1 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h1><p>影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。<br>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/SleepingTask.java</span></div><div class="line"><span class="comment">// Calling sleep() to pause for a while.</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SleepingTask</span> <span class="keyword">extends</span> <span class="title">LiftOff</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">while</span>(countDown-- &gt; <span class="number">0</span>) &#123;</div><div class="line">        System.out.print(status());</div><div class="line">        <span class="comment">// Old-style:</span></div><div class="line">        <span class="comment">// Thread.sleep(100);</span></div><div class="line">        <span class="comment">// Java SE5/6-style:</span></div><div class="line">        TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">      System.err.println(<span class="string">"Interrupted"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> SleepingTask());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">#0(9), #1(9), #2(9), #3(9), #4(9), #0(8), #1(8), #2(8), #3(8), #4(8), #0(7), #1(7), #2(7), #3(7), #4(7), #0(6), #1(6), #2(6), #3(6), #4(6), #0(5), #1(5), #2(5), #3(5), #4(5), #0(4), #1(4), #2(4), #3(4), #4(4), #0(3), #1(3), #2(3), #3(3), #4(3), #0(2), #1(2), #2(2), #3(2), #4(2), #0(1), #1(1), #2(1), #3(1), #4(1), #0(Liftoff!), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>对sleep的调用可以抛出InterruptedException异常，并且你可以看到，它在main()中被捕获，因为异常不能跨越线程传播回main()，所以你必须在本地处理所有在任务内部产生的异常。</p>
+<a id="more"></a>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>线程的优先级先线程的重要性传递给调度器，尽管cpu处理现有线程集的顺序是不确定的，但是调度器更倾向于让优先级更高的线程先执行。线程优先级较低的线程不是不执行，仅仅是执行的频率较低。</p>
+<p>getPriority()读取现有的优先级<br>setPriority()来修改它</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/SimplePriorities.java</span></div><div class="line"><span class="comment">// Shows the use of thread priorities.</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplePriorities</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> countDown = <span class="number">5</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">double</span> d; <span class="comment">// No optimization</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> priority;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SimplePriorities</span><span class="params">(<span class="keyword">int</span> priority)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.priority = priority;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> Thread.currentThread() + <span class="string">": "</span> + countDown;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    Thread.currentThread().setPriority(priority);</div><div class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">      <span class="comment">// An expensive, interruptable operation:</span></div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">100000</span>; i++) &#123;</div><div class="line">        d += (Math.PI + Math.E) / (<span class="keyword">double</span>)i;</div><div class="line">        <span class="keyword">if</span>(i % <span class="number">1000</span> == <span class="number">0</span>)</div><div class="line">          Thread.yield();</div><div class="line">      &#125;</div><div class="line">      System.out.println(<span class="keyword">this</span>);</div><div class="line">      <span class="keyword">if</span>(--countDown == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(</div><div class="line">        <span class="keyword">new</span> SimplePriorities(Thread.MIN_PRIORITY));</div><div class="line">    exec.execute(</div><div class="line">        <span class="keyword">new</span> SimplePriorities(Thread.MAX_PRIORITY));</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (70% match)</span></div><div class="line">Thread[pool-1-thread-6,10,main]: 5</div><div class="line">Thread[pool-1-thread-6,10,main]: 4</div><div class="line">Thread[pool-1-thread-6,10,main]: 3</div><div class="line">Thread[pool-1-thread-6,10,main]: 2</div><div class="line">Thread[pool-1-thread-6,10,main]: 1</div><div class="line">Thread[pool-1-thread-3,1,main]: 5</div><div class="line">Thread[pool-1-thread-2,1,main]: 5</div><div class="line">Thread[pool-1-thread-1,1,main]: 5</div><div class="line">Thread[pool-1-thread-5,1,main]: 5</div><div class="line">Thread[pool-1-thread-4,1,main]: 5</div><div class="line">...</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>通过Thread.currentThread()来获取对驱动该任务的Thread对象的引用</p>
+<p>尽管JDK有10个优先级，但它与多数操作系统都不能映射得很好，唯一可移植的方法是当调整优先级的时候。只使用 MAX_PRIORITY NORM_PRIORITY MIN_PRIORITY 三种级别</p>
+<h1 id="让步"><a href="#让步" class="headerlink" title="让步"></a>让步</h1><p>如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程调度机制一个暗示：你的工作已近做的差不多了，可以让别的线程使用CPU了，这个暗示将通过调用yield()方法作出（不过这只是一个暗示，没有任何机制保证它将被采纳），当调用yield()时，你也是在建议具有相同优先级的其他线程可以运行</p>
+<h1 id="后台线程"><a href="#后台线程" class="headerlink" title="后台线程"></a>后台线程</h1><p>后台线程(deamon)线程，又叫守护线程，是指程序运行的时候在后台提供的一种通用服务线程。这种线程不属于程序中不可或缺的部分，因此，当所有非后台线程结束时，程序也就终止了，同时会杀死进程中的所有后台线程</p>
+<p>必须在线程启动调用setDeamon()方法，才能把它设置为后台线程</p>
+<p>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/SimpleDaemons.java</span></div><div class="line"><span class="comment">// Daemon threads don't prevent the program from ending.</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleDaemons</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">        TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</div><div class="line">        print(Thread.currentThread() + <span class="string">" "</span> + <span class="keyword">this</span>);</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">      print(<span class="string">"sleep() interrupted"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">      Thread daemon = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SimpleDaemons());</div><div class="line">      daemon.setDaemon(<span class="keyword">true</span>); <span class="comment">// Must call before start()</span></div><div class="line">      daemon.start();</div><div class="line">    &#125;</div><div class="line">    print(<span class="string">"All daemons started"</span>);</div><div class="line">    TimeUnit.MILLISECONDS.sleep(<span class="number">175</span>);</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (Sample)</span></div><div class="line">All daemons started</div><div class="line">Thread[Thread-0,5,main] SimpleDaemons@530daa</div><div class="line">Thread[Thread-1,5,main] SimpleDaemons@a62fc3</div><div class="line">Thread[Thread-2,5,main] SimpleDaemons@89ae9e</div><div class="line">Thread[Thread-3,5,main] SimpleDaemons@1270b73</div><div class="line">Thread[Thread-4,5,main] SimpleDaemons@60aeb0</div><div class="line">Thread[Thread-5,5,main] SimpleDaemons@16caf43</div><div class="line">Thread[Thread-6,5,main] SimpleDaemons@66848c</div><div class="line">Thread[Thread-7,5,main] SimpleDaemons@8813f2</div><div class="line">Thread[Thread-8,5,main] SimpleDaemons@1d58aae</div><div class="line">Thread[Thread-9,5,main] SimpleDaemons@83cc67</div><div class="line">...</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>可以调用isDeamon()方法来确定线程是否是一个后台线程，如果是一个后台线程，那么它创建的任何线程将被自动设置成后台线程</p>
+<p>当最后一个非后台线程终止时，后台线程会“突然”终止。</p>
+<h1 id="加入一个线程"><a href="#加入一个线程" class="headerlink" title="加入一个线程"></a>加入一个线程</h1><p>一个线程在其他线程上调用join()方法，其效果是等待一段时间直到第二个线程结束才继续执行，如果某个线程在另一个线程t上调用t.join()，此线程将被挂起。直到目标线程t结束才恢复</p>
+<p>也可以在调用join()时带上一个超时参数，这样如果目标线程在这段时间到期时还没有结束的话，join()方法总能返回。</p>
+<p>对join()方法的调用可以被中断，做法是在线程上调用interrupt()方法，这需要用到try-catch子句</p>
+<h1 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h1><p>由于线程的本质特性，使得你不能捕获从线程中逃逸的异常，一旦异常逃逸任务的run()方法，他就会向外传播到控制台，除非你采取特殊的步骤捕获这种错误的异常</p>
+<p>Thread.UncaughtExceptionHandler是Java SE5中的新接口 ，它允许你在每个Thread对象上附着一个异常处理器</p>
+<p>Thread.UncaughtExceptionHandler的uncaughtException()方法会在线程因未捕获的异常而临近死亡时被调用。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/CaptureUncaughtException.java</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExceptionThread2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    System.out.println(<span class="string">"run() by "</span> + t);</div><div class="line">    System.out.println(</div><div class="line">      <span class="string">"eh = "</span> + t.getUncaughtExceptionHandler());</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUncaughtExceptionHandler</span> <span class="keyword">implements</span></span></div><div class="line"><span class="title">Thread</span>.<span class="title">UncaughtExceptionHandler</span> &#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread t, Throwable e)</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"caught "</span> + e);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HandlerThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</div><div class="line">    System.out.println(<span class="keyword">this</span> + <span class="string">" creating new Thread"</span>);</div><div class="line">    Thread t = <span class="keyword">new</span> Thread(r);</div><div class="line">    System.out.println(<span class="string">"created "</span> + t);</div><div class="line">    t.setUncaughtExceptionHandler(</div><div class="line">      <span class="keyword">new</span> MyUncaughtExceptionHandler());</div><div class="line">    System.out.println(</div><div class="line">      <span class="string">"eh = "</span> + t.getUncaughtExceptionHandler());</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaptureUncaughtException</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool(</div><div class="line">      <span class="keyword">new</span> HandlerThreadFactory());</div><div class="line">    exec.execute(<span class="keyword">new</span> ExceptionThread2());</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output: (90% match)</span></div><div class="line">HandlerThreadFactory@de6ced creating new Thread</div><div class="line">created Thread[Thread-0,5,main]</div><div class="line">eh = MyUncaughtExceptionHandler@1fb8ee3</div><div class="line">run() by Thread[Thread-0,5,main]</div><div class="line">eh = MyUncaughtExceptionHandler@1fb8ee3</div><div class="line">caught java.lang.RuntimeException</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<h1 id="共享受限资源"><a href="#共享受限资源" class="headerlink" title="共享受限资源"></a>共享受限资源</h1><p>对于并发工作，你需要某种方式来防止两个任务访问相同的资源，至少关键阶段不能出现这种现象</p>
+<p>基本上所有的并发模式在解决线程冲突问题的时候，都是采取序列化访问共享资源的方案</p>
+<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>Java以提供关键字synchronized的形式，为防止资源冲突提供了内置支持<br>要控制对共享资源的访问，得先把它包装进一个对象</p>
+<h2 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h2><p>Lock对象必须显示的创建、锁定和释放。与synchronized的形式的相比，代码缺乏优雅性。但是，对于解决某些类型的问题来说。它更加灵活。</p>
+<p>如果使用synchronized关键字，某些事物失败了，那么就会抛出一个异常。但是你没有机会去做任何清理工作。以维护系统使其处于良好状态。有了显示的Lock对象，你就可以使用finally子句将系统维护在正常的状态了。</p>
+<h2 id="volatilez"><a href="#volatilez" class="headerlink" title="volatilez"></a>volatilez</h2><p>JVM可以将64位（long和double变量）读取和写入当做两个分离的32来执行，这就产生了一个在读取和写入操作中间发生上下文切换，从而导致不同任务可以看到不正确的结果的可能性（这有时被称为字撕裂）</p>
+<p>当定义long和double变量时，如果使用volatile关键字，就会获取原子性</p>
+<p>如果一个域完全由synchronized方法或语句块来保护，那就不必将其设置为是volatile的</p>
+<p>当一个域的值依赖于它之前的值时，volatile就无法工作了。如果某个域的值受到其他域的值的限制。那么volatile也无法工作。使用volatile而不是synchronized的唯一安全的情况是类中只有一个可变的域。</p>
+<h2 id="同步控制块"><a href="#同步控制块" class="headerlink" title="同步控制块"></a>同步控制块</h2><p>有时我们只希望防止多个线程同时访问方法内部的部分代码而不是防止访问整个方法，通过这种方式分离出来的代码段被称为临界区，她也使用synchronized关键字，这里synchronized被用来指定某对象，此对象的锁被用来对花括号内的代码进行同步控制</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span>(syncObject)&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在进入此段代码前，必须得到syncObject对象的锁。如果其他线程也已经得到这个锁，那么就要等到锁被释放以后，才能进入临界区。</p>
+<p>使用它的好处是，可以使多个任务访问对象的时间性能得到显著提高</p>
+<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><p>防止任务在共享资源上产生冲突的第二种方式是根除对变量的共享，线程本地是一种自动化机制，可以使用相同变量的每个不同线程都创建不同的存储，</p>
+<p>get()方法将返回与其线程相关联的对象的副本，而set()会将参数数据插入到为其线程储存的对象中。</p>
+<p>（注：内容整理自《Thinking in Java》）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/post/java-concurrent02/" data-title="Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源" data-url="http://wangnan.tech/post/java-concurrent02/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wangnan9279"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/post/mybatis-where-trim/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Mybatis-trim标签
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/java-concurrent01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Java多线程简介之基本概念、Thread类、Executor</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#休眠"><span class="nav-number">1.</span> <span class="nav-text">休眠</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优先级"><span class="nav-number">2.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让步"><span class="nav-number">3.</span> <span class="nav-text">让步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后台线程"><span class="nav-number">4.</span> <span class="nav-text">后台线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加入一个线程"><span class="nav-number">5.</span> <span class="nav-text">加入一个线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常捕获"><span class="nav-number">6.</span> <span class="nav-text">异常捕获</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#共享受限资源"><span class="nav-number">7.</span> <span class="nav-text">共享受限资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized"><span class="nav-number">7.1.</span> <span class="nav-text">synchronized</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lock"><span class="nav-number">7.2.</span> <span class="nav-text">Lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatilez"><span class="nav-number">7.3.</span> <span class="nav-text">volatilez</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步控制块"><span class="nav-number">7.4.</span> <span class="nav-text">同步控制块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">8.</span> <span class="nav-text">ThreadLocal</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 wangnan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/read" class="mobile-nav-link">Read</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            wangnan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 wangnan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+</body>
+</html>
