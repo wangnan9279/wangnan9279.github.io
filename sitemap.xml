@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/redis-introduction/</loc>
+    
+    <lastmod>2017-05-24T08:46:27.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    
+    <lastmod>2017-05-24T08:46:24.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
+    
+    <lastmod>2017-05-24T08:46:20.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-webapp/</loc>
+    
+    <lastmod>2017-05-24T08:46:11.842Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/soup01/</loc>
     
     <lastmod>2017-05-24T08:20:37.671Z</lastmod>
@@ -110,34 +138,6 @@
     <loc>http://wangnan.tech/read/index.html</loc>
     
     <lastmod>2017-05-24T01:52:07.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-webapp/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.272Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-progression/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.271Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-introduction/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.270Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
-    
-    <lastmod>2017-05-24T01:52:07.268Z</lastmod>
     
   </url>
   
