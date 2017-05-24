@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-05-24T08:06:16.156Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/soup13/</loc>
     
     <lastmod>2017-05-24T06:36:36.222Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://wangnan.tech/read/index.html</loc>
     
     <lastmod>2017-05-24T01:52:07.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-05-24T01:52:07.273Z</lastmod>
     
   </url>
   
