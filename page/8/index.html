@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-elasticsearch-update"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-mybatis-where-trim"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-update/">Elasticsearch数据更新API</a>
+      <a class="article-title" href="/post/mybatis-where-trim/">Mybatis-trim标签</a>
     </h1>
   
 
@@ -187,245 +187,8 @@
     
     <div class="article-meta">
       
-	<a href="/post/elasticsearch-update/" class="article-date">
-	  <time datetime="2017-03-22T08:26:59.000Z" itemprop="datePublished">2017-03-22</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<ul>
-<li>简单字段更新</li>
-<li>使用脚本按条件更新</li>
-<li>使用更新api创建或删除文档</li>
-</ul>
-</blockquote>
-        <!-- 
-
-
-简单字段更新
-使用脚本按条件更新
-使用更新api创建或删除文档
-
-
-
-为什么我们无法真的更新索引中的文档在索引一个新文档的时候，lucene会对每个字段进行分析并产生词条流，词条流中的词条可以会经过过滤器的额外处理，而没有过滤掉的词条会写入倒排索引中，索引过程中，一些不需要的信息可能被抛弃，这些信息包括：
-
-某些特殊的词条位置（当词向量没有储存时）
-特定词汇（停用词或同义词）
-词条的变......  -->
-        <p class="article-more-link">
-          <a href="/post/elasticsearch-update/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-elasticsearch-sort"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-sort/">Elasticsearch排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/elasticsearch-sort/" class="article-date">
-	  <time datetime="2017-03-21T03:02:09.000Z" itemprop="datePublished">2017-03-21</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
-</blockquote>
-<p>下面的例子就容易做到：<br><img src="/post/elasticsearch-sort/01.png" alt="01"><br>该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序</p>
-<p><strong>也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为</strong><br><img src="/post/elasticsearch-sort/02.png" alt="02"></p>
-        <!-- 
-
-当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
-
-下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
-也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为
-
-基于多值字段的排序某些文档的release......  -->
-        <p class="article-more-link">
-          <a href="/post/elasticsearch-sort/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-elasticsearch-bulk"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-bulk/">Elasticsearch批量操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/elasticsearch-bulk/" class="article-date">
-	  <time datetime="2017-03-21T02:10:02.000Z" itemprop="datePublished">2017-03-21</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>elasticsearch提供了批量操作来读取数据和检索</p>
-</blockquote>
-<h1 id="批量取"><a href="#批量取" class="headerlink" title="批量取"></a>批量取</h1><p>可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，<strong>而不论这些文档可用于搜索还是暂时对查询不可见</strong><br></p>
-        <!-- 
-
-elasticsearch提供了批量操作来读取数据和检索
-
-批量取可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，而不论这些文档可用于搜索还是暂时对查询不可见查看下面的操作：elasticsearch返回如下形式的文档：前面的范例还可以写成如下的更紧凑的形式：这种形式便于获取不同文档有不同目标索引及类型我们来看下面这个查询：该查询返回了......  -->
-        <p class="article-more-link">
-          <a href="/post/elasticsearch-bulk/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-elasticsearch-rescore"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-rescore/">Elasticsearch二次评分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/elasticsearch-rescore/" class="article-date">
-	  <time datetime="2017-03-20T08:33:12.000Z" itemprop="datePublished">2017-03-20</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>二次评分给了用户很多机会来定制业务逻辑</p>
-</blockquote>
-<h1 id="理解二次评分"><a href="#理解二次评分" class="headerlink" title="理解二次评分"></a>理解二次评分</h1><p>二次评分是指重新计算查询返回文档中<strong>指定个数文档</strong>的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分</p>
-<h1 id="二次评分查询结构"><a href="#二次评分查询结构" class="headerlink" title="二次评分查询结构"></a>二次评分查询结构</h1><p>从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响</p>
-        <!-- 
-
-二次评分给了用户很多机会来定制业务逻辑
-
-理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分
-二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响
-
-查询范例如下：
-改查询将每一个文档的得分......  -->
-        <p class="article-more-link">
-          <a href="/post/elasticsearch-rescore/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mybatis-cache"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybatis-cache/">MyBatis二级缓存</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/mybatis-cache/" class="article-date">
-	  <time datetime="2017-03-20T07:19:03.000Z" itemprop="datePublished">2017-03-20</time>
+	<a href="/post/mybatis-where-trim/" class="article-date">
+	  <time datetime="2017-03-16T08:11:20.000Z" itemprop="datePublished">2017-03-16</time>
 	</a>
 
       
@@ -436,17 +199,15 @@ elasticsearch提供了批量操作来读取数据和检索
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
 <blockquote>
-<p>MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。</p>
-</blockquote>
+<p>今天遇到一个场景需要写一个这样的查询语句：<br>用户对象userInfo包含下面几个字段：<br>userName phone email qqId weiboId wxId<br></p></blockquote>
         <!-- 
 
-MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。
+今天遇到一个场景需要写一个这样的查询语句：用户对象userInfo包含下面几个字段：userName phone email qqId weiboId wxId
 
-
-MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。
-使用配置......  -->
+现在新注册用户，传过来一个注册userInfo对象，现在要到数据库中验证状态status=1 （表示激活的用户）的用户中，是否存在一个用户，只要它这些字段中至少有一个与新注册的对象对应的字段内容相同，那就说明重复注册。
+翻译成......  -->
         <p class="article-more-link">
-          <a href="/post/mybatis-cache/#more">阅读全文</a>
+          <a href="/post/mybatis-where-trim/#more">阅读全文</a>
         </p>
       
     </div>
@@ -454,6 +215,219 @@ MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较�
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-java-concurrent02"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/java-concurrent02/">Java多线程简介之休眠、优先级、让步、后台线程、加入一个线程、异常捕获、共享受限资源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java-concurrent02/" class="article-date">
+	  <time datetime="2017-03-16T06:36:33.000Z" itemprop="datePublished">2017-03-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java.png" alt=""></p>
+<h1 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h1><p>影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。<br>例程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//: concurrency/SleepingTask.java</span></div><div class="line"><span class="comment">// Calling sleep() to pause for a while.</span></div><div class="line"><span class="keyword">import</span> java.util.concurrent.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SleepingTask</span> <span class="keyword">extends</span> <span class="title">LiftOff</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">while</span>(countDown-- &gt; <span class="number">0</span>) &#123;</div><div class="line">        System.out.print(status());</div><div class="line">        <span class="comment">// Old-style:</span></div><div class="line">        <span class="comment">// Thread.sleep(100);</span></div><div class="line">        <span class="comment">// Java SE5/6-style:</span></div><div class="line">        TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">      System.err.println(<span class="string">"Interrupted"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ExecutorService exec = Executors.newCachedThreadPool();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">      exec.execute(<span class="keyword">new</span> SleepingTask());</div><div class="line">    exec.shutdown();</div><div class="line">  &#125;</div><div class="line">&#125; <span class="comment">/* Output:</span></div><div class="line">#0(9), #1(9), #2(9), #3(9), #4(9), #0(8), #1(8), #2(8), #3(8), #4(8), #0(7), #1(7), #2(7), #3(7), #4(7), #0(6), #1(6), #2(6), #3(6), #4(6), #0(5), #1(5), #2(5), #3(5), #4(5), #0(4), #1(4), #2(4), #3(4), #4(4), #0(3), #1(3), #2(3), #3(3), #4(3), #0(2), #1(2), #2(2), #3(2), #4(2), #0(1), #1(1), #2(1), #3(1), #4(1), #0(Liftoff!), #1(Liftoff!), #2(Liftoff!), #3(Liftoff!), #4(Liftoff!),</div><div class="line">*/<span class="comment">//:~</span></div></pre></td></tr></table></figure></p>
+<p>对sleep的调用可以抛出InterruptedException异常，并且你可以看到，它在main()中被捕获，因为异常不能跨越线程传播回main()，所以你必须在本地处理所有在任务内部产生的异常。</p>
+        <!-- 
+休眠影响任务的一种简单方式是调用sleep（），这将使任务中止执行给定的时间。例程：123456789101112131415161718192021222324252627//: concurrency/SleepingTask.java// Calling sleep() to pause for a while.import java.util.concurrent.*;public......  -->
+        <p class="article-more-link">
+          <a href="/post/java-concurrent02/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-java-concurrent01"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/java-concurrent01/">Java多线程简介之基本概念、Thread类、Executor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/java-concurrent01/" class="article-date">
+	  <time datetime="2017-03-16T06:19:15.000Z" itemprop="datePublished">2017-03-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java.png" alt=""></p>
+<blockquote>
+<p>在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤<br>并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。<br>因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写出可靠的多线程代码。</p>
+</blockquote>
+<h1 id="并发的多面性"><a href="#并发的多面性" class="headerlink" title="并发的多面性"></a>并发的多面性</h1><p>用并发解决的问题大体上可以分为“速度”和“设计可管理性”两种</p>
+<p>如果程序中的某个任务因为改程序控制范围外的某些条件（通常是I/O）而导致不能继续执行，那么我们就说这个任务或线程阻塞了，如果没有并发，则整个程序都将停止下来，直至外部条件发生变化。但是，如果使用并发来编写程序，那么当一个任务发生阻塞时，程序中的其他任务还可以继续执行。因此这个任务可以保持继续向前执行。</p>
+        <!-- 
+
+在没有接触并发编程概念之前，你学到的都是有关顺序编程的知识，即程序中的所以事物在任意时刻都只能执行一个步骤并行编程可以使程序执行速度得到极大的提高，或者为设计某些类型的程序提供更易用的模型，或者两者皆有。当并行执行的任务彼此开始产生互相干涉时，实际的并发问题就会接踵而至。这些并发问题，如果视而不见，就会遭到其反噬。因此，使用并发时你得自食其力，并且只有变得多疑而且自信，才能用Java编写......  -->
+        <p class="article-more-link">
+          <a href="/post/java-concurrent01/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-redis-webapp"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/redis-webapp/">使用Redis构建web应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/redis-webapp/" class="article-date">
+	  <time datetime="2017-03-15T08:53:44.000Z" itemprop="datePublished">2017-03-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/redis.png" alt=""></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="/post/redis-webapp/00.png" alt="01"></p>
+<h2 id="登录和cookie缓存"><a href="#登录和cookie缓存" class="headerlink" title="登录和cookie缓存"></a>登录和cookie缓存</h2><p>cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务</p>
+<p>对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（signed）cookie一种是令牌（token）cookie</p>
+        <!-- 
+目录
+登录和cookie缓存cookie：当我们登录互联网服务的时候，这些服务都会使用cookie来记录我们的身份，cookie由少量数据组成，网站会要求我们的浏览器存储这些数据，并在每次服务发生请求时将这些数据传回给服务
+对于用来登录的cookie，有两种方法可以将登录信息储存在cookie里面，一种是签名（signed）cookie一种是令牌（token）cookie
+
+签名cooki......  -->
+        <p class="article-more-link">
+          <a href="/post/redis-webapp/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-read-youth"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/read-youth/">《年轻可以一无所有》读书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/read-youth/" class="article-date">
+	  <time datetime="2017-03-15T08:45:10.000Z" itemprop="datePublished">2017-03-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" alt=""></p>
+<blockquote>
+<p>青春五千日 人生三万天</p>
+</blockquote>
+<p>你要盯住有限的几个机会，把手艺越磨越精，最后才能再众多对手的竞争中胜出，速成文化，也许让位与专精文化。年轻人的心态要改。不是什么事情稍微玩儿几年就会成大器的。你也许真要“十年磨一剑”，甚至在此之后还要付出长年的努力，最终才会有理想的结果。</p>
+<p>在一个正常的社会，年轻人就是应该一无所有的。难道生活刚起步，就应该指望别人给你许多许多吗？拜托，你有没有想过给了别人什么？凭什么向别人索取。</p>
+<p>大家总是盯着自己没有的东西，并为之死去活来的争，恨不得把什么都搭上，却不珍视自己所拥有的，不觉得那有什么价值。《纽约时报》著名专栏作家戴维布鲁克斯又一次吐露了真言：大概所以功成名就的中年人，都宁愿把自己的金钱和地位统统放弃来换回年轻！</p>
+        <!-- 
+
+青春五千日 人生三万天
+
+你要盯住有限的几个机会，把手艺越磨越精，最后才能再众多对手的竞争中胜出，速成文化，也许让位与专精文化。年轻人的心态要改。不是什么事情稍微玩儿几年就会成大器的。你也许真要“十年磨一剑”，甚至在此之后还要付出长年的努力，最终才会有理想的结果。
+在一个正常的社会，年轻人就是应该一无所有的。难道生活刚起步，就应该指望别人给你许多许多吗？拜托，你有没有想过给了别人什么？凭......  -->
+        <p class="article-more-link">
+          <a href="/post/read-youth/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>

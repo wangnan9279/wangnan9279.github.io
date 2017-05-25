@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-rabbitMQ-persistence"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearch-rescore"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-persistence/">RabbitMQ-理解消息通信-持久化策略</a>
+      <a class="article-title" href="/post/elasticsearch-rescore/">Elasticsearch二次评分</a>
     </h1>
   
 
@@ -187,110 +187,40 @@
     
     <div class="article-meta">
       
-	<a href="/post/rabbitMQ-persistence/" class="article-date">
-	  <time datetime="2017-04-01T05:51:23.000Z" itemprop="datePublished">2017-04-01</time>
+	<a href="/post/elasticsearch-rescore/" class="article-date">
+	  <time datetime="2017-03-20T08:33:12.000Z" itemprop="datePublished">2017-03-20</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false</p>
-<p><strong>durable</strong>属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）<br>将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了</p>
-<p>把这个属性设置为true不足以让消息幸免于重启，光这样还不够</p>
-<p><strong>如果想要从Rabbit崩溃中恢复，那么消息必须做到这三点：</strong></p>
-<ul>
-<li>把它的投递模式选项设置为2（持久）</li>
-<li>发送到持久化的交换器</li>
-<li>到达持久化队列</li>
-</ul>
-        <!-- 
-概述重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false
-durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了
-把这个属性设置为true不足以让消息幸免于重启，光这样还不够
-如果想要从Rabbit崩溃......  -->
-        <p class="article-more-link">
-          <a href="/post/rabbitMQ-persistence/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-rabbitMQ-vhost"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-vhost/">RabbitMQ-理解消息通信-虚拟主机和隔离</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/rabbitMQ-vhost/" class="article-date">
-	  <time datetime="2017-04-01T02:35:48.000Z" itemprop="datePublished">2017-04-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
 <blockquote>
-<p>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</p>
+<p>二次评分给了用户很多机会来定制业务逻辑</p>
 </blockquote>
-<h1 id="多租户模式：虚拟主机和隔离"><a href="#多租户模式：虚拟主机和隔离" class="headerlink" title="多租户模式：虚拟主机和隔离"></a>多租户模式：虚拟主机和隔离</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</li>
-<li>更重要的是，<strong>他拥有自己的权限机制</strong>，<strong>这使得你能够安全地使用一个RabbitMQ服务器来服务众多的应用程序</strong></li>
-<li>vhost就像是虚拟机之与物理服务器一样：他们在各个实例间提供逻辑上的分离，允许你为不同程序安全保密地运行数据，它既能将同一个Rabbit的众多客户区分开来，又可以避免队列和交换器命名冲突</li>
-<li>vhost是AMQP概念的基础，你必须在连接时进行指定</li>
-<li>RabbitMQ包含了一个开箱即用的默认vhost:”/“，如果你不需要多个vhost，那么就使用默认的吧，使用缺省的guest用户名和密码guest就可以访问默认的vhost</li>
-<li>当你在RabbitMQ集群上创建vhost，整个集群上都会创建该vhost，vhost不仅消除了为基础架构中的每一层运行一个RabbitMQ服务器的需要，同样也避免了为每一层创建不同集群</li>
-</ul>
-<h2 id="如何创建vhost"><a href="#如何创建vhost" class="headerlink" title="如何创建vhost"></a>如何创建vhost</h2><p>vhost和权限控制非常独特，他们是AMQP中唯一无法通过AMQP协议的基元（不同与队列，交换器和绑定）</p>
-<p><strong>创建vhost</strong></p>
-<p>你需要通过RabbitMQ的安装路径下的./sbin/目录中的<strong>rabbitmqctl</strong>工具来创建</p>
-<p>运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl add_vhost[vhost_name]</div></pre></td></tr></table></figure>
-<p>可以创建一个vhost，其中[vhost_name]就是你想要创建的vhost</p>
-<p><strong>删除vhost</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl delete_vhost[vhsost_name]</div></pre></td></tr></table></figure>
-<p><strong>查看Rabbit服务器上运行着那些vhost</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl list_vhost</div></pre></td></tr></table></figure>
-<p>你就会看到如下所示的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ ./sbin/rabbitmqctl list_vhosts</div><div class="line">Listing vhosts ...</div><div class="line">/</div><div class="line">oak</div><div class="line">sycamore</div><div class="line">...done.</div></pre></td></tr></table></figure>
-<p><strong>管理远程RabbitMQ节点</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-n rabbit@[server_name]</div></pre></td></tr></table></figure>
-<p>rabbit表示Erlang应用程序名称<br>[server_name]表示ip</p>
-<p>（注：内容整理自《RabbitMQ实战》）</p>
+<h1 id="理解二次评分"><a href="#理解二次评分" class="headerlink" title="理解二次评分"></a>理解二次评分</h1><p>二次评分是指重新计算查询返回文档中<strong>指定个数文档</strong>的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分</p>
+<h1 id="二次评分查询结构"><a href="#二次评分查询结构" class="headerlink" title="二次评分查询结构"></a>二次评分查询结构</h1><p>从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响</p>
+        <!-- 
 
+二次评分给了用户很多机会来定制业务逻辑
+
+理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分
+二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响
+
+查询范例如下：
+改查询将每一个文档的得分......  -->
+        <p class="article-more-link">
+          <a href="/post/elasticsearch-rescore/#more">阅读全文</a>
+        </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>
@@ -300,7 +230,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
 <!-- Table of Contents -->
 
   
-    <article id="post-rabbitMQ-exchange"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-mybatis-cache"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -308,7 +238,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-exchange/">RabbitMQ-理解消息通信-交换器和绑定</a>
+      <a class="article-title" href="/post/mybatis-cache/">MyBatis二级缓存</a>
     </h1>
   
 
@@ -316,29 +246,36 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
     
     <div class="article-meta">
       
-	<a href="/post/rabbitMQ-exchange/" class="article-date">
-	  <time datetime="2017-03-31T02:54:20.000Z" itemprop="datePublished">2017-03-31</time>
+	<a href="/post/mybatis-cache/" class="article-date">
+	  <time datetime="2017-03-20T07:19:03.000Z" itemprop="datePublished">2017-03-20</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="交换器和绑定"><a href="#交换器和绑定" class="headerlink" title="交换器和绑定"></a>交换器和绑定</h1><p>当你想要将消息投递到队列时，你通过把消息发送给<strong>交换器</strong>来完成。然后，根据确定的规则，RabbitMQ将会决定消息该投递到哪个队列，这些规则被称为<strong>路由键(routing key)</strong>。<strong>队列通过路由键绑定到交换器</strong>，当你把消息发送到代理服务器时，消息将拥有一个路由键（即使是空的）<br>Rabbit也会将其和绑定使用的路由键进行匹配，如果匹配的话，那么消息将会投递到队列，如果路由的消息不匹配任何绑定模式的话，消息将进入“黑洞”</p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<blockquote>
+<p>MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。</p>
+</blockquote>
         <!-- 
-交换器和绑定当你想要将消息投递到队列时，你通过把消息发送给交换器来完成。然后，根据确定的规则，RabbitMQ将会决定消息该投递到哪个队列，这些规则被称为路由键(routing key)。队列通过路由键绑定到交换器，当你把消息发送到代理服务器时，消息将拥有一个路由键（即使是空的）Rabbit也会将其和绑定使用的路由键进行匹配，如果匹配的话，那么消息将会投递到队列，如果路由的消息不匹配任何绑......  -->
+
+MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。
+
+
+MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。
+使用配置......  -->
         <p class="article-more-link">
-          <a href="/post/rabbitMQ-exchange/#more">阅读全文</a>
+          <a href="/post/mybatis-cache/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
 
     </footer>
   </div>
@@ -348,7 +285,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
 <!-- Table of Contents -->
 
   
-    <article id="post-rabbitMQ-queue"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-redis-progression"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -356,7 +293,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-queue/">RabbitMQ-理解消息通信-队列</a>
+      <a class="article-title" href="/post/redis-progression/">Redis进阶内容</a>
     </h1>
   
 
@@ -364,40 +301,37 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
     
     <div class="article-meta">
       
-	<a href="/post/rabbitMQ-queue/" class="article-date">
-	  <time datetime="2017-03-30T08:44:06.000Z" itemprop="datePublished">2017-03-30</time>
+	<a href="/post/redis-progression/" class="article-date">
+	  <time datetime="2017-03-17T08:20:39.000Z" itemprop="datePublished">2017-03-17</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>AMQP消息路由必须有三部分：交换器、队列和绑定</p>
-<p>生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列</p>
-<p>消费者通过以下两种方式从特定的队列中接收消息：</p>
-<ul>
-<li>通过AMQP的<strong>basic.comsume</strong>命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止</li>
-<li>如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的<strong>basic.get</strong>，如果要获取更多的消息的话，需要再次发送basic.get命令。<br>（不要将basic.get放在循环里面来替代basic.consume）因为这样做会影响Rabbit的性能</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/redis.png" alt=""></p>
+<blockquote>
+<p>减低内存占用 扩展Redis</p>
+</blockquote>
         <!-- 
-队列AMQP消息路由必须有三部分：交换器、队列和绑定
-生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列
-消费者通过以下两种方式从特定的队列中接收消息：
 
-通过AMQP的basic.comsume命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止
-如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP......  -->
+减低内存占用 扩展Redis
+
+
+
+（注：内容整理自《redis实战》）
+...  -->
         <p class="article-more-link">
-          <a href="/post/rabbitMQ-queue/#more">阅读全文</a>
+          <a href="/post/redis-progression/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
 
     </footer>
   </div>
@@ -407,7 +341,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
 <!-- Table of Contents -->
 
   
-    <article id="post-rabbitMQ-producer-consumer"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-redis-data-safety"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -415,7 +349,7 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-producer-consumer/">RabbitMQ-理解消息通信-消费者和生产者</a>
+      <a class="article-title" href="/post/redis-data-safety/">Redis数据安全与性能保障</a>
     </h1>
   
 
@@ -423,36 +357,94 @@ durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重�
     
     <div class="article-meta">
       
-	<a href="/post/rabbitMQ-producer-consumer/" class="article-date">
-	  <time datetime="2017-03-30T03:07:25.000Z" itemprop="datePublished">2017-03-30</time>
+	<a href="/post/redis-data-safety/" class="article-date">
+	  <time datetime="2017-03-17T08:14:12.000Z" itemprop="datePublished">2017-03-17</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="消费者和生产者"><a href="#消费者和生产者" class="headerlink" title="消费者和生产者"></a>消费者和生产者</h1><h2 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h2><p>生产者创建消息，然后发布到代理服务器</p>
-<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>什么是消息呢？<br>消息包含两部分：<strong>有效载荷（payload）和标签（label）</strong></p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/redis.png" alt=""></p>
+<h2 id="持久化选项"><a href="#持久化选项" class="headerlink" title="持久化选项"></a>持久化选项</h2><p><img src="/post/redis-data-safety/01.png" alt="01"><br></p>
         <!-- 
-消费者和生产者生产者生产者创建消息，然后发布到代理服务器
-消息什么是消息呢？消息包含两部分：有效载荷（payload）和标签（label）
-
-
-有效负荷就是你想要传输的数据，它可以试任何内容，一个json数组或者是你最喜欢的mp4，Rabbitmq不会在意这些
-
-标签描述了有效载荷，并且RabbitMQ用它来决定谁将获得消息的拷贝举例来说：不同于TCP协议，当你明确指定发送方和接收方时，A......  -->
+持久化选项
+复制
+处理系统故障
+redis事务
+非事务型流水线可以接受多个参数的添加命令和更新命令，比如：MGET,MSET,HMGET,HMSET,RPUSH,LPUSH,SADD,ZADD,这些命令简化了那些需要重复执行相同命令的操作，而极大的提升了性能
+性能方面注意事项可以用性能测试程序redis-benchmark来测试
+（注：内容整理自《redis实战》）
+...  -->
         <p class="article-more-link">
-          <a href="/post/rabbitMQ-producer-consumer/#more">阅读全文</a>
+          <a href="/post/redis-data-safety/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-redis-command"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/redis-command/">Redis命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/redis-command/" class="article-date">
+	  <time datetime="2017-03-17T07:59:50.000Z" itemprop="datePublished">2017-03-17</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/redis.png" alt=""></p>
+<blockquote>
+<p>字符串 列表 集合 散列 有序集合</p>
+</blockquote>
+        <!-- 
+
+字符串 列表 集合 散列 有序集合
+
+
+
+字符串字符串可以存储：字节串（btye string），整数，浮点数自增自减命令INCR key-name 将键储存的值加上1 
+DECR key-name 将储存的值减去1 
+INCRBY key-name amount          将键储存的值加上整数amount 
+DECRBY key-name amount             ......  -->
+        <p class="article-more-link">
+          <a href="/post/redis-command/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
 
     </footer>
   </div>

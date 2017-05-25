@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-mybatis-lifecycle"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearch-index-control"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybatis-lifecycle/">Mybaits-基本构成和生命周期</a>
+      <a class="article-title" href="/post/elasticsearch-index-control/">Elasticsearch底层索引控制</a>
     </h1>
   
 
@@ -187,99 +187,35 @@
     
     <div class="article-meta">
       
-	<a href="/post/mybatis-lifecycle/" class="article-date">
-	  <time datetime="2017-04-07T06:58:53.000Z" itemprop="datePublished">2017-04-07</time>
+	<a href="/post/elasticsearch-index-control/" class="article-date">
+	  <time datetime="2017-03-27T09:44:54.000Z" itemprop="datePublished">2017-03-27</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
 <blockquote>
-<h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><ul>
-<li>SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)</li>
-<li>SqlSessionFactory:依靠工厂来生成SqlSession(会话)</li>
-<li>SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口</li>
-<li>SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口和xml文件（或注解）构成的，需要给出对应的sql和映射规则，它负责发送SQL去执行，并返回结果</li>
-</ul>
-</blockquote>
-<p>一张图表达他们的关联：<br><img src="/post/mybatis-lifecycle/01.png" alt=""></p>
-        <!-- 
-
-基本构成
-SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)
-SqlSessionFactory:依靠工厂来生成SqlSession(会话)
-SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口
-SQL Mapper:它是Mybatis新设计的组件，它是由一个jav......  -->
-        <p class="article-more-link">
-          <a href="/post/mybatis-lifecycle/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mybtis-introduction"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybtis-introduction/">Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/mybtis-introduction/" class="article-date">
-	  <time datetime="2017-04-06T08:17:20.000Z" itemprop="datePublished">2017-04-06</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
-<blockquote>
-<p>主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景</p>
+<p>  如何使用不同评分公式及其特性<br>    如何使用不同的倒排表格式极其特性<br>    如何处理准实时搜索、实时读取、以及搜索器重新打开之后的动作<br>    配置搜索事务日志以满足应用需求，并查看它对部署的影响</p>
 </blockquote>
         <!-- 
 
-主要介绍了Java ORM来源于历史，JDBC、Hibernate和MyBatis的优缺点，比较他们之间区别和应用场景
+  如何使用不同评分公式及其特性    如何使用不同的倒排表格式极其特性    如何处理准实时搜索、实时读取、以及搜索器重新打开之后的动作    配置搜索事务日志以满足应用需求，并查看它对部署的影响
 
 
-JDBCJava程序是通过JDBC(Java Data Base Connectivity)连接数据库的，JDBC是由SUN公司提出的一系列规范，但是它只定义了接口的规范，而具体的实现是交给了各个数据库厂商去实现的，JDBC是一种典型的桥接模式
-JDBC编程步骤
-
-......  -->
+如何使用不同评分公式及其特性2012年Apache lucene 4.0发布之后，用户便可以改变默认的基于TF/IDF的评分算法了，这是因为lucene的API做了一些改变，使得用户能轻......  -->
         <p class="article-more-link">
-          <a href="/post/mybtis-introduction/#more">阅读全文</a>
+          <a href="/post/elasticsearch-index-control/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>
@@ -289,7 +225,7 @@ JDBC编程步骤
 <!-- Table of Contents -->
 
   
-    <article id="post-soup02"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearc-filtered"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -297,7 +233,7 @@ JDBC编程步骤
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup02/">干了这碗毒鸡汤(02)</a>
+      <a class="article-title" href="/post/elasticsearc-filtered/">Elasticsearch使用过滤器优化查询</a>
     </h1>
   
 
@@ -305,39 +241,37 @@ JDBC编程步骤
     
     <div class="article-meta">
       
-	<a href="/post/soup02/" class="article-date">
-	  <time datetime="2017-04-06T07:06:10.000Z" itemprop="datePublished">2017-04-06</time>
+	<a href="/post/elasticsearc-filtered/" class="article-date">
+	  <time datetime="2017-03-23T08:12:14.000Z" itemprop="datePublished">2017-03-23</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo04.jpg" alt=""></p>
-<ul>
-<li><p>一个人可以永远不满足于现状，但要安分于现状。简单来说，你做什么事情，都要敬业一点，守好自己的本分，把该做的事情做好，而不是连最基本的努力都没有做到，却用那些虚化的平等，华丽的梦想，社会的不公，自己没有天赋等为自己不能成功找借口。</p>
-</li>
-<li><p>以大多数人的努力程度之低，根本轮不到去拼天赋。说有一个调查实验，问：如果数学不好，能不能学好计算机程序处理等东西。结果百分之七十多的人选了不能。然后一个教授总结的这一句话。很多人一直以为自己与他人拼得是吃苦，是天赋，什么刻苦奋斗，什么拼命学霸，其实拼的只是一点点认真，一点点细节，一点点本分，连勤奋都谈不上。在你的周围，懒汉实在太多，你只要做到基本的勤劳，就可以致富了；在你的世界里，大多数人都是盲人，你只要有一只眼睛，就有资格称王了。</p>
-</li>
-<li><p>所谓兴趣，就是你愿意为了它去付出（而不是获得）</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>elasticsearch提供了一种特殊的缓存，即过滤器缓存（filter cache），用来储存过滤器的结果</p>
+</blockquote>
+<p>被缓存的过滤器不需要消耗过多的内存，因为他们只储存了哪些文档能与过滤器相匹配的相关信息，而且可供后续所有与之相关的查询重复使用，从而极大的提高了查询性能</p>
         <!-- 
 
-一个人可以永远不满足于现状，但要安分于现状。简单来说，你做什么事情，都要敬业一点，守好自己的本分，把该做的事情做好，而不是连最基本的努力都没有做到，却用那些虚化的平等，华丽的梦想，社会的不公，自己没有天赋等为自己不能成功找借口。
+elasticsearch提供了一种特殊的缓存，即过滤器缓存（filter cache），用来储存过滤器的结果
 
-以大多数人的努力程度之低，根本轮不到去拼天赋。说有一个调查实验，问：如果数学不好，能不能学好计算机程序处理等东西。结果百分之七十多的人选了不能。然后一个教授总......  -->
+被缓存的过滤器不需要消耗过多的内存，因为他们只储存了哪些文档能与过滤器相匹配的相关信息，而且可供后续所有与之相关的查询重复使用，从而极大的提高了查询性能
+
+执行下面这个查询：1234567891011121314&#123;    "query":&#123;        ......  -->
         <p class="article-more-link">
-          <a href="/post/soup02/#more">阅读全文</a>
+          <a href="/post/elasticsearc-filtered/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>
@@ -347,7 +281,7 @@ JDBC编程步骤
 <!-- Table of Contents -->
 
   
-    <article id="post-soup01"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearch-update"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -355,7 +289,7 @@ JDBC编程步骤
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup01/">干了这碗毒鸡汤(01)</a>
+      <a class="article-title" href="/post/elasticsearch-update/">Elasticsearch数据更新API</a>
     </h1>
   
 
@@ -363,41 +297,47 @@ JDBC编程步骤
     
     <div class="article-meta">
       
-	<a href="/post/soup01/" class="article-date">
-	  <time datetime="2017-04-05T07:36:30.000Z" itemprop="datePublished">2017-04-05</time>
+	<a href="/post/elasticsearch-update/" class="article-date">
+	  <time datetime="2017-03-22T08:26:59.000Z" itemprop="datePublished">2017-03-22</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo05.jpg" alt=""></p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
 <ul>
-<li>马云说，十年以后中国最大的两个产业，是健康产业（Health）和文娱产业（Happy），简称”双H产业”。前者让人民更健康，后者让人民更快乐。</li>
+<li>简单字段更新</li>
+<li>使用脚本按条件更新</li>
+<li>使用更新api创建或删除文档</li>
 </ul>
-<ul>
-<li><p>能够去规划自己的个人发展的人，通常都是有很多机会和可能性的人。<br>有很多机会和可能性的人，通常都是有Leadership，喜欢冒险的人。<br>有Leadership喜欢冒险的人，通常都是学习能力强，思维活跃，喜欢折腾，懂得“投资”的人。<br>学习能力强思维活跃的人，通常来说，都是喜欢看书，喜欢实践和新鲜事物，不怕艰难和挑战，用智力而不是使蛮力的人。<br>懂得“投资”的人，通常来说，他们更多的关注的是未来和长远的成长，而不是当下的KPI、奖金和晋升。</p>
-</li>
-<li><p>你要做一个不动声色的大人了，不准情绪化，不准偷偷想念，不准回头看，去过自己另外的生活，你要听话，不是所以的鱼都会生活在同一片海里。——村上春树</p>
-</li>
-</ul>
+</blockquote>
         <!-- 
 
-马云说，十年以后中国最大的两个产业，是健康产业（Health）和文娱产业（Happy），简称”双H产业”。前者让人民更健康，后者让人民更快乐。
+
+简单字段更新
+使用脚本按条件更新
+使用更新api创建或删除文档
 
 
-能够去规划自己的个人发展的人，通常都是有很多机会和可能性的人。有很多机会和可能性的人，通常都是有Leadership，喜欢冒险的人。有Leadership喜欢冒险的人，通常都是学习能力强，思维活跃，喜欢折腾，懂得“投资”的人。学习能力强思维活......  -->
+
+为什么我们无法真的更新索引中的文档在索引一个新文档的时候，lucene会对每个字段进行分析并产生词条流，词条流中的词条可以会经过过滤器的额外处理，而没有过滤掉的词条会写入倒排索引中，索引过程中，一些不需要的信息可能被抛弃，这些信息包括：
+
+某些特殊的词条位置（当词向量没有储存时）
+特定词汇（停用词或同义词）
+词条的变......  -->
         <p class="article-more-link">
-          <a href="/post/soup01/#more">阅读全文</a>
+          <a href="/post/elasticsearch-update/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>
@@ -407,7 +347,7 @@ JDBC编程步骤
 <!-- Table of Contents -->
 
   
-    <article id="post-rabbitMQ-management"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearch-sort"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -415,7 +355,7 @@ JDBC编程步骤
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-management/">RabbitMQ-运行和管理RabbitMQ</a>
+      <a class="article-title" href="/post/elasticsearch-sort/">Elasticsearch排序</a>
     </h1>
   
 
@@ -423,35 +363,93 @@ JDBC编程步骤
     
     <div class="article-meta">
       
-	<a href="/post/rabbitMQ-management/" class="article-date">
-	  <time datetime="2017-04-05T06:44:12.000Z" itemprop="datePublished">2017-04-05</time>
+	<a href="/post/elasticsearch-sort/" class="article-date">
+	  <time datetime="2017-03-21T03:02:09.000Z" itemprop="datePublished">2017-03-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>RabbitMQ是使用Erlang编写的</p>
-<p>Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单</p>
-<p>为了达到“简单分布式”，需要两个你可能不太熟悉的概念：<strong>Erlang节点和Erlang应用程序</strong><br>如果你熟悉java虚拟机（jvm）的话，两者是很相似的</p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
+</blockquote>
+<p>下面的例子就容易做到：<br><img src="/post/elasticsearch-sort/01.png" alt="01"><br>该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序</p>
+<p><strong>也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为</strong><br><img src="/post/elasticsearch-sort/02.png" alt="02"></p>
         <!-- 
-服务器管理概述RabbitMQ是使用Erlang编写的
-Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单
-为了达到“简单分布式”，需要两个你可能不太熟悉的概念：Erlang节点和Erlang应用程序如果你熟悉java虚拟机（jvm）的话，两者是很相似的
 
-启动节点节点节点用来指代RabbitMQ服务器实例，事实上，......  -->
+当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
+
+下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
+也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为
+
+基于多值字段的排序某些文档的release......  -->
         <p class="article-more-link">
-          <a href="/post/rabbitMQ-management/#more">阅读全文</a>
+          <a href="/post/elasticsearch-sort/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-elasticsearch-bulk"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/elasticsearch-bulk/">Elasticsearch批量操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/elasticsearch-bulk/" class="article-date">
+	  <time datetime="2017-03-21T02:10:02.000Z" itemprop="datePublished">2017-03-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>elasticsearch提供了批量操作来读取数据和检索</p>
+</blockquote>
+<h1 id="批量取"><a href="#批量取" class="headerlink" title="批量取"></a>批量取</h1><p>可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，<strong>而不论这些文档可用于搜索还是暂时对查询不可见</strong><br></p>
+        <!-- 
+
+elasticsearch提供了批量操作来读取数据和检索
+
+批量取可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，而不论这些文档可用于搜索还是暂时对查询不可见查看下面的操作：elasticsearch返回如下形式的文档：前面的范例还可以写成如下的更紧凑的形式：这种形式便于获取不同文档有不同目标索引及类型我们来看下面这个查询：该查询返回了......  -->
+        <p class="article-more-link">
+          <a href="/post/elasticsearch-bulk/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>

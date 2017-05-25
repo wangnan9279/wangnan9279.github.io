@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-soup13"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-collect"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup13/">干了这碗毒鸡汤(13)</a>
+      <a class="article-title" href="/post/java8-collect/">Java8-流-用流收集数据和并行流</a>
     </h1>
   
 
@@ -187,41 +187,33 @@
     
     <div class="article-meta">
       
-	<a href="/post/soup13/" class="article-date">
-	  <time datetime="2017-05-24T06:37:53.000Z" itemprop="datePublished">2017-05-24</time>
+	<a href="/post/java8-collect/" class="article-date">
+	  <time datetime="2017-05-11T06:47:21.000Z" itemprop="datePublished">2017-05-11</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo01.jpg" alt=""></p>
-<ul>
-<li><p>春娇与志明<br>我小时候就很喜欢吃便利店的肉酱意粉<br>那时候好多人都问我，你为什么那么喜欢吃<br>它真的是有点咸<br>肉也不多<br>喜欢，就是喜欢<br>我喜欢她就是因为<br>我觉得她好，她什么都好。</p>
-</li>
-<li><p>要是知道以后的路，那就不叫人生了。</p>
-</li>
-<li><p>你生来是怎样的人，就注定了是怎样的人，无论你多么羡慕另外一种人生，但那不是你的，就不是你的。哭闹没有用，忌妒没用，甚至拼命地改造自己都没有用。我们始终只能按照自己内心最认同的那种方式生活，所以，你想要怎样的人生，就会获得一个怎样的人生。</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<h1 id="收集器简介"><a href="#收集器简介" class="headerlink" title="收集器简介"></a>收集器简介</h1><p>对流调用collect方法将对流中的元素触发一个规约操作</p>
+<p>Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了</p>
+<p>最常用的是toList方法，它会把流收集到一个List中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toList());</div></pre></td></tr></table></figure></p>
         <!-- 
-
-春娇与志明我小时候就很喜欢吃便利店的肉酱意粉那时候好多人都问我，你为什么那么喜欢吃它真的是有点咸肉也不多喜欢，就是喜欢我喜欢她就是因为我觉得她好，她什么都好。
-
-要是知道以后的路，那就不叫人生了。
-
-你生来是怎样的人，就注定了是怎样的人，无论你多么羡慕另外一种人生，但那不是你的，就不是你的。哭闹没有用，忌妒没用，甚至拼命地改造自己都没有用。我们始终只能按照自己内心最认同的那种方式生活，所......  -->
+收集器简介对流调用collect方法将对流中的元素触发一个规约操作
+Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了
+最常用的是toList方法，它会把流收集到一个List中：1List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toLis......  -->
         <p class="article-more-link">
-          <a href="/post/soup13/#more">阅读全文</a>
+          <a href="/post/java8-collect/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
 
     </footer>
   </div>
@@ -231,7 +223,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-soup12"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-stream-use"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -239,7 +231,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup12/">干了这碗毒鸡汤(12)</a>
+      <a class="article-title" href="/post/java8-stream-use/">Java8-流-使用流</a>
     </h1>
   
 
@@ -247,53 +239,33 @@
     
     <div class="article-meta">
       
-	<a href="/post/soup12/" class="article-date">
-	  <time datetime="2017-05-24T06:27:53.000Z" itemprop="datePublished">2017-05-24</time>
+	<a href="/post/java8-stream-use/" class="article-date">
+	  <time datetime="2017-05-09T03:09:29.000Z" itemprop="datePublished">2017-05-09</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo02.jpg" alt=""></p>
-<ul>
-<li><p>要想做一个与众不同的人，就必须跳出习惯的思维模式，抛开人为的布局，敢于去怀疑一切–爱因斯坦</p>
-</li>
-<li><p>人有两条路要走，一条是必须走的，一条是想走的，<br>你必须把必须走的路走漂亮，才可以走想走的路。</p>
-</li>
-</ul>
-<ul>
-<li>人们往往只相信他们愿意相信的事。</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
+<p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
         <!-- 
+筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流
+例子:筛选所有的素菜1List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());
 
-要想做一个与众不同的人，就必须跳出习惯的思维模式，抛开人为的布局，敢于去怀疑一切–爱因斯坦
-
-人有两条路要走，一条是必须走的，一条是想走的，你必须把必须走的路走漂亮，才可以走想走的路。
-
-
-
-人们往往只相信他们愿意相信的事。
-
-
-
-完美主义者都是悲观主义者
-
-
-有时候，坚持了你最不想干的事情之后，便可得到你最想要的东西。
-
-有时候你最想要的东西偏偏得不到，有时候你最意想不到的事却发生了。......  -->
+筛选各异的元素distinct方法他会返回一个元素各异的......  -->
         <p class="article-more-link">
-          <a href="/post/soup12/#more">阅读全文</a>
+          <a href="/post/java8-stream-use/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
 
     </footer>
   </div>
@@ -303,7 +275,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-soup11"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-stream-introduction"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -311,7 +283,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup11/">干了这碗毒鸡汤(11)</a>
+      <a class="article-title" href="/post/java8-stream-introduction/">Java8-流-简介</a>
     </h1>
   
 
@@ -319,46 +291,37 @@
     
     <div class="article-meta">
       
-	<a href="/post/soup11/" class="article-date">
-	  <time datetime="2017-05-22T08:07:32.000Z" itemprop="datePublished">2017-05-22</time>
+	<a href="/post/java8-stream-introduction/" class="article-date">
+	  <time datetime="2017-05-08T05:33:09.000Z" itemprop="datePublished">2017-05-08</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo03.jpg" alt=""></p>
-<ul>
-<li><p>不解释就弄不懂的事，就意味着怎样解释也弄不懂。—-村上春树</p>
-</li>
-<li><p>水遇到障碍物，首先是看能不能从低的地方绕过去，如果这个障碍物谁没有办法找到方向绕过去，它所选择的是不断的蓄势，它在不断地上涨，一直到达障碍物的边缘呢他就流过去了，但水从来不是跳过去的。</p>
-</li>
-<li><p>前进的理由只要一个，后退的理由却有一百个。许多人整天找一百个理由证明他不是懦夫，却从不用一个理由去证明他是一勇士。</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<blockquote>
+<p>几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美</p>
+</blockquote>
         <!-- 
 
-不解释就弄不懂的事，就意味着怎样解释也弄不懂。—-村上春树
-
-水遇到障碍物，首先是看能不能从低的地方绕过去，如果这个障碍物谁没有办法找到方向绕过去，它所选择的是不断的蓄势，它在不断地上涨，一直到达障碍物的边缘呢他就流过去了，但水从来不是跳过去的。
-
-前进的理由只要一个，后退的理由却有一百个。许多人整天找一百个理由证明他不是懦夫，却从不用一个理由去证明他是一勇士。
+几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美
 
 
 
-
-一条铁链，无论看......  -->
+很多业务逻辑都涉及类似于数据库的操作，比如对几道菜按照类别进行分组，查找出最贵的菜，大部分数据库都允许你声明式地指定这些操作，你不需要实现如何筛选，你只需要表达你想要的，都替你办好了，怎么到了集合就不能这样了呢？
+如果要处理大量元......  -->
         <p class="article-more-link">
-          <a href="/post/soup11/#more">阅读全文</a>
+          <a href="/post/java8-stream-introduction/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
 
     </footer>
   </div>
@@ -368,7 +331,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-soup10"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-lambda"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -376,7 +339,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup10/">干了这碗毒鸡汤(10)</a>
+      <a class="article-title" href="/post/java8-lambda/">Java8-Lambda表达式</a>
     </h1>
   
 
@@ -384,46 +347,44 @@
     
     <div class="article-meta">
       
-	<a href="/post/soup10/" class="article-date">
-	  <time datetime="2017-05-18T07:44:43.000Z" itemprop="datePublished">2017-05-18</time>
+	<a href="/post/java8-lambda/" class="article-date">
+	  <time datetime="2017-05-05T07:55:47.000Z" itemprop="datePublished">2017-05-05</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo04.jpg" alt=""></p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<blockquote>
+<p>Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法</p>
+</blockquote>
+<h1 id="Lambda管中窥豹"><a href="#Lambda管中窥豹" class="headerlink" title="Lambda管中窥豹"></a>Lambda管中窥豹</h1><p>可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表</p>
+<p>lambda表达式有三部分：</p>
 <ul>
-<li><p>熟练地运用“关我屁事”和“关你屁事”可以省下人生80％的时间~</p>
-</li>
-<li><p>谁都以为自己会是例外，在后悔之外。谁都以为拥有的感情也是例外，在变淡之外。 谁都以为恋爱的对象刚巧也是例外，在改变之外。 然而最终发现，除了变化，无一例外。——徐志摩</p>
-</li>
-<li><p>人不会苦一辈子，但总会苦一阵子。许多人为了逃避苦一阵子，却苦了一辈子。</p>
-</li>
+<li>参数列表</li>
+<li>箭头</li>
+<li>lambda主体</li>
 </ul>
         <!-- 
 
-熟练地运用“关我屁事”和“关你屁事”可以省下人生80％的时间~
+Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法
 
-谁都以为自己会是例外，在后悔之外。谁都以为拥有的感情也是例外，在变淡之外。 谁都以为恋爱的对象刚巧也是例外，在改变之外。 然而最终发现，除了变化，无一例外。——徐志摩
+Lambda管中窥豹可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表
+lambda表达式有三部分：
 
-人不会苦一辈子，但总会苦一阵子。许多人为了逃避苦一阵子，却苦了一辈子。
-
-
-
-
-我们每个人都是这样子的，我们得到了很多，却渴望着更多。我们往往是生活中的瞎......  -->
+参数列......  -->
         <p class="article-more-link">
-          <a href="/post/soup10/#more">阅读全文</a>
+          <a href="/post/java8-lambda/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
 
     </footer>
   </div>
@@ -433,7 +394,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-soup09"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-action-as-para"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -441,7 +402,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup09/">干了这碗毒鸡汤(09)</a>
+      <a class="article-title" href="/post/java8-action-as-para/">Java8-行为参数化</a>
     </h1>
   
 
@@ -449,46 +410,41 @@
     
     <div class="article-meta">
       
-	<a href="/post/soup09/" class="article-date">
-	  <time datetime="2017-05-17T07:46:30.000Z" itemprop="datePublished">2017-05-17</time>
+	<a href="/post/java8-action-as-para/" class="article-date">
+	  <time datetime="2017-05-02T08:49:47.000Z" itemprop="datePublished">2017-05-02</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo05.jpg" alt=""></p>
-<ul>
-<li><p>打败焦虑最好的办法，就是去做那些让你焦虑的事情。</p>
-</li>
-<li><p>你会发现幸福的事是百分之五，痛苦的是百分之五，剩下的百分之九十都是平淡的，日复一日。而聪明人会善于把这百分之九十的平淡转化为幸福，不聪明的人会善于把这百分之九十的平淡往痛苦那靠。——白岩松</p>
-</li>
-<li><p>生活就是这样，只有做好了迎接平淡的准备，才有可能创造属于你自己的辉煌。</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<blockquote>
+<p>在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变<br>行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。</p>
+</blockquote>
+<p>它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用</p>
+<p>我们看一个例子，我们通过不断改进这个例子，展示行为参数化</p>
+<h1 id="版本1-1-筛选绿苹果"><a href="#版本1-1-筛选绿苹果" class="headerlink" title="版本1.1 筛选绿苹果"></a>版本1.1 筛选绿苹果</h1><p><img src="/post/java8-action-as-para/01.png" alt=""><br>如果要筛选红苹果怎么办呢?</p>
         <!-- 
 
-打败焦虑最好的办法，就是去做那些让你焦虑的事情。
+在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。
 
-你会发现幸福的事是百分之五，痛苦的是百分之五，剩下的百分之九十都是平淡的，日复一日。而聪明人会善于把这百分之九十的平淡转化为幸福，不聪明的人会善于把这百分之九十的平淡往痛苦那靠。——白岩松
+它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用
+我们看一个例子，我们通过不断改进这个例子，展示行为参数化
+版本1.1 筛选绿苹果如果要筛选红苹果怎么办呢?
 
-生活就是这样，只有做好了迎接平淡的准备，才有可能创造属于你自己的辉煌。
-
-
-
-
-我始终相信，开始在内心生活得更严肃的人，也会在外表上开始生活得更朴......  -->
+版本1.2 把颜色作为参数如果要筛选重量大于150克的苹果......  -->
         <p class="article-more-link">
-          <a href="/post/soup09/#more">阅读全文</a>
+          <a href="/post/java8-action-as-para/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
 
     </footer>
   </div>

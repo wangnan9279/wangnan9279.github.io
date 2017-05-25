@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-java8-collect"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-java8-general"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/java8-collect/">Java8-流-用流收集数据和并行流</a>
+      <a class="article-title" href="/post/java8-general/">Java8-概述</a>
     </h1>
   
 
@@ -187,8 +187,8 @@
     
     <div class="article-meta">
       
-	<a href="/post/java8-collect/" class="article-date">
-	  <time datetime="2017-05-11T06:47:21.000Z" itemprop="datePublished">2017-05-11</time>
+	<a href="/post/java8-general/" class="article-date">
+	  <time datetime="2017-04-21T08:52:18.000Z" itemprop="datePublished">2017-04-21</time>
 	</a>
 
       
@@ -198,186 +198,28 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
-<h1 id="收集器简介"><a href="#收集器简介" class="headerlink" title="收集器简介"></a>收集器简介</h1><p>对流调用collect方法将对流中的元素触发一个规约操作</p>
-<p>Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了</p>
-<p>最常用的是toList方法，它会把流收集到一个List中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toList());</div></pre></td></tr></table></figure></p>
-        <!-- 
-收集器简介对流调用collect方法将对流中的元素触发一个规约操作
-Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了
-最常用的是toList方法，它会把流收集到一个List中：1List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toLis......  -->
-        <p class="article-more-link">
-          <a href="/post/java8-collect/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-java8-stream-use"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/java8-stream-use/">Java8-流-使用流</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/java8-stream-use/" class="article-date">
-	  <time datetime="2017-05-09T03:09:29.000Z" itemprop="datePublished">2017-05-09</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
-<h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
-<p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
-        <!-- 
-筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流
-例子:筛选所有的素菜1List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());
-
-筛选各异的元素distinct方法他会返回一个元素各异的......  -->
-        <p class="article-more-link">
-          <a href="/post/java8-stream-use/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-java8-stream-introduction"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/java8-stream-introduction/">Java8-流-简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/java8-stream-introduction/" class="article-date">
-	  <time datetime="2017-05-08T05:33:09.000Z" itemprop="datePublished">2017-05-08</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
-<blockquote>
-<p>几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美</p>
-</blockquote>
-        <!-- 
-
-几乎每个java应用程序都会制造和处理集合，要是没有集合，还能做什么呢？尽管集合对于几乎任何一个java应用都是不可或缺的，但是集合操作却远远算不上完美
-
-
-
-很多业务逻辑都涉及类似于数据库的操作，比如对几道菜按照类别进行分组，查找出最贵的菜，大部分数据库都允许你声明式地指定这些操作，你不需要实现如何筛选，你只需要表达你想要的，都替你办好了，怎么到了集合就不能这样了呢？
-如果要处理大量元......  -->
-        <p class="article-more-link">
-          <a href="/post/java8-stream-introduction/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/">Java8</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-java8-lambda"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/java8-lambda/">Java8-Lambda表达式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/post/java8-lambda/" class="article-date">
-	  <time datetime="2017-05-05T07:55:47.000Z" itemprop="datePublished">2017-05-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
-<blockquote>
-<p>Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法</p>
-</blockquote>
-<h1 id="Lambda管中窥豹"><a href="#Lambda管中窥豹" class="headerlink" title="Lambda管中窥豹"></a>Lambda管中窥豹</h1><p>可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表</p>
-<p>lambda表达式有三部分：</p>
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p><strong>为什么你应该关系java8？</strong></p>
 <ul>
-<li>参数列表</li>
-<li>箭头</li>
-<li>lambda主体</li>
+<li>因为java8所做的改变，在许多方面比java历史上任何一次改变都深远</li>
+</ul>
+<p>再也不哟写下面这种啰嗦的程序了(按苹果重量排序)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Collections.sort(inventory,new Comparator&lt;Apple&gt;)()&#123;</div><div class="line">   public int compare(Apple a1,Apple a2)&#123;</div><div class="line">       return a1.getWeight().compareTo(a2.getWeight())</div><div class="line">   &#125; </div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
+<p>java8中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inventory.sort(Comparing(Apple::getWeight()))</div></pre></td></tr></table></figure></p>
+<p>java8对cpu核的利用率提高.</p>
+<ul>
+<li><p>StreamAPI<br>支持许多处理数据的并行操作，避免用synchronized编写代码</p>
+</li>
+<li><p>把代码传递给方法的简洁方式(方法引用，Lambda)，行为参数化</p>
+</li>
+<li>接口中的默认方法</li>
 </ul>
         <!-- 
+1.概述为什么你应该关系java8？
 
-Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法
+因为java8所做的改变，在许多方面比java历史上任何一次改变都深远
 
-Lambda管中窥豹可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表
-lambda表达式有三部分：
-
-参数列......  -->
+再也不哟写下面这种啰嗦的程序了(按苹果重量排序)12345Collections.sort(inventory,new Comparator&lt;Apple&gt;)()&#123;   public int compare(Apple a1,Apple a2)&#123; ......  -->
         <p class="article-more-link">
-          <a href="/post/java8-lambda/#more">阅读全文</a>
+          <a href="/post/java8-general/#more">阅读全文</a>
         </p>
       
     </div>
@@ -394,7 +236,7 @@ lambda表达式有三部分：
 <!-- Table of Contents -->
 
   
-    <article id="post-soup08"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-mybaits-sql"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -402,7 +244,7 @@ lambda表达式有三部分：
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup08/">干了这碗毒鸡汤(08)</a>
+      <a class="article-title" href="/post/mybaits-sql/">Mybatis-动态SQL</a>
     </h1>
   
 
@@ -410,46 +252,222 @@ lambda表达式有三部分：
     
     <div class="article-meta">
       
-	<a href="/post/soup08/" class="article-date">
-	  <time datetime="2017-05-05T07:53:17.000Z" itemprop="datePublished">2017-05-05</time>
+	<a href="/post/mybaits-sql/" class="article-date">
+	  <time datetime="2017-04-17T07:44:39.000Z" itemprop="datePublished">2017-04-17</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo06.jpg" alt=""></p>
-<ul>
-<li><p>成熟的标志不是会说大道理，而是你开始去理解，身边的小事情。</p>
-</li>
-<li><p>如果说我有优势的话，优势即是我没有可以失去的东西。——村上春树</p>
-</li>
-<li><p>相信和信念是两个不同的概念，相信是看得见的，信念是看不见的。对没有看到的东西还相信，这就是一种信念！</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<p>如果使用JDBC或者其他框架，很多时候你得根据需要去拼装SQL,这是一个麻烦的事情，mybatis提供对sql语句动态的组装能力。大部分判断可以在mybatis的映射XML文件里面配置</p>
+<p>mybatis也可以在注解中配置SQL，但是由于注解配置功能受限，对于复杂SQL而言可读性差，较少使用</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>动态SQL包括以下几种元素<br><img src="/post/mybaits-sql/01.png" alt=""></p>
         <!-- 
+如果使用JDBC或者其他框架，很多时候你得根据需要去拼装SQL,这是一个麻烦的事情，mybatis提供对sql语句动态的组装能力。大部分判断可以在mybatis的映射XML文件里面配置
+mybatis也可以在注解中配置SQL，但是由于注解配置功能受限，对于复杂SQL而言可读性差，较少使用
+概述动态SQL包括以下几种元素
 
-成熟的标志不是会说大道理，而是你开始去理解，身边的小事情。
-
-如果说我有优势的话，优势即是我没有可以失去的东西。——村上春树
-
-相信和信念是两个不同的概念，相信是看得见的，信念是看不见的。对没有看到的东西还相信，这就是一种信念！
-
-
-
-
-在生活中你想获得什么，你就得先付出什么。你想获得时间，你就得先付出时间，你想获得金钱，你得先付出金钱。你想得到爱好，你得先牺牲爱好。你想和家人有更多的时......  -->
+ifif元素是最常用的判断语句，它常常与test属性联合使用
+使用场......  -->
         <p class="article-more-link">
-          <a href="/post/soup08/#more">阅读全文</a>
+          <a href="/post/mybaits-sql/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-mybatis-mapper"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/mybatis-mapper/">Mybatis映射器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/mybatis-mapper/" class="article-date">
+	  <time datetime="2017-04-13T05:40:42.000Z" itemprop="datePublished">2017-04-13</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<h1 id="映射器主要元素"><a href="#映射器主要元素" class="headerlink" title="映射器主要元素"></a>映射器主要元素</h1><ul>
+<li>select  查询（可以自定义参数,返回结果集）</li>
+<li>insert 插入（执行后返回一个整数，代表插入的条数）</li>
+<li>update 更新 （执行后返回一个整数，代表更新的条数）</li>
+<li>delete 删除 （执行后返回一个整数，代表删除的条数）</li>
+<li>parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） </li>
+<li>sql  表的列名，一次定义多个sql使用</li>
+<li>resultMap 从结果集中加载对象，提供映射规则</li>
+<li>cache 给定命名空间的缓存配置</li>
+<li>cache-ref 其他命名空间缓存配置</li>
+</ul>
+        <!-- 
+映射器主要元素
+select  查询（可以自定义参数,返回结果集）
+insert 插入（执行后返回一个整数，代表插入的条数）
+update 更新 （执行后返回一个整数，代表更新的条数）
+delete 删除 （执行后返回一个整数，代表删除的条数）
+parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） 
+sql  表的列名，一次定义多个sql使用
+resultMap ......  -->
+        <p class="article-more-link">
+          <a href="/post/mybatis-mapper/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-mybatis-config"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/mybatis-config/">Mybaits-配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/mybatis-config/" class="article-date">
+	  <time datetime="2017-04-10T06:26:18.000Z" itemprop="datePublished">2017-04-10</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""><br>Mybatis配置XML文件的层次结构</p>
+<p><img src="/post/mybatis-config/01.png" alt=""></p>
+<p>这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常</p>
+        <!-- Mybatis配置XML文件的层次结构
+
+这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常
+
+properties元素properties元素提供三种配置方式
+
+property子元素
+property配置文件
+程序参数传递
+
+property子元素如图：
+这样我们就可以在上下文中使用以及配置好的属性了
+如图：123456&lt;dataSource typ......  -->
+        <p class="article-more-link">
+          <a href="/post/mybatis-config/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-mybatis-lifecycle"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/post/mybatis-lifecycle/">Mybaits-基本构成和生命周期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/post/mybatis-lifecycle/" class="article-date">
+	  <time datetime="2017-04-07T06:58:53.000Z" itemprop="datePublished">2017-04-07</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<blockquote>
+<h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><ul>
+<li>SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)</li>
+<li>SqlSessionFactory:依靠工厂来生成SqlSession(会话)</li>
+<li>SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口</li>
+<li>SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口和xml文件（或注解）构成的，需要给出对应的sql和映射规则，它负责发送SQL去执行，并返回结果</li>
+</ul>
+</blockquote>
+<p>一张图表达他们的关联：<br><img src="/post/mybatis-lifecycle/01.png" alt=""></p>
+        <!-- 
+
+基本构成
+SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)
+SqlSessionFactory:依靠工厂来生成SqlSession(会话)
+SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口
+SQL Mapper:它是Mybatis新设计的组件，它是由一个jav......  -->
+        <p class="article-more-link">
+          <a href="/post/mybatis-lifecycle/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
 
     </footer>
   </div>

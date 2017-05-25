@@ -171,7 +171,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-mybatis-mapper"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-rabbitMQ-queue"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -179,7 +179,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybatis-mapper/">Mybatis映射器</a>
+      <a class="article-title" href="/post/rabbitMQ-queue/">RabbitMQ-理解消息通信-队列</a>
     </h1>
   
 
@@ -187,46 +187,40 @@
     
     <div class="article-meta">
       
-	<a href="/post/mybatis-mapper/" class="article-date">
-	  <time datetime="2017-04-13T05:40:42.000Z" itemprop="datePublished">2017-04-13</time>
+	<a href="/post/rabbitMQ-queue/" class="article-date">
+	  <time datetime="2017-03-30T08:44:06.000Z" itemprop="datePublished">2017-03-30</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
-<h1 id="映射器主要元素"><a href="#映射器主要元素" class="headerlink" title="映射器主要元素"></a>映射器主要元素</h1><ul>
-<li>select  查询（可以自定义参数,返回结果集）</li>
-<li>insert 插入（执行后返回一个整数，代表插入的条数）</li>
-<li>update 更新 （执行后返回一个整数，代表更新的条数）</li>
-<li>delete 删除 （执行后返回一个整数，代表删除的条数）</li>
-<li>parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） </li>
-<li>sql  表的列名，一次定义多个sql使用</li>
-<li>resultMap 从结果集中加载对象，提供映射规则</li>
-<li>cache 给定命名空间的缓存配置</li>
-<li>cache-ref 其他命名空间缓存配置</li>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>AMQP消息路由必须有三部分：交换器、队列和绑定</p>
+<p>生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列</p>
+<p>消费者通过以下两种方式从特定的队列中接收消息：</p>
+<ul>
+<li>通过AMQP的<strong>basic.comsume</strong>命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止</li>
+<li>如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的<strong>basic.get</strong>，如果要获取更多的消息的话，需要再次发送basic.get命令。<br>（不要将basic.get放在循环里面来替代basic.consume）因为这样做会影响Rabbit的性能</li>
 </ul>
         <!-- 
-映射器主要元素
-select  查询（可以自定义参数,返回结果集）
-insert 插入（执行后返回一个整数，代表插入的条数）
-update 更新 （执行后返回一个整数，代表更新的条数）
-delete 删除 （执行后返回一个整数，代表删除的条数）
-parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） 
-sql  表的列名，一次定义多个sql使用
-resultMap ......  -->
+队列AMQP消息路由必须有三部分：交换器、队列和绑定
+生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列
+消费者通过以下两种方式从特定的队列中接收消息：
+
+通过AMQP的basic.comsume命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止
+如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP......  -->
         <p class="article-more-link">
-          <a href="/post/mybatis-mapper/#more">阅读全文</a>
+          <a href="/post/rabbitMQ-queue/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
 
     </footer>
   </div>
@@ -236,7 +230,7 @@ resultMap ......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-soup05"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-rabbitMQ-producer-consumer"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -244,7 +238,7 @@ resultMap ......  -->
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup05/">干了这碗毒鸡汤(05)</a>
+      <a class="article-title" href="/post/rabbitMQ-producer-consumer/">RabbitMQ-理解消息通信-消费者和生产者</a>
     </h1>
   
 
@@ -252,51 +246,36 @@ resultMap ......  -->
     
     <div class="article-meta">
       
-	<a href="/post/soup05/" class="article-date">
-	  <time datetime="2017-04-12T02:47:58.000Z" itemprop="datePublished">2017-04-12</time>
+	<a href="/post/rabbitMQ-producer-consumer/" class="article-date">
+	  <time datetime="2017-03-30T03:07:25.000Z" itemprop="datePublished">2017-03-30</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo01.jpg" alt=""></p>
-<ul>
-<li>人们嫉妒的不是远远超过自己的人，往往是身边的略微比自己强的人。</li>
-</ul>
-<ul>
-<li><p>你不尝试着做些能力之外的事情，就永远无法成长。</p>
-</li>
-<li><p>凡是你排斥的，就是你要面对的。</p></li></ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="消费者和生产者"><a href="#消费者和生产者" class="headerlink" title="消费者和生产者"></a>消费者和生产者</h1><h2 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h2><p>生产者创建消息，然后发布到代理服务器</p>
+<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>什么是消息呢？<br>消息包含两部分：<strong>有效载荷（payload）和标签（label）</strong></p>
         <!-- 
-
-人们嫉妒的不是远远超过自己的人，往往是身边的略微比自己强的人。
-
-
-你不尝试着做些能力之外的事情，就永远无法成长。
-
-凡是你排斥的，就是你要面对的。
+消费者和生产者生产者生产者创建消息，然后发布到代理服务器
+消息什么是消息呢？消息包含两部分：有效载荷（payload）和标签（label）
 
 
-及时而漂亮的撤退与漂亮的进攻同样重要。
+有效负荷就是你想要传输的数据，它可以试任何内容，一个json数组或者是你最喜欢的mp4，Rabbitmq不会在意这些
 
-
-
-认识自己的无知是认识世界的最可靠的方法。
-
-
-为了自己想过的生活，勇于放弃一些东西。这个世界没有公正之处，你也永远得不到两全之计。若要自由，就得牺牲安全。若要闲散，就不能获得别人评价中的成就......  -->
+标签描述了有效载荷，并且RabbitMQ用它来决定谁将获得消息的拷贝举例来说：不同于TCP协议，当你明确指定发送方和接收方时，A......  -->
         <p class="article-more-link">
-          <a href="/post/soup05/#more">阅读全文</a>
+          <a href="/post/rabbitMQ-producer-consumer/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
 
     </footer>
   </div>
@@ -306,7 +285,7 @@ resultMap ......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-soup04"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-rabbitMQ-general"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -314,7 +293,7 @@ resultMap ......  -->
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup04/">干了这碗毒鸡汤(04)</a>
+      <a class="article-title" href="/post/rabbitMQ-general/">RabbitMQ-概述</a>
     </h1>
   
 
@@ -322,43 +301,37 @@ resultMap ......  -->
     
     <div class="article-meta">
       
-	<a href="/post/soup04/" class="article-date">
-	  <time datetime="2017-04-10T06:52:52.000Z" itemprop="datePublished">2017-04-10</time>
+	<a href="/post/rabbitMQ-general/" class="article-date">
+	  <time datetime="2017-03-29T08:27:05.000Z" itemprop="datePublished">2017-03-29</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo02.jpg" alt=""></p>
-<ul>
-<li>种树的最佳时间是20年前，仅此于它的最佳时间是现在</li>
-</ul>
-<ul>
-<li><p>或许每个少年在走向青年，又走向成人的时候都会经历过这一遭。像一个青面獠牙的小愤青，看不惯不劳而获，看不惯阿谀奉承，看不惯虚与委蛇，看不惯许许多多，整天像个“挑刺儿”一样活着，有种不知天高地厚却自认为以为指点江山一样自信，恨不得把全世界扭成自己喜欢的模样。</p>
-</li>
-<li><p>一个从艺20年终于成功的名角儿，拍广告30分钟挣100万。如果单从这回报看，是不公平的暴利。但是事实上，商家购买的是角儿的影响力，这影响力是之前20年不停积累的结果。也就是说这100万从他20年前就开始挣了，这30分钟只是最后的兑现。 </p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<blockquote>
+<p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，或者简单地将作业队列以便让分布式服务器进行处理</p>
+</blockquote>
+<h1 id="RabbitMQ概述"><a href="#RabbitMQ概述" class="headerlink" title="RabbitMQ概述"></a>RabbitMQ概述</h1><p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，或者简单地将作业队列以便让分布式服务器进行处理</p>
         <!-- 
 
-种树的最佳时间是20年前，仅此于它的最佳时间是现在
+RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，或者简单地将作业队列以便让分布式服务器进行处理
 
+RabbitMQ概述RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，或者简单地将作业队列以便让分布式服务器进行处理
 
-或许每个少年在走向青年，又走向成人的时候都会经历过这一遭。像一个青面獠牙的小愤青，看不惯不劳而获，看不惯阿谀奉承，看不惯虚与委蛇，看不惯许许多多，整天像个“挑刺儿”一样活着，有种不知天高地厚却自认为以为指点江山一样自信，恨不得把全世界扭成自己喜欢的模样。
-
-一个从艺20年终于成功的名角儿，拍广告30分钟挣100万。如果单从这回报看，......  -->
+它现实了AMQP协议，并且遵循Mozilla Public License开源......  -->
         <p class="article-more-link">
-          <a href="/post/soup04/#more">阅读全文</a>
+          <a href="/post/rabbitMQ-general/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息队列/">消息队列</a></li></ul>
 
     </footer>
   </div>
@@ -368,7 +341,7 @@ resultMap ......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-mybatis-config"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-read-how-google-work"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -376,7 +349,7 @@ resultMap ......  -->
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/mybatis-config/">Mybaits-配置</a>
+      <a class="article-title" href="/post/read-how-google-work/">《重新定义公司：谷歌是如何运营的》读书笔记</a>
     </h1>
   
 
@@ -384,41 +357,34 @@ resultMap ......  -->
     
     <div class="article-meta">
       
-	<a href="/post/mybatis-config/" class="article-date">
-	  <time datetime="2017-04-10T06:26:18.000Z" itemprop="datePublished">2017-04-10</time>
+	<a href="/post/read-how-google-work/" class="article-date">
+	  <time datetime="2017-03-28T09:25:23.000Z" itemprop="datePublished">2017-03-28</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""><br>Mybatis配置XML文件的层次结构</p>
-<p><img src="/post/mybatis-config/01.png" alt=""></p>
-<p>这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常</p>
-        <!-- Mybatis配置XML文件的层次结构
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo06.jpg" alt=""></p>
+<blockquote>
+<p>大卫帕卡德严肃对待企业文化，1960年，在一次面对惠普管理者的演讲中，他提出，企业之所以存在，就是为了“做些有意义的事情，为社会做一份贡献……放眼四周，我们仍然能看到那些只盯着钱的人，但是多数人之所以有动力前进，是因为他们想要做一番事业：制作一款产品，提供一种服务，一言以蔽之，就是想要做些有意义的事”</p>
+<p>谷歌鼓励员工享受假期，但这么做，并不是宣扬“工作与生活平衡”的理念，如果某个人对企业的成败至关重要，以至于他一旦抽身一两周，企业就运营不下去了，那么这个问题是决定不同忽视的，没有人对企业来说是真正不可或缺的，有时候，有的员工会有意的把自己打造成企业不可或缺的人物，这或许是他们的自负在作祟</p>
+</blockquote>
+        <!-- 
 
-这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常
-
-properties元素properties元素提供三种配置方式
-
-property子元素
-property配置文件
-程序参数传递
-
-property子元素如图：
-这样我们就可以在上下文中使用以及配置好的属性了
-如图：123456&lt;dataSource typ......  -->
+大卫帕卡德严肃对待企业文化，1960年，在一次面对惠普管理者的演讲中，他提出，企业之所以存在，就是为了“做些有意义的事情，为社会做一份贡献……放眼四周，我们仍然能看到那些只盯着钱的人，但是多数人之所以有动力前进，是因为他们想要做一番事业：制作一款产品，提供一种服务，一言以蔽之，就是想要做些有意义的事”
+谷歌鼓励员工享受假期，但这么做，并不是宣扬“工作与生活平衡”的理念，如果某个人对企业的......  -->
         <p class="article-more-link">
-          <a href="/post/mybatis-config/#more">阅读全文</a>
+          <a href="/post/read-how-google-work/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM框架/">ORM框架</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>
@@ -428,7 +394,7 @@ property子元素如图：
 <!-- Table of Contents -->
 
   
-    <article id="post-soup03"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-elasticsearch-segment-merging"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -436,7 +402,7 @@ property子元素如图：
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/post/soup03/">干了这碗毒鸡汤(03)</a>
+      <a class="article-title" href="/post/elasticsearch-segment-merging/">Elasticsearch段合并</a>
     </h1>
   
 
@@ -444,46 +410,37 @@ property子元素如图：
     
     <div class="article-meta">
       
-	<a href="/post/soup03/" class="article-date">
-	  <time datetime="2017-04-07T07:27:43.000Z" itemprop="datePublished">2017-04-07</time>
+	<a href="/post/elasticsearch-segment-merging/" class="article-date">
+	  <time datetime="2017-03-28T07:41:03.000Z" itemprop="datePublished">2017-03-28</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/鸡汤/">鸡汤</a>
+    <a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/photo03.jpg" alt=""></p>
-<ul>
-<li><p>人们最终记住的不是你说过的话，而是你让他们产生的感觉。几乎所有的人都喜欢谈论自己的事情，所以，多问问题。</p>
-</li>
-<li><p>因为你是什么样的人，你就一定会碰到什么样的人。当你认真对待爱情，就会明白真的存在不合适，也会明白被拒绝和不发展是对你的负责。</p>
-</li>
-<li><p>不把信息当作知识，不把收藏当作学习，不把阅读当作思考，不把储存当作掌握。不提炼总结、不应用学习、不深入思考、不实践反馈，就不会变成自己的能力。</p>
-</li>
-</ul>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<blockquote>
+<p>elasticsearch 中每个索引都会创建一个到多个<strong>分片</strong>和零个到多个<strong>副本</strong>，这些分片或副本实质上都是<strong>lucene索引</strong></p>
+</blockquote>
+<p><strong>lucene索引</strong>是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改</p>
+<p>在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment merging）</p>
         <!-- 
 
-人们最终记住的不是你说过的话，而是你让他们产生的感觉。几乎所有的人都喜欢谈论自己的事情，所以，多问问题。
+elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引
 
-因为你是什么样的人，你就一定会碰到什么样的人。当你认真对待爱情，就会明白真的存在不合适，也会明白被拒绝和不发展是对你的负责。
-
-不把信息当作知识，不把收藏当作学习，不把阅读当作思考，不把储存当作掌握。不提炼总结、不应用学习、不深入思考、不实践反馈，就不会变成自己的能力。
-
-
-
-
-选......  -->
+lucene索引是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改
+在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segm......  -->
         <p class="article-more-link">
-          <a href="/post/soup03/#more">阅读全文</a>
+          <a href="/post/elasticsearch-segment-merging/#more">阅读全文</a>
         </p>
       
     </div>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/鸡汤/">鸡汤</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </footer>
   </div>
