@@ -8,15 +8,12 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2gether thru life">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="wangnan's blog">
 <meta property="og:url" content="http://wangnan.tech/page/4/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="2gether thru life">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wangnan's blog">
-<meta name="twitter:description" content="2gether thru life">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -60,6 +57,8 @@ var _hmt = _hmt || [];
 		<hgroup>
 		  <h1 class="header-author"><a href="/">wangnan</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">2gether thru life</p>
 		
 
 		<nav class="header-menu">
@@ -121,6 +120,8 @@ var _hmt = _hmt || [];
 			  <h1 class="header-author js-header-author">wangnan</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>2gether thru life<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -175,6 +176,86 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-rabbitMQ-exchange" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/rabbitMQ-exchange/">RabbitMQ-理解消息通信-交换器和绑定</a>
+    </h1>
+  
+
+        
+        <a href="/post/rabbitMQ-exchange/" class="archive-article-date">
+  	<time datetime="2017-03-31T02:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="交换器和绑定"><a href="#交换器和绑定" class="headerlink" title="交换器和绑定"></a>交换器和绑定</h1><p>当你想要将消息投递到队列时，你通过把消息发送给<strong>交换器</strong>来完成。然后，根据确定的规则，RabbitMQ将会决定消息该投递到哪个队列，这些规则被称为<strong>路由键(routing key)</strong>。<strong>队列通过路由键绑定到交换器</strong>，当你把消息发送到代理服务器时，消息将拥有一个路由键（即使是空的）<br>Rabbit也会将其和绑定使用的路由键进行匹配，如果匹配的话，那么消息将会投递到队列，如果路由的消息不匹配任何绑定模式的话，消息将进入“黑洞”</p>
+        
+          <a class="article-more-a" href="/post/rabbitMQ-exchange/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/rabbitMQ-exchange/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-rabbitMQ-queue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -505,90 +586,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-elasticsearch-segment-merging" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-segment-merging/">Elasticsearch段合并</a>
-    </h1>
-  
-
-        
-        <a href="/post/elasticsearch-segment-merging/" class="archive-article-date">
-  	<time datetime="2017-03-28T07:41:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>elasticsearch 中每个索引都会创建一个到多个<strong>分片</strong>和零个到多个<strong>副本</strong>，这些分片或副本实质上都是<strong>lucene索引</strong></p>
-</blockquote>
-<p><strong>lucene索引</strong>是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改</p>
-<p>在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment merging）</p>
-        
-          <a class="article-more-a" href="/post/elasticsearch-segment-merging/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/elasticsearch-segment-merging/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -674,19 +671,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,11 +703,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">代理</a>
+                <a href="javascript:void(0)" class="js-tag color3">反射</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">反射</a>
+                <a href="javascript:void(0)" class="js-tag color3">代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,6 +732,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
