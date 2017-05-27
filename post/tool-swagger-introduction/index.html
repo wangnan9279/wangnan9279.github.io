@@ -217,6 +217,35 @@ var _hmt = _hmt || [];
         
       </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用介绍"><span class="toc-number">1.</span> <span class="toc-text">使用介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是swagger"><span class="toc-number">1.1.</span> <span class="toc-text">什么是swagger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何集成Swagger-springmvc到我们的项目中"><span class="toc-number">1.2.</span> <span class="toc-text">如何集成Swagger-springmvc到我们的项目中?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven"><span class="toc-number">1.2.1.</span> <span class="toc-text">Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle"><span class="toc-number">1.2.2.</span> <span class="toc-text">Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Java-Configuration"><span class="toc-number">1.2.3.</span> <span class="toc-text">Spring Java Configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-xml-Configuration"><span class="toc-number">1.2.4.</span> <span class="toc-text">Spring xml Configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SwaggerSpringMvcPlugin-XML-Configuration"><span class="toc-number">1.2.5.</span> <span class="toc-text">SwaggerSpringMvcPlugin XML Configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SwaggerSpringMvcPlugin-Spring-Java-Configuration"><span class="toc-number">1.2.6.</span> <span class="toc-text">SwaggerSpringMvcPlugin Spring Java Configuration</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#碰到的问题"><span class="toc-number">2.</span> <span class="toc-text">碰到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-API注解"><span class="toc-number">2.1.</span> <span class="toc-text">关于@API注解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#评价"><span class="toc-number">3.</span> <span class="toc-text">评价</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
@@ -377,6 +406,7 @@ dom_id: &quot;swagger-ui-container&quot;,
 
 
 <!-- 来必力City版安装代码 -->
+
 <section class="duoshuo" id="comments">
 <div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
 <script type="text/javascript">
@@ -396,6 +426,7 @@ dom_id: &quot;swagger-ui-container&quot;,
 </div>
 </section>
 <!-- City版安装代码已完成 -->
+
 
 
 
@@ -506,19 +537,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="我有两个爸爸,一个富,一个穷。一个受过良好的教育,聪明绝顶,拥有博士的光环,他曾经在不到两年的时间里修完了四年制的大学本科学业,随后又在斯坦福大学、芝加哥大学和西北大学进一步深造,并且在所有这些学校都拿到了全奖；与之相反的是,我的另一个爸爸连八年级都没能念完。应该说两位爸爸的事业都相当成功,而且一辈子都很勤奋,因此,两人都有着丰厚的收入。然而其中一个人终其一生都在个人财务问题的泥沼中挣扎,另一">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/09.jpg">
-<meta property="og:updated_time" content="2017-05-27T03:31:50.713Z">
+<meta property="og:updated_time" content="2017-05-27T06:22:22.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《富爸爸穷爸爸》读书笔记之第一章">
 <meta name="twitter:description" content="我有两个爸爸,一个富,一个穷。一个受过良好的教育,聪明绝顶,拥有博士的光环,他曾经在不到两年的时间里修完了四年制的大学本科学业,随后又在斯坦福大学、芝加哥大学和西北大学进一步深造,并且在所有这些学校都拿到了全奖；与之相反的是,我的另一个爸爸连八年级都没能念完。应该说两位爸爸的事业都相当成功,而且一辈子都很勤奋,因此,两人都有着丰厚的收入。然而其中一个人终其一生都在个人财务问题的泥沼中挣扎,另一">
@@ -216,6 +216,35 @@ var _hmt = _hmt || [];
         
       </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/09.jpg" alt=""></p>
@@ -363,6 +392,7 @@ var _hmt = _hmt || [];
 
 
 <!-- 来必力City版安装代码 -->
+
 <section class="duoshuo" id="comments">
 <div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
 <script type="text/javascript">
@@ -382,6 +412,7 @@ var _hmt = _hmt || [];
 </div>
 </section>
 <!-- City版安装代码已完成 -->
+
 
 
 
@@ -492,19 +523,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -251,6 +251,35 @@ var _hmt = _hmt || [];
         
       </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#映射器主要元素"><span class="toc-number">1.</span> <span class="toc-text">映射器主要元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#select"><span class="toc-number">2.</span> <span class="toc-text">select</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单例子"><span class="toc-number">2.2.</span> <span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动映射"><span class="toc-number">2.3.</span> <span class="toc-text">自动映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递多个参数"><span class="toc-number">2.4.</span> <span class="toc-text">传递多个参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Map传递"><span class="toc-number">2.4.1.</span> <span class="toc-text">使用Map传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用注解传递"><span class="toc-number">2.4.2.</span> <span class="toc-text">使用注解传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JavaBean传递"><span class="toc-number">2.4.3.</span> <span class="toc-text">使用JavaBean传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.4.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap"><span class="toc-number">2.5.</span> <span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#insert"><span class="toc-number">3.</span> <span class="toc-text">insert</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-number">3.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主键回填和自定义"><span class="toc-number">3.2.</span> <span class="toc-text">主键回填和自定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update与delete"><span class="toc-number">4.</span> <span class="toc-text">update与delete</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数"><span class="toc-number">5.</span> <span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参数配置"><span class="toc-number">5.1.</span> <span class="toc-text">参数配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程支持"><span class="toc-number">5.2.</span> <span class="toc-text">存储过程支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符串替换和处理（-和-）"><span class="toc-number">5.3.</span> <span class="toc-text">特殊字符串替换和处理（#和$）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sql元素"><span class="toc-number">6.</span> <span class="toc-text">sql元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#resultMap-1"><span class="toc-number">7.</span> <span class="toc-text">resultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#元素构成"><span class="toc-number">7.1.</span> <span class="toc-text">元素构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor元素"><span class="toc-number">7.2.</span> <span class="toc-text">constructor元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用map存储结果集"><span class="toc-number">7.3.</span> <span class="toc-text">使用map存储结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用POJO储存结果集"><span class="toc-number">7.4.</span> <span class="toc-text">使用POJO储存结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#级联"><span class="toc-number">7.5.</span> <span class="toc-text">级联</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存"><span class="toc-number">8.</span> <span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统缓存"><span class="toc-number">8.1.</span> <span class="toc-text">系统缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义缓存"><span class="toc-number">8.2.</span> <span class="toc-text">自定义缓存</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
@@ -484,6 +513,7 @@ var _hmt = _hmt || [];
 
 
 <!-- 来必力City版安装代码 -->
+
 <section class="duoshuo" id="comments">
 <div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
 <script type="text/javascript">
@@ -503,6 +533,7 @@ var _hmt = _hmt || [];
 </div>
 </section>
 <!-- City版安装代码已完成 -->
+
 
 
 
@@ -613,19 +644,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
              
               <li class="article-tag-list-item">

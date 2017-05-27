@@ -222,6 +222,35 @@ var _hmt = _hmt || [];
         
       </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#与关系型数据库对比"><span class="toc-number">1.1.</span> <span class="toc-text">与关系型数据库对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础概念"><span class="toc-number">2.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cluster"><span class="toc-number">2.1.</span> <span class="toc-text">cluster</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node"><span class="toc-number">2.2.</span> <span class="toc-text">node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index"><span class="toc-number">2.3.</span> <span class="toc-text">index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type"><span class="toc-number">2.4.</span> <span class="toc-text">Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mapping"><span class="toc-number">2.5.</span> <span class="toc-text">mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#document"><span class="toc-number">2.6.</span> <span class="toc-text">document</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shards-amp-replicas"><span class="toc-number">2.7.</span> <span class="toc-text">shards&replicas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#analysis"><span class="toc-number">2.8.</span> <span class="toc-text">analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#highlight"><span class="toc-number">2.9.</span> <span class="toc-text">highlight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#score"><span class="toc-number">2.10.</span> <span class="toc-text">score</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#refresh"><span class="toc-number">2.11.</span> <span class="toc-text">refresh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-number">2.12.</span> <span class="toc-text">sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存"><span class="toc-number">2.13.</span> <span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.14.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置："><span class="toc-number">2.15.</span> <span class="toc-text">安装配置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览你的集群"><span class="toc-number">2.16.</span> <span class="toc-text">浏览你的集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群健康："><span class="toc-number">2.17.</span> <span class="toc-text">集群健康：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列举出所有索引："><span class="toc-number">2.18.</span> <span class="toc-text">列举出所有索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个索引："><span class="toc-number">2.19.</span> <span class="toc-text">创建一个索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个文档："><span class="toc-number">2.20.</span> <span class="toc-text">创建一个文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除一个索引："><span class="toc-number">2.21.</span> <span class="toc-text">删除一个索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改你的数据"><span class="toc-number">2.22.</span> <span class="toc-text">修改你的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新文档："><span class="toc-number">2.23.</span> <span class="toc-text">更新文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文档"><span class="toc-number">2.24.</span> <span class="toc-text">删除文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量操作："><span class="toc-number">2.25.</span> <span class="toc-text">批量操作：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览你的数据"><span class="toc-number">2.26.</span> <span class="toc-text">浏览你的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询API"><span class="toc-number">2.26.1.</span> <span class="toc-text">查询API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询语句："><span class="toc-number">2.26.2.</span> <span class="toc-text">查询语句：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规定数目"><span class="toc-number">2.26.3.</span> <span class="toc-text">规定数目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">2.26.4.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规定返回指定的field"><span class="toc-number">2.26.5.</span> <span class="toc-text">规定返回指定的field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match"><span class="toc-number">2.26.6.</span> <span class="toc-text">match:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-number">2.26.7.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aggregations"><span class="toc-number">2.26.8.</span> <span class="toc-text">Aggregations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#suggest"><span class="toc-number">2.26.9.</span> <span class="toc-text">suggest</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展"><span class="toc-number">4.</span> <span class="toc-text">拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方文档："><span class="toc-number">4.1.</span> <span class="toc-text">官方文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticSearch中文社区："><span class="toc-number">4.2.</span> <span class="toc-text">elasticSearch中文社区：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticsearch-索引优化"><span class="toc-number">4.3.</span> <span class="toc-text">elasticsearch 索引优化:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他相似功能产品对比："><span class="toc-number">4.4.</span> <span class="toc-text">与其他相似功能产品对比：</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
@@ -499,6 +528,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
 
 
 <!-- 来必力City版安装代码 -->
+
 <section class="duoshuo" id="comments">
 <div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
 <script type="text/javascript">
@@ -518,6 +548,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
 </div>
 </section>
 <!-- City版安装代码已完成 -->
+
 
 
 
@@ -628,19 +659,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
               </li>
              
               <li class="article-tag-list-item">
