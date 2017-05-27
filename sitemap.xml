@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-05-27T06:43:01.191Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/douban/index.html</loc>
     
     <lastmod>2017-05-27T06:40:59.038Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://wangnan.tech/post/read-rich-father-pool-father01/</loc>
     
     <lastmod>2017-05-27T03:04:11.382Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-05-25T11:42:42.868Z</lastmod>
     
   </url>
   
