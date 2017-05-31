@@ -210,31 +210,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</p>
 </blockquote>
-<h1 id="多租户模式：虚拟主机和隔离"><a href="#多租户模式：虚拟主机和隔离" class="headerlink" title="多租户模式：虚拟主机和隔离"></a>多租户模式：虚拟主机和隔离</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</li>
-<li>更重要的是，<strong>他拥有自己的权限机制</strong>，<strong>这使得你能够安全地使用一个RabbitMQ服务器来服务众多的应用程序</strong></li>
-<li>vhost就像是虚拟机之与物理服务器一样：他们在各个实例间提供逻辑上的分离，允许你为不同程序安全保密地运行数据，它既能将同一个Rabbit的众多客户区分开来，又可以避免队列和交换器命名冲突</li>
-<li>vhost是AMQP概念的基础，你必须在连接时进行指定</li>
-<li>RabbitMQ包含了一个开箱即用的默认vhost:”/“，如果你不需要多个vhost，那么就使用默认的吧，使用缺省的guest用户名和密码guest就可以访问默认的vhost</li>
-<li>当你在RabbitMQ集群上创建vhost，整个集群上都会创建该vhost，vhost不仅消除了为基础架构中的每一层运行一个RabbitMQ服务器的需要，同样也避免了为每一层创建不同集群</li>
-</ul>
-<h2 id="如何创建vhost"><a href="#如何创建vhost" class="headerlink" title="如何创建vhost"></a>如何创建vhost</h2><p>vhost和权限控制非常独特，他们是AMQP中唯一无法通过AMQP协议的基元（不同与队列，交换器和绑定）</p>
-<p><strong>创建vhost</strong></p>
-<p>你需要通过RabbitMQ的安装路径下的./sbin/目录中的<strong>rabbitmqctl</strong>工具来创建</p>
-<p>运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl add_vhost[vhost_name]</div></pre></td></tr></table></figure>
-<p>可以创建一个vhost，其中[vhost_name]就是你想要创建的vhost</p>
-<p><strong>删除vhost</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl delete_vhost[vhsost_name]</div></pre></td></tr></table></figure>
-<p><strong>查看Rabbit服务器上运行着那些vhost</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl list_vhost</div></pre></td></tr></table></figure>
-<p>你就会看到如下所示的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ ./sbin/rabbitmqctl list_vhosts</div><div class="line">Listing vhosts ...</div><div class="line">/</div><div class="line">oak</div><div class="line">sycamore</div><div class="line">...done.</div></pre></td></tr></table></figure>
-<p><strong>管理远程RabbitMQ节点</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-n rabbit@[server_name]</div></pre></td></tr></table></figure>
-<p>rabbit表示Erlang应用程序名称<br>[server_name]表示ip</p>
-<p>（注：内容整理自《RabbitMQ实战》）</p>
-
+        
+          <a class="article-more-a" href="/post/rabbitMQ-vhost/#more">more >></a>
+        
       
 
       
@@ -824,19 +802,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
               </li>
              
               <li class="article-tag-list-item">

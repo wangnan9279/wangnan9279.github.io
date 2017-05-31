@@ -8,26 +8,17 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>RabbitMQ-理解消息通信-虚拟主机和隔离 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等
-
-多租户模式：虚拟主机和隔离概述
-每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
+  <meta name="description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ-理解消息通信-虚拟主机和隔离">
 <meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-vhost/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等
-
-多租户模式：虚拟主机和隔离概述
-每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
+<meta property="og:description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:22.733Z">
+<meta property="og:updated_time" content="2017-05-27T07:39:47.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ-理解消息通信-虚拟主机和隔离">
-<meta name="twitter:description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等
-
-多租户模式：虚拟主机和隔离概述
-每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
+<meta name="twitter:description" content="每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为虚拟主机(vhost)每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -260,6 +251,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="多租户模式：虚拟主机和隔离"><a href="#多租户模式：虚拟主机和隔离" class="headerlink" title="多租户模式：虚拟主机和隔离"></a>多租户模式：虚拟主机和隔离</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li>每个RabbitMQ服务器都能创建虚拟的消息服务器，我们称之为<strong>虚拟主机(vhost)</strong>每一个vhost本质上是一个mini版的RabbitMQ服务器，拥有自己的队列、交换器和绑定等等</li>
 <li>更重要的是，<strong>他拥有自己的权限机制</strong>，<strong>这使得你能够安全地使用一个RabbitMQ服务器来服务众多的应用程序</strong></li>
@@ -541,19 +533,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
               </li>
              
               <li class="article-tag-list-item">
