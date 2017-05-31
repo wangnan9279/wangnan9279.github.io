@@ -177,6 +177,116 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mybatis-mapper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/mybatis-mapper/">Mybatis映射器</a>
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+		
+        
+		
+        <a href="/post/mybatis-mapper/" class="archive-article-date">
+  	<time datetime="2017-04-13T05:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
+</a>
+        
+      </header>
+    
+	
+	<!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<h1 id="映射器主要元素"><a href="#映射器主要元素" class="headerlink" title="映射器主要元素"></a>映射器主要元素</h1><ul>
+<li>select  查询（可以自定义参数,返回结果集）</li>
+<li>insert 插入（执行后返回一个整数，代表插入的条数）</li>
+<li>update 更新 （执行后返回一个整数，代表更新的条数）</li>
+<li>delete 删除 （执行后返回一个整数，代表删除的条数）</li>
+<li>parameterMap  （定义参数映射关系，即将被删除的元素，不建议使用） </li>
+<li>sql  表的列名，一次定义多个sql使用</li>
+<li>resultMap 从结果集中加载对象，提供映射规则</li>
+<li>cache 给定命名空间的缓存配置</li>
+<li>cache-ref 其他命名空间缓存配置</li>
+</ul>
+        
+          <a class="article-more-a" href="/post/mybatis-mapper/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ORM框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Mybatis/" class="article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/mybatis-mapper/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- -->
+
+
+<!-- 来必力City版安装代码 -->
+
+
+
+
+
+  
     <article id="post-mybatis-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -590,117 +700,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-rabbitMQ-persistence" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-persistence/">RabbitMQ-理解消息通信-持久化策略</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/rabbitMQ-persistence/" class="archive-article-date">
-  	<time datetime="2017-04-01T05:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false</p>
-<p><strong>durable</strong>属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）<br>将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了</p>
-<p>把这个属性设置为true不足以让消息幸免于重启，光这样还不够</p>
-<p><strong>如果想要从Rabbit崩溃中恢复，那么消息必须做到这三点：</strong></p>
-<ul>
-<li>把它的投递模式选项设置为2（持久）</li>
-<li>发送到持久化的交换器</li>
-<li>到达持久化队列</li>
-</ul>
-        
-          <a class="article-more-a" href="/post/rabbitMQ-persistence/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/rabbitMQ-persistence/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
