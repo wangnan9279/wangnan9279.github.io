@@ -8,22 +8,19 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Java8-流-使用流 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流
-例子:筛选所有的素菜1List&amp;lt;Dish&amp;gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());">
+  <meta name="description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8-流-使用流">
 <meta property="og:url" content="http://wangnan.tech/post/java8-stream-use/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流
-例子:筛选所有的素菜1List&amp;lt;Dish&amp;gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());">
+<meta property="og:description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/02.png">
-<meta property="og:updated_time" content="2017-05-27T07:51:45.675Z">
+<meta property="og:updated_time" content="2017-06-01T02:43:08.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-流-使用流">
-<meta name="twitter:description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流
-例子:筛选所有的素菜1List&amp;lt;Dish&amp;gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());">
+<meta name="twitter:description" content="筛选和切片用谓词筛选filter方法会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -254,8 +251,8 @@ var _hmt = _hmt || [];
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
 <h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
-<p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
+<p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
 <h2 id="筛选各异的元素"><a href="#筛选各异的元素" class="headerlink" title="筛选各异的元素"></a>筛选各异的元素</h2><p><strong>distinct方法</strong><br>他会返回一个元素各异的流，实现原理是根据元素的hashCode和equals方法</p>
 <p>例子：筛选偶数，且不重复<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">number.stream().filter(i-&gt;<span class="number">1</span>%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">               .distinct()</div><div class="line">               .forEach(System.out.println);</div></pre></td></tr></table></figure></p>
 <h2 id="截断流"><a href="#截断流" class="headerlink" title="截断流"></a>截断流</h2><p><strong>limit(n)方法</strong><br>该方法会返回一个不超过给定长度的流，如果流是有序的，则最多会返回前n个元素</p>

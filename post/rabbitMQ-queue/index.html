@@ -9,31 +9,19 @@
   <title>RabbitMQ-理解消息通信-队列 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="队列AMQP消息路由必须有三部分：交换器、队列和绑定
-生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列
-消费者通过以下两种方式从特定的队列中接收消息：
-
-通过AMQP的basic.comsume命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止
-如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的ba">
+生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ-理解消息通信-队列">
 <meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-queue/index.html">
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="队列AMQP消息路由必须有三部分：交换器、队列和绑定
-生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列
-消费者通过以下两种方式从特定的队列中接收消息：
-
-通过AMQP的basic.comsume命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止
-如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的ba">
+生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:18.202Z">
+<meta property="og:updated_time" content="2017-06-01T02:45:10.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ-理解消息通信-队列">
 <meta name="twitter:description" content="队列AMQP消息路由必须有三部分：交换器、队列和绑定
-生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列
-消费者通过以下两种方式从特定的队列中接收消息：
-
-通过AMQP的basic.comsume命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止
-如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的ba">
+生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -265,12 +253,12 @@ var _hmt = _hmt || [];
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>AMQP消息路由必须有三部分：交换器、队列和绑定</p>
 <p>生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列</p>
+<a id="more"></a>
 <p>消费者通过以下两种方式从特定的队列中接收消息：</p>
 <ul>
 <li>通过AMQP的<strong>basic.comsume</strong>命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止</li>
 <li>如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的<strong>basic.get</strong>，如果要获取更多的消息的话，需要再次发送basic.get命令。<br>（不要将basic.get放在循环里面来替代basic.consume）因为这样做会影响Rabbit的性能</li>
 </ul>
-<a id="more"></a>
 <p><strong>如果消息到达了无人订阅的队列呢？</strong><br>这种情况下，消息会在队列中等待，一旦有消费者订阅到该队列，那么队列上的消息会发给消费者</p>
 <p>当Rabbit队列拥有多个消费者时，队列收到的消息将以循环（round-robin）的方式发给消费者，每条消息只会发送给一个订阅的消费者</p>
 <p>消费者接收到每一条消息都必须进行确认，消费者必须通过AMQP的<strong>basic.ack</strong>命令显式的向RabbitMQ发送一个确认，或者在订阅到队列的时候就将<strong>auto_ack</strong>参数设置为true，当设置了auto_ack时，一旦消费者接收消息，RabbitMQ会自动视其确认了消息</p>

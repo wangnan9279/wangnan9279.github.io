@@ -177,6 +177,106 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java8-stream-use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/java8-stream-use/">Java8-流-使用流</a>
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+		
+        
+		
+        <a href="/post/java8-stream-use/" class="archive-article-date">
+  	<time datetime="2017-05-09T03:09:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-09</time>
+</a>
+        
+      </header>
+    
+	
+	<!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
+        
+          <a class="article-more-a" href="/post/java8-stream-use/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java/" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/java8-stream-use/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- -->
+
+
+<!-- 来必力City版安装代码 -->
+
+
+
+
+
+  
     <article id="post-java8-stream-introduction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -312,13 +412,6 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法</p>
 </blockquote>
-<h1 id="Lambda管中窥豹"><a href="#Lambda管中窥豹" class="headerlink" title="Lambda管中窥豹"></a>Lambda管中窥豹</h1><p>可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表</p>
-<p>lambda表达式有三部分：</p>
-<ul>
-<li>参数列表</li>
-<li>箭头</li>
-<li>lambda主体</li>
-</ul>
         
           <a class="article-more-a" href="/post/java8-lambda/#more">more >></a>
         
@@ -421,9 +514,6 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变<br>行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。</p>
 </blockquote>
-<p>它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用</p>
-<p>我们看一个例子，我们通过不断改进这个例子，展示行为参数化</p>
-<h1 id="版本1-1-筛选绿苹果"><a href="#版本1-1-筛选绿苹果" class="headerlink" title="版本1.1 筛选绿苹果"></a>版本1.1 筛选绿苹果</h1><p><img src="/post/java8-action-as-para/01.png" alt=""><br>如果要筛选红苹果怎么办呢?</p>
         
           <a class="article-more-a" href="/post/java8-action-as-para/#more">more >></a>
         
@@ -527,16 +617,6 @@ var _hmt = _hmt || [];
 <ul>
 <li>因为java8所做的改变，在许多方面比java历史上任何一次改变都深远</li>
 </ul>
-<p>再也不哟写下面这种啰嗦的程序了(按苹果重量排序)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Collections.sort(inventory,new Comparator&lt;Apple&gt;)()&#123;</div><div class="line">   public int compare(Apple a1,Apple a2)&#123;</div><div class="line">       return a1.getWeight().compareTo(a2.getWeight())</div><div class="line">   &#125; </div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
-<p>java8中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inventory.sort(Comparing(Apple::getWeight()))</div></pre></td></tr></table></figure></p>
-<p>java8对cpu核的利用率提高.</p>
-<ul>
-<li><p>StreamAPI<br>支持许多处理数据的并行操作，避免用synchronized编写代码</p>
-</li>
-<li><p>把代码传递给方法的简洁方式(方法引用，Lambda)，行为参数化</p>
-</li>
-<li>接口中的默认方法</li>
-</ul>
         
           <a class="article-more-a" href="/post/java8-general/#more">more >></a>
         
@@ -578,108 +658,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/java8-general/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-mybaits-sql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/mybaits-sql/">Mybatis-动态SQL</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/mybaits-sql/" class="archive-article-date">
-  	<time datetime="2017-04-17T07:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
-<p>如果使用JDBC或者其他框架，很多时候你得根据需要去拼装SQL,这是一个麻烦的事情，mybatis提供对sql语句动态的组装能力。大部分判断可以在mybatis的映射XML文件里面配置</p>
-<p>mybatis也可以在注解中配置SQL，但是由于注解配置功能受限，对于复杂SQL而言可读性差，较少使用</p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>动态SQL包括以下几种元素<br><img src="/post/mybaits-sql/01.png" alt=""></p>
-        
-          <a class="article-more-a" href="/post/mybaits-sql/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ORM框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mybatis/" class="article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/mybaits-sql/">展开全文 >></a>
         </p>
       
 

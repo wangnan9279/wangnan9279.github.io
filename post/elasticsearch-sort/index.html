@@ -8,18 +8,12 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Elasticsearch排序 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
-
-下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
-也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为">
+  <meta name="description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch排序">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-sort/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
-
-下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
-也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为">
+<meta property="og:description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/02.png">
@@ -31,13 +25,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/08.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/09.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/10.png">
-<meta property="og:updated_time" content="2017-05-27T06:48:41.702Z">
+<meta property="og:updated_time" content="2017-06-01T02:41:48.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch排序">
-<meta name="twitter:description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式
-
-下面的例子就容易做到：该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序
-也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为">
+<meta name="twitter:description" content="当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -270,9 +261,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
 </blockquote>
+<a id="more"></a>
 <p>下面的例子就容易做到：<br><img src="/post/elasticsearch-sort/01.png" alt="01"><br>该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序</p>
 <p><strong>也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为</strong><br><img src="/post/elasticsearch-sort/02.png" alt="02"></p>
-<a id="more"></a>
 <h1 id="基于多值字段的排序"><a href="#基于多值字段的排序" class="headerlink" title="基于多值字段的排序"></a>基于多值字段的排序</h1><p>某些文档的release-dates字段里面储存了多个电影上映日期（同一部电影在不同国家的上映日期不同）我们可以构造查询请求：<br><img src="/post/elasticsearch-sort/03.png" alt="03"><br>例子中<strong>es将基于每个文档的release_dates字段的最小值进行排序</strong><br>mode参数可以设置为以上值：</p>
 <ul>
 <li>min 按照该字段最小值排序</li>

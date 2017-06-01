@@ -2,6 +2,223 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/mybatis-config/</loc>
+    
+    <lastmod>2017-06-01T02:57:41.262Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/read-rich-father-pool-father04/</loc>
+    
+    <lastmod>2017-06-01T02:56:37.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
+    
+    <lastmod>2017-06-01T02:48:40.285Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/tool-swagger-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:46:31.773Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/tool-Sublime-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:46:04.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-webapp/</loc>
+    
+    <lastmod>2017-06-01T02:45:54.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-progression/</loc>
+    
+    <lastmod>2017-06-01T02:45:48.997Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:45:42.034Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/rabbitMQ-queue/</loc>
+    
+    <lastmod>2017-06-01T02:45:10.672Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/rabbitMQ-producer-consumer/</loc>
+    
+    <lastmod>2017-06-01T02:45:03.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/rabbitMQ-persistence/</loc>
+    
+    <lastmod>2017-06-01T02:44:56.245Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/rabbitMQ-management/</loc>
+    
+    <lastmod>2017-06-01T02:44:47.059Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
+    
+    <lastmod>2017-06-01T02:44:18.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
+    
+    <lastmod>2017-06-01T02:44:06.840Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
+    
+    <lastmod>2017-06-01T02:43:52.822Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-io-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:43:38.123Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-concurrent02/</loc>
+    
+    <lastmod>2017-06-01T02:43:31.901Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-concurrent01/</loc>
+    
+    <lastmod>2017-06-01T02:43:20.571Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:43:13.587Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java8-stream-use/</loc>
+    
+    <lastmod>2017-06-01T02:43:08.001Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java8-lambda/</loc>
+    
+    <lastmod>2017-06-01T02:42:56.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java8-general/</loc>
+    
+    <lastmod>2017-06-01T02:42:49.960Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java8-collect/</loc>
+    
+    <lastmod>2017-06-01T02:42:40.638Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/java8-action-as-para/</loc>
+    
+    <lastmod>2017-06-01T02:42:31.534Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-study-note/</loc>
+    
+    <lastmod>2017-06-01T02:41:58.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
+    
+    <lastmod>2017-06-01T02:41:48.390Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-segment-merging/</loc>
+    
+    <lastmod>2017-06-01T02:41:21.023Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-rescore/</loc>
+    
+    <lastmod>2017-06-01T02:41:13.009Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-introduction/</loc>
+    
+    <lastmod>2017-06-01T02:40:56.994Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
+    
+    <lastmod>2017-06-01T02:40:43.600Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-completion-suggester/</loc>
+    
+    <lastmod>2017-06-01T02:40:34.887Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/read-rich-father-pool-father03/</loc>
     
     <lastmod>2017-05-31T03:20:05.246Z</lastmod>
@@ -23,44 +240,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/java8-stream-use/</loc>
-    
-    <lastmod>2017-05-27T07:51:45.675Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/java8-stream-introduction/</loc>
     
     <lastmod>2017-05-27T07:51:45.672Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java8-lambda/</loc>
-    
-    <lastmod>2017-05-27T07:51:45.670Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java8-general/</loc>
-    
-    <lastmod>2017-05-27T07:51:45.666Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java8-collect/</loc>
-    
-    <lastmod>2017-05-27T07:51:45.662Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java8-action-as-para/</loc>
-    
-    <lastmod>2017-05-27T07:51:45.653Z</lastmod>
     
   </url>
   
@@ -72,72 +254,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/tool-swagger-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:51:59.911Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/tool-Sublime-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:51:56.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-webapp/</loc>
-    
-    <lastmod>2017-05-27T06:51:45.842Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:51:35.542Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-data-safety/</loc>
-    
-    <lastmod>2017-05-27T06:51:30.735Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/redis-command/</loc>
     
     <lastmod>2017-05-27T06:51:27.588Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/rabbitMQ-queue/</loc>
-    
-    <lastmod>2017-05-27T06:51:18.202Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/rabbitMQ-producer-consumer/</loc>
-    
-    <lastmod>2017-05-27T06:51:14.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/rabbitMQ-persistence/</loc>
-    
-    <lastmod>2017-05-27T06:51:11.633Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/rabbitMQ-management/</loc>
-    
-    <lastmod>2017-05-27T06:51:08.524Z</lastmod>
     
   </url>
   
@@ -170,20 +289,6 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
-    
-    <lastmod>2017-05-27T06:50:49.934Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
-    
-    <lastmod>2017-05-27T06:50:46.784Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/mybatis-getting-started/</loc>
     
     <lastmod>2017-05-27T06:50:41.145Z</lastmod>
@@ -191,23 +296,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/mybatis-config/</loc>
-    
-    <lastmod>2017-05-27T06:50:37.985Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/mybatis-cache/</loc>
     
     <lastmod>2017-05-27T06:50:34.206Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
-    
-    <lastmod>2017-05-27T06:50:29.383Z</lastmod>
     
   </url>
   
@@ -233,51 +324,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/java-io-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:50:12.554Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-concurrent02/</loc>
-    
-    <lastmod>2017-05-27T06:50:06.712Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-concurrent01/</loc>
-    
-    <lastmod>2017-05-27T06:50:03.546Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:49:59.148Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/elasticsearch-index-control/</loc>
     
     <lastmod>2017-05-27T06:49:14.723Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-geo-distance-query/</loc>
-    
-    <lastmod>2017-05-27T06:49:11.385Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-completion-suggester/</loc>
-    
-    <lastmod>2017-05-27T06:49:08.117Z</lastmod>
     
   </url>
   
@@ -296,44 +345,9 @@
   </url>
   
   <url>
-    <loc>http://wangnan.tech/post/elasticsearch-introduction/</loc>
-    
-    <lastmod>2017-05-27T06:48:54.794Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangnan.tech/post/elasticsearch-lucene-score-rule/</loc>
     
     <lastmod>2017-05-27T06:48:51.019Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-rescore/</loc>
-    
-    <lastmod>2017-05-27T06:48:48.397Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-segment-merging/</loc>
-    
-    <lastmod>2017-05-27T06:48:45.310Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
-    
-    <lastmod>2017-05-27T06:48:41.702Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-study-note/</loc>
-    
-    <lastmod>2017-05-27T06:48:37.692Z</lastmod>
     
   </url>
   
@@ -474,13 +488,6 @@
     <loc>http://wangnan.tech/post/read-how-google-work/</loc>
     
     <lastmod>2017-05-24T08:49:16.532Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-progression/</loc>
-    
-    <lastmod>2017-05-24T08:48:38.823Z</lastmod>
     
   </url>
   

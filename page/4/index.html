@@ -177,6 +177,106 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitMQ-management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/rabbitMQ-management/">RabbitMQ-运行和管理RabbitMQ</a>
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+		
+        
+		
+        <a href="/post/rabbitMQ-management/" class="archive-article-date">
+  	<time datetime="2017-04-05T06:44:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
+</a>
+        
+      </header>
+    
+	
+	<!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>RabbitMQ是使用Erlang编写的</p>
+        
+          <a class="article-more-a" href="/post/rabbitMQ-management/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/rabbitMQ-management/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- -->
+
+
+<!-- 来必力City版安装代码 -->
+
+
+
+
+
+  
     <article id="post-rabbitMQ-persistence" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -209,13 +309,6 @@ var _hmt = _hmt || [];
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false</p>
 <p><strong>durable</strong>属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）<br>将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了</p>
-<p>把这个属性设置为true不足以让消息幸免于重启，光这样还不够</p>
-<p><strong>如果想要从Rabbit崩溃中恢复，那么消息必须做到这三点：</strong></p>
-<ul>
-<li>把它的投递模式选项设置为2（持久）</li>
-<li>发送到持久化的交换器</li>
-<li>到达持久化队列</li>
-</ul>
         
           <a class="article-more-a" href="/post/rabbitMQ-persistence/#more">more >></a>
         
@@ -519,11 +612,6 @@ var _hmt = _hmt || [];
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>AMQP消息路由必须有三部分：交换器、队列和绑定</p>
 <p>生产者把消息发布到交换器上，消息最终到达队列，并被消费者接收，绑定决定了消息如何从路由器路由到特定的队列</p>
-<p>消费者通过以下两种方式从特定的队列中接收消息：</p>
-<ul>
-<li>通过AMQP的<strong>basic.comsume</strong>命令订阅，这样就会将信道置为接收模式，知道取消对队列的订阅为止</li>
-<li>如果我们只想从队列获取单条消息而不是持续订阅，向队列发送单条消息是通过AMQP的<strong>basic.get</strong>，如果要获取更多的消息的话，需要再次发送basic.get命令。<br>（不要将basic.get放在循环里面来替代basic.consume）因为这样做会影响Rabbit的性能</li>
-</ul>
         
           <a class="article-more-a" href="/post/rabbitMQ-queue/#more">more >></a>
         
@@ -565,107 +653,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/rabbitMQ-queue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-rabbitMQ-producer-consumer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-producer-consumer/">RabbitMQ-理解消息通信-消费者和生产者</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/rabbitMQ-producer-consumer/" class="archive-article-date">
-  	<time datetime="2017-03-30T03:07:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="消费者和生产者"><a href="#消费者和生产者" class="headerlink" title="消费者和生产者"></a>消费者和生产者</h1><h2 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h2><p>生产者创建消息，然后发布到代理服务器</p>
-<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>什么是消息呢？<br>消息包含两部分：<strong>有效载荷（payload）和标签（label）</strong></p>
-        
-          <a class="article-more-a" href="/post/rabbitMQ-producer-consumer/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/rabbitMQ-producer-consumer/">展开全文 >></a>
         </p>
       
 

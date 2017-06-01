@@ -8,40 +8,22 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Java8-Lambda表达式 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法
-
-Lambda管中窥豹可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表
-lambda表达式有三部分：
-
-参数列表
-箭">
+  <meta name="description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8-Lambda表达式">
 <meta property="og:url" content="http://wangnan.tech/post/java8-lambda/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法
-
-Lambda管中窥豹可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表
-lambda表达式有三部分：
-
-参数列表
-箭">
+<meta property="og:description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/04.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/05.png">
-<meta property="og:updated_time" content="2017-05-27T07:51:45.670Z">
+<meta property="og:updated_time" content="2017-06-01T02:42:56.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-Lambda表达式">
-<meta name="twitter:description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法
-
-Lambda管中窥豹可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表
-lambda表达式有三部分：
-
-参数列表
-箭">
+<meta name="twitter:description" content="Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -274,6 +256,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="Lambda管中窥豹"><a href="#Lambda管中窥豹" class="headerlink" title="Lambda管中窥豹"></a>Lambda管中窥豹</h1><p>可以把lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表，函数主体，返回类型，可能还有一个可以抛出的异常列表</p>
 <p>lambda表达式有三部分：</p>
 <ul>
@@ -281,7 +264,6 @@ var _hmt = _hmt || [];
 <li>箭头</li>
 <li>lambda主体</li>
 </ul>
-<a id="more"></a>
 <p><img src="/post/java8-lambda/01.png" alt=""></p>
 <p>有效的lambda表达式举例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(String s)-&gt;s.length()</div></pre></td></tr></table></figure></p>
 <p>这个lambda表达式具有一个string类型的参数，返回一个int，lambda没有return语句，因为已经隐含了return</p>

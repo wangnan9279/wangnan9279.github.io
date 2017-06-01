@@ -8,23 +8,17 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>【转】Java注解简介 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。
-
-了解注解对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Ja">
+  <meta name="description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【转】Java注解简介">
 <meta property="og:url" content="http://wangnan.tech/post/java-annotation-introduction/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。
-
-了解注解对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Ja">
+<meta property="og:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
-<meta property="og:updated_time" content="2017-05-27T06:49:59.148Z">
+<meta property="og:updated_time" content="2017-06-01T02:43:13.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转】Java注解简介">
-<meta name="twitter:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。
-
-了解注解对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Ja">
+<meta name="twitter:description" content="有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -257,8 +251,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>有必要对JDK 5.0新增的注解（Annotation）技术进行简单的学习，因为spring 支持@AspectJ，而@AspectJ本身就是基于JDK 5.0的注解技术。所以学习JDK 5.0的注解知识有助于我们更好地理解和掌握Spring的AOP技术。</p>
 </blockquote>
-<h1 id="了解注解"><a href="#了解注解" class="headerlink" title="了解注解"></a>了解注解</h1><p>对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Javadoc工具生成和源代码配套的Javadoc文档。这些@param、@return等Javadoc标签就是注解标签，它们为第三方工具提供了描述程序代码的注释信息。使用过Xdoclet的朋友，对此将更有感触，像Struts、hibernate都提供了Xdoclet标签，使用它们可以快速地生成对应程序代码的配置文件。</p>
 <a id="more"></a>
+<h1 id="了解注解"><a href="#了解注解" class="headerlink" title="了解注解"></a>了解注解</h1><p>对于Java开发人员来说，在编写代码时，除了源程序以外，我们还会使用Javadoc标签对类、方法或成员变量进行注释，以便使用Javadoc工具生成和源代码配套的Javadoc文档。这些@param、@return等Javadoc标签就是注解标签，它们为第三方工具提供了描述程序代码的注释信息。使用过Xdoclet的朋友，对此将更有感触，像Struts、hibernate都提供了Xdoclet标签，使用它们可以快速地生成对应程序代码的配置文件。</p>
 <p>JDK5.0注解可以看成是Javadoc标签和Xdoclet标签的延伸和发展。在JDK5.0中，我们可以自定义这些标签，并通过Java语言的反射机制中获取类中标注的注解，完成特定的功能。<br>注解是代码的附属信息，它遵循一个基本原则：注解不能直接干扰程序代码的运行，无论增加或删除注解，代码都能够正常运行。Java语言解释器会忽略这些注解，而由第三方工具负责对注解进行处理。第三方工具可以利用代码中的注解间接控制程序代码的运行，它们通过Java反射机制读取注解的信息，并根据这些信息更改目标程序的逻辑，而这正是Spring AOP对@AspectJ提供支持所采取的方法。</p>
 <blockquote>
 <p>很多东西的设计都必须遵循最基本的原则，为了防止机器人伤害人类，科幻作家阿西莫夫于1940年提出了“机器人三原则”：第一，机器人不能伤害人类；第二，机器人应遵守人类的命令，与第一条违背的命令除外；第三，机器人应能保护自己，与第一条违背的命令除外。这是给机器人赋予的伦理性纲领，机器人学术界一直将这三条原则作为机器人开发的准则。</p>

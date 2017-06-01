@@ -8,29 +8,17 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Elasticsearch地理位置查询-Geo Distance Range Query | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3
-
-索引mapping定义:索引中定义一个字段pin，添加一个属性location，type为geo_point
-&amp;quot;pin&amp;quot; : {
-  &amp;quot;prop">
+  <meta name="description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch地理位置查询-Geo Distance Range Query">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-geo-distance-query/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3
-
-索引mapping定义:索引中定义一个字段pin，添加一个属性location，type为geo_point
-&amp;quot;pin&amp;quot; : {
-  &amp;quot;prop">
+<meta property="og:description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:updated_time" content="2017-05-27T06:49:11.385Z">
+<meta property="og:updated_time" content="2017-06-01T02:40:43.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch地理位置查询-Geo Distance Range Query">
-<meta name="twitter:description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3
-
-索引mapping定义:索引中定义一个字段pin，添加一个属性location，type为geo_point
-&amp;quot;pin&amp;quot; : {
-  &amp;quot;prop">
+<meta name="twitter:description" content="官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -263,6 +251,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <h2 id="官方文档："><a href="#官方文档：" class="headerlink" title="官方文档："></a>官方文档：</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-geo-distance-query.html#_geohash_3</a></p>
 </blockquote>
+<a id="more"></a>
 <h2 id="索引mapping定义"><a href="#索引mapping定义" class="headerlink" title="索引mapping定义:"></a>索引mapping定义:</h2><p>索引中定义一个字段pin，添加一个属性location，type为geo_point</p>
 <pre><code>&quot;pin&quot; : {
   &quot;properties&quot; : {
@@ -271,8 +260,7 @@ var _hmt = _hmt || [];
         }
       }
     }
-</code></pre><a id="more"></a>
-<h2 id="DSL"><a href="#DSL" class="headerlink" title="DSL:"></a>DSL:</h2><p>报文中的包含一个match all的query  , filter中的distance指定了距离范围，pin.location是经纬度</p>
+</code></pre><h2 id="DSL"><a href="#DSL" class="headerlink" title="DSL:"></a>DSL:</h2><p>报文中的包含一个match all的query  , filter中的distance指定了距离范围，pin.location是经纬度</p>
 <pre><code>{
 &quot;bool&quot; : {
     &quot;must&quot; : {

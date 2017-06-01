@@ -8,21 +8,18 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>RabbitMQ-理解消息通信-消费者和生产者 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器
-消息什么是消息呢？消息包含两部分：有效载荷（payload）和标签（label）">
+  <meta name="description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ-理解消息通信-消费者和生产者">
 <meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-producer-consumer/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器
-消息什么是消息呢？消息包含两部分：有效载荷（payload）和标签（label）">
+<meta property="og:description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-producer-consumer/01.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:14.935Z">
+<meta property="og:updated_time" content="2017-06-01T02:45:03.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ-理解消息通信-消费者和生产者">
-<meta name="twitter:description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器
-消息什么是消息呢？消息包含两部分：有效载荷（payload）和标签（label）">
+<meta name="twitter:description" content="消费者和生产者生产者生产者创建消息，然后发布到代理服务器">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -253,8 +250,8 @@ var _hmt = _hmt || [];
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="消费者和生产者"><a href="#消费者和生产者" class="headerlink" title="消费者和生产者"></a>消费者和生产者</h1><h2 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h2><p>生产者创建消息，然后发布到代理服务器</p>
-<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>什么是消息呢？<br>消息包含两部分：<strong>有效载荷（payload）和标签（label）</strong></p>
 <a id="more"></a>
+<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>什么是消息呢？<br>消息包含两部分：<strong>有效载荷（payload）和标签（label）</strong></p>
 <ul>
 <li><p><strong>有效负荷</strong><br>就是你想要传输的数据，它可以试任何内容，一个json数组或者是你最喜欢的mp4，Rabbitmq不会在意这些</p>
 </li>

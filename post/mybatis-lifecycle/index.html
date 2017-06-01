@@ -33,7 +33,7 @@ SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/08.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/09.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/10.png">
-<meta property="og:updated_time" content="2017-05-27T06:50:46.784Z">
+<meta property="og:updated_time" content="2017-06-01T02:44:06.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybaits-基本构成和生命周期">
 <meta name="twitter:description" content="基本构成
@@ -275,11 +275,11 @@ var _hmt = _hmt || [];
 <li>SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)</li>
 <li>SqlSessionFactory:依靠工厂来生成SqlSession(会话)</li>
 <li>SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口</li>
-<li>SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口和xml文件（或注解）构成的，需要给出对应的sql和映射规则，它负责发送SQL去执行，并返回结果</li>
+<li>SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口和xml文件（或注解）构成的，需要给出对应的sql和映射规则，它负责发送SQL去执行，并返回结果<a id="more"></a>
+</li>
 </ul>
 </blockquote>
 <p>一张图表达他们的关联：<br><img src="/post/mybatis-lifecycle/01.png" alt=""></p>
-<a id="more"></a>
 <h2 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h2><ul>
 <li>SqlSessionFactory的实例可以通过SqlSessionFactoryBuilder获得</li>
 <li>SqlSessionFactory是一个工厂接口而不是实现类，它的任务是创建SqlSession,Sqlsession类似于一个JDBC的Connection对象</li>

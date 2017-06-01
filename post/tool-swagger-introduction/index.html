@@ -16,7 +16,7 @@
 <meta property="og:description" content="Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。">
 <meta property="og:image" content="http://wangnan.tech/post/tool-swagger-introduction/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/tool-swagger-introduction/02.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:59.911Z">
+<meta property="og:updated_time" content="2017-06-01T02:46:31.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swagger简介">
 <meta name="twitter:description" content="Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。">
@@ -251,6 +251,7 @@ var _hmt = _hmt || [];
         <blockquote>
 <p>Swagger 是一款RESTFUL接口的文档在线自动生成+功能测试功能软件。本文简单介绍了在项目中集成swagger的方法和一些常见问题。<a id="more"></a> 如果想深入分析项目源码，了解更多内容，见参考资料。Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger 让部署管理和使用功能强大的API从未如此简单。</p>
 </blockquote>
+<!-- more --> 
 <h1 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h1><h2 id="什么是swagger"><a href="#什么是swagger" class="headerlink" title="什么是swagger"></a>什么是swagger</h2><p>Swagger™的目标是为REST APIs 定义一个标准的，与语言无关的接口，使人和计算机在看不到源码或者看不到文档或者不能通过网络流量检测的情况下能发现和理解各种服务的功能。当服务通过Swagger定义，消费者就能与远程的服务互动通过少量的实现逻辑。类似于低级编程接口，Swagger去掉了调用服务时的很多猜测。 浏览 Swagger-Spec 去了解更多关于Swagger 项目的信息，包括附加的支持其他语言的库。</p>
 <h2 id="如何集成Swagger-springmvc到我们的项目中"><a href="#如何集成Swagger-springmvc到我们的项目中" class="headerlink" title="如何集成Swagger-springmvc到我们的项目中?"></a>如何集成Swagger-springmvc到我们的项目中?</h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mangofactory<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-springmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><pre><code>repositories {

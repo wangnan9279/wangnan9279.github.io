@@ -8,20 +8,12 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Java8-行为参数化 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。
-
-它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用
-我们看一个例子，我们通过不断改进这个例子，展示行为参数化
-版本1.1 筛选绿苹果如果要筛选红苹果怎么办呢?">
+  <meta name="description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8-行为参数化">
 <meta property="og:url" content="http://wangnan.tech/post/java8-action-as-para/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。
-
-它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用
-我们看一个例子，我们通过不断改进这个例子，展示行为参数化
-版本1.1 筛选绿苹果如果要筛选红苹果怎么办呢?">
+<meta property="og:description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-action-as-para/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-action-as-para/02.png">
@@ -34,14 +26,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/java8-action-as-para/09.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-action-as-para/10.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-action-as-para/11.png">
-<meta property="og:updated_time" content="2017-05-27T07:51:45.653Z">
+<meta property="og:updated_time" content="2017-06-01T02:42:31.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-行为参数化">
-<meta name="twitter:description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。
-
-它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用
-我们看一个例子，我们通过不断改进这个例子，展示行为参数化
-版本1.1 筛选绿苹果如果要筛选红苹果怎么办呢?">
+<meta name="twitter:description" content="在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -274,10 +262,10 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>在软件工程中，一个众所周知的问题就是，不管你做什么，用户的需求肯定会变<br>行为参数化就是可以帮助你处理频繁变更需求的一种软件开发模式。</p>
 </blockquote>
+<a id="more"></a>
 <p>它意味着拿出一个代码块，把它准备好却不执行它，这个代码块以后可以被你的程序其他部分调用</p>
 <p>我们看一个例子，我们通过不断改进这个例子，展示行为参数化</p>
 <h1 id="版本1-1-筛选绿苹果"><a href="#版本1-1-筛选绿苹果" class="headerlink" title="版本1.1 筛选绿苹果"></a>版本1.1 筛选绿苹果</h1><p><img src="/post/java8-action-as-para/01.png" alt=""><br>如果要筛选红苹果怎么办呢?</p>
-<a id="more"></a>
 <h1 id="版本1-2-把颜色作为参数"><a href="#版本1-2-把颜色作为参数" class="headerlink" title="版本1.2 把颜色作为参数"></a>版本1.2 把颜色作为参数</h1><p><img src="/post/java8-action-as-para/02.png" alt=""><br>如果要筛选重量大于150克的苹果怎么办？<br>你可能会有下面的代码：<br><img src="/post/java8-action-as-para/03.png" alt=""><br>这有点令人失望，这打破了DRY(don’t repeat yourself 不要重复自己)的软件工程原则</p>
 <h1 id="版本1-3-对你能想到的每个属性做筛选"><a href="#版本1-3-对你能想到的每个属性做筛选" class="headerlink" title="版本1.3 对你能想到的每个属性做筛选"></a>版本1.3 对你能想到的每个属性做筛选</h1><p><img src="/post/java8-action-as-para/04.png" alt=""><br>这样糟透了，代码可读性降低，而且如果要同时筛选多个属性怎么办？</p>
 <p>让我们后退一步来看看更高层次的抽象，一种可能的解决方案是对你的选择标准建模：<br>需要根据apple的某个属性来返回一个boolean，我们把它称为<strong>谓词</strong></p>

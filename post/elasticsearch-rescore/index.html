@@ -10,26 +10,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="二次评分给了用户很多机会来定制业务逻辑
 
-理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分
-二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响">
+理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch二次评分">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-rescore/index.html">
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="二次评分给了用户很多机会来定制业务逻辑
 
-理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分
-二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响">
+理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-rescore/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-rescore/02.png">
-<meta property="og:updated_time" content="2017-05-27T06:48:48.397Z">
+<meta property="og:updated_time" content="2017-06-01T02:41:13.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch二次评分">
 <meta name="twitter:description" content="二次评分给了用户很多机会来定制业务逻辑
 
-理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分
-二次评分查询结构从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响">
+理解二次评分二次评分是指重新计算查询返回文档中指定个数文档的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -263,8 +260,8 @@ var _hmt = _hmt || [];
 <p>二次评分给了用户很多机会来定制业务逻辑</p>
 </blockquote>
 <h1 id="理解二次评分"><a href="#理解二次评分" class="headerlink" title="理解二次评分"></a>理解二次评分</h1><p>二次评分是指重新计算查询返回文档中<strong>指定个数文档</strong>的得分，es会截取查询返回的前N个，并使用预定义的二次评分方法来重新计算他们的得分</p>
-<h1 id="二次评分查询结构"><a href="#二次评分查询结构" class="headerlink" title="二次评分查询结构"></a>二次评分查询结构</h1><p>从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响</p>
 <a id="more"></a>
+<h1 id="二次评分查询结构"><a href="#二次评分查询结构" class="headerlink" title="二次评分查询结构"></a>二次评分查询结构</h1><p>从最简单的查询入手：match_all查询类型，返回索引中所有文档，每个返回的文档的得分都是1.0，这样可以充分体现二次评分对查询返回文档集的影响</p>
 <p>查询范例如下：<br><img src="/post/elasticsearch-rescore/01.png" alt="01"></p>
 <p>改查询将每一个文档的得分改写为该文档的year字段中的值</p>
 <p>返回结果：<br><img src="/post/elasticsearch-rescore/02.png" alt="02"></p>

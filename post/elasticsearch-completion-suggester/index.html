@@ -8,32 +8,14 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Elasticsearch自动补齐建议-completion suggester | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.mappingcurl -XPUT 192.168.0.1:9200/person -d&amp;apos;  //新建一个persion的索引
-{
-   &amp;quot;mappings&amp;quot;: {
-      &amp;quot;person&amp;quot;: { //这个是_type
-         &amp;quot;properties&amp;quot;: {
-            &amp;quot;name&amp;qu">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch自动补齐建议-completion suggester">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-completion-suggester/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="1.mappingcurl -XPUT 192.168.0.1:9200/person -d&amp;apos;  //新建一个persion的索引
-{
-   &amp;quot;mappings&amp;quot;: {
-      &amp;quot;person&amp;quot;: { //这个是_type
-         &amp;quot;properties&amp;quot;: {
-            &amp;quot;name&amp;qu">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:updated_time" content="2017-05-27T06:49:08.117Z">
+<meta property="og:updated_time" content="2017-06-01T02:40:34.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch自动补齐建议-completion suggester">
-<meta name="twitter:description" content="1.mappingcurl -XPUT 192.168.0.1:9200/person -d&amp;apos;  //新建一个persion的索引
-{
-   &amp;quot;mappings&amp;quot;: {
-      &amp;quot;person&amp;quot;: { //这个是_type
-         &amp;quot;properties&amp;quot;: {
-            &amp;quot;name&amp;qu">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -263,6 +245,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<a id="more"></a>
 <h2 id="1-mapping"><a href="#1-mapping" class="headerlink" title="1.mapping"></a>1.mapping</h2><pre><code>curl -XPUT 192.168.0.1:9200/person -d&apos;  //新建一个persion的索引
 {
    &quot;mappings&quot;: {
@@ -281,8 +264,7 @@ var _hmt = _hmt || [];
       }
    }
 }&apos;
-</code></pre><a id="more"></a>
-<h2 id="2-添加测试数据"><a href="#2-添加测试数据" class="headerlink" title="2 .添加测试数据"></a>2 .添加测试数据</h2><pre><code>curl -XPUT  192.168.2.20:9200/person/person/1 -d&apos;
+</code></pre><h2 id="2-添加测试数据"><a href="#2-添加测试数据" class="headerlink" title="2 .添加测试数据"></a>2 .添加测试数据</h2><pre><code>curl -XPUT  192.168.2.20:9200/person/person/1 -d&apos;
 {
 &quot;name&quot;: [
      &quot;david&quot;,

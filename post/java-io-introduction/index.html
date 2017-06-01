@@ -8,31 +8,19 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Java IO 简介 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。
-
-Java中的流可以从两方面的分类
-输入流和输出流 
-节点流和处理流">
+  <meta name="description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java IO 简介">
 <meta property="og:url" content="http://wangnan.tech/post/java-io-introduction/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。
-
-Java中的流可以从两方面的分类
-输入流和输出流 
-节点流和处理流">
+<meta property="og:description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-io-introduction/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-io-introduction/02.png">
-<meta property="og:updated_time" content="2017-05-27T06:50:12.554Z">
+<meta property="og:updated_time" content="2017-06-01T02:43:38.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java IO 简介">
-<meta name="twitter:description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。
-
-Java中的流可以从两方面的分类
-输入流和输出流 
-节点流和处理流">
+<meta name="twitter:description" content="学习Java中的IO，首先要理解Java中IO的流模型。所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -265,11 +253,11 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>学习Java中的IO，首先要理解Java中IO的流模型。<br>所谓流，可以假想成河流，流的数据源，就是河流的发源地，流是单向的，流的单向性，就像河流的水流是单向的一样。</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="Java中的流可以从两方面的分类"><a href="#Java中的流可以从两方面的分类" class="headerlink" title="Java中的流可以从两方面的分类"></a>Java中的流可以从两方面的分类</h1><ol>
 <li>输入流和输出流 </li>
 <li>节点流和处理流</li>
 </ol>
-<a id="more"></a>
 <p>输入流和输出流，就是程序和外部的数据源进行IO操作。这些数据源可以是可以是内存，文件，还可以是网络上的一个URL。</p>
 <p>输入流和输出流的定义都是相对程序来说的，也就是输入流是从外部读取数据进入程序，然后由程序处理。输出流是从程序中输出的数据。</p>
 <p>节点流和处理流。节点流是直接跟数据源连接的流，而处理流是用来装饰节点流的，是为使节点流有更多的功能。</p>

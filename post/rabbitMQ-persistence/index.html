@@ -9,25 +9,19 @@
   <title>RabbitMQ-理解消息通信-持久化策略 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="概述重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false
-durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了
-把这个属性设置为true不足以让消息幸免于重启，光这样还不够
-如果想要从Rabbit崩溃中恢复">
+durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ-理解消息通信-持久化策略">
 <meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-persistence/index.html">
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="概述重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false
-durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了
-把这个属性设置为true不足以让消息幸免于重启，光这样还不够
-如果想要从Rabbit崩溃中恢复">
+durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:11.633Z">
+<meta property="og:updated_time" content="2017-06-01T02:44:56.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ-理解消息通信-持久化策略">
 <meta name="twitter:description" content="概述重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false
-durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了
-把这个属性设置为true不足以让消息幸免于重启，光这样还不够
-如果想要从Rabbit崩溃中恢复">
+durable属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -259,6 +253,7 @@ var _hmt = _hmt || [];
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>重启RabbitMQ后，队列和交换器都会消失（随同里面的消息），原因在于每个队列和交换器的durable属性，该属性默认为false</p>
 <p><strong>durable</strong>属性，它决定了RabbitMQ是否需要在崩溃或者重启之后重新创建队列（或者交换器）<br>将他设置为true，这样就不需要在服务器断电后重新创建队列和交换器了</p>
+<a id="more"></a>
 <p>把这个属性设置为true不足以让消息幸免于重启，光这样还不够</p>
 <p><strong>如果想要从Rabbit崩溃中恢复，那么消息必须做到这三点：</strong></p>
 <ul>
@@ -266,7 +261,6 @@ var _hmt = _hmt || [];
 <li>发送到持久化的交换器</li>
 <li>到达持久化队列</li>
 </ul>
-<a id="more"></a>
 <p>RabbitMQ确保持久性消息能从服务器重启中恢复的方式是,将他们写入磁盘上的一个持久化日志文件。当发布一条持久化消息到持久交换器上时，Rabbit会在消息提交到日志文件后才发送响应</p>
 <p>如果RabbitMQ重启，服务器会自动重建交换器和队列，重播持久性日志文件中的消息到合适的队列或者交换器上</p>
 <p>你可以为所有消息都启动持久化，但是你也要为此付出代价：<strong>性能</strong>，写入磁盘要比写入内存慢了不止一点点，而且会极大的减少RabbitMQ服务器每秒可处理的消息总数，导致消息吞度量降低至少10倍的情况并不少见</p>

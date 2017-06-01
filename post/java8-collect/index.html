@@ -9,24 +9,21 @@
   <title>Java8-流-用流收集数据和并行流 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="收集器简介对流调用collect方法将对流中的元素触发一个规约操作
-Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了
-最常用的是toList方法，它会把流收集到一个List中：1List&amp;lt;Transcation&amp;gt; transactions = transcationStream.collect(Collectors.toList()">
+Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8-流-用流收集数据和并行流">
 <meta property="og:url" content="http://wangnan.tech/post/java8-collect/index.html">
 <meta property="og:site_name" content="wangnan's blog">
 <meta property="og:description" content="收集器简介对流调用collect方法将对流中的元素触发一个规约操作
-Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了
-最常用的是toList方法，它会把流收集到一个List中：1List&amp;lt;Transcation&amp;gt; transactions = transcationStream.collect(Collectors.toList()">
+Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-collect/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-collect/02.png">
-<meta property="og:updated_time" content="2017-05-27T07:51:45.662Z">
+<meta property="og:updated_time" content="2017-06-01T02:42:40.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-流-用流收集数据和并行流">
 <meta name="twitter:description" content="收集器简介对流调用collect方法将对流中的元素触发一个规约操作
-Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了
-最常用的是toList方法，它会把流收集到一个List中：1List&amp;lt;Transcation&amp;gt; transactions = transcationStream.collect(Collectors.toList()">
+Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -258,8 +255,8 @@ var _hmt = _hmt || [];
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
 <h1 id="收集器简介"><a href="#收集器简介" class="headerlink" title="收集器简介"></a>收集器简介</h1><p>对流调用collect方法将对流中的元素触发一个规约操作</p>
 <p>Collectors实用类提供了很多静态工程方法，可以方便地创建常用收集器的实例，只要拿来用就可以了</p>
-<p>最常用的是toList方法，它会把流收集到一个List中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toList());</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
+<p>最常用的是toList方法，它会把流收集到一个List中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Transcation&gt; transactions = transcationStream.collect(Collectors.toList());</div></pre></td></tr></table></figure></p>
 <h2 id="预定义收集器"><a href="#预定义收集器" class="headerlink" title="预定义收集器"></a>预定义收集器</h2><p>Collectors类提供的工厂方法（例如groupingBy）创建的收集器，他们主要提供了三大功能：</p>
 <ul>
 <li>将流元素规约和汇总为一个值</li>

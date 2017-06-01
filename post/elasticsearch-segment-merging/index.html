@@ -8,26 +8,17 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Elasticsearch段合并 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引
-
-lucene索引是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改
-在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment">
+  <meta name="description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch段合并">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-segment-merging/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引
-
-lucene索引是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改
-在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment">
+<meta property="og:description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:updated_time" content="2017-05-27T06:48:45.310Z">
+<meta property="og:updated_time" content="2017-06-01T02:41:21.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch段合并">
-<meta name="twitter:description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引
-
-lucene索引是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改
-在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment">
+<meta name="twitter:description" content="elasticsearch 中每个索引都会创建一个到多个分片和零个到多个副本，这些分片或副本实质上都是lucene索引">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -260,9 +251,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>elasticsearch 中每个索引都会创建一个到多个<strong>分片</strong>和零个到多个<strong>副本</strong>，这些分片或副本实质上都是<strong>lucene索引</strong></p>
 </blockquote>
+<a id="more"></a>
 <p><strong>lucene索引</strong>是基于多个索引段创建，索引文件中绝大部分数据都是只写一次，读多次，而只有用于保存文档删除信息的文件才会被多次更改</p>
 <p>在某些时刻，当某种条件满足时，多个索引段会被拷贝合并到一个更大的索引段，而那些旧的索引段会被抛弃并从磁盘中删除，这操作叫做段合并（segment merging）</p>
-<a id="more"></a>
 <h1 id="为什么要进行段合并？"><a href="#为什么要进行段合并？" class="headerlink" title="为什么要进行段合并？"></a>为什么要进行段合并？</h1><ul>
 <li>索引段的个数越多，搜索性能越低且消耗内存更多</li>
 <li>索引段是不可变的，物理上你并不能从中删除信息（如果你碰巧从索引中删除了大量文档，但这些文档只是做了删除标记，物理上并没有被删除）而当段合并发送时，这些标记为删除的文档并没有被复制到新的索引段中 </li>

@@ -8,23 +8,17 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>Elasticsearch简介 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
-
-Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+  <meta name="description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch简介">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-introduction/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
-
-Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta property="og:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:updated_time" content="2017-05-27T06:48:54.794Z">
+<meta property="og:updated_time" content="2017-06-01T02:40:56.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch简介">
-<meta name="twitter:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件
-
-Apache Lucence简介为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等">
+<meta name="twitter:description" content="elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -257,7 +251,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>elasticsearch是一个可用于构建搜索应用的成品软件，区别去lucene这种中间件</p>
 </blockquote>
-<h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等<br><a id="more"></a> </p>
+<a id="more"></a> 
+<h2 id="Apache-Lucence简介"><a href="#Apache-Lucence简介" class="headerlink" title="Apache Lucence简介"></a>Apache Lucence简介</h2><h3 id="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"><a href="#为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？" class="headerlink" title="为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？"></a>为什么elasticsearch创始人觉得使用lucene而不是自己开发全文检索库？</h3><p>可能是因为lucene的成熟，高性能，可扩展以及强大的功能，得到创始人的青睐，lucene有很多扩展功能，如 多语言处理，拼写检查，高亮显示等</p>
 <h3 id="lucene总体架构"><a href="#lucene总体架构" class="headerlink" title="lucene总体架构"></a>lucene总体架构</h3><p>文档（document）,字段(field),词项(term)，词条(token)</p>
 <h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>lucene将写入索引的所有信息组成一种名为倒排索引的结构，倒排索引是面向词项而不是面向文档，实际的lucene创建的索引更为复杂，也更先进，因为索引中还储存和很多其他信息，如词向量（为单个字段创建的小索引，储存改字段中所有的词条） 各字段的原始信息，文档删除标记</p>
 <h3 id="段（segment）"><a href="#段（segment）" class="headerlink" title="段（segment）"></a>段（segment）</h3><p>每个段只会被创建一次但是会被查询多次，索引期间，段经创建就不会被修改，例如，文档被删除以后，删除信息被单独的保存在一个文件中，而段本身并没有修改</p>

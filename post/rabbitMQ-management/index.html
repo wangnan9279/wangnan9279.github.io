@@ -8,28 +8,22 @@
   <link rel="dns-prefetch" href="http://wangnan.tech">
   <title>RabbitMQ-运行和管理RabbitMQ | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="服务器管理概述RabbitMQ是使用Erlang编写的
-Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单
-为了达到“简单分布式”，需要两个你可能不太熟悉的概念：Erlang节点和Erlang应用程序如果你熟悉java虚拟机（jvm）的话，两者是很相似的">
+  <meta name="description" content="服务器管理概述RabbitMQ是使用Erlang编写的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ-运行和管理RabbitMQ">
 <meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-management/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="服务器管理概述RabbitMQ是使用Erlang编写的
-Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单
-为了达到“简单分布式”，需要两个你可能不太熟悉的概念：Erlang节点和Erlang应用程序如果你熟悉java虚拟机（jvm）的话，两者是很相似的">
+<meta property="og:description" content="服务器管理概述RabbitMQ是使用Erlang编写的">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/04.png">
 <meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/05.png">
-<meta property="og:updated_time" content="2017-05-27T06:51:08.524Z">
+<meta property="og:updated_time" content="2017-06-01T02:44:47.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ-运行和管理RabbitMQ">
-<meta name="twitter:description" content="服务器管理概述RabbitMQ是使用Erlang编写的
-Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单
-为了达到“简单分布式”，需要两个你可能不太熟悉的概念：Erlang节点和Erlang应用程序如果你熟悉java虚拟机（jvm）的话，两者是很相似的">
+<meta name="twitter:description" content="服务器管理概述RabbitMQ是使用Erlang编写的">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
@@ -260,9 +254,9 @@ var _hmt = _hmt || [];
       
         <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
 <h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>RabbitMQ是使用Erlang编写的</p>
+<a id="more"></a>
 <p>Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单</p>
 <p>为了达到“简单分布式”，需要两个你可能不太熟悉的概念：<strong>Erlang节点和Erlang应用程序</strong><br>如果你熟悉java虚拟机（jvm）的话，两者是很相似的</p>
-<a id="more"></a>
 <h2 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h2><p><strong>节点</strong><br>节点用来指代RabbitMQ服务器实例，事实上，节点描述的是一个Erlang节点运行着一个Erlang应用程序</p>
 <p>当你运行java程序时，JVM的一个实例就启动了，并且开始执行指定的java程序，与之相似，Erlang也有虚拟机，而虚拟机的每个实例我们称之为<strong>节点(node)</strong></p>
 <p>不同与JVM,多个Erlang应用程序可以运行在用一个节点之上，更重要的是，节点之间可以进行本地通信</p>
