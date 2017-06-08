@@ -177,6 +177,106 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitMQ-exchange" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/rabbitMQ-exchange/">RabbitMQ-理解消息通信-交换器和绑定</a>
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+		
+        
+		
+        <a href="/post/rabbitMQ-exchange/" class="archive-article-date">
+  	<time datetime="2017-03-31T02:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
+</a>
+        
+      </header>
+    
+	
+	<!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="交换器和绑定"><a href="#交换器和绑定" class="headerlink" title="交换器和绑定"></a>交换器和绑定</h1><p>当你想要将消息投递到队列时，你通过把消息发送给<strong>交换器</strong>来完成。然后，根据确定的规则，RabbitMQ将会决定消息该投递到哪个队列，这些规则被称为<strong>路由键(routing key)</strong>。<strong>队列通过路由键绑定到交换器</strong>，当你把消息发送到代理服务器时，消息将拥有一个路由键（即使是空的）<br>Rabbit也会将其和绑定使用的路由键进行匹配，如果匹配的话，那么消息将会投递到队列，如果路由的消息不匹配任何绑定模式的话，消息将进入“黑洞”</p>
+        
+          <a class="article-more-a" href="/post/rabbitMQ-exchange/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/rabbitMQ-exchange/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- -->
+
+
+<!-- 来必力City版安装代码 -->
+
+
+
+
+
+  
     <article id="post-rabbitMQ-queue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -580,108 +680,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-elasticsearch-segment-merging" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/elasticsearch-segment-merging/">Elasticsearch段合并</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/elasticsearch-segment-merging/" class="archive-article-date">
-  	<time datetime="2017-03-28T07:41:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>elasticsearch 中每个索引都会创建一个到多个<strong>分片</strong>和零个到多个<strong>副本</strong>，这些分片或副本实质上都是<strong>lucene索引</strong></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/post/elasticsearch-segment-merging/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/elasticsearch-segment-merging/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -815,11 +813,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,11 +829,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">反射</a>
+                <a href="javascript:void(0)" class="js-tag color1">Java8</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+                <a href="javascript:void(0)" class="js-tag color3">反射</a>
               </li>
              
               <li class="article-tag-list-item">
