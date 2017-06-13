@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/headFirstDesignPatterns02/</loc>
+    
+    <lastmod>2017-06-13T08:02:16.205Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/headFirstDesignPatterns01/</loc>
     
     <lastmod>2017-06-12T08:11:03.153Z</lastmod>

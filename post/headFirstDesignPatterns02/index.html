@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangnan.tech">
-  <title>wangnan&#39;s blog</title>
+  <title>《Head First 设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/page/2/index.html">
+  <meta name="description" content="装饰者模式定义动态地将责任附加到对象上，想要扩展功能，装饰者提供有别于继承的另一种选择">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Head First 设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式">
+<meta property="og:url" content="http://wangnan.tech/post/headFirstDesignPatterns02/index.html">
 <meta property="og:site_name" content="wangnan's blog">
+<meta property="og:description" content="装饰者模式定义动态地将责任附加到对象上，想要扩展功能，装饰者提供有别于继承的另一种选择">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/dp02.jpg">
+<meta property="og:updated_time" content="2017-06-13T08:02:16.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
+<meta name="twitter:title" content="《Head First 设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式">
+<meta name="twitter:description" content="装饰者模式定义动态地将责任附加到对象上，想要扩展功能，装饰者提供有别于继承的另一种选择">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/dp02.jpg">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -171,462 +177,140 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-read-Joel-on-Software" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-headFirstDesignPatterns02" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/read-Joel-on-Software/">《软件随想录-Joel on Software》书摘</a>
+    <h1 class="article-title" itemprop="name">
+      《Head First 设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式
     </h1>
   
 
 <!-- 显示阅读和评论数 -->
 
+<br/>
+<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+<span class="icon-sort"></span>
+<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+</span>
+</a>
+<!--<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:#ef7522;font-size:14px;">
+	<span class="icon-comment"></span>
+	<span class="join-text" style="color:#ef7522;font-size:14px;">评论数:</span>
+	<span class="join-count">0</span>次
+</a>-->
+
 		
         
 		
-        <a href="/post/read-Joel-on-Software/" class="archive-article-date">
-  	<time datetime="2017-06-07T06:47:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
+        <a href="/post/headFirstDesignPatterns02/" class="archive-article-date">
+  	<time datetime="2017-06-13T08:00:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
       </header>
     
 	
 	<!-- 目录内容 -->
-		
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰者模式"><span class="toc-number">1.</span> <span class="toc-text">装饰者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#get到的oo原则"><span class="toc-number">1.2.</span> <span class="toc-text">get到的oo原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点"><span class="toc-number">1.3.</span> <span class="toc-text">要点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式-工厂方法模式"><span class="toc-number">2.</span> <span class="toc-text">抽象工厂模式/工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象工厂模式定义"><span class="toc-number">2.1.</span> <span class="toc-text">抽象工厂模式定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式定义"><span class="toc-number">2.2.</span> <span class="toc-text">工厂方法模式定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#get到的oo原则-1"><span class="toc-number">2.3.</span> <span class="toc-text">get到的oo原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点-1"><span class="toc-number">2.4.</span> <span class="toc-text">要点</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/12.jpg" alt=""></p>
-<ul>
-<li><p>比尔盖茨对技术的了解令人惊叹，他理解可变数据类型，COM对象，IDispathch接口以及Automation与虚表有何不同，他明白这种不同可能会导致双重接口，因此他担心日期 函数并非心血来潮，如果他信任那个干事的人，他就不会干涉软件，但是，你不要糊弄他，哪怕是一分钟，因为他也是一个程序员，一个真正的，现实的程序员</p>
-</li>
-<li><p>不懂编程的人管理软件公司，就好像不懂冲浪的人硬要去冲浪-</p></li></ul>
-        
-          <a class="article-more-a" href="/post/read-Joel-on-Software/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘/" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/read-Joel-on-Software/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-read-rich-father-pool-father08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/read-rich-father-pool-father08/">《富爸爸穷爸爸》书摘-不要为钱而工作　</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/read-rich-father-pool-father08/" class="archive-article-date">
-  	<time datetime="2017-06-07T03:25:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/09.jpg" alt=""></p>
-<ul>
-<li>世界上到处都是精明、才华横溢、受过良好教育以及很有天赋的人,我们每天都会碰到他们,他们就在我们的周围。几天前,我的汽车不大灵便。我把它开进维修厂,一位年轻的机械工几分钟之内就把它修好了。他仅凭倾听发动机的声音就能确定哪儿有毛病,这使我感到非常惊讶。然而遗憾的是,真正能够很好地利用这种非凡才华的人总是太少。
-　　</li>
-<li>我常常吃惊为什么有些人才华过人却只挣到很低的收入,我听说只有不到5％的美国人年收人在10万美元以上。一位对药品贸易很精通的商务顾问曾经告诉我,有许多医生、牙医和按摩师在财务上困难重重。以前我总是以为他们一毕业,美元就会滚滚而来。这位商务顾问最后告诉了我一句话,“他们只有一项技能,所以他们挣不到大钱。”</li>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/dp02.jpg" alt=""></p>
+<h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>动态地将责任附加到对象上，想要扩展功能，装饰者提供有别于继承的另一种选择</p>
+<a id="more"></a>
+<h2 id="get到的oo原则"><a href="#get到的oo原则" class="headerlink" title="get到的oo原则"></a>get到的oo原则</h2><ul>
+<li>对扩展开放，对修改关闭</li>
 </ul>
-        
-          <a class="article-more-a" href="/post/read-rich-father-pool-father08/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘/" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/read-rich-father-pool-father08/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-read-rich-father-pool-father07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/read-rich-father-pool-father07/">《富爸爸穷爸爸》书摘-富人的投资　</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/read-rich-father-pool-father07/" class="archive-article-date">
-  	<time datetime="2017-06-06T02:41:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/07.jpg" alt=""></p>
-<ul>
-<li><p>在现实世界里,人们往往是依靠勇气而不是聪明去领先于其他人的</p>
-</li>
-<li><p>为什么必须不厌其烦地提高自己的财商？为什么必须懂得财务知识？<br>　对此,我回答说,“就是为了获得更多的选择机会。”</p>
-</li>
+<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ul>
+<li>继承属于扩展形式之一，但不见得是达到弹性设计的最佳方式。</li>
+<li>在我们的设计中，应该允许行为可以被扩展，而无须修改现有的代码。</li>
+<li>组合和委托可用于在运行时动态地加上新的行为。</li>
+<li>除了继承，装饰者模式也可以让我们扩展行为。</li>
+<li>装饰者模式意味着一群装饰者类， 这些类用来包装具体组件。</li>
+<li>装饰者类反映出被装饰的组件类型（事实上，他们具有相同的类型，都经过接口或继承实现）。</li>
+<li>装饰者可以在被装饰者的行为前面与/或后面加上自己的行为， 甚至将被装饰者的行为整个取代掉，而达到特定的目的。</li>
+<li>你可以用无数个装饰者包装一个组件。</li>
+<li>装饰者一般对组件的客户是透明的，除非客户程序依赖于组件的具体类型。</li>
+<li>装饰者会导致设计中出现许多小对象，如果过度使用，会让程序变得很复杂。</li>
 </ul>
-        
-          <a class="article-more-a" href="/post/read-rich-father-pool-father07/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘/" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/read-rich-father-pool-father07/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-read-rich-father-pool-father06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/read-rich-father-pool-father06/">《富爸爸穷爸爸》书摘-税收的历史和公司的力量</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/read-rich-father-pool-father06/" class="archive-article-date">
-  	<time datetime="2017-06-05T02:33:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-05</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/06.jpg" alt=""></p>
-<ul>
-<li><p>税金通过工作和养老金的形式发放给了政府雇员,通过政府采购的形式付给了富人</p>
-</li>
-<li><p>政府成了一个巨大的钱库,但问题是还有预算管理,这不是一个自动循环重复的系统。换句话说,政府的政策是,如果你是一个政府官员,就应避免拥有过多的钱；如果你没有用完预算资金,在下次预算中你就有被削减掉这些钱的风险,你不会因为有节余而被认为有效率并得到奖励；为避免被削减预算资金,政府雇员会大量花钱和雇人,虽然这很可能是在浪费。而商人,则因为有节余而被认为有效率</p>
-</li>
+<h1 id="抽象工厂模式-工厂方法模式"><a href="#抽象工厂模式-工厂方法模式" class="headerlink" title="抽象工厂模式/工厂方法模式"></a>抽象工厂模式/工厂方法模式</h1><h2 id="抽象工厂模式定义"><a href="#抽象工厂模式定义" class="headerlink" title="抽象工厂模式定义"></a>抽象工厂模式定义</h2><p>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类</p>
+<h2 id="工厂方法模式定义"><a href="#工厂方法模式定义" class="headerlink" title="工厂方法模式定义"></a>工厂方法模式定义</h2><p>定义一个创建对象的接口，但由子类绝对实例化的类是哪一个，工厂方法让类把实例化推迟到子类</p>
+<h2 id="get到的oo原则-1"><a href="#get到的oo原则-1" class="headerlink" title="get到的oo原则"></a>get到的oo原则</h2><ul>
+<li>依赖抽象，不是依赖具体类</li>
 </ul>
-        
-          <a class="article-more-a" href="/post/read-rich-father-pool-father06/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘/" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/read-rich-father-pool-father06/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
-    <article id="post-read-rich-father-pool-father05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/read-rich-father-pool-father05/">《富爸爸穷爸爸》书摘-关注自己的事业</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/read-rich-father-pool-father05/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:02:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/05.jpg" alt=""></p>
-<ul>
-<li><p>麦当劳今天已是世界上最大的房地产商了,它拥有的房地产甚至超过了天主教会。今天,麦当劳已经拥有美国以及世界其他地方的一些最值钱的街角和十字路口的黄金地段</p>
-</li>
-<li><p>“关注自己的事业。”存在财务问题的人经常是一生为别人工作的人,许多人在他们停止工作时就变得一无所有。</p>
-</li>
+<h2 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h2><ul>
+<li>所有的工厂都是用来对象的创建</li>
+<li>简单工厂，虽然不是真正的设计模式，但仍不失一个简单的方法，可以将客户端程序从具体类解耦</li>
+<li>工厂方法使用继承，把对象的创建委托给子类，子类实现工厂方法来创建对象</li>
+<li>抽象工厂使用对象组合，对象的创建被实现在工厂接口所暴露出来的方法中</li>
+<li>所有工厂模式都通过减少应用程序和具体类之间的依赖促进松耦合</li>
+<li>工厂方法允许类将实例化延迟到子类进行</li>
+<li>抽象工厂创建相关的对象家族，而不需要依赖他们的具体类</li>
+<li>依赖倒置原则，指导我们避免依赖具体类型，而要尽量依赖抽象</li>
+<li>工厂是很有威力的技巧，帮助我们针对抽象变成，而不是针对具体类编程</li>
 </ul>
-        
-          <a class="article-more-a" href="/post/read-rich-father-pool-father05/#more">more >></a>
-        
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>支持博主喝杯咖啡继续搬砖！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -637,11 +321,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -653,17 +333,13 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/书摘/" class="article-tag-list-link color3">书摘</a>
+        			<a href="/categories/设计模式/" class="article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/read-rich-father-pool-father05/">展开全文 >></a>
-        </p>
       
 
       
@@ -672,30 +348,71 @@ var _hmt = _hmt || [];
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/post/headFirstDesignPatterns01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Head First 设计模式》书摘-策略模式/观察者模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
+
+
+
+  
+    <div class="duoshuo"></div>
+  
 
 
 
 
 
 <!-- 网易云跟帖 -->
-<!-- -->
+<!-- 
+<section class="duoshuo" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "", 
+    sourceId: "post/headFirstDesignPatterns02/",
+    productKey: "d53fb340d27c4c8787481d7fbe4d641d",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+</section>
+-->
 
 
 <!-- 来必力City版安装代码 -->
 
+<section class="duoshuo" id="comments">
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</section>
+<!-- City版安装代码已完成 -->
 
 
 
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -724,8 +441,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

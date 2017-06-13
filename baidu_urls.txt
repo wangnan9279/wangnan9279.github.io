@@ -1,1 +1,1 @@
-http://wangnan.tech/post/headFirstDesignPatterns01/
+http://wangnan.tech/post/headFirstDesignPatterns02/
