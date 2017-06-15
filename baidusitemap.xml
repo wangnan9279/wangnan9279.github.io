@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://wangnan.tech/post/headFirstDesignPatterns02/</loc>
-    <lastmod>2017-06-13T08:02:16.205Z</lastmod>
+    <lastmod>2017-06-15T08:38:56.682Z</lastmod>
     <data>
         <display>
-        <title>《Head First 设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式</title>
+        <title>《HeadFirst设计模式》书摘-装饰者模式/抽象工厂模式/工厂方法模式</title>
         <pubTime>2017-06-13T08:00:52.000Z</pubTime>
         
         <tag>设计模式</tag>
@@ -24,11 +24,31 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/headFirstDesignPatterns01/</loc>
-    <lastmod>2017-06-12T08:11:03.153Z</lastmod>
+    <loc>http://wangnan.tech/post/headFirstDesignPatterns03/</loc>
+    <lastmod>2017-06-15T08:38:53.625Z</lastmod>
     <data>
         <display>
-        <title>《Head First 设计模式》书摘-策略模式/观察者模式</title>
+        <title>《HeadFirst设计模式》书摘-单例/命令/适配器/外观</title>
+        <pubTime>2017-06-15T08:30:38.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://wangnan.tech/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/headFirstDesignPatterns01/</loc>
+    <lastmod>2017-06-15T08:38:49.608Z</lastmod>
+    <data>
+        <display>
+        <title>《HeadFirst设计模式》书摘-策略模式/观察者模式</title>
         <pubTime>2017-06-12T07:57:05.000Z</pubTime>
         
         <tag>设计模式</tag>
