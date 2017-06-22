@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[《算法图解》书摘-算法介绍/选择排序]]></title>
+      <url>%2Fpost%2Falgorithm-illustration-01%2F</url>
+      <content type="text"><![CDATA[第一章 算法介绍二分查找Python代码1234567891011121314def binary_search(list,item): low = 0 high = len(list-1) while low &lt;= high: mid =(low+high) guess = list[mid] if guess == item: return mid if guess &gt; item： high = mid -1 else: low = mid + 1 return None 小结 二分查找的速度比简单查找快得多 O(log n)比O(n)快，需要搜索的元素越多，前者比后者就快得越多 算法运行时间并不是以秒为单位 算法运行时间是从其增速的角度度量的 算法运行时间用大O表示法表示 第二章 选择排序 很多算法仅在数据经过排序后才管用.选择排序是下一章介绍的快速排序的基石 数组和链表操作运行时间 # 数组 链表 读取 o(1) o(n) 输入 o(n) o(1) 删除 o(n) o(1) 需要随机读取元素时，数组效率高，当需要中间插入元素时，链表是更好的选择，链表只能随机访问 选择排序，需要的总时间是O(nxn) 示例代码 123456789101112131415def findSmallest(arr): smallest = arr[0] smallest_index = 0 for i in range(1,len(arr)): if arr[i] &lt; smallest; smallest = arr[i] smallest_index = i return smallest_index def selectionSort(arr): newArr = [] for i in range(len(arr)): smallest = findSmallest(arr) newArr.append(arr.pop(smallest))return newArr 小结 计算机内存犹如一大堆抽屉。 需要存储多个元素时，可使用数组或链表。 数组的元素都在一起。 链表的元素是分开的，其中每个元素都存储了下一个元素的地址。 数组的读取速度很快。 链表的插入和删除速度很快。 在同一个数组中，所有元素的类型都必须相同（都为int、double等）。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[《HeadFirst设计模式》书摘-状态模式/代理模式]]></title>
       <url>%2Fpost%2FheadFirstDesignPatterns05%2F</url>
       <content type="text"><![CDATA[状态模式定义允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类 get到的oo原则类应该只有一个改变的理由 要点 状态模式允许一个对象基于内部状态而拥有不同的行为 和程序状态机(PSM)不同，状态模式用类代表状态 context会将行为委托给当前状态对象 通过将每个状态封装进一个类，我们把以后需要做的任何改变局部化了 状态模式和策略模式有相同的类图，但是他们意图不同 策略模式通常会用行为或算法来配置context类 状态模式允许随着状态的改变而改变行为 状态转换可以由state类或context类控制 使用状态模式通常会导致设计中类的数目大量增加 状态类可以被多个context实例共享 代理模式定义为另一个对象提供一个替身或占位符以访问这个对象 要点 代理模式为另一个对象提供代表，以便控制客户对对象的访问，管理访问的方式有许多种 远程代理管理客户和远程对象之间的交互 虚拟代理控制访问实例化开销大的对象 保护代理基于调用者控制对象方法的访问 代理模式有许多变体，例如：缓存代理，同步代理，防火墙代理和写入时复制代理 代理在结构上类似装饰者，但是目的不同 装饰者模式为对象加上行为，而代理则是控制访问 java内置的代理支持，可以根据需要建立动态代理，并将所要调用分配到所选的处理器 就和其他包装者一样，代理会造成你的设计中的类数目增加]]></content>

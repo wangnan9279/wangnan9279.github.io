@@ -1,1 +1,1 @@
-http://wangnan.tech/post/headFirstDesignPatterns05/
+http://wangnan.tech/post/algorithm-illustration-01/
