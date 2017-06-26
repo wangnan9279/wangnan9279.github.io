@@ -6,35 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangnan.tech">
-  <title>Mybaits-配置 | wangnan&#39;s blog</title>
+  <title>《算法图解》书摘-散列表/广度优先搜索 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis配置XML文件的层次结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Mybaits-配置">
-<meta property="og:url" content="http://wangnan.tech/post/mybatis-config/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="《算法图解》书摘-散列表/广度优先搜索">
+<meta property="og:url" content="http://wangnan.tech/post/algorithm-illustration-03/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="Mybatis配置XML文件的层次结构">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/01.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/02.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/03.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/04.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/05.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/06.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/07.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/08.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/09.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/10.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/11.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/12.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/13.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/14.png">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/15.png">
-<meta property="og:updated_time" content="2017-06-01T02:57:41.262Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/16.jpg">
+<meta property="og:updated_time" content="2017-06-26T03:05:44.378Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mybaits-配置">
-<meta name="twitter:description" content="Mybatis配置XML文件的层次结构">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+<meta name="twitter:title" content="《算法图解》书摘-散列表/广度优先搜索">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/16.jpg">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -192,14 +174,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mybatis-config" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-algorithm-illustration-03" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Mybaits-配置
+      《算法图解》书摘-散列表/广度优先搜索
     </h1>
   
 
@@ -221,8 +203,8 @@ var _hmt = _hmt || [];
 		
         
 		
-        <a href="/post/mybatis-config/" class="archive-article-date">
-  	<time datetime="2017-04-10T06:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+        <a href="/post/algorithm-illustration-03/" class="archive-article-date">
+  	<time datetime="2017-06-26T03:04:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
 </a>
         
       </header>
@@ -237,7 +219,7 @@ var _hmt = _hmt || [];
 	<div id="toc-article" class="toc-article">
 	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
 		<strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#properties元素"><span class="toc-number">1.</span> <span class="toc-text">properties元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#property子元素"><span class="toc-number">1.1.</span> <span class="toc-text">property子元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#properties"><span class="toc-number">1.2.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序参数传递"><span class="toc-number">1.3.</span> <span class="toc-text">程序参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优先级"><span class="toc-number">1.4.</span> <span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setting"><span class="toc-number">2.</span> <span class="toc-text">setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeAliases"><span class="toc-number">3.</span> <span class="toc-text">typeAliases</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统定义的别名"><span class="toc-number">3.1.</span> <span class="toc-text">系统定义的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义别名"><span class="toc-number">3.2.</span> <span class="toc-text">自定义别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件："><span class="toc-number">3.2.1.</span> <span class="toc-text">配置文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解-自动扫描"><span class="toc-number">3.2.2.</span> <span class="toc-text">注解+自动扫描</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeHandler"><span class="toc-number">4.</span> <span class="toc-text">typeHandler</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ObjectFactory"><span class="toc-number">5.</span> <span class="toc-text">ObjectFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#environment"><span class="toc-number">6.</span> <span class="toc-text">environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引入映射器方法"><span class="toc-number">7.</span> <span class="toc-text">引入映射器方法</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第五章-散列表"><span class="toc-number">1.</span> <span class="toc-text">第五章 散列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#散列表适合用于"><span class="toc-number">1.1.</span> <span class="toc-text">散列表适合用于</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经验"><span class="toc-number">1.2.</span> <span class="toc-text">经验</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第六章-广度优先搜索"><span class="toc-number">3.</span> <span class="toc-text">第六章 广度优先搜索</span></a></li></ol>
          </div>
    <script type="text/javascript">
 	function showToc(){
@@ -258,114 +240,63 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""><br>Mybatis配置XML文件的层次结构</p>
-<a id="more"></a>
-<p><img src="/post/mybatis-config/01.png" alt=""></p>
-<p>这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常</p>
-<h1 id="properties元素"><a href="#properties元素" class="headerlink" title="properties元素"></a>properties元素</h1><p>properties元素提供三种配置方式</p>
-<ul>
-<li>property子元素</li>
-<li>property配置文件</li>
-<li>程序参数传递</li>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/16.jpg" alt=""><br><a id="more"></a></p>
+<h1 id="第五章-散列表"><a href="#第五章-散列表" class="headerlink" title="第五章 散列表"></a>第五章 散列表</h1><ul>
+<li>散列函数“将输入映射到数字”</li>
+<li>散列函数总是将同样的输入映射到相同的索引</li>
+<li>散列函数将不同的输入映射到不同的索引</li>
+<li>散列函数知道数组有多大，只返回有效的索引</li>
+<li>而散列表也使用数组来存储数据，因此其获取元素的速度与数组一样快。</li>
 </ul>
-<h2 id="property子元素"><a href="#property子元素" class="headerlink" title="property子元素"></a>property子元素</h2><p>如图：<br><img src="/post/mybatis-config/02.png" alt=""></p>
-<p>这样我们就可以在上下文中使用以及配置好的属性了</p>
-<p>如图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;dataSource type=&quot;POOLED&quot;&gt;</div><div class="line">    &lt;property name=&quot;driver&quot; value=&quot;$&#123;dirver&#125;&quot;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;url&#125;&quot;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;username&#125;&quot;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;</div><div class="line">&lt;/dataSource&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>使用配置文件，方便我们在多个配置文件中重复使用它们，也方便日后维护和随时修改</p>
-<p>如图：<br><img src="/post/mybatis-config/03.png" alt=""></p>
-<p>我们properties文件放在源包下，只要这样引入这个配置文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;properties resource=&quot;jdbc.properties&quot;/&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="程序参数传递"><a href="#程序参数传递" class="headerlink" title="程序参数传递"></a>程序参数传递</h2><p>适用场景举例：生产数据库用户名和密码对于开发者保密，运维人员要求文件中的数据库用户和密码进行加密，需要在代码中进行解码传入配置，这个时候需要通过编码的范式满足我们遇到的场景</p>
-<p>如图：<br>InputStream  cfgStream = null;<br><img src="/post/mybatis-config/04.png" alt=""><br>decode为解密方法</p>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>mybtis支持这三种方式同时出现，可以重复配置同一属性</p>
-<p>mybtis按照下面的顺序加载：</p>
-<ol>
-<li>在properties元素体内的指定属性首先被读取</li>
-<li>根据properties预算内宿的resource属性读取类路径下属性文件，或者根据url属性指定的路径读取属性文件，并覆盖已读取的同名属性</li>
-<li>读取作为方法参数传递的属性，并覆盖已读取的同名属性</li>
-</ol>
-<p>总结：优先级 代码&gt;配置文件&gt;properties属性</p>
-<h1 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h1><ul>
-<li>setting在mybatis中是最复杂的配置，也是最重要的配置</li>
-<li>即使不配置setting，mybatis也可以正常工作</li>
-<li>了解setting配置内容，十分必要</li>
+<h2 id="散列表适合用于"><a href="#散列表适合用于" class="headerlink" title="散列表适合用于"></a>散列表适合用于</h2><ul>
+<li>模拟映射关系；</li>
+<li>防止重复；</li>
+<li><p>缓存/记住数据，以免服务器再通过处理来生成它们。</p>
+</li>
+<li><p>如果两个键映射到了同一个位置，就在这个位置储存一个链表</p>
+</li>
 </ul>
-<p>如图：<br><img src="/post/mybatis-config/05.png" alt=""><br><img src="/post/mybatis-config/06.png" alt=""><br><img src="/post/mybatis-config/07.png" alt=""></p>
-<h1 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h1><ul>
-<li>别名是一个指代的名称，因为类的全名过长，我们希望用简短的方式去指代它</li>
-<li>这个名称可以在mybatis上下文中使用</li>
-<li>别名不区分大小写</li>
-<li>一个别名实例是在解析配置文件时生成的，然后长期保持在configuration对象中，供随时使用</li>
+<h2 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h2><ul>
+<li>散列函数很重要。前面的散列函数将所有的键都映射到一个位置，而最理想的情况是，<br>散列函数将键均匀地映射到散列表的不同位置。</li>
+<li><p>如果散列表存储的链表很长，散列表的速度将急剧下降。然而，如果使用的散列函数很<br>好，这些链表就不会很长！</p>
+</li>
+<li><p>在最糟情况下，散列表所有操作的运行时间都为O(n)——线性时间</p>
+</li>
+<li><p>在平均情况下，散列表的查找（获取给定索引处的值）速度与数组一样快，而插入和删除速<br>度与链表一样快，因此它兼具两者的优点！但在最糟情况下，散列表的各种操作的速度都很慢。</p>
+</li>
+<li><p>因此，在使用散列表时，避开最糟情况至关重要。为此，需要避免冲突。而要避免冲突，需要有1.较低的填装因子2.良好的散列函数。</p>
+</li>
+<li><p>填装因子大于1意味着商品数量超过了数组的位置数。一旦填装因子开始增大，你就需要在散列表中添加位置，这被称为调整长度（resizing）。</p>
+</li>
+<li><p>一个不错的经验规则是：一旦填装因子大于0.7，就调整散列表的长度。</p>
+</li>
+<li><p>什么样的散列函数是良好的呢？你根本不用操心——天塌下来有高个子顶着。如果你好奇，<br>可研究一下SHA函数</p>
+</li>
 </ul>
-<p>类型：</p>
-<ul>
-<li>系统定义的别名</li>
-<li>自定义别名</li>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li><p>你几乎根本不用自己去实现散列表，因为你使用的编程语言提供了散列表实现。你可使用<br>Python提供的散列表，并假定能够获得平均情况下的性能：常量时间。</p>
+</li>
+<li><p>散列表是一种功能强大的数据结构，其操作速度快，还能让你以不同的方式建立数据模型。<br>你可能很快会发现自己经常在使用它。</p>
+</li>
+<li>你可以结合散列函数和数组来创建散列表。</li>
+<li>冲突很糟糕，你应使用可以最大限度减少冲突的散列函数。</li>
+<li>散列表的查找、插入和删除速度都非常快。</li>
+<li>散列表适合用于模拟映射关系。</li>
+<li>一旦填装因子超过0.7，就该调整散列表的长度。</li>
+<li>散列表可用于缓存数据（例如，在Web服务器上）。</li>
+<li>散列表非常适合用于防止重复。</li>
 </ul>
-<h2 id="系统定义的别名"><a href="#系统定义的别名" class="headerlink" title="系统定义的别名"></a>系统定义的别名</h2><p><img src="/post/mybatis-config/08.png" alt=""><br><img src="/post/mybatis-config/09.png" alt=""></p>
-<p>注：支持数组类型的只要加“[]”即可，比如Date数组可以用date[]代替</p>
-<h2 id="自定义别名"><a href="#自定义别名" class="headerlink" title="自定义别名"></a>自定义别名</h2><p>方式：</p>
-<ul>
-<li>配置文件</li>
-<li>代码</li>
+<h1 id="第六章-广度优先搜索"><a href="#第六章-广度优先搜索" class="headerlink" title="第六章 广度优先搜索"></a>第六章 广度优先搜索</h1><ul>
+<li>广度优先搜索指出是否有从A到B的路径。</li>
+<li>如果有，广度优先搜索将找出最短路径。</li>
+<li>面临类似于寻找最短路径的问题时，可尝试使用图来建立模型，再使用广度优先搜索来<br>解决问题。</li>
+<li>有向图中的边为箭头，箭头的方向指定了关系的方向，例如，rama→adit表示rama欠adit钱。</li>
+<li>无向图中的边不带箭头，其中的关系是双向的，例如，ross - rachel表示“ross与rachel约<br>会，而rachel也与ross约会”。</li>
+<li>队列是先进先出（FIFO）的。</li>
+<li>栈是后进先出（LIFO）的。</li>
+<li>你需要按加入顺序检查搜索列表中的人，否则找到的就不是最短路径，因此搜索列表必<br>须是队列。</li>
+<li>对于检查过的人，务必不要再去检查，否则可能导致无限循环。</li>
 </ul>
-<h3 id="配置文件："><a href="#配置文件：" class="headerlink" title="配置文件："></a>配置文件：</h3><p><img src="/post/mybatis-config/10.png" alt=""></p>
-<p>这样mybtis的上下文中使用role来替代其全路径</p>
-<h3 id="注解-自动扫描"><a href="#注解-自动扫描" class="headerlink" title="注解+自动扫描"></a>注解+自动扫描</h3><p><img src="/post/mybatis-config/11.png" alt=""><br><img src="/post/mybatis-config/12.png" alt=""></p>
-<p>使用注解@Alias，Mybatis会自动扫描包，将扫描到的类装载到上下文中以便将来使用</p>
-<p>注意：配置了包扫描路径，没有注解的类，mybatis也会装载，只是说它将把别名设置为类名第一个字母小写</p>
-<h1 id="typeHandler"><a href="#typeHandler" class="headerlink" title="typeHandler"></a>typeHandler</h1><ul>
-<li>Mybatis在预处理语句(PrepareStatement)中设置一个参数时，或者从结果集(ResultSet)中取出一个值时，都会用注册了的typeHandler进行处理</li>
-<li>由于数据库厂商不同，参数不同，typeHandler允许根据项目的需要自定义设置java传递到数据库的参数中，或者从数据库读出的数据，进行特殊处理</li>
-<li>在使用枚举的时候我们常常使用typeHandler进行转换</li>
-</ul>
-<p>类型：</p>
-<ul>
-<li>系统定义</li>
-<li>用户自定义</li>
-</ul>
-<p>typeHandler常用的配置为java类型（javaType）、JDBC类型（jdbcType）,typeHandler的作用就是将javaType和jdbcType互相转化</p>
-<p>由于篇幅考虑，typehandler不详细说明</p>
-<h1 id="ObjectFactory"><a href="#ObjectFactory" class="headerlink" title="ObjectFactory"></a>ObjectFactory</h1><p>当mybatis在构建一个结果返回的时候，都会使用ObjectFactory去构建POJP，在mybatis中可以定制自己的ObjectFactory，一般来说我们使用默认的ObjectFactory即可，默认的ObjectFactory是由org.apache.ibatis.reflection.DefaultObjectFactory来提供服务的</p>
-<p>如果要定制特定的工厂则需要进行配置<br><img src="/post/mybatis-config/13.png" alt=""></p>
-<h1 id="environment"><a href="#environment" class="headerlink" title="environment"></a>environment</h1><p>配置环境可以注册多个数据源</p>
-<p>每个数据源分为两大部分：</p>
-<ul>
-<li>数据库源的配置</li>
-<li>数据库事务的配置</li>
-</ul>
-<p>如图：<br><img src="/post/mybatis-config/14.png" alt=""></p>
-<p>说明：</p>
-<ul>
-<li>environments中的属性default，标明在缺省的情况下我们将启用哪个数据源配置</li>
-<li>属性id这只这个数据源的标志，以便在mybatis上下文中使用它</li>
-</ul>
-<p>transactionManager配置的是数据库事务，type属性有三种配置方式：</p>
-<ol>
-<li>JDBC 采用JDBC方式管理事务，在独立编码中常常使用</li>
-<li>MANAGED,采用容器方式管理事务，在JNDI数据源中常用</li>
-<li>自定义，由使用者自定义，适用于特殊应用</li>
-</ol>
-<ul>
-<li>property元素则是可以配置数据源的各类属性，我们配置了autoCommit=false则是要求数据源不自动提交</li>
-<li>dataSource标签，是配置数据源连接的信息，type属性是提供我们队数据库连接方式的配置</li>
-</ul>
-<p>type：</p>
-<ol>
-<li>UNPOOLED,非连接池数据库</li>
-<li>POOLED,连接池数据库</li>
-<li>JNDI,JNDI数据源</li>
-<li>自定义数据源</li>
-</ol>
-<h1 id="引入映射器方法"><a href="#引入映射器方法" class="headerlink" title="引入映射器方法"></a>引入映射器方法</h1><p>映射器是Mybatis最复杂、最核心的组件</p>
-<p>引入引射器的方法</p>
-<ol>
-<li>用文件路径引入</li>
-<li>用包名引入</li>
-<li>用类注册引入</li>
-<li>用xml引入</li>
-</ol>
-<p>如图：<br><img src="/post/mybatis-config/15.png" alt=""></p>
-<p>（注：内容整理自《深入浅出MyBatis技术原理与实战》）</p>
 
       
 
@@ -410,11 +341,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ORM框架</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法图解</a>
         		</li>
       		
 		</ul>
@@ -426,7 +353,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Mybatis/" class="article-tag-list-link color3">Mybatis</a>
+        			<a href="/categories/算法图解/" class="article-tag-list-link color5">算法图解</a>
         		</li>
       		
 		</ul>
@@ -444,18 +371,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/post/mybatis-mapper/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Mybatis映射器
-        
-      </div>
-    </a>
   
-  
-    <a href="/post/mybatis-lifecycle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mybaits-基本构成和生命周期</div>
+    <a href="/post/algorithm-illustration-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《算法图解》书摘-递归/快速排序</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -481,7 +399,7 @@ var _hmt = _hmt || [];
 <script>
   var cloudTieConfig = {
     url: "", 
-    sourceId: "post/mybatis-config/",
+    sourceId: "post/algorithm-illustration-03/",
     productKey: "d53fb340d27c4c8787481d7fbe4d641d",
     target: "cloud-tie-wrapper"
   };
