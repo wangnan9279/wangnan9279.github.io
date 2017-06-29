@@ -6,14 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangnan.tech">
-  <title>Archives: 2017/3 | wangnan&#39;s blog</title>
+  <title>《算法图解》书摘-狄克斯特拉算法贪婪算法等 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/archives/2017/03/page/2/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="《算法图解》书摘-狄克斯特拉算法贪婪算法等">
+<meta property="og:url" content="http://wangnan.tech/post/algorithm-illustration-04/index.html">
 <meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/17.jpg">
+<meta property="og:updated_time" content="2017-06-29T06:06:22.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
+<meta name="twitter:title" content="《算法图解》书摘-狄克斯特拉算法贪婪算法等">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/17.jpg">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -171,560 +174,255 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-algorithm-illustration-04" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《算法图解》书摘-狄克斯特拉算法贪婪算法等
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+<br/>
+<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+<span class="icon-sort"></span>
+<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+</span>
+</a>
+<!--<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:#ef7522;font-size:14px;">
+	<span class="icon-comment"></span>
+	<span class="join-text" style="color:#ef7522;font-size:14px;">评论数:</span>
+	<span class="join-count">0</span>次
+</a>-->
+
+		
+        
+		
+        <a href="/post/algorithm-illustration-04/" class="archive-article-date">
+  	<time datetime="2017-06-29T06:01:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+</a>
+        
+      </header>
     
+	
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第七章-狄克斯特拉算法"><span class="toc-number">1.</span> <span class="toc-text">第七章 狄克斯特拉算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">1.1.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#贪婪算法-动态规划-k最近邻算法"><span class="toc-number">2.</span> <span class="toc-text">贪婪算法/动态规划/k最近邻算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他一些算法"><span class="toc-number">3.</span> <span class="toc-text">其他一些算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#树"><span class="toc-number">3.1.</span> <span class="toc-text">树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向索引"><span class="toc-number">3.2.</span> <span class="toc-text">反向索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅里叶变换"><span class="toc-number">3.3.</span> <span class="toc-text">傅里叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行算法"><span class="toc-number">3.4.</span> <span class="toc-text">并行算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MapReduce"><span class="toc-number">3.5.</span> <span class="toc-text">MapReduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布隆过滤器和HyperLogLog"><span class="toc-number">3.6.</span> <span class="toc-text">布隆过滤器和HyperLogLog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHA算法"><span class="toc-number">3.7.</span> <span class="toc-text">SHA算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffie-Hellman-密钥交换"><span class="toc-number">3.8.</span> <span class="toc-text">Diffie-Hellman 密钥交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性规划"><span class="toc-number">3.9.</span> <span class="toc-text">线性规划</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/17.jpg" alt=""><br><a id="more"></a></p>
+<h1 id="第七章-狄克斯特拉算法"><a href="#第七章-狄克斯特拉算法" class="headerlink" title="第七章 狄克斯特拉算法"></a>第七章 狄克斯特拉算法</h1><ul>
+<li><p>前一章使用了广度优先搜索，它找出的是段数最少的路径（如第一个图所示）。如果你<br>要找出最快的路径（如第二个图所示），该如何办呢？为此，可使用另一种算法——狄克斯特拉<br>算法（Dijkstra’s algorithm）。</p>
+</li>
+<li><p>狄克斯特拉算法包含4个步骤。</p>
+</li>
+</ul>
+<ol>
+<li>找出最便宜的节点，即可在最短时间内前往的节点。</li>
+<li>对于该节点的邻居，检查是否有前往它们的更短路径，如果有，就更新其开销。</li>
+<li>重复这个过程，直到对图中的每个节点都这样做了。</li>
+<li>计算最终路径。（下一节再介绍！）</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>广度优先搜索用于在非加权图中查找最短路径。</li>
+<li>狄克斯特拉算法用于在加权图中查找最短路径。</li>
+<li>仅当权重为正时狄克斯特拉算法才管用。</li>
+<li>如果图中包含负权边，请使用贝尔曼福德算法。</li>
+</ul>
+<h1 id="贪婪算法-动态规划-k最近邻算法"><a href="#贪婪算法-动态规划-k最近邻算法" class="headerlink" title="贪婪算法/动态规划/k最近邻算法"></a>贪婪算法/动态规划/k最近邻算法</h1><ul>
+<li>就是你每步都选择局部最优解，最终得到的就是全局最优解</li>
+<li>有时候，你只需找到一个能够大致解决问题的算法，此时贪婪算法正好可派上用场，因为它们实现起来很容易，得到的结果又与正确结果相当接近。</li>
+<li>贪婪算法寻找局部最优解，企图以这种方式获得全局最优解。</li>
+<li>对于NP完全问题，还没有找到快速解决方案。</li>
+<li>面临NP完全问题时，最佳的做法是使用近似算法。</li>
+<li>贪婪算法易于实现、运行速度快，是不错的近似算法。</li>
+<li>需要在给定约束条件下优化某种指标时，动态规划很有用。</li>
+<li>问题可分解为离散子问题时，可使用动态规划来解决。</li>
+<li>每种动态规划解决方案都涉及网格。</li>
+<li>单元格中的值通常就是你要优化的值。</li>
+<li>每个单元格都是一个子问题，因此你需要考虑如何将问题分解为子问题。</li>
+<li>没有放之四海皆准的计算动态规划解决方案的公式。</li>
+<li>KNN用于分类和回归，需要考虑最近的邻居。</li>
+<li>分类就是编组。</li>
+<li>回归就是预测结果（如数字）。</li>
+<li>特征抽取意味着将物品（如水果或用户）转换为一系列可比较的数字。</li>
+<li>能否挑选合适的特征事关KNN算法的成败。</li>
+</ul>
+<h1 id="其他一些算法"><a href="#其他一些算法" class="headerlink" title="其他一些算法"></a>其他一些算法</h1><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h2 id="反向索引"><a href="#反向索引" class="headerlink" title="反向索引"></a>反向索引</h2><h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><ul>
+<li>Better Explained是一个杰出<br>的网站，致力于以通俗易懂的语言阐释数学，它就傅里叶变换做了一个绝佳的比喻：给它一杯冰沙，它能告诉你其中包含哪些成分。换言之，给定一首歌曲，傅里叶变换能够将其中的各种频率分离出来。<br>-JPG也是一种压缩格式，也采用了刚才说的工作原理。傅里叶变换还被用来地震预测和DNA分析。</li>
+</ul>
+<h2 id="并行算法"><a href="#并行算法" class="headerlink" title="并行算法"></a>并行算法</h2><h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><ul>
+<li>MapReduce是一种流行的分布式算法，你可通过流行的开源工具Apache Hadoop来<br>使用它。</li>
+<li>分布式算法非常适合用于在短时间内完成海量工作，其中的MapReduce基于两个简单的理<br>念：映射（map）函数和归并（reduce）函数。</li>
+<li>MapReduce使用这两个简单概念在多台计算机上执行数据查询。数据集很大，包含数十亿行<br>时，使用MapReduce只需几分钟就可获得查询结果，而传统数据库可能要耗费数小时。</li>
+</ul>
+<h2 id="布隆过滤器和HyperLogLog"><a href="#布隆过滤器和HyperLogLog" class="headerlink" title="布隆过滤器和HyperLogLog"></a>布隆过滤器和HyperLogLog</h2><h2 id="SHA算法"><a href="#SHA算法" class="headerlink" title="SHA算法"></a>SHA算法</h2><p>-安全散列算法（secure hash algorithm，SHA）函数。</p>
+<h2 id="Diffie-Hellman-密钥交换"><a href="#Diffie-Hellman-密钥交换" class="headerlink" title="Diffie-Hellman 密钥交换"></a>Diffie-Hellman 密钥交换</h2><h2 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>支持博主喝杯咖啡继续搬砖！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-bulk/" class="archive-article-date">
-  	<time datetime="2017-03-21T02:10:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-bulk/">Elasticsearch批量操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法图解</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
+        			<a href="/categories/算法图解/" class="article-tag-list-link color5">算法图解</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-rescore/" class="archive-article-date">
-  	<time datetime="2017-03-20T08:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-rescore/">Elasticsearch二次评分</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/mybatis-cache/" class="archive-article-date">
-  	<time datetime="2017-03-20T07:19:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/mybatis-cache/">MyBatis二级缓存</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ORM框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mybatis/" class="article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/redis-progression/" class="archive-article-date">
-  	<time datetime="2017-03-17T08:20:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/redis-progression/">Redis进阶内容</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/redis-data-safety/" class="archive-article-date">
-  	<time datetime="2017-03-17T08:14:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/redis-data-safety/">Redis数据安全与性能保障</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/redis-command/" class="archive-article-date">
-  	<time datetime="2017-03-17T07:59:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/redis-command/">Redis命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-study-note/" class="archive-article-date">
-  	<time datetime="2017-03-17T06:51:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-study-note/">Elasticsearch学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-completion-suggester/" class="archive-article-date">
-  	<time datetime="2017-03-17T06:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-completion-suggester/">Elasticsearch自动补齐建议-completion suggester</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-geo-distance-query/" class="archive-article-date">
-  	<time datetime="2017-03-17T05:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-geo-distance-query/">Elasticsearch地理位置查询-Geo Distance Range Query</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/elasticsearch-lucene-score-rule/" class="archive-article-date">
-  	<time datetime="2017-03-17T03:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/elasticsearch-lucene-score-rule/">Elasticsearch如何评分?-Apache Lucene默认评分公式解释</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Lucene</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ElasticSearch/" class="article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/post/algorithm-illustration-03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《算法图解》书摘-散列表/广度优先搜索</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/03/">&laquo; Prev</a><a class="page-number" href="/archives/2017/03/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/03/page/3/">3</a><a class="page-number" href="/archives/2017/03/page/4/">4</a><a class="extend next" rel="next" href="/archives/2017/03/page/3/">Next &raquo;</a>
-    </nav>
-  
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- 
+<section class="duoshuo" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "", 
+    sourceId: "post/algorithm-illustration-04/",
+    productKey: "d53fb340d27c4c8787481d7fbe4d641d",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+</section>
+-->
+
+
+<!-- 来必力City版安装代码 -->
+
+<section class="duoshuo" id="comments">
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODg0OC81NDE4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</section>
+<!-- City版安装代码已完成 -->
+
+
+
 
 
           </div>
@@ -754,8 +452,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
