@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/concurrentHashMap-note/</loc>
+    
+    <lastmod>2017-07-04T08:30:10.790Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/rich-father-pool-father-financial-free/</loc>
     
     <lastmod>2017-07-04T05:45:04.727Z</lastmod>
