@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-Reference/</loc>
+    <lastmod>2017-07-06T02:20:41.606Z</lastmod>
+    <data>
+        <display>
+        <title>Java引用类型</title>
+        <pubTime>2017-07-06T02:15:54.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/concurrentHashMap-note/</loc>
     <lastmod>2017-07-05T06:48:05.866Z</lastmod>
     <data>

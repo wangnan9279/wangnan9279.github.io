@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/java-Reference/</loc>
+    
+    <lastmod>2017-07-06T02:20:41.606Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/concurrentHashMap-note/</loc>
     
     <lastmod>2017-07-05T06:48:05.866Z</lastmod>

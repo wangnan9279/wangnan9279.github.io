@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangnan.tech">
-  <title>wangnan&#39;s blog</title>
+  <title>Java引用类型 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="wangnanblogmy hexo blog soucrce">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/README.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Java引用类型">
+<meta property="og:url" content="http://wangnan.tech/post/java-Reference/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="wangnanblogmy hexo blog soucrce">
-<meta property="og:updated_time" content="2017-04-09T09:19:00.080Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
+<meta property="og:image" content="http://wangnan.tech/post/java-Reference/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/java-Reference/02.png">
+<meta property="og:updated_time" content="2017-07-06T02:20:41.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
-<meta name="twitter:description" content="wangnanblogmy hexo blog soucrce">
+<meta name="twitter:title" content="Java引用类型">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java.png">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -175,18 +176,98 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-java-Reference" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java引用类型
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+<br/>
+<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+<span class="icon-sort"></span>
+<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+</span>
+</a>
+<!--<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:#ef7522;font-size:14px;">
+	<span class="icon-comment"></span>
+	<span class="join-text" style="color:#ef7522;font-size:14px;">评论数:</span>
+	<span class="join-count">0</span>次
+</a>-->
+
+		
+        
+		
+        <a href="/post/java-Reference/" class="archive-article-date">
+  	<time datetime="2017-07-06T02:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
+</a>
+        
+      </header>
     
 	
 	<!-- 目录内容 -->
-		
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强引用（StrongReference）"><span class="toc-number">1.</span> <span class="toc-text">强引用（StrongReference）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软引用（SoftReference）"><span class="toc-number">2.</span> <span class="toc-text">软引用（SoftReference）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要使用软引用"><span class="toc-number">2.1.</span> <span class="toc-text">为什么需要使用软引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#弱引用（WeakReference）"><span class="toc-number">3.</span> <span class="toc-text">弱引用（WeakReference）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-2"><span class="toc-number">3.1.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#虚引用（PhantomReference）"><span class="toc-number">4.</span> <span class="toc-text">虚引用（PhantomReference）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-3"><span class="toc-number">4.1.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="wangnanblog"><a href="#wangnanblog" class="headerlink" title="wangnanblog"></a>wangnanblog</h1><p>my hexo blog soucrce</p>
-
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/java.png" alt=""><br><a id="more"></a><br>参考：</p>
+<ul>
+<li><a href="http://blog.csdn.net/mxbhxx/article/details/9111711" target="_blank" rel="external">http://blog.csdn.net/mxbhxx/article/details/9111711</a></li>
+<li><a href="http://blog.csdn.net/u011936381/article/details/11709245" target="_blank" rel="external">http://blog.csdn.net/u011936381/article/details/11709245</a></li>
+<li><a href="https://www.dexcoder.com/selfly/article/313" target="_blank" rel="external">https://www.dexcoder.com/selfly/article/313</a></li>
+</ul>
+<blockquote>
+<p>在JDK 1.2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK 1.2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：<strong>强引用、软引用、弱引用和虚引用</strong>。</p>
+</blockquote>
+<h1 id="强引用（StrongReference）"><a href="#强引用（StrongReference）" class="headerlink" title="强引用（StrongReference）"></a>强引用（StrongReference）</h1><p>强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。<strong>当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题</strong>  ps：强引用其实也就是我们平时A a = new A()这个意思。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">strongReference</span><span class="params">()</span> </span>&#123;  </div><div class="line">    Object referent = <span class="keyword">new</span> Object();  </div><div class="line">      </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * 通过赋值创建 StrongReference  </div><div class="line">     */  </div><div class="line">    Object strongReference = referent;  </div><div class="line">      </div><div class="line">    assertSame(referent, strongReference);  </div><div class="line">      </div><div class="line">    referent = <span class="keyword">null</span>;  </div><div class="line">    System.gc();  </div><div class="line">      </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * StrongReference 在 GC 后不会被回收 </div><div class="line">     */  </div><div class="line">    assertNotNull(strongReference);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="软引用（SoftReference）"><a href="#软引用（SoftReference）" class="headerlink" title="软引用（SoftReference）"></a>软引用（SoftReference）</h1><p><strong>如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存</strong>。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存（下文给出示例）。<br>软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。</p>
+<h2 id="为什么需要使用软引用"><a href="#为什么需要使用软引用" class="headerlink" title="为什么需要使用软引用"></a>为什么需要使用软引用</h2><p>我们知道，访问磁盘文件、访问网络资源、查询数据库等操作都是影响应用程序执行性能的重要因素，如果能重新获取那些尚未被回收的Java对象的引用，必将减少不必要的访问，大大提高程序的运行速度。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">softReference</span><span class="params">()</span> </span>&#123;  </div><div class="line">    Object referent = <span class="keyword">new</span> Object();  </div><div class="line">    SoftReference&lt;Object&gt; softRerference = <span class="keyword">new</span> SoftReference&lt;Object&gt;(referent);  </div><div class="line">  </div><div class="line">    assertNotNull(softRerference.get());  </div><div class="line">      </div><div class="line">    referent = <span class="keyword">null</span>;  </div><div class="line">    System.gc();  </div><div class="line">      </div><div class="line">    <span class="comment">/** </span></div><div class="line">     *  soft references 只有在 jvm OutOfMemory 之前才会被回收, 所以它非常适合缓存应用 </div><div class="line">     */  </div><div class="line">    assertNotNull(softRerference.get());  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下程序创建了一个String对象、ReferenceQueue对象和WeakReference对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个强引用</span></div><div class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line"><span class="comment">//创建引用队列, &lt;String&gt;为范型标记，表明队列中存放String对象的引用</span></div><div class="line">ReferenceQueue&lt;String&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;String&gt;();</div><div class="line"><span class="comment">//创建一个弱引用，它引用"hello"对象，并且与rq引用队列关联</span></div><div class="line"><span class="comment">//&lt;String&gt;为范型标记，表明WeakReference会弱引用String对象</span></div><div class="line">WeakReference&lt;String&gt; wf = <span class="keyword">new</span> WeakReference&lt;String&gt;(str, rq);</div></pre></td></tr></table></figure></p>
+<p>以上程序代码执行完毕，内存中引用与对象的关系如图所示，”hello”对象同时具有强引用和弱引用：`<br><img src="/post/java-Reference/01.png" alt=""><br>带实线的箭头表示强引用，带虚线的箭头表示弱引用。从图中可以看出，此时”hello”对象被str强引用，并且被一个WeakReference对象弱引用，因此”hello”对象不会被垃圾回收。</p>
+<p>在以下程序代码中，把引用”hello”对象的str变量置为null，然后再通过WeakReference弱引用的get()方法获得”hello”对象的引用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>); <span class="comment">//① </span></div><div class="line">ReferenceQueue&lt;String&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;String&gt;(); <span class="comment">//② </span></div><div class="line">WeakReference&lt;String&gt; wf = <span class="keyword">new</span> WeakReference&lt;String&gt;(str, rq); <span class="comment">//③</span></div><div class="line">str=<span class="keyword">null</span>; <span class="comment">//④取消"hello"对象的强引用</span></div><div class="line">String str1=wf.get(); <span class="comment">//⑤假如"hello"对象没有被回收，str1引用"hello"对象</span></div><div class="line"><span class="comment">//假如"hello"对象没有被回收，rq.poll()返回null</span></div><div class="line">Reference&lt;? extends String&gt; ref=rq.poll(); <span class="comment">//⑥</span></div></pre></td></tr></table></figure>
+<p>执行完以上第④行后，内存中引用与对象的关系下图所示：<br><img src="/post/java-Reference/02.png" alt=""></p>
+<p>此时”hello”对象仅仅具有弱引用，因此它有可能被垃圾回收。假如它还没有被垃圾回收，那么接下来在第⑤行执行wf.get()方法会返回 “hello”对象的引用，并且使得这个对象被str1强引用。再接下来在第⑥行执行rq.poll()方法会返回null，因为此时引用队列中没有任何 引用。ReferenceQueue的poll()方法用于返回队列中的引用，如果没有则返回null。</p>
+<p>，在以下程序代码中，执行完第④行后，”hello”对象仅仅具有弱引用。接下来两次调用System.gc()方法，催促垃圾回收器工作，从而提高 “hello”对象被回收的可能性。假如”hello”对象被回收，那么WeakReference对象的引用被加入到ReferenceQueue中， 接下来wf.get()方法返回null，并且rq.poll()方法返回WeakReference对象的引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String str = <span class="keyword">new</span> String(<span class="string">"hello"</span>); <span class="comment">//①</span></div><div class="line">ReferenceQueue&lt;String&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;String&gt;(); <span class="comment">//② </span></div><div class="line">WeakReference&lt;String&gt; wf = <span class="keyword">new</span> WeakReference&lt;String&gt;(str, rq); <span class="comment">//③</span></div><div class="line">str=<span class="keyword">null</span>; <span class="comment">//④</span></div><div class="line"><span class="comment">//两次催促垃圾回收器工作，提高"hello"对象被回收的可能性</span></div><div class="line">System.gc(); <span class="comment">//⑤</span></div><div class="line">System.gc(); <span class="comment">//⑥</span></div><div class="line">String str1=wf.get(); <span class="comment">//⑦ 假如"hello"对象被回收，str1为null</span></div><div class="line">Reference&lt;? extends String&gt; ref=rq.poll(); <span class="comment">//⑧</span></div></pre></td></tr></table></figure>
+<h1 id="弱引用（WeakReference）"><a href="#弱引用（WeakReference）" class="headerlink" title="弱引用（WeakReference）"></a>弱引用（WeakReference）</h1><p>弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，<strong>不管当前内存空间足够与否，都会回收它的内存</strong>。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。<br>弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">weakReference</span><span class="params">()</span> </span>&#123;  </div><div class="line">    Object referent = <span class="keyword">new</span> Object();  </div><div class="line">    WeakReference&lt;Object&gt; weakRerference = <span class="keyword">new</span> WeakReference&lt;Object&gt;(referent);  </div><div class="line">  </div><div class="line">    assertSame(referent, weakRerference.get());  </div><div class="line">      </div><div class="line">    referent = <span class="keyword">null</span>;  </div><div class="line">    System.gc();  </div><div class="line">      </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * 一旦没有指向 referent 的强引用, weak reference 在 GC 后会被自动回收 </div><div class="line">     */  </div><div class="line">    assertNull(weakRerference.get());  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="虚引用（PhantomReference）"><a href="#虚引用（PhantomReference）" class="headerlink" title="虚引用（PhantomReference）"></a>虚引用（PhantomReference）</h1><p>“虚引用”顾名思义，就是形同虚设，与其他几种引用都不同<strong>，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收</strong><br>虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中。<br>ReferenceQueue queue = new ReferenceQueue ();<br>PhantomReference pr = new PhantomReference (object, queue);<br>程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收。如果程序发现某个虚引用已经被加入到引用队列，那么就可以在所引用的对象的内存被回收之前采取必要的行动。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">phantomReferenceAlwaysNull</span><span class="params">()</span> </span>&#123;  </div><div class="line">    Object referent = <span class="keyword">new</span> Object();  </div><div class="line">    PhantomReference&lt;Object&gt; phantomReference = <span class="keyword">new</span> PhantomReference&lt;Object&gt;(referent, <span class="keyword">new</span> ReferenceQueue&lt;Object&gt;());  </div><div class="line">      </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * phantom reference 的 get 方法永远返回 null  </div><div class="line">     */  </div><div class="line">    assertNull(phantomReference.get());  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -225,7 +306,29 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java/" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -236,6 +339,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/post/hashMap-note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HashMap整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -256,7 +369,7 @@ var _hmt = _hmt || [];
 <script>
   var cloudTieConfig = {
     url: "", 
-    sourceId: "README.html",
+    sourceId: "post/java-Reference/",
     productKey: "d53fb340d27c4c8787481d7fbe4d641d",
     target: "cloud-tie-wrapper"
   };
@@ -319,7 +432,7 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
