@@ -173,6 +173,111 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mybatis-lifecycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/mybatis-lifecycle/">Mybaits-基本构成和生命周期</a>
+    </h1>
+  
+
+<!-- 显示阅读和评论数 -->
+
+		
+        
+		
+        <a href="/post/mybatis-lifecycle/" class="archive-article-date">
+  	<time datetime="2017-04-07T06:58:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+	
+	<!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
+<blockquote>
+<h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><ul>
+<li>SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)</li>
+<li>SqlSessionFactory:依靠工厂来生成SqlSession(会话)</li>
+<li>SqlSession:是一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口</li>
+<li>SQL Mapper:它是Mybatis新设计的组件，它是由一个java接口和xml文件（或注解）构成的，需要给出对应的sql和映射规则，它负责发送SQL去执行，并返回结果</li></ul></blockquote>
+        
+          <a class="article-more-a" href="/post/mybatis-lifecycle/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ORM框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Mybatis/" class="article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/mybatis-lifecycle/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- 网易云跟帖 -->
+<!-- -->
+
+
+<!-- 来必力City版安装代码 -->
+
+
+
+
+
+  
     <article id="post-mybtis-introduction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -578,106 +683,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-rabbitMQ-exchange" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/rabbitMQ-exchange/">RabbitMQ-理解消息通信-交换器和绑定</a>
-    </h1>
-  
-
-<!-- 显示阅读和评论数 -->
-
-		
-        
-		
-        <a href="/post/rabbitMQ-exchange/" class="archive-article-date">
-  	<time datetime="2017-03-31T02:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
-</a>
-        
-      </header>
-    
-	
-	<!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="交换器和绑定"><a href="#交换器和绑定" class="headerlink" title="交换器和绑定"></a>交换器和绑定</h1><p>当你想要将消息投递到队列时，你通过把消息发送给<strong>交换器</strong>来完成。然后，根据确定的规则，RabbitMQ将会决定消息该投递到哪个队列，这些规则被称为<strong>路由键(routing key)</strong>。<strong>队列通过路由键绑定到交换器</strong>，当你把消息发送到代理服务器时，消息将拥有一个路由键（即使是空的）<br>Rabbit也会将其和绑定使用的路由键进行匹配，如果匹配的话，那么消息将会投递到队列，如果路由的消息不匹配任何绑定模式的话，消息将进入“黑洞”</p>
-        
-          <a class="article-more-a" href="/post/rabbitMQ-exchange/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/RabbitMQ/" class="article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/rabbitMQ-exchange/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-<!-- 网易云跟帖 -->
-<!-- -->
-
-
-<!-- 来必力City版安装代码 -->
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -803,6 +808,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书摘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">concurrentHashMap</a>
               </li>
              
@@ -835,19 +844,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">反射</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">反射</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -864,10 +873,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书摘</a>
               </li>
              
               <li class="article-tag-list-item">
