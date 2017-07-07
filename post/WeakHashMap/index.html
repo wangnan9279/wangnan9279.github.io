@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangnan.tech">
-  <title>Redis进阶内容 | wangnan&#39;s blog</title>
+  <title>WeakHashMap整理 | wangnan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="减低内存占用 扩展Redis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Redis进阶内容">
-<meta property="og:url" content="http://wangnan.tech/post/redis-progression/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="WeakHashMap整理">
+<meta property="og:url" content="http://wangnan.tech/post/WeakHashMap/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="减低内存占用 扩展Redis">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/redis.png">
-<meta property="og:image" content="http://wangnan.tech/post/redis-progression/01.png">
-<meta property="og:updated_time" content="2017-06-01T02:45:48.997Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/20.jpg">
+<meta property="og:updated_time" content="2017-07-07T08:28:57.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis进阶内容">
-<meta name="twitter:description" content="减低内存占用 扩展Redis">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/redis.png">
+<meta name="twitter:title" content="WeakHashMap整理">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/20.jpg">
   
     <link rel="alternative" href="/atom.xml" title="wangnan&#39;s blog" type="application/atom+xml">
   
@@ -178,14 +174,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-redis-progression" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-WeakHashMap" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Redis进阶内容
+      WeakHashMap整理
     </h1>
   
 
@@ -207,26 +203,62 @@ var _hmt = _hmt || [];
 		
         
 		
-        <a href="/post/redis-progression/" class="archive-article-date">
-  	<time datetime="2017-03-17T08:20:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+        <a href="/post/WeakHashMap/" class="archive-article-date">
+  	<time datetime="2017-07-07T08:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
 </a>
         
       </header>
     
 	
 	<!-- 目录内容 -->
-		
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+	<div id="toc-article" class="toc-article">
+	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+		<strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-number">2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码解释"><span class="toc-number">3.</span> <span class="toc-text">代码解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试一下保持引用会不会被自动释放"><span class="toc-number">3.1.</span> <span class="toc-text">测试一下保持引用会不会被自动释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再测试一下删除引用后的总数"><span class="toc-number">3.2.</span> <span class="toc-text">再测试一下删除引用后的总数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再测试一下有引用但没有使用的情况"><span class="toc-number">3.3.</span> <span class="toc-text">再测试一下有引用但没有使用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后对比一下有使用的情况"><span class="toc-number">3.4.</span> <span class="toc-text">最后对比一下有使用的情况</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+	function showToc(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:block");
+		show_toc_btn.setAttribute("style","display:none");
+		};
+	function showBtn(){
+		var toc_article = document.getElementById("toc-article");
+		var show_toc_btn = document.getElementById("show-toc-btn");
+		toc_article.setAttribute("style","display:none");
+		show_toc_btn.setAttribute("style","display:block");
+		};
+   </script>
+      		
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://onxkn9cbz.bkt.clouddn.com/redis.png" alt=""></p>
-<blockquote>
-<p>减低内存占用 扩展Redis</p>
-</blockquote>
-<a id="more"></a>
-<p><img src="/post/redis-progression/01.png" alt="01"></p>
-<p>（注：内容整理自《redis实战》）</p>
+        <p><img src="http://onxkn9cbz.bkt.clouddn.com/20.jpg" alt=""><br><a id="more"></a><br>参考：</p>
+<ul>
+<li><a href="http://mikewang.blog.51cto.com/3826268/880775" target="_blank" rel="external">http://mikewang.blog.51cto.com/3826268/880775</a></li>
+<li><a href="http://www.wanghd.com/%E5%90%8E%E7%AB%AF/2012/08/01/weakhashmapzuo-yong-he-shi-li.html" target="_blank" rel="external">http://www.wanghd.com/%E5%90%8E%E7%AB%AF/2012/08/01/weakhashmapzuo-yong-he-shi-li.html</a></li>
+</ul>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ol>
+<li>以弱键 实现的基于哈希表的 Map。在 WeakHashMap 中，当某个键不再正常使用时，将自动移除其条目。更精确地说，<strong>对于一个给定的键，其映射的存在并不阻止垃圾回收器对该键的丢弃，这就使该键成为可终止的，被终止，然后被回收。丢弃某个键时，其条目从映射中有效地移除</strong></li>
+<li>WeakHashMap 类的行为部分取决于垃圾回收器的动作。因为垃圾回收器在任何时候都可能丢弃键，WeakHashMap 就像是一个被悄悄移除条目的未知线程。特别地，即使对 WeakHashMap 实例进行同步，并且没有调用任何赋值方法，在一段时间后 size 方法也可能返回较小的值，对于 isEmpty 方法，返回 false，然后返回true，对于给定的键，containsKey 方法返回 true 然后返回 false，对于给定的键，get 方法返回一个值，但接着返回 null，对于以前出现在映射中的键，put 方法返回 null，而 remove 方法返回 false，对于键 set、值 collection 和条目 set 进行的检查，生成的元素数量越来越少。</li>
+<li><strong>WeakHashMap 中的每个键对象间接地存储为一个弱引用的指示对象</strong>。因此，不管是在映射内还是在映射之外，只有在垃圾回收器清除某个键的弱引用之后，该键才会自动移除。</li>
+</ol>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>WeekHashMap 的这个特点特别适用于需要缓存的场景。在缓存场景下，由于内存是有限的，不能缓存所有对象；对象缓存命中可以提高系统效率，但缓存MISS也不会造成错误，因为可以通过计算重新得到。</p>
+<h1 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h1><h2 id="测试一下保持引用会不会被自动释放"><a href="#测试一下保持引用会不会被自动释放" class="headerlink" title="测试一下保持引用会不会被自动释放"></a>测试一下保持引用会不会被自动释放</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wanghuida.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.WeakHashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        List&lt;String[]&gt; templist = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//设的多一点，可以让GC真实发挥</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++)&#123;</div><div class="line">            String[] tempstr = <span class="keyword">new</span> String[<span class="number">2</span>];</div><div class="line">            templist.add(tempstr);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Map&lt;String[], String[]&gt; map = <span class="keyword">new</span> WeakHashMap&lt;String[], String[]&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</div><div class="line">            map.put(templist.get(i), <span class="keyword">new</span> String[<span class="number">2</span>]);</div><div class="line">            System.gc();</div><div class="line">            System.out.println(map.size());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出1，2，3，4。。。递增，OK没有问题，有一个引用，就不会释放</p>
+<h2 id="再测试一下删除引用后的总数"><a href="#再测试一下删除引用后的总数" class="headerlink" title="再测试一下删除引用后的总数"></a>再测试一下删除引用后的总数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wanghuida.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.WeakHashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String[]&gt; templist = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//设的多一点，可以让GC真实发挥</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">1000</span>; i++)&#123;</div><div class="line">            String[] tempstr = <span class="keyword">new</span> String[<span class="number">2</span>];</div><div class="line">            templist.add(tempstr);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Map&lt;String[], String[]&gt; map = <span class="keyword">new</span> WeakHashMap&lt;String[], String[]&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</div><div class="line">            map.put(templist.get(i), <span class="keyword">new</span> String[<span class="number">2</span>]);</div><div class="line">            templist.set(i, <span class="keyword">null</span>); <span class="comment">//删除掉引用 </span></div><div class="line">            System.gc();</div><div class="line">            System.out.println(map.size());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出0，1，0，1，1，1。。。保持下去，OK也没问题，删除引用后就会释放</p>
+<h2 id="再测试一下有引用但没有使用的情况"><a href="#再测试一下有引用但没有使用的情况" class="headerlink" title="再测试一下有引用但没有使用的情况"></a>再测试一下有引用但没有使用的情况</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wanghuida.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.WeakHashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String[]&gt; templist = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//新增一个引用</span></div><div class="line">        List&lt;String[]&gt; list = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//设的多一点，可以让GC真实发挥</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++)&#123;</div><div class="line">            String[] tempstr = <span class="keyword">new</span> String[<span class="number">2</span>];</div><div class="line">            templist.add(tempstr);</div><div class="line">            list.add(tempstr);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Map&lt;String[], String[]&gt; map = <span class="keyword">new</span> WeakHashMap&lt;String[], String[]&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</div><div class="line">            map.put(templist.get(i), <span class="keyword">new</span> String[<span class="number">2</span>]);</div><div class="line">            templist.set(i, <span class="keyword">null</span>); <span class="comment">//删除掉引用 </span></div><div class="line">            System.gc();</div><div class="line">            System.out.println(map.size());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出0，1，0，1，1，1。。。保持下去，OK也没问题，有引用但不使用也就会释放</p>
+<h2 id="最后对比一下有使用的情况"><a href="#最后对比一下有使用的情况" class="headerlink" title="最后对比一下有使用的情况"></a>最后对比一下有使用的情况</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wanghuida.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.WeakHashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String[]&gt; templist = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//新增一个引用</span></div><div class="line">        List&lt;String[]&gt; list = <span class="keyword">new</span> ArrayList&lt;String[]&gt;();  </div><div class="line">        <span class="comment">//设的多一点，可以让GC真实发挥</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++)&#123;</div><div class="line">            String[] tempstr = <span class="keyword">new</span> String[<span class="number">2</span>];</div><div class="line">            templist.add(tempstr);</div><div class="line">            list.add(tempstr);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Map&lt;String[], String[]&gt; map = <span class="keyword">new</span> WeakHashMap&lt;String[], String[]&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</div><div class="line">            map.put(templist.get(i), <span class="keyword">new</span> String[<span class="number">2</span>]);</div><div class="line">            templist.set(i, <span class="keyword">null</span>); <span class="comment">//删除掉引用 </span></div><div class="line">            System.gc();</div><div class="line">            System.out.println(map.size());</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        System.out.println(list.size());</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出1，2，3，4。。。递增，OK了</p>
 
       
 
@@ -271,11 +303,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -287,7 +315,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/" class="article-tag-list-link color1">Redis</a>
+        			<a href="/categories/Java/" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -305,18 +333,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/post/mybatis-cache/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MyBatis二级缓存
-        
-      </div>
-    </a>
   
-  
-    <a href="/post/redis-data-safety/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis数据安全与性能保障</div>
+    <a href="/post/The-Healthy-Programmer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《程序员健康指南》书摘</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -342,7 +361,7 @@ var _hmt = _hmt || [];
 <script>
   var cloudTieConfig = {
     url: "", 
-    sourceId: "post/redis-progression/",
+    sourceId: "post/WeakHashMap/",
     productKey: "d53fb340d27c4c8787481d7fbe4d641d",
     target: "cloud-tie-wrapper"
   };
