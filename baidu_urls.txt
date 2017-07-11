@@ -1,1 +1,1 @@
-http://wangnan.tech/post/WeakHashMap/
+http://wangnan.tech/post/java-memory/
