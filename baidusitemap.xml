@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/tcp-shakehands/</loc>
+    <lastmod>2017-07-12T03:15:06.824Z</lastmod>
+    <data>
+        <display>
+        <title>TCP协议三次握手四次挥手整理</title>
+        <pubTime>2017-07-12T03:10:35.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/net-tcp/</loc>
     <lastmod>2017-07-12T02:25:43.773Z</lastmod>
     <data>
