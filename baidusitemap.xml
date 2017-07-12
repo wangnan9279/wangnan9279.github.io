@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/net-tcp/</loc>
+    <lastmod>2017-07-12T02:25:43.773Z</lastmod>
+    <data>
+        <display>
+        <title>网络分层、TCP、IP、Http、Socket整理</title>
+        <pubTime>2017-07-12T02:05:41.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-niobioaio/</loc>
     <lastmod>2017-07-11T06:52:44.877Z</lastmod>
     <data>

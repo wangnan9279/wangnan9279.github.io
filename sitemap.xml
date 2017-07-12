@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/net-tcp/</loc>
+    
+    <lastmod>2017-07-12T02:25:43.773Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/java-niobioaio/</loc>
     
     <lastmod>2017-07-11T06:52:44.877Z</lastmod>
