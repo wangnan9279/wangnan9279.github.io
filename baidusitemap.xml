@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/timeWaitCloseWait/</loc>
+    <lastmod>2017-07-13T02:57:26.800Z</lastmod>
+    <data>
+        <display>
+        <title>TIME_WAIT和CLOSE_WAIT</title>
+        <pubTime>2017-07-13T02:48:05.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/tcp-shakehands/</loc>
     <lastmod>2017-07-12T03:15:06.824Z</lastmod>
     <data>
