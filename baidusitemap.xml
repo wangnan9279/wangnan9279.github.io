@@ -3,11 +3,9 @@
 
 
     
-    
-    
   <url>
     <loc>http://wangnan.tech/post/timeWaitCloseWait/</loc>
-    <lastmod>2017-07-14T06:16:33.766Z</lastmod>
+    <lastmod>2017-07-14T08:58:10.102Z</lastmod>
     <data>
         <display>
         <title>TIME_WAIT和CLOSE_WAIT</title>
@@ -24,6 +22,72 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://wangnan.tech/post/undefined/</loc>
+    <lastmod>2017-07-14T08:44:13.001Z</lastmod>
+    <data>
+        <display>
+        <title>TCP协议三次握手四次挥手整理</title>
+        <pubTime>2017-07-12T03:10:35.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+        <tag>TCP</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/net-tcp/</loc>
+    <lastmod>2017-07-14T08:43:23.969Z</lastmod>
+    <data>
+        <display>
+        <title>网络分层、TCP、IP、Http、Socket整理</title>
+        <pubTime>2017-07-12T02:05:41.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/java-ThreadLocal/</loc>
+    <lastmod>2017-07-14T08:35:18.288Z</lastmod>
+    <data>
+        <display>
+        <title>Java ThreadLocal 简介</title>
+        <pubTime>2016-06-23T08:44:22.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
     
   <url>
     <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>
@@ -1376,28 +1440,6 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/java-ThreadLocal/</loc>
-    <lastmod>2017-07-14T03:22:19.727Z</lastmod>
-    <data>
-        <display>
-        <title>Java ThreadLocal 简介</title>
-        <pubTime>2017-06-23T08:44:22.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>多线程</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
     <lastmod>2017-07-14T03:21:17.198Z</lastmod>
     <data>
@@ -1650,26 +1692,6 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/undefined/</loc>
-    <lastmod>2017-07-14T02:38:14.286Z</lastmod>
-    <data>
-        <display>
-        <title>网络分层、TCP、IP、Http、Socket整理</title>
-        <pubTime>2017-07-12T02:05:41.000Z</pubTime>
-        
-        <tag>网络</tag>
-         
-         
-           
-             
-              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wangnan.tech/post/java-Reference/</loc>
     <lastmod>2017-07-14T02:25:33.175Z</lastmod>
     <data>
@@ -1723,28 +1745,6 @@
            
              
               <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/undefined/</loc>
-    <lastmod>2017-07-14T01:43:18.717Z</lastmod>
-    <data>
-        <display>
-        <title>TCP协议三次握手四次挥手整理</title>
-        <pubTime>2017-07-12T03:10:35.000Z</pubTime>
-        
-        <tag>网络</tag>
-         
-        <tag>TCP</tag>
-         
-         
-           
-             
-              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
           
         </display>
     </data>

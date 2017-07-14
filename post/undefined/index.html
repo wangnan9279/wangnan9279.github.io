@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="wangnan&#39;s blog">
-    <title>网络分层、TCP、IP、Http、Socket整理 - wangnan&#39;s blog</title>
+    <title>TCP协议三次握手四次挥手整理 - wangnan&#39;s blog</title>
     <meta name="author" content="wangnan">
     
     
@@ -14,16 +14,19 @@
     
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="网络分层、TCP、IP、Http、Socket整理">
+<meta property="og:title" content="TCP协议三次握手四次挥手整理">
 <meta property="og:url" content="http://wangnan.tech/post/undefined/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/23.jpg">
-<meta property="og:image" content="http://wangnan.tech/post/undefined/00.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg">
 <meta property="og:image" content="http://wangnan.tech/post/undefined/01.png">
-<meta property="og:updated_time" content="2017-07-14T02:38:14.286Z">
+<meta property="og:image" content="http://wangnan.tech/post/undefined/04.png">
+<meta property="og:image" content="http://wangnan.tech/post/undefined/02.png">
+<meta property="og:image" content="http://wangnan.tech/post/undefined/05.png">
+<meta property="og:image" content="http://wangnan.tech/post/undefined/03.png">
+<meta property="og:updated_time" content="2017-07-14T08:44:13.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络分层、TCP、IP、Http、Socket整理">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/23.jpg">
+<meta name="twitter:title" content="TCP协议三次握手四次挥手整理">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -35,8 +38,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/23.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/23.jpg" />
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg" />
     
     
     
@@ -45,6 +48,16 @@
     <!--STYLES END-->
     
     
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
 </head>
 
     <body>
@@ -60,7 +73,7 @@
     
         
             <a  class="header-right-icon st-search-show-outputs"
-                href="#search">
+                href="/about">
         
         
             <i class="fa fa-lg fa-search"></i>
@@ -186,12 +199,12 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            网络分层、TCP、IP、Http、Socket整理
+            TCP协议三次握手四次挥手整理
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-07-12T10:05:41+08:00">
+    <time itemprop="datePublished" datetime="2017-07-12T11:10:35+08:00">
 	
 		    Jul 12, 2017
     	
@@ -210,75 +223,38 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层"><span class="toc-text">网络分层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#五层因特网协议栈（从上到下）"><span class="toc-text">五层因特网协议栈（从上到下）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五层因特网协议栈介绍"><span class="toc-text">五层因特网协议栈介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用层"><span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输层"><span class="toc-text">传输层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络层"><span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据链路层"><span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物理层"><span class="toc-text">物理层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七层因特网协议栈（从上到下）"><span class="toc-text">七层因特网协议栈（从上到下）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#和五层结构有什么区别"><span class="toc-text">和五层结构有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7层因特网协议栈介绍"><span class="toc-text">7层因特网协议栈介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一句话概述"><span class="toc-text">一句话概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物理层-1"><span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据链路层-1"><span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络层-1"><span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输层-1"><span class="toc-text">传输层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话层"><span class="toc-text">会话层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表示层"><span class="toc-text">表示层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用层-1"><span class="toc-text">应用层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结图"><span class="toc-text">总结图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题汇总"><span class="toc-text">问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的协议位于那一层"><span class="toc-text">常用的协议位于那一层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP和HTTP的关系"><span class="toc-text">TCP/IP和HTTP的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket"><span class="toc-text">Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket和TCP-IP协议的关系"><span class="toc-text">Socket和TCP/IP协议的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP和Socket的关系"><span class="toc-text">HTTP和Socket的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Socket建立网络连接的步骤"><span class="toc-text">利用Socket建立网络连接的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP链接的特点"><span class="toc-text">HTTP链接的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP和UDP的区别"><span class="toc-text">TCP和UDP的区别</span></a></li></ol></li></ol>
-<a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/23.jpg" alt=""></p>
-<h1 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h1><blockquote>
-<p>网络分层就是将网络节点所要完成的数据的发送或转发、打包或拆包，控制信息的加载或拆出等工作，分别由不同的硬件和软件模块去完成。这样可以将往来通信和网络互连这一复杂的问题变得较为简单。</p>
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/24.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的三次握手"><span class="toc-text">TCP协议中的三次握手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要三次握手"><span class="toc-text">为什么要三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SYN攻击"><span class="toc-text">SYN攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的四次挥手"><span class="toc-text">TCP协议中的四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图-1"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释（以客户端发起断开为例子）"><span class="toc-text">解释（以客户端发起断开为例子）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图-1"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要四次分手"><span class="toc-text">为什么要四次分手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#来个完整的图"><span class="toc-text">来个完整的图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="toc-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><span class="toc-text">为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</span></a></li></ol></li></ol></span></p>
+<h1 id="TCP协议中的三次握手"><a href="#TCP协议中的三次握手" class="headerlink" title="TCP协议中的三次握手"></a>TCP协议中的三次握手</h1><h2 id="直接上图"><a href="#直接上图" class="headerlink" title="直接上图"></a>直接上图</h2><p><img src="/post/undefined/01.png" alt=""></p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><ol>
+<li>第一次握手：客户端发送<strong>syn包</strong>(syn=j)到服务器，并进入<strong>SYN_SEND</strong>状态，等待服务器确认;</li>
+<li>第二次握手：服务器收到syn包，必须<strong>确认客户的SYN</strong>(ack=j+1)，<strong>同时自己也发送一个SYN包(syn=k)，即SYN+ACK包</strong>，此时服务器进入<strong>SYN_RECV</strong>状态;</li>
+<li>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送<strong>确认包ACK</strong>(ack=k+1)，此包发送完毕，客户端和服务器进入<strong>ESTABLISHED</strong>状态，完成三次握手。<h2 id="来个更清晰的图"><a href="#来个更清晰的图" class="headerlink" title="来个更清晰的图"></a>来个更清晰的图</h2><img src="/post/undefined/04.png" alt=""><h2 id="为什么要三次握手"><a href="#为什么要三次握手" class="headerlink" title="为什么要三次握手"></a>为什么要三次握手</h2>谢希仁的《计算机网络》中是这样说的：<blockquote>
+<p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误</p>
 </blockquote>
-<h2 id="五层因特网协议栈（从上到下）"><a href="#五层因特网协议栈（从上到下）" class="headerlink" title="五层因特网协议栈（从上到下）"></a>五层因特网协议栈（从上到下）</h2><ul>
-<li>应用层</li>
-<li>传输层</li>
-<li>网络层</li>
-<li>链路层</li>
-<li>物理层</li>
+</li>
+</ol>
+<p>说白了就是：防止了服务器端的一直等待而浪费资源</p>
+<h2 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h2><p>在三次握手过程中，服务器发送SYN-ACK之后，收到客户端的ACK之前的TCP连接称为半连接(half-open connect).此时服务器处于Syn_RECV状态.当收到ACK后，服务器转入ESTABLISHED状态.<br>Syn攻击就是 攻击客户端 在短时间内伪造大量不存在的IP地址，向服务器不断地发送syn包，服务器回复确认包，并等待客户的确认，由于源地址是不存在的，服务器需要不断的重发直 至超时，<strong>这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，目标系统运行缓慢，严重者引起网络堵塞甚至系统瘫痪</strong>。<br><strong>Syn攻击是一个典型的DDOS攻击</strong>。检测SYN攻击非常的方便，当你在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次SYN攻击.在Linux下可以如下命令检测是否被Syn攻击<br><strong>netstat -n -p TCP | grep SYN_RECV</strong><br>一般较新的TCP/IP协议栈都对这一过程进行修正来防范Syn攻击，修改tcp协议实现。<strong>主要方法有SynAttackProtect保护机制、SYN cookies技术、增加最大半连接和缩短超时时间等</strong>.<br>但是不能完全防范syn攻击。</p>
+<h1 id="TCP协议中的四次挥手"><a href="#TCP协议中的四次挥手" class="headerlink" title="TCP协议中的四次挥手"></a>TCP协议中的四次挥手</h1><h2 id="直接上图-1"><a href="#直接上图-1" class="headerlink" title="直接上图"></a>直接上图</h2><p><img src="/post/undefined/02.png" alt=""></p>
+<p><strong>注意：中断连接端可以是Client端，也可以是Server端，那么就是图上的流程反过来操作</strong></p>
+<h2 id="解释（以客户端发起断开为例子）"><a href="#解释（以客户端发起断开为例子）" class="headerlink" title="解释（以客户端发起断开为例子）"></a>解释（以客户端发起断开为例子）</h2><ul>
+<li>假设Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说”<strong>我Client端没有数据要发给你了</strong>“</li>
+<li>但是如果你还有数据没有发送完成，则不必急着关闭Socket，可以继续发送数据。所以你先发送ACK，”<strong>告诉Client端，你的请求我收到了，但是我还没准备好，请继续你等我的消息</strong>“。– 这个时候Client端就进入FIN_WAIT状态，继续等待Server端的FIN报文。当Server端确定数据已发送完成，则向Client端发送FIN报文，”<strong>告诉Client端，好了，我这边数据发完了，准备好关闭连接了</strong>“。</li>
+<li>Client端收到FIN报文后，”就知道可以关闭连接了，但是他还是不相信网络<strong>，怕Server端不知道要关闭，所以发送ACK后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传</strong>。“</li>
+<li>Server端收到ACK后，”<strong>就知道可以断开连接了</strong>“。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，<strong>那好，我Client端也可以关闭连接了</strong>。Ok，TCP连接就这样关闭了！</li>
 </ul>
-<h2 id="五层因特网协议栈介绍"><a href="#五层因特网协议栈介绍" class="headerlink" title="五层因特网协议栈介绍"></a>五层因特网协议栈介绍</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>用于<strong>支持支持网络应用</strong>，运行在不同主机上的进程则使用应用层协议进行通信。主要的协议有：<strong>http、ftp、telnet、smtp、pop3</strong>等。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>负责为信源和信宿提供应用程序进程间的<strong>数据传输服务</strong>，这一层上主要定义了两个传输协议，<strong>传输控制协议即TCP和用户数据报协议UDP</strong>。</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>负责<strong>将数据报独立地从信源发送到信宿</strong>，主要解决<strong>路由选择、拥塞控制和网络互联</strong>等问题。</p>
-<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>负责将IP数据报<strong>封装成合适在物理网络上传输的帧格式并传输</strong>，或将从物理网络接收到的<strong>帧解封，取出IP数据报交给网络层</strong>。</p>
-<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>负责将<strong>比特流</strong>在结点间传输，即负责物理传输。该层的协议既与链路有关也与传输介质有关</p>
-<h2 id="七层因特网协议栈（从上到下）"><a href="#七层因特网协议栈（从上到下）" class="headerlink" title="七层因特网协议栈（从上到下）"></a>七层因特网协议栈（从上到下）</h2><ul>
-<li>应用层(Application)</li>
-<li>表示层(Presentation)</li>
-<li>会话层(Session)</li>
-<li>传输层(Transport)</li>
-<li>网络层(Network)</li>
-<li>数据链路层(Data Link)</li>
-<li>物理层(Physical)</li>
+<h2 id="来个更清晰的图-1"><a href="#来个更清晰的图-1" class="headerlink" title="来个更清晰的图"></a>来个更清晰的图</h2><p><img src="/post/undefined/05.png" alt=""></p>
+<h2 id="为什么要四次分手"><a href="#为什么要四次分手" class="headerlink" title="为什么要四次分手"></a>为什么要四次分手</h2><p>那四次分手又是为何呢？TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。<strong>TCP是全双工模式</strong>，这就意味着，当主机1发出FIN报文段时，<strong>只是表示主机1已经没有数据要发送了</strong>，主机1告诉主机2，它的数据已经全部发送完毕了；但是，<strong>这个时候主机1还是可以接受来自主机2的数据</strong>；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，<strong>但是主机2还是可以发送数据到主机1的</strong>；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<h1 id="来个完整的图"><a href="#来个完整的图" class="headerlink" title="来个完整的图"></a>来个完整的图</h1><p><img src="/post/undefined/03.png" alt=""></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="为什么连接的时候是三次握手，关闭的时候却是四次握手？"><a href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？" class="headerlink" title="为什么连接的时候是三次握手，关闭的时候却是四次握手？"></a>为什么连接的时候是三次握手，关闭的时候却是四次握手？</h2><p>答：因为当Server端收到Client端的SYN连接请求报文后，<strong>可以直接发送SYN+ACK报文</strong>。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，<strong>因此不能一起发送</strong>。故需要四步握手。</p>
+<h2 id="为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><a href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？" class="headerlink" title="为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？"></a>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</h2><p>答：虽然按道理，四个报文都发送完毕，我们可以直接进入CLOSE状态了，但是我们必须假象网络是不可靠的，<strong>有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。</strong></p>
+<p>参考：</p>
+<ul>
+<li><a href="http://blog.csdn.net/whuslei/article/details/6667471/" target="_blank" rel="external">http://blog.csdn.net/whuslei/article/details/6667471/</a></li>
+<li><a href="http://www.jellythink.com/archives/705" target="_blank" rel="external">http://www.jellythink.com/archives/705</a></li>
+<li><a href="http://www.jianshu.com/p/9968b16b607e" target="_blank" rel="external">http://www.jianshu.com/p/9968b16b607e</a></li>
+<li><a href="http://www.cnblogs.com/zmlctt/p/3690998.html" target="_blank" rel="external">http://www.cnblogs.com/zmlctt/p/3690998.html</a></li>
 </ul>
-<h2 id="和五层结构有什么区别"><a href="#和五层结构有什么区别" class="headerlink" title="和五层结构有什么区别"></a>和五层结构有什么区别</h2><p>个人理解五层结构就是把7层结构的 应用层/表示层/会话层 合为一个应用层</p>
-<h2 id="7层因特网协议栈介绍"><a href="#7层因特网协议栈介绍" class="headerlink" title="7层因特网协议栈介绍"></a>7层因特网协议栈介绍</h2><h3 id="一句话概述"><a href="#一句话概述" class="headerlink" title="一句话概述"></a>一句话概述</h3><ul>
-<li>应用层 指网络操作系统和具体的应用程序，对应WWW服务器、FTP服务器等应用软件　</li>
-<li>表示层 数据语法的转换、数据的传送等　</li>
-<li>会话层 建立起两端之间的会话关系，并负责数据的传送　</li>
-<li>传输层 负责错误的检查与修复，以确保传送的质量，是<strong>TCP协议</strong>工作的地方。（报文）</li>
-<li>网络层 提供了编址方案,<strong>IP协议</strong>工作的地方(数据包）　</li>
-<li>数据链路层 将由物理层传来的未经处理的位数据包装成数据帧　</li>
-<li>物理层 对应<strong>网线、网卡、接口</strong>等物理设备(位)。</li>
-</ul>
-<h3 id="物理层-1"><a href="#物理层-1" class="headerlink" title="物理层"></a>物理层</h3><p>物理层(Physical layer)是参考模型的最低层。该层是网络通信的数据传输介质，由连接不同结点的电缆与设备共同构成。主要功能是：<strong>利用传输介质为数据链路层提供物理连接</strong>，负责处理数据传输并监控数据出错率，以便数据流的透明传输。</p>
-<h3 id="数据链路层-1"><a href="#数据链路层-1" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>数据链路层(Data link layer)是参考模型的第2层。 主要功能是：在物理层提供的服务基础上，在通信的实体间建立数据链路连接，<strong>传输以“帧”为单位的数据包，并采用差错控制与流量控制方法，使有差错的物理线路变成无差错的数据链路。</strong></p>
-<h3 id="网络层-1"><a href="#网络层-1" class="headerlink" title="网络层"></a>网络层</h3><p>网络层(Network layer)是参考模型的第3层。主要功能是：为数据在结点之间传输<strong>创建逻辑链路</strong>，通过路由选择算法为分组通过通信子网<strong>选择最适当的路径</strong>，以及实现拥塞控制、网络互联等功能。</p>
-<h3 id="传输层-1"><a href="#传输层-1" class="headerlink" title="传输层"></a>传输层</h3><p>传输层(Transport layer)是参考模型的第4层。主要功能是向用户提供可靠的端到端(End-to-End)服务，处理数据包错误、数据包次序，以及其他一些关键传输问题。<strong>传输层向高层屏蔽了下层数据通信的细节</strong>，因此，它是计算机通信体系结构中关键的一层。</p>
-<h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3><p>会话层(Session layer)是参考模型的第5层。主要功能是：负责维护两个结点之间的传输链接，以便<strong>确保点到点传输不中断</strong>，以及管理数据交换等功能。</p>
-<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>表示层(Presentation layer)是参考模型的第6层。主要功能是：用于处理在两个通信系统中交换信息的表示方式，主要包括<strong>数据格式变换、数据加密与解密、数据压缩与恢复</strong>等功能。</p>
-<h3 id="应用层-1"><a href="#应用层-1" class="headerlink" title="应用层"></a>应用层</h3><p>应用层(Application layer)是参考模型的最高层。主要功能是：为应用软件提供了很多服务，例如文件服务器、数据库服务、电子邮件与其他网络软件服务。</p>
-<h2 id="总结图"><a href="#总结图" class="headerlink" title="总结图"></a>总结图</h2><p><img src="/post/undefined/00.png" alt=""><br><img src="/post/undefined/01.png" alt=""></p>
-<h1 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h1><h2 id="常用的协议位于那一层"><a href="#常用的协议位于那一层" class="headerlink" title="常用的协议位于那一层"></a>常用的协议位于那一层</h2><ul>
-<li>IP协议对应于网络层</li>
-<li>TCP协议对应于传输</li>
-<li>HTTP协议对应于应用层</li>
-</ul>
-<h2 id="TCP-IP和HTTP的关系"><a href="#TCP-IP和HTTP的关系" class="headerlink" title="TCP/IP和HTTP的关系"></a>TCP/IP和HTTP的关系</h2><p>关于TCP/IP和HTTP协议的关系，网络有一段比较容易理解的介绍：</p>
-<blockquote>
-<p>“我们在传输数据时，可以只使用(传输层)TCP/IP协议，但是那样的话，如果没有应用层，便无法识别数据内容。</p>
-</blockquote>
-<p>如果想要使传输的数据有意义，则必须使用到应用层协议。应用层协议有很多，比如HTTP、FTP、TELNET等，也可以自己定义应用层协议。WEB使用HTTP协议作应用层协议，以封装HTTP文本信息，然后使用TCP/IP做传输层协议将它发到网络上。</p>
-<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p><strong>注意：</strong><br><strong>Socket本身并不是协议，而是一个调用接口(API)，它只是提供了一个针对TCP或者UDP编程的接口。</strong></p>
-<p>socket是对<strong>TCP/IP协议的封装和应用</strong>,TPC/IP协议是传输层协议，主要解决数据如何在网络中传输</p>
-<p>通过Socket，我们才能使用TCP/IP协议。实际上，Socket跟TCP/IP协议没有必然的联系。Socket编程接口在设计的时候，就希望也能适应其他的网络协议。所以说，Socket的出现只是使得程序员更方便地使用TCP/IP协议栈而已，是对TCP/IP协议的抽象，从而形成了我们知道的一些最基本的函数接口，比如create、listen、connect、accept、send、read和write等等。</p>
-<h2 id="Socket和TCP-IP协议的关系"><a href="#Socket和TCP-IP协议的关系" class="headerlink" title="Socket和TCP/IP协议的关系"></a>Socket和TCP/IP协议的关系</h2><p>网络有一段关于socket和TCP/IP协议关系的说法比较容易理解：</p>
-<blockquote>
-<p>“TCP/IP只是一个协议栈，就像操作系统的运行机制一样，必须要具体实现，同时还要提供对外的操作接。<br>这个就像操作系统会提供标准的编程接口，比如win32编程接口一样，<br>TCP/IP也要提供可供程序员做网络开发所用的接口，这就是Socket编程接口。”</p>
-</blockquote>
-<h2 id="HTTP和Socket的关系"><a href="#HTTP和Socket的关系" class="headerlink" title="HTTP和Socket的关系"></a>HTTP和Socket的关系</h2><p>CSDN上有个比较形象的描述：</p>
-<blockquote>
-<p>HTTP是轿车，提供了封装或者显示数据的具体形式;Socket是发动机，提供了网络通信的能力。</p>
-</blockquote>
-<h2 id="利用Socket建立网络连接的步骤"><a href="#利用Socket建立网络连接的步骤" class="headerlink" title="利用Socket建立网络连接的步骤"></a>利用Socket建立网络连接的步骤</h2><p>　　建立Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket ，另一个运行于服务器端，称为ServerSocket 。<br>　　套接字之间的连接过程分为三个步骤：<strong>服务器监听，客户端请求，连接确认</strong>。<br>　　1、服务器监听：服务器端套接字并不定位具体的客户端套接字，而是处于等待连接的状态，实时监控网络状态，等待客户端的连接请求。<br>　　2、客户端请求：指客户端的套接字提出连接请求，要连接的目标是服务器端的套接字。<br>　　为此，客户端的套接字必须首先描述它要连接的服务器的套接字，指出服务器端套接字的<strong>地址和端口号</strong>，然后就向服务器端套接字提出连接请求。<br>　　3、连接确认：当服务器端套接字监听到或者说接收到客户端套接字的连接请求时，就响应客户端套接字的请求，建立一个新的线程，把服务器端套接字的描述发给客户端，一旦客户端确认了此描述，双方就正式建立连接。<br>　　而服务器端套接字继续处于监听状态，继续接收其他客户端套接字的连接请求。</p>
-<h2 id="HTTP链接的特点"><a href="#HTTP链接的特点" class="headerlink" title="HTTP链接的特点"></a>HTTP链接的特点</h2><p>　　HTTP协议即超文本传送协议(Hypertext Transfer Protocol )，是Web联网的基础，也是手机联网常用的协议之一，HTTP协议是建立在TCP协议之上的一种应用。<br>　　HTTP连接最显著的特点是客户端发送的每次请求都需要服务器回送响应，在请求结束后，会主动释放连接。从建立连接到关闭连接的过程称为“一次连接”。</p>
-<h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h2><p>　　1、<strong>TCP是面向链接的</strong>，虽然说网络的不安全不稳定特性决定了多少次握手都不能保证连接的可靠性，但TCP的三次握手在最低限度上(实际上也很大程度上保证了)保证了连接的可靠性;<br>　<strong>　而UDP不是面向连接的，UDP传送数据前并不与对方建立连接，对接收到的数据也不发送确认信号，发送端不知道数据是否会正确接收，当然也不用重发，所以说UDP是无连接的、不可靠的一种数据传输协议</strong>。<br>　　2、也正由于1所说的特点，使得UDP的开销更小数据传输速率更高，因为不必进行收发数据的确认，所以UDP的实时性更好。<br>　　知道了TCP和UDP的区别，就不难理解为何采用TCP传输协议的MSN比采用UDP的QQ传输文件慢了，但并不能说QQ的通信是不安全的，<br>　　因为程序员可以手动对UDP的数据收发进行验证，比如发送方对每个数据包进行编号然后由接收方进行验证啊什么的，<br>　　即使是这样，UDP因为在底层协议的封装上没有采用类似TCP的“三次握手”而实现了TCP所无法达到的传输效率。</p>
 
             
         </div>
@@ -288,7 +264,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/网络/">网络</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/TCP/">TCP</a> <a class="tag tag--primary tag--small t-link" href="/tags/网络/">网络</a>
 
             </div>
         
@@ -298,7 +274,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/undefined/"  data-tooltip="TCP协议三次握手四次挥手整理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/timeWaitCloseWait/"  data-tooltip="TIME_WAIT和CLOSE_WAIT">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -306,7 +282,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-niobioaio/" data-tooltip="Java-BIO/NIO/AIO整理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/net-tcp/" data-tooltip="网络分层、TCP、IP、Http、Socket整理">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -346,6 +322,12 @@
             </li>
         
         
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
         <li class="post-action">
             
                 <a class="post-action-btn btn btn--default" href="#table-of-contents">
@@ -359,6 +341,10 @@
 
         
         
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
             
         
     </div>
@@ -380,7 +366,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/undefined/"  data-tooltip="TCP协议三次握手四次挥手整理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/timeWaitCloseWait/"  data-tooltip="TIME_WAIT和CLOSE_WAIT">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -388,7 +374,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-niobioaio/" data-tooltip="Java-BIO/NIO/AIO整理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/net-tcp/" data-tooltip="网络分层、TCP、IP、Http、Socket整理">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -427,6 +413,12 @@
                 </a>
             </li>
         
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
         
         <li class="post-action">
             
@@ -733,6 +725,31 @@
                 <div class="media">
                     
                     <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
                             <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
                         </a>
@@ -746,31 +763,6 @@
                             <span class="media-date text-small">
                                 
                                     Jun 28, 2016
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-left">
-                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-webapp/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
-                        </a>
-                    </div>
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-webapp/">
-                            <h3 class="media-heading">使用Redis构建web应用</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    Jul 3, 2016
                                 
                             </span>
                         </span>
@@ -799,6 +791,23 @@
 <script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
 <!--SCRIPTS END-->
 
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/undefined/';
+                 
+                    this.page.identifier = 'post/undefined/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
     
 
 
