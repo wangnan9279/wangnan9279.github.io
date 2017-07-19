@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-Hashset-LinkedHashSet/
+http://wangnan.tech/post/java-LinkedHashMap-LRUcache/
