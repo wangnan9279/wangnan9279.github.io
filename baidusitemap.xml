@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-create-Thread/</loc>
+    <lastmod>2017-07-20T07:46:31.460Z</lastmod>
+    <data>
+        <display>
+        <title>Java-线程创建的几种方式</title>
+        <pubTime>2017-07-20T07:41:18.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JavaConcurrent</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-LinkedHashMap-LRUcache/</loc>
     <lastmod>2017-07-19T07:59:30.895Z</lastmod>
     <data>

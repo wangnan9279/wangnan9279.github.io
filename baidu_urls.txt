@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-LinkedHashMap-LRUcache/
+http://wangnan.tech/post/java-create-Thread/
