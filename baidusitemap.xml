@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-thread-synchronize/</loc>
+    <lastmod>2017-07-24T06:50:30.130Z</lastmod>
+    <data>
+        <display>
+        <title>Java-几种线程同步的方法</title>
+        <pubTime>2017-07-24T06:48:38.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JavaConcurrent</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-create-Thread/</loc>
     <lastmod>2017-07-20T07:46:31.460Z</lastmod>
     <data>

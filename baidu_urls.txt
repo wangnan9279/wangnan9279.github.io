@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-create-Thread/
+http://wangnan.tech/post/java-thread-synchronize/
