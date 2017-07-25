@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/java-ThreadPoolExecutor/</loc>
+    
+    <lastmod>2017-07-25T08:25:30.540Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/java-thread-synchronize/</loc>
     
     <lastmod>2017-07-24T06:50:30.130Z</lastmod>
