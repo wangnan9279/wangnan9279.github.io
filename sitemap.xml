@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch5-5-0-run/</loc>
+    
+    <lastmod>2017-07-26T06:23:54.630Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/java-ThreadPoolExecutor/</loc>
     
     <lastmod>2017-07-25T08:25:30.540Z</lastmod>
