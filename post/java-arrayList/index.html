@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="wangnan&#39;s blog">
-    <title>Elasticsearch排序 - wangnan&#39;s blog</title>
+    <title>Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容 - wangnan&#39;s blog</title>
     <meta name="author" content="wangnan">
     
     
@@ -14,24 +14,14 @@
     
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="Elasticsearch排序">
-<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-sort/index.html">
+<meta property="og:title" content="Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容">
+<meta property="og:url" content="http://wangnan.tech/post/java-arrayList/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/01.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/02.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/03.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/04.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/05.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/06.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/07.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/08.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/09.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/10.png">
-<meta property="og:updated_time" content="2017-07-14T03:30:59.447Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg">
+<meta property="og:updated_time" content="2017-07-31T07:00:17.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elasticsearch排序">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta name="twitter:title" content="Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -43,8 +33,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" />
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg" />
     
     
     
@@ -204,14 +194,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Elasticsearch排序
+            Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-18T11:02:09+08:00">
+    <time itemprop="datePublished" datetime="2017-07-31T14:51:55+08:00">
 	
-		    Sep 18, 2016
+		    Jul 31, 2017
     	
     </time>
     
@@ -228,27 +218,42 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基于多值字段的排序"><span class="toc-text">基于多值字段的排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于多值geo字段的排序"><span class="toc-text">基于多值geo字段的排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于嵌套对象的排序"><span class="toc-text">基于嵌套对象的排序</span></a></li></ol>
-<a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
-</blockquote>
-<p>下面的例子就容易做到：<br><img src="/post/elasticsearch-sort/01.png" alt="01"><br>该查询会返回所有在title字段上至少命中一个词项的文档，并且基于section数据排序</p>
-<p><strong>也可以通过添加查询sort部分的missing属性为那些section字段缺失的文档定制排序行为</strong><br><img src="/post/elasticsearch-sort/02.png" alt="02"></p>
-<h1 id="基于多值字段的排序"><a href="#基于多值字段的排序" class="headerlink" title="基于多值字段的排序"></a>基于多值字段的排序</h1><p>某些文档的release-dates字段里面储存了多个电影上映日期（同一部电影在不同国家的上映日期不同）我们可以构造查询请求：<br><img src="/post/elasticsearch-sort/03.png" alt="03"><br>例子中<strong>es将基于每个文档的release_dates字段的最小值进行排序</strong><br>mode参数可以设置为以上值：</p>
-<ul>
-<li>min 按照该字段最小值排序</li>
-<li>max 按照该字段最大值进行排序</li>
-<li>avg 按照多个字段平均值排序</li>
-<li>sum 按照字段总和进行排序</li>
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/33.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-迭代ArrayList时做add或remove操作会发生什么？"><span class="toc-text">1.迭代ArrayList时做add或remove操作会发生什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#答案"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速失败（fast-fail）机制"><span class="toc-text">快速失败（fast-fail）机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-CopyOnWriteArrayList"><span class="toc-text">2.CopyOnWriteArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是CopyOnWrite容器"><span class="toc-text">什么是CopyOnWrite容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的应用场景"><span class="toc-text">CopyOnWrite的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的缺点"><span class="toc-text">CopyOnWrite的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存占用问题"><span class="toc-text">内存占用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据一致性问题"><span class="toc-text">数据一致性问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩容"><span class="toc-text">扩容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></span></p>
+<h1 id="1-迭代ArrayList时做add或remove操作会发生什么？"><a href="#1-迭代ArrayList时做add或remove操作会发生什么？" class="headerlink" title="1.迭代ArrayList时做add或remove操作会发生什么？"></a>1.迭代ArrayList时做add或remove操作会发生什么？</h1><h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><p>会抛出 java.util.ConcurrentModificationException </p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>对JAVA集合进行遍历删除时务必要用迭代器</li>
+<li>使用CopyOnWriteArrayList</li>
+</ol>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<li><strong>对于ArrayList，在使用Iterator遍历时，不能使用list.add()、list.remove()等改变list的操作，只能用it.remove()</strong><br>原因是ArrayList不是线程安全的，需在单线程环境下使用，如果在遍历时还有别的线程做增删操作，必然会有问题，如数组下标越界<br>ArrayList#Iterator设计的是不能在迭代时有别的线程对list修改，此种修改对当前迭代器是可能存在问题的，所以增加了对modCount的校验<br>但当前迭代器可以remove，因为它自己删除就不是并发修改了<br>迭代器remove会重置expectedModCount，并将cursor往前一位</li>
+<li>CopyOnWriteArrayList在使用Iterator遍历时，<strong>可以用list.add()，list.remove()等改变list的操作，但不支持it.remove()</strong><br>首先CopyOnWriteArrayList是用于多线程环境下的<br>因为CopyOnWriteArrayList的Iterator实现类COWIterator会在创建时复制一份list的副本，之后迭代的是副本<br><strong>所以期间怎么对list.add()，list.remove()都没事，list.remove()操作的是原始的list<br>但不支持it.remove()</strong><br>因为Iterator中的本身就是副本，删除副本中的元素没意义，如果去删除原始list，在并发环境下此时list可能和创建迭代器时的副本已经完全不同了</li>
+</ol>
+<h2 id="快速失败（fast-fail）机制"><a href="#快速失败（fast-fail）机制" class="headerlink" title="快速失败（fast-fail）机制"></a>快速失败（fast-fail）机制</h2><p><strong>快速失败”即fail-fast,它是java集合的一种错误检测机制。当多钱程对集合进行结构上的改变或者集合在迭代元素时直接调用自身方法改变集合结构而没有通知迭代器时，有可能会触发fast-fail机制并抛出异常</strong>。需要注意一点，有可能触发fast-fail机制而不是肯定。触发时机是在迭代过程中，集合的结构发生了变化而此时迭代器并不知道或者还没来得及反应时便会产生fail-fast机制。这里再次强调，迭代器的快速失败行为无法得到保证，因为一般来说，不可能对是否出现不同步并发修改或者自身修改做出任何硬性保证。快速失败迭代器会尽最大努力抛出 ConcurrentModificationException。</p>
+<h1 id="2-CopyOnWriteArrayList"><a href="#2-CopyOnWriteArrayList" class="headerlink" title="2.CopyOnWriteArrayList"></a>2.CopyOnWriteArrayList</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Copy-On-Write简称COW，是一种用于程序设计中的优化策略。其基本思路是，<strong>从一开始大家都在共享同一个内容，当某个人想要修改这个内容的时候，才会真正把内容Copy出去形成一个新的内容然后再改，这是一种延时懒惰策略。从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器,它们是CopyOnWriteArrayList和CopyOnWriteArraySet。</strong>CopyOnWrite容器非常有用，可以在非常多的并发场景中使用到。</p>
+<h2 id="什么是CopyOnWrite容器"><a href="#什么是CopyOnWrite容器" class="headerlink" title="什么是CopyOnWrite容器"></a>什么是CopyOnWrite容器</h2><p>CopyOnWrite容器即写时复制的容器。<strong>通俗的理解是当我们往一个容器添加元素的时候，不直接往当前容器添加，而是先将当前容器进行Copy，复制出一个新的容器，然后新的容器里添加元素，添加完元素之后，再将原容器的引用指向新的容器。这样做的好处是我们可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素。所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。</strong></p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>在使用CopyOnWriteArrayList之前，我们先阅读其源码了解下它是如何实现的。以下代码是向CopyOnWriteArrayList中add方法的实现（向CopyOnWriteArrayList里添加元素），可以发现在添加的时候是需要加锁的，否则多线程写的时候会Copy出N个副本出来。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * Appends the specified element to the end of this list.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> e element to be appended to this list</div><div class="line">     * <span class="doctag">@return</span> &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;<span class="doctag">@link</span> Collection#add&#125;)</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</div><div class="line">    lock.lock();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        Object[] elements = getArray();</div><div class="line">        <span class="keyword">int</span> len = elements.length;</div><div class="line">        Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>);</div><div class="line">        newElements[len] = e;</div><div class="line">        setArray(newElements);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        lock.unlock();</div><div class="line">    &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>　读的时候不需要加锁，如果读的时候有多个线程正在向CopyOnWriteArrayList添加数据，读还是会读到旧的数据，因为写的时候不会锁住旧的CopyOnWriteArrayList。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> get(getArray(), index);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>JDK中并没有提供CopyOnWriteMap，我们可以参考CopyOnWriteArrayList来实现一个，基本代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Collection;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.Set;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyOnWriteMap</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt;, <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Map&lt;K, V&gt; internalMap;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CopyOnWriteMap</span><span class="params">()</span> </span>&#123;</div><div class="line">        internalMap = <span class="keyword">new</span> HashMap&lt;K, V&gt;();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line"> </div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">            Map&lt;K, V&gt; newMap = <span class="keyword">new</span> HashMap&lt;K, V&gt;(internalMap);</div><div class="line">            V val = newMap.put(key, value);</div><div class="line">            internalMap = newMap;</div><div class="line">            <span class="keyword">return</span> val;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> internalMap.get(key);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putAll</span><span class="params">(Map&lt;? extends K, ? extends V&gt; newData)</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">            Map&lt;K, V&gt; newMap = <span class="keyword">new</span> HashMap&lt;K, V&gt;(internalMap);</div><div class="line">            newMap.putAll(newData);</div><div class="line">            internalMap = newMap;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现很简单，只要了解了CopyOnWrite机制，我们可以实现各种CopyOnWrite容器，并且在不同的应用场景中使用。</p>
+<h2 id="CopyOnWrite的应用场景"><a href="#CopyOnWrite的应用场景" class="headerlink" title="CopyOnWrite的应用场景"></a>CopyOnWrite的应用场景</h2><p><strong>CopyOnWrite并发容器用于读多写少的并发场景。比如白名单，黑名单</strong>，商品类目的访问和更新场景，假如我们有一个搜索网站，用户在这个网站的搜索框中，输入关键字搜索内容，但是某些关键字不允许被搜索。这些不能被搜索的关键字会被放在一个黑名单当中，黑名单每天晚上更新一次。当用户搜索时，会检查当前关键字在不在黑名单当中，如果在，则提示不能搜索。实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.ifeve.book;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.ifeve.book.forkjoin.CopyOnWriteMap;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 黑名单服务</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> fangtengfei</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlackListServiceImpl</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CopyOnWriteMap&lt;String, Boolean&gt; blackListMap = <span class="keyword">new</span> CopyOnWriteMap&lt;String, Boolean&gt;(</div><div class="line">            <span class="number">1000</span>);</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isBlackList</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> blackListMap.get(id) == <span class="keyword">null</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addBlackList</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">        blackListMap.put(id, Boolean.TRUE);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 批量添加黑名单</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> ids</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addBlackList</span><span class="params">(Map&lt;String,Boolean&gt; ids)</span> </span>&#123;</div><div class="line">        blackListMap.putAll(ids);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　代码很简单，但是使用CopyOnWriteMap需要注意两件事情：</p>
+<p>　　1. 减少扩容开销。根据实际需要，初始化CopyOnWriteMap的大小，避免写时CopyOnWriteMap扩容的开销。</p>
+<p>　　2. 使用批量添加。因为每次添加，容器每次都会进行复制，所以减少添加次数，可以减少容器的复制次数。如使用上面代码里的addBlackList方法。</p>
+<h2 id="CopyOnWrite的缺点"><a href="#CopyOnWrite的缺点" class="headerlink" title="CopyOnWrite的缺点"></a>CopyOnWrite的缺点</h2><p>CopyOnWrite容器有很多优点，但是同时也存在两个问题，即内存占用问题和数据一致性问题。所以在开发的时候需要注意一下。</p>
+<h3 id="内存占用问题"><a href="#内存占用问题" class="headerlink" title="内存占用问题"></a>内存占用问题</h3><p>因为CopyOnWrite的写时复制机制，所以在进行写操作的时候，内存里会同时驻扎两个对象的内存，旧的对象和新写入的对象（注意:在复制的时候只是复制容器里的引用，只是在写的时候会创建新对象添加到新容器里，而旧容器的对象还在使用，所以有两份对象内存）。如果这些对象占用的内存比较大，比如说200M左右，那么再写入100M数据进去，内存就会占用300M，那么这个时候很有可能造成频繁的Yong GC和Full GC。之前我们系统中使用了一个服务由于每晚使用CopyOnWrite机制更新大对象，造成了每晚15秒的Full GC，应用响应时间也随之变长。<br>　　针对内存占用问题，可以通过压缩容器中的元素的方法来减少大对象的内存消耗，比如，如果元素全是10进制的数字，可以考虑把它压缩成36进制或64进制。或者不使用CopyOnWrite容器，而使用其他的并发容器，如ConcurrentHashMap。
+　　</p>
+<h3 id="数据一致性问题"><a href="#数据一致性问题" class="headerlink" title="数据一致性问题"></a>数据一致性问题</h3><p>CopyOnWrite容器只能保证数据的最终一致性，不能保证数据的实时一致性。所以如果你希望写入的的数据，马上能读到，请不要使用CopyOnWrite容器。</p>
+<p>下面这篇文章验证了CopyOnWriteArrayList和同步容器的性能：<br><a href="http://blog.csdn.net/wind5shy/article/details/5396887" target="_blank" rel="external">http://blog.csdn.net/wind5shy/article/details/5396887</a><br>下面这篇文章简单描述了CopyOnWriteArrayList的使用：<br><a href="http://blog.csdn.net/imzoer/article/details/9751591" target="_blank" rel="external">http://blog.csdn.net/imzoer/article/details/9751591</a></p>
+<h1 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h1><ul>
+<li>以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。</li>
 </ul>
-<p>后面两个选项只对数值类型有效</p>
-<h1 id="基于多值geo字段的排序"><a href="#基于多值geo字段的排序" class="headerlink" title="基于多值geo字段的排序"></a>基于多值geo字段的排序</h1><p>es提供了基于多维坐标系数据的排序，我们通过一个实例了解这种类型的排序<br>例如，要查找特点国家里离自己最近的一个机构<br>我们使用下面的这个映射：<br><img src="/post/elasticsearch-sort/04.png" alt="04"><br>查询如图：<br><img src="/post/elasticsearch-sort/05.png" alt="05"><br>查询结果：<br><img src="/post/elasticsearch-sort/06.png" alt="06"><br>我们可以看到，返回结果包含这个值：“sort”：[0.0]这是因为返回文档的地理坐标和查询中的坐标精确匹配<br>还可以设置mode属性为max，min，avg<br>例如avg代表：此时基于字段中的地理位置坐标与查询坐标的距离的均值排序</p>
-<h1 id="基于嵌套对象的排序"><a href="#基于嵌套对象的排序" class="headerlink" title="基于嵌套对象的排序"></a>基于嵌套对象的排序</h1><p>继续嵌套对象的排序，<strong>对以下两种情形都适用</strong>：</p>
-<ul>
-<li>适用了显式嵌套映射(在映射中配置type=“nested”)的文档</li>
-<li>使用了对象类型的文档<br>两者之间的一些细微区别需要注意<br>假设我们索引如下数据：<br><img src="/post/elasticsearch-sort/07.png" alt="07"><br>查询：<br><img src="/post/elasticsearch-sort/08.png" alt="08"><br>查询返回结果按照嵌套对象的usert字段最小值降序<br>如果将子文档视为一种数据类型，则可以将查询简化为如下形式：<br><img src="/post/elasticsearch-sort/09.png" alt="09"><br>当我们使用对象类型时，可以简化查询，这是因为整个对象结构被当成一个lucene文档进行储存<br>有些时候，使用<strong>nested_path</strong>属性会更加便捷<br>按照下面的方式构造查询：<br><img src="/post/elasticsearch-sort/10.png" alt="10"><br>我们也可以使用<strong>nested_filter</strong>参数，改参数只对嵌套文档有效，利用这个参数，我们可以在排序前就已经通过一个过滤器在检索期排除了某些文档，而不是检索结果文档集中过滤它们<br>（注：内容整理自《深入理解Elasticsearch》）</li>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://www.cnblogs.com/caiyao/p/4963206.html" target="_blank" rel="external">http://www.cnblogs.com/caiyao/p/4963206.html</a></li>
+<li><a href="http://www.qingpingshan.com/m/view.php?aid=219803" target="_blank" rel="external">http://www.qingpingshan.com/m/view.php?aid=219803</a></li>
+<li><a href="http://blog.csdn.net/smcwwh/article/details/7036663" target="_blank" rel="external">http://blog.csdn.net/smcwwh/article/details/7036663</a></li>
+<li><a href="http://www.cnblogs.com/dolphin0520/p/3938914.html" target="_blank" rel="external">http://www.cnblogs.com/dolphin0520/p/3938914.html</a></li>
+<li><a href="http://yikun.github.io/2015/04/04/Java-ArrayList%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" target="_blank" rel="external">http://yikun.github.io/2015/04/04/Java-ArrayList%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</a></li>
+<li><a href="http://www.cnblogs.com/jeffwongishandsome/archive/2012/11/06/2753054.html" target="_blank" rel="external">http://www.cnblogs.com/jeffwongishandsome/archive/2012/11/06/2753054.html</a></li>
 </ul>
 
             
@@ -259,7 +264,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/ElasticSearch/">ElasticSearch</a> <a class="tag tag--primary tag--small t-link" href="/tags/搜索引擎/">搜索引擎</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/ElasticSearch/">ElasticSearch</a>
 
             </div>
         
@@ -269,7 +274,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-update/"  data-tooltip="Elasticsearch数据更新API">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -277,7 +282,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-bulk/" data-tooltip="Elasticsearch批量操作">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch5-5-0-run/" data-tooltip="Elasticsearch5.5.0源码-编译、导入IDEA、启动">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -295,7 +300,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -303,7 +308,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -311,7 +316,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -361,7 +366,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-update/"  data-tooltip="Elasticsearch数据更新API">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -369,7 +374,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-bulk/" data-tooltip="Elasticsearch批量操作">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch5-5-0-run/" data-tooltip="Elasticsearch5.5.0源码-编译、导入IDEA、启动">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -387,7 +392,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -395,7 +400,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -403,7 +408,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -434,7 +439,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -442,7 +447,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -450,7 +455,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-sort/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-arrayList/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -789,9 +794,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://wangnan.tech/post/elasticsearch-sort/';
+                 this.page.url = 'http://wangnan.tech/post/java-arrayList/';
                  
-                    this.page.identifier = 'post/elasticsearch-sort/';
+                    this.page.identifier = 'post/java-arrayList/';
                  
              };
             (function() {
