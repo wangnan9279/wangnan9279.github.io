@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="wangnan&#39;s blog">
+    <title>Java8-流-使用流 - wangnan&#39;s blog</title>
+    <meta name="author" content="wangnan&#39;s blog">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Java8-流-使用流">
+<meta property="og:url" content="http://wangnan.tech/post/java8-stream-use/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/02.png">
+<meta property="og:updated_time" content="2017-07-14T03:39:12.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java8-流-使用流">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/java8.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">wangnan&#39;s blog</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Java8-流-使用流
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-02-08T11:09:29+08:00">
+	
+		    Feb 08, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Java/">Java</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#筛选和切片"><span class="toc-text">筛选和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用谓词筛选"><span class="toc-text">用谓词筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#筛选各异的元素"><span class="toc-text">筛选各异的元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#截断流"><span class="toc-text">截断流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跳过元素"><span class="toc-text">跳过元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#映射"><span class="toc-text">映射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对流中每个元素应用函数"><span class="toc-text">对流中每个元素应用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流的扁平化"><span class="toc-text">流的扁平化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找和匹配"><span class="toc-text">查找和匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检查谓词是否至少匹配一个元素"><span class="toc-text">检查谓词是否至少匹配一个元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查谓词是否匹配所有元素"><span class="toc-text">检查谓词是否匹配所有元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找元素"><span class="toc-text">查找元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#规约"><span class="toc-text">规约</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#求和"><span class="toc-text">求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最大值和最小值"><span class="toc-text">最大值和最小值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结下目前说到的操作"><span class="toc-text">总结下目前说到的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数值流"><span class="toc-text">数值流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始类型流特化"><span class="toc-text">原始类型流特化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数值范围"><span class="toc-text">数值范围</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建流"><span class="toc-text">构建流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#由值创建流"><span class="toc-text">由值创建流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#由数组创建流"><span class="toc-text">由数组创建流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#由文件生成流"><span class="toc-text">由文件生成流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建无限流"><span class="toc-text">创建无限流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+<a id="more"></a>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
+<!--more-->
+<p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
+<h2 id="筛选各异的元素"><a href="#筛选各异的元素" class="headerlink" title="筛选各异的元素"></a>筛选各异的元素</h2><p><strong>distinct方法</strong><br>他会返回一个元素各异的流，实现原理是根据元素的hashCode和equals方法</p>
+<p>例子：筛选偶数，且不重复<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">number.stream().filter(i-&gt;<span class="number">1</span>%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">               .distinct()</div><div class="line">               .forEach(System.out.println);</div></pre></td></tr></table></figure></p>
+<h2 id="截断流"><a href="#截断流" class="headerlink" title="截断流"></a>截断流</h2><p><strong>limit(n)方法</strong><br>该方法会返回一个不超过给定长度的流，如果流是有序的，则最多会返回前n个元素</p>
+<p>例子：选出热量超过300卡路里的头三道菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; dishes = menu.stream()</div><div class="line">                        .filter(d-d.getCalories()&gt;<span class="number">300</span>)</div><div class="line">                        .limit(<span class="number">3</span>)</div><div class="line">                        .collect(toList());</div></pre></td></tr></table></figure></p>
+<h2 id="跳过元素"><a href="#跳过元素" class="headerlink" title="跳过元素"></a>跳过元素</h2><p><strong>skip(n)方法</strong>，返回一个扔掉前n个元素的流，如果流中元素不足n个，则返回一个空流，请注意limit(n)和skip(n)是互补的</p>
+<h1 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h1><p>一个常见的数据处理套路就是从某些对象中选择信息，比如在sql里面，可以从表中选择一列</p>
+<h2 id="对流中每个元素应用函数"><a href="#对流中每个元素应用函数" class="headerlink" title="对流中每个元素应用函数"></a>对流中每个元素应用函数</h2><p><strong>map方法</strong><br>它会接收一个函数作为参数，这个函数会被应用到每个元素上，并将其映射成一个新的元素（注意是创建一个新的版本，而不是去修改）</p>
+<p>例子：提取菜肴的名称<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; dishNames = menu.stream().map(Dish::getName).collect(toList());</div></pre></td></tr></table></figure></p>
+<h2 id="流的扁平化"><a href="#流的扁平化" class="headerlink" title="流的扁平化"></a>流的扁平化</h2><p>例子：对应一张单词表，如果返回一个列表，列出里面各不相同的字符<br>比如单词列表[“Hello”,”Woeld”]你想要返回的列表[“H”,”e”,”l”,”o”,”W”,”r”,”d”]</p>
+<p>你可能会觉得很容易，调用distinct方法就可以了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">words.stream()</div><div class="line">    .map(word-&gt;word.split(<span class="string">""</span>))</div><div class="line">    .distinct()</div><div class="line">    .collect(toList());</div></pre></td></tr></table></figure></p>
+<p>这个方法的问题在于，传递给map方法的lambda为每个单词返回了一个String[],因此map返回的流实际上是Stream<string[]>类型，我们真正想要的是Stream<string></string></string[]></p>
+<p>幸好有<strong>flatMap</strong>来解决这个问题</p>
+<p>尝试1：使用map和Arrays.stream()<br>首先，你需要一个字符流，而不是数组流，有一个Arrays.stream()的方法，可以接受一个数组并产生一个流<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">words.stream()</div><div class="line">    .map(word-&gt;word.split(<span class="string">""</span>))</div><div class="line">    .map(Arrays::stream)</div><div class="line">    .distinct()</div><div class="line">    .collect(toList());</div></pre></td></tr></table></figure></p>
+<p>这个方案仍然搞不定！因为现在得到的是一个流的列表,你先是把每个单词转换成一个字母数组，然后把每个数组变成一个独立的流。</p>
+<p>尝试2：使用flatMap<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">words.stream()</div><div class="line">    .map(word-&gt;word.split(<span class="string">""</span>))</div><div class="line">    .flatMap(Arrays::stream)</div><div class="line">    .distinct()</div><div class="line">    .collect(toList());</div></pre></td></tr></table></figure></p>
+<p>flatMap方法的效果是，各个数组并不是分别映射成一个流，而是映射成流的内容，所有使用map(Arrays::stream)时生成的单个流都被合并起来，即扁平化为一个流，</p>
+<p>一言以蔽之，flatMap方法让你把一个流中的每个值都换成另一个流，然后把所有的流连接起来成为一个流</p>
+<h1 id="查找和匹配"><a href="#查找和匹配" class="headerlink" title="查找和匹配"></a>查找和匹配</h1><h2 id="检查谓词是否至少匹配一个元素"><a href="#检查谓词是否至少匹配一个元素" class="headerlink" title="检查谓词是否至少匹配一个元素"></a>检查谓词是否至少匹配一个元素</h2><p><strong>anyMatch方法</strong><br>可以回答“流中是否有一个元素能匹配给定的谓词”<br>例子：菜单里面是否有素食可选择<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(menu.stream().anyMatch(Dish::isVegetarian))&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="检查谓词是否匹配所有元素"><a href="#检查谓词是否匹配所有元素" class="headerlink" title="检查谓词是否匹配所有元素"></a>检查谓词是否匹配所有元素</h2><p>allMatch()用法同上<br>与allMatch()相对的是noneMatch()</p>
+<p>anyMatch allMatch noneMatch 三个操作都用到了我们所谓的短路，就是大家熟悉的java中的&amp;&amp;和||运算符短路在流中的版本</p>
+<h2 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h2><p><strong>findAny方法</strong><br>将返回当前流中的任意元素</p>
+<p><strong>findFirst</strong><br>找到第一个元素</p>
+<h1 id="规约"><a href="#规约" class="headerlink" title="规约"></a>规约</h1><p>reduce操作表达更复杂的查询，比如”计算菜单中的总卡路里”或“菜单中卡路里最高的菜是哪一个” 这需要将流中的元素反复结合起来，得到一个值，比如Integer,这样的查询被归类为规约操作，用函数式编程术语来说，这称为折叠(fold)</p>
+<h2 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> producr = numbers.stream().reduce(<span class="number">1</span>,(a,b)-&gt;a*b);</div></pre></td></tr></table></figure>
+<p>reduce操作是如何作用于一个流的：<br>lambda反复结合每个元素，知道流被规约为一个值</p>
+<p>可以使用最更简洁的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int producr = numbers.stream().reduce(0,Integer::sum);</div></pre></td></tr></table></figure></p>
+<p>reduce还有一个重载的变体，它不接受初始值，返回一个Optional对象：<br>Optional<integer> sum = numbers.stream().reduce((a,b)-&gt;(a+b));</integer></p>
+<h2 id="最大值和最小值"><a href="#最大值和最小值" class="headerlink" title="最大值和最小值"></a>最大值和最小值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Optional&lt;Integer&gt; max = numbers.stream().reduce(Integer::max)</div><div class="line"></div><div class="line">Optional&lt;Integer&gt; min = numbers.stream().reduce(Integer::min)</div></pre></td></tr></table></figure>
+<h1 id="总结下目前说到的操作"><a href="#总结下目前说到的操作" class="headerlink" title="总结下目前说到的操作"></a>总结下目前说到的操作</h1><p><img src="/post/java8-stream-use/01.png" alt=""></p>
+<h1 id="数值流"><a href="#数值流" class="headerlink" title="数值流"></a>数值流</h1><p>之前我们看到了可以使用reduce方法计算流中元素的总和，例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> calories = menu.stream()</div><div class="line">                    .map(Dish::getCalories)</div><div class="line">                    .reduce(<span class="number">0</span>,Integer::sum);</div></pre></td></tr></table></figure></p>
+<p>这段代码的问题是，它有一个暗含的装箱成本，每个Integer都必须拆箱成一个原始类型，再进行求和，要是可以直接像下面这样调用sum方法，岂不是更好<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> calories = menu.stream()</div><div class="line">                    .map(Dish::getCalories)</div><div class="line">                    .sum();</div></pre></td></tr></table></figure></p>
+<p>这是不可能的，问题在于map方法会生成一个Straem<t>，虽然流中的元素是Integer类型，但Streams接口没有定义sum方法，不要担心，Stream API还提供了原始类型流特化</t></p>
+<h2 id="原始类型流特化"><a href="#原始类型流特化" class="headerlink" title="原始类型流特化"></a>原始类型流特化</h2><p>Java9引入了三个原始类型特化接口来解决这个问题：IntStream，DoubleStream和LongStream，分别将流中的元素特化为int，long，double,从而避免了暗含的装箱成本，每个接口都带了进行常用数值规约的新方法，比如对数值流求和的sum，找到最大元素的max，此外有必要时再把他们转换回对象流的方法</p>
+<p>1.映射到数值流<br>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> calories = menu.stream()</div><div class="line">                    .mapToInt(Dish::getCalories)</div><div class="line">                    .sum();</div></pre></td></tr></table></figure></p>
+<p>2.转换回对象流<br>把原始流转换成一般流，可以使用boxed方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IntStream intStream = menu.stream().mapToInt(Dish::getCalories);</div><div class="line">Stream&lt;Integer&gt; stream = intStream.boxed();</div></pre></td></tr></table></figure></p>
+<p>3.默认值optionalInt<br>求和有默认值0，但是如果计算intStream中最大的元素，就得换个法子了，因为0是错误的结果，我们知道Optional类，这是一个可以表示值存在或不存在的容器，Optional可以用Integer、String等参考类型来参数化，对于三种原始流特化，也分别有一个optional原始类的特化版本：OptionalInt,OptionalDouble,OptionalLong<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max();</div></pre></td></tr></table></figure></p>
+<h2 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h2><p>java8引入了两个可以用于IntStream和LongStream的静态方法，帮助生成这种范围：range和rangeClosed。第一个参数接受起始值，第二个参数接受结束值。<br>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">InStream evenNumbers = IntStream.rangClosed(<span class="number">1</span>,<span class="number">100</span>).filter(n-&gt;n%<span class="number">2</span>==<span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="构建流"><a href="#构建流" class="headerlink" title="构建流"></a>构建流</h1><p>本节介绍如何从值序、数组、文件来创建流，甚至由生成函数来创建无限流</p>
+<h2 id="由值创建流"><a href="#由值创建流" class="headerlink" title="由值创建流"></a>由值创建流</h2><p>可以使用静态方法Stream.of，它可以接受任意数量的参数<br>例如：以下代码创建一个字符串流，然后你可以将字符串转换为大写，再一个个打印出来<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Stream&lt;String&gt; stream = Stream.of(<span class="string">"Java 8"</span>,<span class="string">"Lambda"</span>,<span class="string">"In"</span>,<span class="string">"Action"</span>);</div><div class="line">stream.map(String::toUpperCase).forEach(System.out::println);</div></pre></td></tr></table></figure></p>
+<h2 id="由数组创建流"><a href="#由数组创建流" class="headerlink" title="由数组创建流"></a>由数组创建流</h2><p>可以使用静态方法Arrays.stream从数组创建一个流，例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] numbers = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>&#125;;</div><div class="line"><span class="keyword">int</span> sum = Arrays.stream(number).sum();</div></pre></td></tr></table></figure></p>
+<h2 id="由文件生成流"><a href="#由文件生成流" class="headerlink" title="由文件生成流"></a>由文件生成流</h2><p>Files.lines方法，它会返回一个由指定文件中的各行构成的字符串流<br><img src="/post/java8-stream-use/02.png" alt=""></p>
+<h2 id="创建无限流"><a href="#创建无限流" class="headerlink" title="创建无限流"></a>创建无限流</h2><p>Stream API提供两个静态方法来从函数生成流：Stream.iterate和Stream.generate<br>这两个操作可以创建所谓的无限流：他们产生的流会用给定的函数按需创建值，因此可以无穷无尽地计算下去，一般来说，应该来说应该使用limit(n)来对这种流加以限制，以避免打印无穷多个值</p>
+<p>例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Stream.iterate(<span class="number">0</span>,n-&gt;n+<span class="number">2</span>)</div><div class="line">      .limit(<span class="number">10</span>)</div><div class="line">      .forEach(System.out.println)</div></pre></td></tr></table></figure></p>
+<p>generate不是依次对每个生成的值应用函数的，它接受一个Supplier<t>类型的lambda提供新的值</t></p>
+<p>例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Stream.generate(Math::random)</div><div class="line">      .limit(<span class="number">5</span>)</div><div class="line">      .forEach(System.out::println)</div></pre></td></tr></table></figure></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>流可以简洁地表达复杂的数据处理查询，流可以透明的并行化</li>
+<li>你可以使用filter、distinct、skip和limit对流做筛选和切片</li>
+<li>你可以使用map和flatMap提取或装换流中的元素</li>
+<li>你可以使用findFirst和findAny方法查找流中的元素，你可以使用allMatch、noneMatch和anyMatch方法让流匹配给定的谓词</li>
+<li>这些方法都利用了短路：找到结果就立即停止计算，没有必要处理整个流</li>
+<li>你可以利用reduce方法将流中的所有元素迭代合并成一个结果，例如求和或查找最大元素</li>
+<li>filter和map等操作是无状态的，他们并不储存任何状态，reduce等操作要储存状态才能计算出一个值，sorted和distinct等操作也要储存状态，因为他们需要把流中的所有元素缓存起来才能返回一个新的流，这种操作称为有状态操作</li>
+<li>流不仅可以从集合创建，也可以从、数组、文件以及iterate与generate等特定方法创建</li>
+<li>无限流是没有固定大小的流</li>
+</ul>
+<p>（注：内容整理自《Java8实战》）</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Java/">Java</a> <a class="tag tag--primary tag--small t-link" href="/tags/Java8/">Java8</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java8-collect/"  data-tooltip="Java8-流-用流收集数据和并行流">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java8-stream-introduction/" data-tooltip="Java8-流-简介">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 wangnan&#39;s blog. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java8-collect/"  data-tooltip="Java8-流-用流收集数据和并行流">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java8-stream-introduction/" data-tooltip="Java8-流-简介">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java8-stream-use/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">wangnan&#39;s blog</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                90 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/java8-stream-use/';
+                 
+                    this.page.identifier = 'post/java8-stream-use/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>

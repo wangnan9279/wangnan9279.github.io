@@ -1,0 +1,905 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="wangnan&#39;s blog">
+    <title>RabbitMQ-运行和管理RabbitMQ - wangnan&#39;s blog</title>
+    <meta name="author" content="wangnan&#39;s blog">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="RabbitMQ-运行和管理RabbitMQ">
+<meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-management/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
+<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/02.png">
+<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/03.png">
+<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/04.png">
+<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/05.png">
+<meta property="og:updated_time" content="2017-07-14T05:38:24.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RabbitMQ-运行和管理RabbitMQ">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">wangnan&#39;s blog</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            RabbitMQ-运行和管理RabbitMQ
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-11-18T14:44:12+08:00">
+	
+		    Nov 18, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器管理"><span class="toc-text">服务器管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动节点"><span class="toc-text">启动节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止节点"><span class="toc-text">停止节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#权限设置"><span class="toc-text">权限设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#管理用户"><span class="toc-text">管理用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ权限系统"><span class="toc-text">RabbitMQ权限系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用统计"><span class="toc-text">使用统计</span></a></li></ol>
+<a id="more"></a>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
+<h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>RabbitMQ是使用Erlang编写的</p>
+<!--more-->
+<p>Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单</p>
+<p>为了达到“简单分布式”，需要两个你可能不太熟悉的概念：<strong>Erlang节点和Erlang应用程序</strong><br>如果你熟悉java虚拟机（jvm）的话，两者是很相似的</p>
+<h2 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h2><p><strong>节点</strong><br>节点用来指代RabbitMQ服务器实例，事实上，节点描述的是一个Erlang节点运行着一个Erlang应用程序</p>
+<p>当你运行java程序时，JVM的一个实例就启动了，并且开始执行指定的java程序，与之相似，Erlang也有虚拟机，而虚拟机的每个实例我们称之为<strong>节点(node)</strong></p>
+<p>不同与JVM,多个Erlang应用程序可以运行在用一个节点之上，更重要的是，节点之间可以进行本地通信</p>
+<p>当我们谈到RabbitMQ节点时，我们指的是<strong>RabbitMQ应用程序和其所有的Erlang节点</strong></p>
+<p><strong>启动方法</strong><br>在RabbitMQ安装目录下找到./sbin目录，运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq-server</div></pre></td></tr></table></figure>
+<p>当查看控制台，你会发现不同的RabbitMQ子系统运行起来了，并准备好处理消息</p>
+<p><strong>日志</strong><br>/var/log/rabbitmq目录下找到名为rabbit@[hostname].log日志文件</p>
+<p><strong>-detached</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq-server -detached</div></pre></td></tr></table></figure>
+<p>怎么这个启动参数，以守护程序的方式在后台运行</p>
+<h2 id="停止节点"><a href="#停止节点" class="headerlink" title="停止节点"></a>停止节点</h2><p>两种方式：<strong>干净的方式和肮脏的方式</strong></p>
+<p><strong>肮脏的方式</strong><br>当运行RabbitMQ控制台时，按下CTRL-C可以看到以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BREAK: (a)bort (c)ountinue (p)roc info (i)nfo (l)oaded</div><div class="line">       (v)ersion (k)ill (D)b-tables (d)istribution</div></pre></td></tr></table></figure>
+<p>想要关闭整个节点，选择abort就是你要的答案，但是有更好的方法来停止RabbitMQ</p>
+<p><strong>干净的方式</strong><br>这种方法会通知RabbitMQ干净地关闭，并保护好那些持久化队列，运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/rabbitmqctl stop</div></pre></td></tr></table></figure>
+<p>rabbitmqctl会和本地节点通信并指示其干净的关闭，你可以指定关闭不同的节点，包括远程节点，只需要传入 <strong>-n rabbit@[hostname]</strong> 即可</p>
+<p>在RabbitMQ日志中会看到以下内容：<br><img src="/post/rabbitMQ-management/01.png" alt=""><br>当看到rabbit,mnesia和os_mon停止了，Rabbit节点也就完全关闭了</p>
+<p><strong>关闭和重启的程序的差异</strong><br>有时候你只想重启RabbitMQ应用程序，而同时保持Erlang节点运行，对集群来说，这种做法是必须的，因为你可能会在同一节点运行除了RabbitMQ之外的其他Erlang应用程序，这使得停止整个节点时不可取的</p>
+<p>停止RabbitMQ，只需要运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl stop_app</div></pre></td></tr></table></figure>
+<p><strong>Rabbit配置文件</strong><br>RabbitMQ允许你设置系统范围的可调参数并通过配置文件进行设置</p>
+<p>该配置文件位于：/etc/rabbitmq/rabbitmq.config</p>
+<p>文件位置可以通过rabbitmq-server脚本对CONFIG_FILE环境变量进行设置</p>
+<p>你会发现，rabbitmq.config的文件格式有点吓人：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ &#123;mnesia,[&#123;dump_log_threshold, 1000&#125;]&#125;,</div><div class="line">&#123;rabbit,[&#123;vm_memory_hifgh_watermark,0.4&#125;]&#125;].</div></pre></td></tr></table></figure>
+<p>RabbitMQ配置文件事实上是一个包含嵌套哈希表的数组</p>
+<p>mnesia指的是Mnesia数据库配置选项（Mnesia是RabbitMQ用来储存交换器和队列元数据的）<br>rabbit值得是RabbitMQ特定的配置选项，每个选项都表达为这种形式：{[option_name],[option_value]}</p>
+<p>RabbitMQ中的每个队列，交换器和绑定的元数据（除了消息内容）都保存到Mnesia，Mnesia是内建在Erlang的非SQL型数据库</p>
+<p><strong>Mnesia配置选项</strong></p>
+<ul>
+<li>dump_log_write_threshold 默认值100 ，将全新追加的日志内容刷新/转储至真实数据库文件的频度</li>
+</ul>
+<p><em>Rabbit配置项</em></p>
+<ul>
+<li><p>tcp_listeners<br>定义了RabbitMQ应该监听的非SSL加密通信的ip和端口<br>默认值[{“0.0.0.0”,5672},]  </p>
+</li>
+<li><p>ssl_listeners<br>{“ip地址”，端口号}数组<br>定义了RabbitMQ应该监听的SSL加密通信的ip和端口<br>默认空</p>
+</li>
+<li><p>ssl_options<br>{“键”，值}数组<br>指定ssl相关的选择，有效的选项有 cacertfile（CA证书文件）、certfile(服务器证书文件)、keyfile（服务器秘钥文件）和fail_if_no_prrt_cert(需要客户端安装有效证书:True/false)</p>
+</li>
+<li><p>vm_memory_high_watermark<br>控制Rabbit允许消耗的内存 0.4=40%<br>默认值0.4</p>
+</li>
+<li><p>msg_store_file_size_limit<br>RabbitMQ垃圾收集储存内容之前，消息存储数据库的最大大小<br>单位是字节<br>默认值16777216</p>
+</li>
+</ul>
+<p>-queue_index_max_journal_entries<br>在转储到消息储存数据库并提交之前，消息储存日志的最大条目数<br>默认 262144</p>
+<h1 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h1><p>RabbitMQ权限工作原理：用户可以为链接到RabbitMQ主机的应用程序设置不同级别的权限（读、写、和/或配置）</p>
+<p><img src="/post/rabbitMQ-management/02.png" alt=""></p>
+<p>RabbitMQ权限系统的一个好的地方在于单个用户可以跨越多个vhost进行授权</p>
+<h2 id="管理用户"><a href="#管理用户" class="headerlink" title="管理用户"></a>管理用户</h2><p>用户是访问控制的基本单元，针对一到多个vhost，其可以被赋予不同级别的访问权限，并使用标准的用户名/密码来认证用户</p>
+<p><strong>添加用户</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl add_user cashing-tier cashMel</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Creating user &quot;cashing-tier&quot; ...</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p><strong>删除用户</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl delete_user cashing_tier</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Deleting user &quot;cashing-tier&quot;</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p>注意：当你删除用户的时候，任何引用该用户的访问控制条目都会从Rabbit权限数据库中自动删除，同时，rabbbitmqctl也不会警告你与用户相关的访问控制条目也会一并被删除</p>
+<p><strong>查看当前存在哪些用户</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_users</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Listing users ..</div><div class="line">cashing-tier</div><div class="line">guest</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p><strong>修改用户的密码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl change_password cashing-tier coml3xPassword</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Changeing password for user &quot;cashing-tier&quot; ...</div><div class="line">...done</div></pre></td></tr></table></figure>
+<h2 id="RabbitMQ权限系统"><a href="#RabbitMQ权限系统" class="headerlink" title="RabbitMQ权限系统"></a>RabbitMQ权限系统</h2><p>从1.6.0版本开始，RabbitMQ实现了一套访问控制列表（ACL）风格的权限系统，新的权限系统允许大量细粒度控制，同时可以授予用户读、写、和配置选项，这三者有何差异？</p>
+<ul>
+<li>读–有关消费信息的任何操作，包括“清除”整个队列</li>
+<li>写–发布消息（同样需要绑定操作的成功）</li>
+<li>配置–队列和交换器的创建和删除</li>
+</ul>
+<p>下图展示了不同AMQP命令的列表和对应的权限<br><img src="/post/rabbitMQ-management/03.png" alt=""></p>
+<p>每一条访问控制条目由以下四部分组成：</p>
+<ul>
+<li>被授予访问权限的用户</li>
+<li>权限控制应用的vhost</li>
+<li>原药授予的读/写/配置权限的组合</li>
+<li>权限范围</li>
+</ul>
+<p>注意：访问控制条目是无法跨越vhost的，加入你想给用户cashing-tier在vhost oak和vhost sycamore上赋予相同权限，那么你必须穿件两份访问控制条目</p>
+<p>例子：假设你有名为sycamore的vhost,你想要授予cashing-tier完全的访问权限（配置、写和读权限），你需要rabbitmqctl的<strong>set_permissions</strong>命令完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl set_permissions -p sycamore \</div><div class="line">cashing-tier &quot;.*&quot;&quot;.*&quot;&quot;.*&quot;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Setting permisssion for user &quot;cashing-tier&quot; in vhost &quot;sycamore ...</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li>-p sycamore  这告诉set_permissions条目应该应用在那个vhost上</li>
+<li>cashing-tier 被授予权限的用户</li>
+<li>“.<em>“”.</em>“”.*” 这是授予的权限，分别映射到配置、写、读</li>
+</ul>
+<p>权限值中三个值都是正则表达式，”.*”指代所有权限，以为这匹配任何队列或交换器的名字</p>
+<p><strong>删除权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.rabbitmqctl clear_permissions -p oak cashing-tier</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Clearing permissions for user &quot;cashing-tier&quot; in vhost &quot;oak&quot;...</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p><strong>查看用户在RabbitMQ服务器所有vhost上的权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq list_user_permissons cashing-tier</div></pre></td></tr></table></figure>
+<p>输出：<br><img src="/post/rabbitMQ-management/04.png" alt=""></p>
+<h1 id="使用统计"><a href="#使用统计" class="headerlink" title="使用统计"></a>使用统计</h1><p><strong>列出队列和消息数目</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_queues</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Listing queues ...</div><div class="line">msg-inbox-logs 0</div><div class="line">msg-inbox-errors 0</div><div class="line">all-logs 3</div><div class="line">...done</div></pre></td></tr></table></figure>
+<p>这些都是默认vhost的信息。如果想要获取另一个vhost的话，可以使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_queues -p sycamore</div></pre></td></tr></table></figure>
+<p><strong>如果运行rabbitmqctl命令二不携带任何选项的话，就会展示帮助信息</strong></p>
+<p><strong>查看交换器和绑定</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_exchanges</div></pre></td></tr></table></figure>
+<p>输出：<br><img src="/post/rabbitMQ-management/05.png" alt=""></p>
+<p>你会发现若干个交换器早已经声明好了，例如amq.topic,amq.ditect和amq.fanout,AMQP规范里面对这些交换器有规定</p>
+<p>只有一个direct类型而没有交换器名称，这就是匿名交换器，每个队列默认绑定到该交换器</p>
+<p>（注：内容整理自《RabbitMQ实战》）</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/RabbitMQ/">RabbitMQ</a> <a class="tag tag--primary tag--small t-link" href="/tags/消息队列/">消息队列</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/read-think-like-programmer/"  data-tooltip="《像程序员一样思考》书摘">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/rabbitMQ-persistence/" data-tooltip="RabbitMQ-理解消息通信-持久化策略">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 wangnan&#39;s blog. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/read-think-like-programmer/"  data-tooltip="《像程序员一样思考》书摘">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/rabbitMQ-persistence/" data-tooltip="RabbitMQ-理解消息通信-持久化策略">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">wangnan&#39;s blog</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                90 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/rabbitMQ-management/';
+                 
+                    this.page.identifier = 'post/rabbitMQ-management/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>

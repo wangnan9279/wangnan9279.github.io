@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="wangnan&#39;s blog">
+    <title>Mybaits-配置 - wangnan&#39;s blog</title>
+    <meta name="author" content="wangnan&#39;s blog">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Mybaits-配置">
+<meta property="og:url" content="http://wangnan.tech/post/mybatis-config/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/01.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/02.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/03.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/04.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/05.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/06.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/07.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/08.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/09.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/10.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/11.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/12.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/13.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/14.png">
+<meta property="og:image" content="http://wangnan.tech/post/mybatis-config/15.png">
+<meta property="og:updated_time" content="2017-07-14T03:37:11.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mybaits-配置">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">wangnan&#39;s blog</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Mybaits-配置
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-01-03T14:26:18+08:00">
+	
+		    Jan 03, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#properties元素"><span class="toc-text">properties元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#property子元素"><span class="toc-text">property子元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#properties"><span class="toc-text">properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序参数传递"><span class="toc-text">程序参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优先级"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setting"><span class="toc-text">setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeAliases"><span class="toc-text">typeAliases</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统定义的别名"><span class="toc-text">系统定义的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义别名"><span class="toc-text">自定义别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件："><span class="toc-text">配置文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解-自动扫描"><span class="toc-text">注解+自动扫描</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeHandler"><span class="toc-text">typeHandler</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ObjectFactory"><span class="toc-text">ObjectFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#environment"><span class="toc-text">environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引入映射器方法"><span class="toc-text">引入映射器方法</span></a></li></ol>
+<a id="more"></a>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""><br>Mybatis配置XML文件的层次结构</p>
+<p><img src="/post/mybatis-config/01.png" alt=""></p>
+<p>这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常</p>
+<h1 id="properties元素"><a href="#properties元素" class="headerlink" title="properties元素"></a>properties元素</h1><p>properties元素提供三种配置方式</p>
+<ul>
+<li>property子元素</li>
+<li>property配置文件</li>
+<li>程序参数传递</li>
+</ul>
+<h2 id="property子元素"><a href="#property子元素" class="headerlink" title="property子元素"></a>property子元素</h2><p>如图：<br><img src="/post/mybatis-config/02.png" alt=""></p>
+<p>这样我们就可以在上下文中使用以及配置好的属性了</p>
+<p>如图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;dataSource type=&quot;POOLED&quot;&gt;</div><div class="line">    &lt;property name=&quot;driver&quot; value=&quot;$&#123;dirver&#125;&quot;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;url&#125;&quot;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;username&#125;&quot;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;</div><div class="line">&lt;/dataSource&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>使用配置文件，方便我们在多个配置文件中重复使用它们，也方便日后维护和随时修改</p>
+<p>如图：<br><img src="/post/mybatis-config/03.png" alt=""></p>
+<p>我们properties文件放在源包下，只要这样引入这个配置文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;properties resource=&quot;jdbc.properties&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="程序参数传递"><a href="#程序参数传递" class="headerlink" title="程序参数传递"></a>程序参数传递</h2><p>适用场景举例：生产数据库用户名和密码对于开发者保密，运维人员要求文件中的数据库用户和密码进行加密，需要在代码中进行解码传入配置，这个时候需要通过编码的范式满足我们遇到的场景</p>
+<p>如图：<br>InputStream  cfgStream = null;<br><img src="/post/mybatis-config/04.png" alt=""><br>decode为解密方法</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>mybtis支持这三种方式同时出现，可以重复配置同一属性</p>
+<p>mybtis按照下面的顺序加载：</p>
+<ol>
+<li>在properties元素体内的指定属性首先被读取</li>
+<li>根据properties预算内宿的resource属性读取类路径下属性文件，或者根据url属性指定的路径读取属性文件，并覆盖已读取的同名属性</li>
+<li>读取作为方法参数传递的属性，并覆盖已读取的同名属性</li>
+</ol>
+<p>总结：优先级 代码&gt;配置文件&gt;properties属性</p>
+<h1 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h1><ul>
+<li>setting在mybatis中是最复杂的配置，也是最重要的配置</li>
+<li>即使不配置setting，mybatis也可以正常工作</li>
+<li>了解setting配置内容，十分必要</li>
+</ul>
+<p>如图：<br><img src="/post/mybatis-config/05.png" alt=""><br><img src="/post/mybatis-config/06.png" alt=""><br><img src="/post/mybatis-config/07.png" alt=""></p>
+<h1 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h1><ul>
+<li>别名是一个指代的名称，因为类的全名过长，我们希望用简短的方式去指代它</li>
+<li>这个名称可以在mybatis上下文中使用</li>
+<li>别名不区分大小写</li>
+<li>一个别名实例是在解析配置文件时生成的，然后长期保持在configuration对象中，供随时使用</li>
+</ul>
+<p>类型：</p>
+<ul>
+<li>系统定义的别名</li>
+<li>自定义别名</li>
+</ul>
+<h2 id="系统定义的别名"><a href="#系统定义的别名" class="headerlink" title="系统定义的别名"></a>系统定义的别名</h2><p><img src="/post/mybatis-config/08.png" alt=""><br><img src="/post/mybatis-config/09.png" alt=""></p>
+<p>注：支持数组类型的只要加“[]”即可，比如Date数组可以用date[]代替</p>
+<h2 id="自定义别名"><a href="#自定义别名" class="headerlink" title="自定义别名"></a>自定义别名</h2><p>方式：</p>
+<ul>
+<li>配置文件</li>
+<li>代码</li>
+</ul>
+<h3 id="配置文件："><a href="#配置文件：" class="headerlink" title="配置文件："></a>配置文件：</h3><p><img src="/post/mybatis-config/10.png" alt=""></p>
+<p>这样mybtis的上下文中使用role来替代其全路径</p>
+<h3 id="注解-自动扫描"><a href="#注解-自动扫描" class="headerlink" title="注解+自动扫描"></a>注解+自动扫描</h3><p><img src="/post/mybatis-config/11.png" alt=""><br><img src="/post/mybatis-config/12.png" alt=""></p>
+<p>使用注解@Alias，Mybatis会自动扫描包，将扫描到的类装载到上下文中以便将来使用</p>
+<p>注意：配置了包扫描路径，没有注解的类，mybatis也会装载，只是说它将把别名设置为类名第一个字母小写</p>
+<h1 id="typeHandler"><a href="#typeHandler" class="headerlink" title="typeHandler"></a>typeHandler</h1><ul>
+<li>Mybatis在预处理语句(PrepareStatement)中设置一个参数时，或者从结果集(ResultSet)中取出一个值时，都会用注册了的typeHandler进行处理</li>
+<li>由于数据库厂商不同，参数不同，typeHandler允许根据项目的需要自定义设置java传递到数据库的参数中，或者从数据库读出的数据，进行特殊处理</li>
+<li>在使用枚举的时候我们常常使用typeHandler进行转换</li>
+</ul>
+<p>类型：</p>
+<ul>
+<li>系统定义</li>
+<li>用户自定义</li>
+</ul>
+<p>typeHandler常用的配置为java类型（javaType）、JDBC类型（jdbcType）,typeHandler的作用就是将javaType和jdbcType互相转化</p>
+<p>由于篇幅考虑，typehandler不详细说明</p>
+<h1 id="ObjectFactory"><a href="#ObjectFactory" class="headerlink" title="ObjectFactory"></a>ObjectFactory</h1><p>当mybatis在构建一个结果返回的时候，都会使用ObjectFactory去构建POJP，在mybatis中可以定制自己的ObjectFactory，一般来说我们使用默认的ObjectFactory即可，默认的ObjectFactory是由org.apache.ibatis.reflection.DefaultObjectFactory来提供服务的</p>
+<p>如果要定制特定的工厂则需要进行配置<br><img src="/post/mybatis-config/13.png" alt=""></p>
+<h1 id="environment"><a href="#environment" class="headerlink" title="environment"></a>environment</h1><p>配置环境可以注册多个数据源</p>
+<p>每个数据源分为两大部分：</p>
+<ul>
+<li>数据库源的配置</li>
+<li>数据库事务的配置</li>
+</ul>
+<p>如图：<br><img src="/post/mybatis-config/14.png" alt=""></p>
+<p>说明：</p>
+<ul>
+<li>environments中的属性default，标明在缺省的情况下我们将启用哪个数据源配置</li>
+<li>属性id这只这个数据源的标志，以便在mybatis上下文中使用它</li>
+</ul>
+<p>transactionManager配置的是数据库事务，type属性有三种配置方式：</p>
+<ol>
+<li>JDBC 采用JDBC方式管理事务，在独立编码中常常使用</li>
+<li>MANAGED,采用容器方式管理事务，在JNDI数据源中常用</li>
+<li>自定义，由使用者自定义，适用于特殊应用</li>
+</ol>
+<ul>
+<li>property元素则是可以配置数据源的各类属性，我们配置了autoCommit=false则是要求数据源不自动提交</li>
+<li>dataSource标签，是配置数据源连接的信息，type属性是提供我们队数据库连接方式的配置</li>
+</ul>
+<p>type：</p>
+<ol>
+<li>UNPOOLED,非连接池数据库</li>
+<li>POOLED,连接池数据库</li>
+<li>JNDI,JNDI数据源</li>
+<li>自定义数据源</li>
+</ol>
+<h1 id="引入映射器方法"><a href="#引入映射器方法" class="headerlink" title="引入映射器方法"></a>引入映射器方法</h1><p>映射器是Mybatis最复杂、最核心的组件</p>
+<p>引入引射器的方法</p>
+<ol>
+<li>用文件路径引入</li>
+<li>用包名引入</li>
+<li>用类注册引入</li>
+<li>用xml引入</li>
+</ol>
+<p>如图：<br><img src="/post/mybatis-config/15.png" alt=""></p>
+<p>（注：内容整理自《深入浅出MyBatis技术原理与实战》）</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Mybatis/">Mybatis</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/mybatis-mapper/"  data-tooltip="Mybatis映射器">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/mybatis-lifecycle/" data-tooltip="Mybaits-基本构成和生命周期">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 wangnan&#39;s blog. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/mybatis-mapper/"  data-tooltip="Mybatis映射器">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/mybatis-lifecycle/" data-tooltip="Mybaits-基本构成和生命周期">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-config/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">wangnan&#39;s blog</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                90 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/mybatis-config/';
+                 
+                    this.page.identifier = 'post/mybatis-config/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
