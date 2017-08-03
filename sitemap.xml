@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/redis-command/</loc>
+    
+    <lastmod>2017-08-03T08:49:24.349Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/java-arrayList/</loc>
     
     <lastmod>2017-07-31T07:00:17.394Z</lastmod>
@@ -509,13 +516,6 @@
     <loc>http://wangnan.tech/post/redis-data-safety/</loc>
     
     <lastmod>2017-07-14T03:28:28.824Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/redis-command/</loc>
-    
-    <lastmod>2017-07-14T03:28:10.077Z</lastmod>
     
   </url>
   

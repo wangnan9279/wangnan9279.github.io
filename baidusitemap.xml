@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/redis-command/</loc>
+    <lastmod>2017-08-03T08:49:24.349Z</lastmod>
+    <data>
+        <display>
+        <title>Redis命令</title>
+        <pubTime>2016-08-18T07:59:50.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-arrayList/</loc>
     <lastmod>2017-07-31T07:00:17.394Z</lastmod>
     <data>
@@ -1508,28 +1530,6 @@
         <display>
         <title>Redis数据安全与性能保障</title>
         <pubTime>2016-08-23T08:14:12.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/redis-command/</loc>
-    <lastmod>2017-07-14T03:28:10.077Z</lastmod>
-    <data>
-        <display>
-        <title>Redis命令</title>
-        <pubTime>2016-08-18T07:59:50.000Z</pubTime>
         
         <tag>Redis</tag>
          

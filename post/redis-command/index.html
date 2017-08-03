@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://wangnan.tech/post/redis-command/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/redis-command/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/redis-command/04.png">
-<meta property="og:updated_time" content="2017-07-14T03:28:10.077Z">
+<meta property="og:updated_time" content="2017-08-03T08:49:24.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis命令">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/redis.png">
@@ -234,7 +234,7 @@
 <p><code>DECR key-name</code> 将储存的值减去1 </p>
 <p><code>INCRBY key-name amount</code>          将键储存的值加上整数amount </p>
 <p><code>DECRBY key-name amount</code>               将键储存的值减去整数amount         </p>
-<p><code>INCRBYFLOAT key-name amount</code> 将键储存的值加上浮点数amount，这个命令在redis2.6或者以上的版本可用</p>
+<p><code>INCRBYFLOAT key-name amount</code> 将键储存的值加上浮点数amount，但这个命令在redis2.6或者以上的版本可用</p>
 <h3 id="redis还拥有对字符串其中一部分内容进行读取或者写入的操作"><a href="#redis还拥有对字符串其中一部分内容进行读取或者写入的操作" class="headerlink" title="redis还拥有对字符串其中一部分内容进行读取或者写入的操作"></a>redis还拥有对字符串其中一部分内容进行读取或者写入的操作</h3><p><img src="/post/redis-command/01.png" alt="01"></p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><code>RPUSH key-name value[value...]</code>–将一个或者多个值推入列表的右端，（LPUSH 是推入左端） </p>
 <p><code>RPOP key-name</code> 移除并返回列表最右端的元素（LPOP 是左边） </p>
