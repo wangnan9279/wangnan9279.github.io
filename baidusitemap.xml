@@ -4,6 +4,51 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-memory-manage/</loc>
+    <lastmod>2017-08-14T06:31:07.896Z</lastmod>
+    <data>
+        <display>
+        <title>JVM内存管理-垃圾回收与内存分配</title>
+        <pubTime>2017-08-14T06:22:40.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/java-arrayList/</loc>
+    <lastmod>2017-08-14T06:23:37.172Z</lastmod>
+    <data>
+        <display>
+        <title>Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容</title>
+        <pubTime>2017-07-31T06:51:55.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JavaCollection</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://wangnan.tech/post/redis-command/</loc>
     <lastmod>2017-08-03T08:49:24.349Z</lastmod>
     <data>
@@ -19,26 +64,6 @@
            
              
               <breadCrumb title="Redis" url="http://wangnan.tech/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/java-arrayList/</loc>
-    <lastmod>2017-07-31T07:00:17.394Z</lastmod>
-    <data>
-        <display>
-        <title>Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容</title>
-        <pubTime>2017-07-31T06:51:55.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
           
         </display>
     </data>
@@ -486,7 +511,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://wangnan.tech/post/timeWaitCloseWait/</loc>

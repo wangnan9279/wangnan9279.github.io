@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wangnan.tech/post/redis-command/</loc>
+    <loc>http://wangnan.tech/post/java-memory-manage/</loc>
     
-    <lastmod>2017-08-03T08:49:24.349Z</lastmod>
+    <lastmod>2017-08-14T06:31:07.896Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/java-arrayList/</loc>
     
-    <lastmod>2017-07-31T07:00:17.394Z</lastmod>
+    <lastmod>2017-08-14T06:23:37.172Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-08-07T03:43:51.312Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/redis-command/</loc>
+    
+    <lastmod>2017-08-03T08:49:24.349Z</lastmod>
     
   </url>
   
@@ -159,13 +173,6 @@
     <loc>http://wangnan.tech/post/java-memory/</loc>
     
     <lastmod>2017-07-17T02:24:50.572Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-07-14T10:09:01.953Z</lastmod>
     
   </url>
   
