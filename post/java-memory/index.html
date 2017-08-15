@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/21.jpg">
 <meta property="og:image" content="http://wangnan.tech/post/java-memory/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-memory/02.png">
-<meta property="og:updated_time" content="2017-07-17T02:24:50.572Z">
+<meta property="og:updated_time" content="2017-08-14T07:09:02.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java内存模型整理">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/21.jpg">
@@ -222,7 +222,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内存模型图"><span class="toc-text">内存模型图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#详细介绍"><span class="toc-text">详细介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序计数器PC"><span class="toc-text">程序计数器PC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java堆"><span class="toc-text">Java堆</span></a></li></ol></li></ol>
 <a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/21.jpg" alt=""><br><!--more--><br>参考：<br><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="external">http://gityuan.com/2016/01/09/java-memory/</a></p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/21.jpg" alt=""><br><!--more--></p>
 <ul>
 <li>一般地大家讲到的Java内存其实就是Jvm内存</li>
 <li>Java代码是运行在Java虚拟机之上的，由Java虚拟机通过解释执行(解释器)或编译执行(即时编译器)来完成，故Java内存模型，也就是指Java虚拟机的运行时内存模型。</li>
@@ -274,6 +274,7 @@
 <p>对于填充数据不是一定存在的，仅仅是为了字节对齐。HotSpot VM的自动内存管理要求对象起始地址必须是8字节的整数倍。对象头本身是8的倍数，当对象的实例数据不是8的倍数，便需要填充数据来保证8字节的对齐。该功能类似于高速缓存行的对齐。</p>
 <p>另外，关于在堆上内存分配是并发进行的，虚拟机采用CAS加失败重试保证原子操作，或者是采用每个线程预先分配TLAB内存.</p>
 <p><strong>异常(Exception)</strong><br>Java虚拟机规范规定该区域可抛出OutOfMemoryError。</p>
+<p>参考：<br><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="external">http://gityuan.com/2016/01/09/java-memory/</a></p>
 
             
         </div>
@@ -798,7 +799,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                91 posts found
+                92 posts found
             </p>
         </div>
     </div>

@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-memory-manage/
+http://wangnan.tech/post/java-out-of-memory/
