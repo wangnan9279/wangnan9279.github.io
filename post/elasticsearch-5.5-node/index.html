@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="wangnan&#39;s blog">
-    <title>RabbitMQ-运行和管理RabbitMQ - wangnan&#39;s blog</title>
+    <title>Elasticsearch5.5官方文档翻译-节点 - wangnan&#39;s blog</title>
     <meta name="author" content="wangnan&#39;s blog">
     
     
@@ -14,19 +14,14 @@
     
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="RabbitMQ-运行和管理RabbitMQ">
-<meta property="og:url" content="http://wangnan.tech/post/rabbitMQ-management/index.html">
+<meta property="og:title" content="Elasticsearch5.5官方文档翻译-节点">
+<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-5.5-node/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
-<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/01.png">
-<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/02.png">
-<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/03.png">
-<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/04.png">
-<meta property="og:image" content="http://wangnan.tech/post/rabbitMQ-management/05.png">
-<meta property="og:updated_time" content="2017-07-14T05:38:24.133Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/37.jpg">
+<meta property="og:updated_time" content="2017-08-17T02:11:15.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ-运行和管理RabbitMQ">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png">
+<meta name="twitter:title" content="Elasticsearch5.5官方文档翻译-节点">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/37.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -38,8 +33,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" />
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/37.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/37.jpg" />
     
     
     
@@ -199,20 +194,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            RabbitMQ-运行和管理RabbitMQ
+            Elasticsearch5.5官方文档翻译-节点
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-11-18T14:44:12+08:00">
+    <time itemprop="datePublished" datetime="2017-08-17T10:05:08+08:00">
 	
-		    Nov 18, 2016
+		    Aug 17, 2017
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
 
 
     
@@ -223,128 +218,58 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器管理"><span class="toc-text">服务器管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动节点"><span class="toc-text">启动节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止节点"><span class="toc-text">停止节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#权限设置"><span class="toc-text">权限设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#管理用户"><span class="toc-text">管理用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ权限系统"><span class="toc-text">RabbitMQ权限系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用统计"><span class="toc-text">使用统计</span></a></li></ol>
-<a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/rabbitmq.png" alt=""></p>
-<h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>RabbitMQ是使用Erlang编写的</p>
-<!--more-->
-<p>Erlang天生就能够让应用程序无须知道对方是否在同一个机器上即可互相通信，这让RabbitMQ集群和可靠的消息路由变得简单</p>
-<p>为了达到“简单分布式”，需要两个你可能不太熟悉的概念：<strong>Erlang节点和Erlang应用程序</strong><br>如果你熟悉java虚拟机（jvm）的话，两者是很相似的</p>
-<h2 id="启动节点"><a href="#启动节点" class="headerlink" title="启动节点"></a>启动节点</h2><p><strong>节点</strong><br>节点用来指代RabbitMQ服务器实例，事实上，节点描述的是一个Erlang节点运行着一个Erlang应用程序</p>
-<p>当你运行java程序时，JVM的一个实例就启动了，并且开始执行指定的java程序，与之相似，Erlang也有虚拟机，而虚拟机的每个实例我们称之为<strong>节点(node)</strong></p>
-<p>不同与JVM,多个Erlang应用程序可以运行在用一个节点之上，更重要的是，节点之间可以进行本地通信</p>
-<p>当我们谈到RabbitMQ节点时，我们指的是<strong>RabbitMQ应用程序和其所有的Erlang节点</strong></p>
-<p><strong>启动方法</strong><br>在RabbitMQ安装目录下找到./sbin目录，运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq-server</div></pre></td></tr></table></figure>
-<p>当查看控制台，你会发现不同的RabbitMQ子系统运行起来了，并准备好处理消息</p>
-<p><strong>日志</strong><br>/var/log/rabbitmq目录下找到名为rabbit@[hostname].log日志文件</p>
-<p><strong>-detached</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq-server -detached</div></pre></td></tr></table></figure>
-<p>怎么这个启动参数，以守护程序的方式在后台运行</p>
-<h2 id="停止节点"><a href="#停止节点" class="headerlink" title="停止节点"></a>停止节点</h2><p>两种方式：<strong>干净的方式和肮脏的方式</strong></p>
-<p><strong>肮脏的方式</strong><br>当运行RabbitMQ控制台时，按下CTRL-C可以看到以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BREAK: (a)bort (c)ountinue (p)roc info (i)nfo (l)oaded</div><div class="line">       (v)ersion (k)ill (D)b-tables (d)istribution</div></pre></td></tr></table></figure>
-<p>想要关闭整个节点，选择abort就是你要的答案，但是有更好的方法来停止RabbitMQ</p>
-<p><strong>干净的方式</strong><br>这种方法会通知RabbitMQ干净地关闭，并保护好那些持久化队列，运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/rabbitmqctl stop</div></pre></td></tr></table></figure>
-<p>rabbitmqctl会和本地节点通信并指示其干净的关闭，你可以指定关闭不同的节点，包括远程节点，只需要传入 <strong>-n rabbit@[hostname]</strong> 即可</p>
-<p>在RabbitMQ日志中会看到以下内容：<br><img src="/post/rabbitMQ-management/01.png" alt=""><br>当看到rabbit,mnesia和os_mon停止了，Rabbit节点也就完全关闭了</p>
-<p><strong>关闭和重启的程序的差异</strong><br>有时候你只想重启RabbitMQ应用程序，而同时保持Erlang节点运行，对集群来说，这种做法是必须的，因为你可能会在同一节点运行除了RabbitMQ之外的其他Erlang应用程序，这使得停止整个节点时不可取的</p>
-<p>停止RabbitMQ，只需要运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl stop_app</div></pre></td></tr></table></figure>
-<p><strong>Rabbit配置文件</strong><br>RabbitMQ允许你设置系统范围的可调参数并通过配置文件进行设置</p>
-<p>该配置文件位于：/etc/rabbitmq/rabbitmq.config</p>
-<p>文件位置可以通过rabbitmq-server脚本对CONFIG_FILE环境变量进行设置</p>
-<p>你会发现，rabbitmq.config的文件格式有点吓人：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ &#123;mnesia,[&#123;dump_log_threshold, 1000&#125;]&#125;,</div><div class="line">&#123;rabbit,[&#123;vm_memory_hifgh_watermark,0.4&#125;]&#125;].</div></pre></td></tr></table></figure>
-<p>RabbitMQ配置文件事实上是一个包含嵌套哈希表的数组</p>
-<p>mnesia指的是Mnesia数据库配置选项（Mnesia是RabbitMQ用来储存交换器和队列元数据的）<br>rabbit值得是RabbitMQ特定的配置选项，每个选项都表达为这种形式：{[option_name],[option_value]}</p>
-<p>RabbitMQ中的每个队列，交换器和绑定的元数据（除了消息内容）都保存到Mnesia，Mnesia是内建在Erlang的非SQL型数据库</p>
-<p><strong>Mnesia配置选项</strong></p>
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/37.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主合格节点"><span class="toc-text">主合格节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据节点"><span class="toc-text">数据节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#摄取节点"><span class="toc-text">摄取节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#只协调节点"><span class="toc-text">只协调节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#节点的数据路径设置"><span class="toc-text">节点的数据路径设置</span></a></li></ol></span></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>章节：Moudles&gt;&gt;Node</p>
+<p>任何时候你启动Elasticsearch的实例时，你启动一个 节点。连接的节点的集合被称为一个 集群。如果您正在运行Elasticsearch的一个节点，那么你有一个包含一个节点的集群。</p>
+<p>集群中的每个节点都默认的可以处理HTTP和 Transport 流量。传输层专门用于节点们和JavaTransportClient的的通信  ; HTTP层仅由外部REST客户端使用。</p>
+<p>所有节点都了解所有集群中的其他节点，而且可以转发客户端请求到相应的节点。除此之外，每个节点提供一个或多个目的：</p>
 <ul>
-<li>dump_log_write_threshold 默认值100 ，将全新追加的日志内容刷新/转储至真实数据库文件的频度</li>
-</ul>
-<p><em>Rabbit配置项</em></p>
-<ul>
-<li><p>tcp_listeners<br>定义了RabbitMQ应该监听的非SSL加密通信的ip和端口<br>默认值[{“0.0.0.0”,5672},]  </p>
+<li><p>主合格的节点<br>具有节点node.master设置为true（默认值），这使得它有资格被选为主节点，主节点可以控制该集群。</p>
 </li>
-<li><p>ssl_listeners<br>{“ip地址”，端口号}数组<br>定义了RabbitMQ应该监听的SSL加密通信的ip和端口<br>默认空</p>
+<li><p>数据节点<br>具有节点node.data设置为true（默认）。数据节点保存数据并进行数据相关的操作，如CRUD，搜索和聚合。</p>
 </li>
-<li><p>ssl_options<br>{“键”，值}数组<br>指定ssl相关的选择，有效的选项有 cacertfile（CA证书文件）、certfile(服务器证书文件)、keyfile（服务器秘钥文件）和fail_if_no_prrt_cert(需要客户端安装有效证书:True/false)</p>
+<li><p>摄取节点<br>具有节点node.ingest设置为true（默认）。摄取节点都能够运用摄取管道，以便建立索引之前转换和丰富文档。如果想拥有一个重摄取负载，可以使用专用摄取节点然后设置主数据和节点的 node.ingest: false</p>
 </li>
-<li><p>vm_memory_high_watermark<br>控制Rabbit允许消耗的内存 0.4=40%<br>默认值0.4</p>
-</li>
-<li><p>msg_store_file_size_limit<br>RabbitMQ垃圾收集储存内容之前，消息存储数据库的最大大小<br>单位是字节<br>默认值16777216</p>
+<li><p>部落节点<br>一个部落节点，通过tribe.*设置，是一种特殊类型的协调，可以连接到多个集群并在所有连接的集群执行搜索和其他操作。</p>
 </li>
 </ul>
-<p>-queue_index_max_journal_entries<br>在转储到消息储存数据库并提交之前，消息储存日志的最大条目数<br>默认 262144</p>
-<h1 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h1><p>RabbitMQ权限工作原理：用户可以为链接到RabbitMQ主机的应用程序设置不同级别的权限（读、写、和/或配置）</p>
-<p><img src="/post/rabbitMQ-management/02.png" alt=""></p>
-<p>RabbitMQ权限系统的一个好的地方在于单个用户可以跨越多个vhost进行授权</p>
-<h2 id="管理用户"><a href="#管理用户" class="headerlink" title="管理用户"></a>管理用户</h2><p>用户是访问控制的基本单元，针对一到多个vhost，其可以被赋予不同级别的访问权限，并使用标准的用户名/密码来认证用户</p>
-<p><strong>添加用户</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl add_user cashing-tier cashMel</div></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Creating user &quot;cashing-tier&quot; ...</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p><strong>删除用户</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl delete_user cashing_tier</div></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Deleting user &quot;cashing-tier&quot;</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p>注意：当你删除用户的时候，任何引用该用户的访问控制条目都会从Rabbit权限数据库中自动删除，同时，rabbbitmqctl也不会警告你与用户相关的访问控制条目也会一并被删除</p>
-<p><strong>查看当前存在哪些用户</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_users</div></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Listing users ..</div><div class="line">cashing-tier</div><div class="line">guest</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p><strong>修改用户的密码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl change_password cashing-tier coml3xPassword</div></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Changeing password for user &quot;cashing-tier&quot; ...</div><div class="line">...done</div></pre></td></tr></table></figure>
-<h2 id="RabbitMQ权限系统"><a href="#RabbitMQ权限系统" class="headerlink" title="RabbitMQ权限系统"></a>RabbitMQ权限系统</h2><p>从1.6.0版本开始，RabbitMQ实现了一套访问控制列表（ACL）风格的权限系统，新的权限系统允许大量细粒度控制，同时可以授予用户读、写、和配置选项，这三者有何差异？</p>
-<ul>
-<li>读–有关消费信息的任何操作，包括“清除”整个队列</li>
-<li>写–发布消息（同样需要绑定操作的成功）</li>
-<li>配置–队列和交换器的创建和删除</li>
+<p>默认情况下，一个节点是主合格的节点和数据节点，再加上它可以通过摄取管道预处理文件。这对小集群非常方便，但是，随着集群的增长，考虑从专用数据节点分离出专用主节点资格就变得很重要。</p>
+<p><strong>注意：协调节点</strong><br>如搜索请求或批量索引请求可能涉及到不同的数据节点上保存的数据。例如搜索请求，分两个阶段，这是由接收客户机请求的节点协调执行的，这个节点就叫做协调节点。</p>
+<p>在分散阶段，协调节点将请求转发到该保存数据的数据节点。每个数据节点本地执行的请求，其结果返回到协调节点。在收集 阶段，协同节点汇集每个数据节点的结果转换成一个单一的全球结果集。</p>
+<p>每个节点是隐含协调节点。这意味着，节点有下面三个设置node.master，node.data，node.ingest设置为false，则只充当一个协调节点，它不能被禁用。其结果是，这样一个节点需要有足够的内存和CPU以处理收集阶段。</p>
+<h1 id="主合格节点"><a href="#主合格节点" class="headerlink" title="主合格节点"></a>主合格节点</h1><p>主节点负责轻量的集群范围的操作，如创建或删除的索引，跟踪哪些节点是群集的一部分，并且决定哪些分片分配给哪些节点，有一个稳定的主节点对集群的健康是很重要的。</p>
+<p>任何主合格的节点（默认情况下所有节点）可能当选成为由主节点通过主选举进程。</p>
+<p><strong>重要</strong><br>主节点必须能够访问该data/目录（就像 data节点），这样集群状态会在节点重新启动后在节点之间被保持。</p>
+<p>索引和搜索您的数据是CPU，内存  和I / O密集型的工作，这样会把压榨一个节点的资源。为了确保您的主节点是稳定的，而不是在压力下，在一个大的集群里分出专用主合格节点和专用数据节点是个好主意。</p>
+<p>当然主节点也可以表现为协调节点 和路由搜索和索引请求从客户端到数据节点，最好不使用专用的主节点做这个。让主资格的节点做尽可能少的工作，对集群的稳定性很重要。</p>
+<p>要创建一个专用的主合格的节点，设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node.master: true</div><div class="line">node.data: false</div><div class="line">node.ingest: false</div></pre></td></tr></table></figure></p>
+<p><strong>避免脑裂与minimum_master_nodes设置</strong></p>
+<p>为了防止数据丢失，配置 discovery.zen.minimum_master_nodes （缺省为1）是重要的。为了形成一个集群。 使得每个主资格节点都知道  主资格的节点的最小数量  。</p>
+<p>为了解释，假设您有由两个主合格节点的集群。网络故障打破了这两个节点之间的通信。每个节点可以看到一个主合格的节点. 也就是他们.本身。随着minimum_master_nodes设置为默认1，这样足以形成一个集群。每个节点选择自己作为新的主（认为其他主合格的节点已经挂掉），结果形成了两个集群，或脑裂。这两个节点永远不会重新加入到一个节点被重新启动。已经写入到重新启动的节点的任何数据都将丢失。</p>
+<p>现在，假设你有一个集群有三个主节点的资格，并 minimum_master_nodes设置为2。如果网络故障分开三个节点中的一个，一个节点这边不够的主节点的资格，并意识到它不能选择自己为master。具有两个节点的边将选举新的master（如果需要），并继续正常工作。一旦网络拆分得到解决，单个节点将重新加入集群，并重新开始服务请求。</p>
+<p>此设置应遵循一个公式：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">（master_eligible_nodes / 2）+ 1</div></pre></td></tr></table></figure></p>
+<p>换句话说，如果有三个主资格节点，则最小主节点应设置为(3 / 2) + 1或2：<br>即：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.minimum_master_nodes：2</div></pre></td></tr></table></figure></p>
+<p>此设置还可以动态地改变<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">PUT _cluster/settings</div><div class="line">&#123;</div><div class="line">  "transient": &#123;</div><div class="line">    "discovery.zen.minimum_master_nodes": 2</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>小提示</strong><br>分开专用master节点和数据角色的一个优点是，如果你可以有只有三个主节点资格，并设置minimum_master_nodes到2。你不用再更改此设置，无论你有多少个专用的数据节点添加到集群。</p>
+<h1 id="数据节点"><a href="#数据节点" class="headerlink" title="数据节点"></a>数据节点</h1><p>数据节点保留着包含已索引文档的分片。数据节点处理相关操作，比如CRUD，搜索和汇总数据。这些操作是I / O-，内存 - 和CPU密集型。监视这些资源，以及当他们超载<br>时添加更多的数据节点是很重要的。</p>
+<p>具有专用数据节点的主要优点是master和数据节点角色的分离。<br>要创建一个专用的数据节点，设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node.master: false </div><div class="line">node.data: true </div><div class="line">node.ingest: false</div></pre></td></tr></table></figure></p>
+<h1 id="摄取节点"><a href="#摄取节点" class="headerlink" title="摄取节点"></a>摄取节点</h1><p>摄取节点可以执行预处理管道，由一个或多个摄取处理器组成。根据摄取处理器和所需的资源执行的操作的类型决定，有专门的摄取节点是有意义的，只会执行这个特定的任务。<br>要创建一个专用的采集节点，设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">node.master: false </div><div class="line">node.data: false </div><div class="line">node.ingest: true </div><div class="line">search.remote.connect: false</div></pre></td></tr></table></figure></p>
+<h1 id="只协调节点"><a href="#只协调节点" class="headerlink" title="只协调节点"></a>只协调节点</h1><p>如果你去掉 到能master责任，去掉保持数据的能力，去掉预处理文件，那么你就留下了一个协调节点，它只能路由请求，处理搜索收集阶段，并分发批量索引。从本质上讲，只协调节点表现为智能负载均衡。</p>
+<p>只协调节点对大集群有益，他们加入集群，收到完整的群集状态，像其他的节点，它们使用群集状态直接路由请求到适当位置。</p>
+<p><strong>警告</strong><br>加入过多的协调会提高整个集群的负担，因为master节点，必须从每个节点等待集群状态更新！只协调节点的好处不应该被夸大 - 数据节点可以达到同样的目的。<br>要创建一个专门的协调节点，设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">node.master: false </div><div class="line">node.data: false </div><div class="line">node.ingest: false </div><div class="line">search.remote.connect: false</div></pre></td></tr></table></figure></p>
+<h1 id="节点的数据路径设置"><a href="#节点的数据路径设置" class="headerlink" title="节点的数据路径设置"></a>节点的数据路径设置</h1><ul>
+<li>path.data</li>
 </ul>
-<p>下图展示了不同AMQP命令的列表和对应的权限<br><img src="/post/rabbitMQ-management/03.png" alt=""></p>
-<p>每一条访问控制条目由以下四部分组成：</p>
+<p>每个数据和主合格的节点需要访问其中分片和索引和集群的元数据将被存储在这个数据目录。path.data默认是$ES_HOME/data，但可以在被配置elasticsearch.yml的配置文件的绝对路径或相对于一路径$ES_HOME如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path.data:  /var/elasticsearch/data</div></pre></td></tr></table></figure></p>
+<p>像所有的节点设置，也可以在命令行上指定的：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./bin/elasticsearch -Epath.data=/var/elasticsearch/data</div></pre></td></tr></table></figure></p>
+<p><strong>小提示</strong><br>当使用.zip或.tar.gz分发版，path.data设置应配置为定位Elasticsearch主目录之外的数据目录，从而使主目录可以删除，但不删除您的数据！rpm和Debian发行版为你已经这样做了。</p>
 <ul>
-<li>被授予访问权限的用户</li>
-<li>权限控制应用的vhost</li>
-<li>原药授予的读/写/配置权限的组合</li>
-<li>权限范围</li>
+<li>node.max_local_storage_nodes</li>
 </ul>
-<p>注意：访问控制条目是无法跨越vhost的，加入你想给用户cashing-tier在vhost oak和vhost sycamore上赋予相同权限，那么你必须穿件两份访问控制条目</p>
-<p>例子：假设你有名为sycamore的vhost,你想要授予cashing-tier完全的访问权限（配置、写和读权限），你需要rabbitmqctl的<strong>set_permissions</strong>命令完成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl set_permissions -p sycamore \</div><div class="line">cashing-tier &quot;.*&quot;&quot;.*&quot;&quot;.*&quot;</div></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Setting permisssion for user &quot;cashing-tier&quot; in vhost &quot;sycamore ...</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p>解释：</p>
-<ul>
-<li>-p sycamore  这告诉set_permissions条目应该应用在那个vhost上</li>
-<li>cashing-tier 被授予权限的用户</li>
-<li>“.<em>“”.</em>“”.*” 这是授予的权限，分别映射到配置、写、读</li>
-</ul>
-<p>权限值中三个值都是正则表达式，”.*”指代所有权限，以为这匹配任何队列或交换器的名字</p>
-<p><strong>删除权限</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.rabbitmqctl clear_permissions -p oak cashing-tier</div></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Clearing permissions for user &quot;cashing-tier&quot; in vhost &quot;oak&quot;...</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p><strong>查看用户在RabbitMQ服务器所有vhost上的权限</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmq list_user_permissons cashing-tier</div></pre></td></tr></table></figure>
-<p>输出：<br><img src="/post/rabbitMQ-management/04.png" alt=""></p>
-<h1 id="使用统计"><a href="#使用统计" class="headerlink" title="使用统计"></a>使用统计</h1><p><strong>列出队列和消息数目</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_queues</div></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Listing queues ...</div><div class="line">msg-inbox-logs 0</div><div class="line">msg-inbox-errors 0</div><div class="line">all-logs 3</div><div class="line">...done</div></pre></td></tr></table></figure>
-<p>这些都是默认vhost的信息。如果想要获取另一个vhost的话，可以使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_queues -p sycamore</div></pre></td></tr></table></figure>
-<p><strong>如果运行rabbitmqctl命令二不携带任何选项的话，就会展示帮助信息</strong></p>
-<p><strong>查看交换器和绑定</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqctl list_exchanges</div></pre></td></tr></table></figure>
-<p>输出：<br><img src="/post/rabbitMQ-management/05.png" alt=""></p>
-<p>你会发现若干个交换器早已经声明好了，例如amq.topic,amq.ditect和amq.fanout,AMQP规范里面对这些交换器有规定</p>
-<p>只有一个direct类型而没有交换器名称，这就是匿名交换器，每个队列默认绑定到该交换器</p>
-<p>（注：内容整理自《RabbitMQ实战》）</p>
+<p>path.data可以由多个节点共享，即使是不同的集群的节点。这对你在开发机器上测试故障转移和不同的配置是非常有用的。在生产环境中，建议每个服务器上运行一个节点Elasticsearch的。</p>
+<p>默认情况下，Elasticsearch被构造成防止多于一个的节点共享同一数据路径。要允许多个节点（例如，在开发计算机上），使用设置 node.max_local_storage_nodes和将其设置为一个正整数大于一。</p>
+<p><strong>警告</strong><br>不要运行来自相同数据目录的不同的节点类型（例如master和data节点）。这会导致意外的数据丢失。</p>
+<p>其他节点设置与X-包节点设置 略<br>（本文完）</p>
 
             
         </div>
@@ -354,7 +279,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/RabbitMQ/">RabbitMQ</a> <a class="tag tag--primary tag--small t-link" href="/tags/消息队列/">消息队列</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/ElasticSearch/">ElasticSearch</a>
 
             </div>
         
@@ -364,7 +289,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/read-think-like-programmer/"  data-tooltip="《像程序员一样思考》书摘">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -372,7 +297,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/rabbitMQ-persistence/" data-tooltip="RabbitMQ-理解消息通信-持久化策略">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-jvm-optimization/" data-tooltip="JVM性能调优经验总结">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -390,7 +315,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -398,7 +323,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -406,7 +331,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -456,7 +381,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/read-think-like-programmer/"  data-tooltip="《像程序员一样思考》书摘">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -464,7 +389,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/rabbitMQ-persistence/" data-tooltip="RabbitMQ-理解消息通信-持久化策略">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-jvm-optimization/" data-tooltip="JVM性能调优经验总结">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -482,7 +407,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -490,7 +415,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -498,7 +423,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -529,7 +454,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -537,7 +462,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -545,7 +470,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/rabbitMQ-management/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-5.5-node/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -884,9 +809,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://wangnan.tech/post/rabbitMQ-management/';
+                 this.page.url = 'http://wangnan.tech/post/elasticsearch-5.5-node/';
                  
-                    this.page.identifier = 'post/rabbitMQ-management/';
+                    this.page.identifier = 'post/elasticsearch-5.5-node/';
                  
              };
             (function() {

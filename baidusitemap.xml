@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-5.5-node/</loc>
+    <lastmod>2017-08-17T02:11:15.934Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch5.5官方文档翻译-节点</title>
+        <pubTime>2017-08-17T02:05:08.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-jvm-optimization/</loc>
     <lastmod>2017-08-16T01:56:26.159Z</lastmod>
     <data>
