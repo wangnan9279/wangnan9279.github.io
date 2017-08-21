@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="wangnan&#39;s blog">
-    <title>Tag: 搜索引擎 - wangnan&#39;s blog</title>
+    <title>Elasticsearch5.5官方文档翻译-Zen Discovery - wangnan&#39;s blog</title>
     <meta name="author" content="wangnan&#39;s blog">
     
     
         <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
     
     
-    <meta name="description" content="wangnan&apos;s blog">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="wangnan's blog">
-<meta property="og:url" content="http://wangnan.tech/tags/搜索引擎/page/3/index.html">
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Elasticsearch5.5官方文档翻译-Zen Discovery">
+<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-zen-discovery/index.html">
 <meta property="og:site_name" content="wangnan's blog">
-<meta property="og:description" content="wangnan&apos;s blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/38.jpg">
+<meta property="og:updated_time" content="2017-08-21T01:43:12.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wangnan's blog">
-<meta name="twitter:description" content="wangnan&apos;s blog">
+<meta name="twitter:title" content="Elasticsearch5.5官方文档翻译-Zen Discovery">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/38.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -32,6 +32,9 @@
     
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/38.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/38.jpg" />
     
     
     
@@ -57,7 +60,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="2">
+<header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
@@ -81,7 +84,7 @@
         
     
 
-<nav id="sidebar" data-behavior="2">
+<nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -180,29 +183,25 @@
 </nav>
 
             
-            <div id="main" data-behavior="2"
+            <div id="main" data-behavior="5"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/elasticsearch-lucene-score-rule/">
-                            Elasticsearch如何评分?-Apache Lucene默认评分公式解释
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-07-28T11:24:39+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Elasticsearch5.5官方文档翻译-Zen Discovery
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-08-21T09:40:54+08:00">
 	
-		    Jul 28, 2016
+		    Aug 21, 2017
     	
     </time>
     
@@ -214,97 +213,164 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/elasticsearch-lucene-score-rule/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/elasticsearch-lucene-score-rule/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/elasticsearch-introduction/">
-                            Elasticsearch简介
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-08T12:31:23+08:00">
-	
-		    May 08, 2016
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-
     
 </div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/38.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#章节"><span class="toc-text">章节</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Master选举"><span class="toc-text">Master选举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故障检测"><span class="toc-text">故障检测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集群状态"><span class="toc-text">集群状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无主块"><span class="toc-text">无主块</span></a></li></ol></span></p>
+<h1 id="章节"><a href="#章节" class="headerlink" title="章节"></a>章节</h1><p>Modules » Discovery » Zen Discovery</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Zen Discovery是内置在elasticsearch的默认发现模块。它提供单播发现，但可扩展到支持云环境和其他形式的发现。</p>
+<p>禅发现集成了其它模块，例如，节点之间的所有通信是使用transport模块。</p>
+<p>它被分离成多个子模块，其解释如下：</p>
+<ul>
+<li><p>Ping<br>这是一个节点使用发现机制找到其他节点的过程。</p>
+</li>
+<li><p>Unicast<br>单播发现需要一个主机列表，用于将作为GossipRouter。这些宿主可被指定为主机名或IP地址;指定主机名的主机每一轮Ping过程中解析为IP地址。</p>
+</li>
+</ul>
+<p>需要注意的是，因为有Java安全管理器，JVM的默认无限期缓存有效的主机名解析。这可以通过添加修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">networkaddress.cache.ttl=&lt;timeout&gt;</div></pre></td></tr></table></figure></p>
+<p>到你的 Java安全策略。未能解析的任何主机都将被记录。</p>
+<p>还要注意的是，因为有Java安全管理器，JVM的默认缓存无效的主机名解析十秒钟。这可以通过添加修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">networkaddress.cache.negative.ttl=&lt;timeout&gt;</div></pre></td></tr></table></figure></p>
+<p>到你的Java安全策略。</p>
+<p>建议在单播的主机列表中维护集群中的主合格节点的列表。</p>
+<p>单播的发现提供了与以下设置discovery.zen.ping.unicast前缀：</p>
+<ul>
+<li><p>hosts<br>用数组阵列设置或逗号分隔设置。每个值应在的形式，host:port或host（其中port默认为设置transport.profiles.default.port 如果未设定使用transport.tcp.port）。需要注意的是IPv6的主机必须用括号括起来。默认为127.0.0.1, [::1]</p>
+</li>
+<li><p>hosts.resolve_timeout</p>
+</li>
+</ul>
+<p>每轮ping的DNS查找等待时间量。默认为5秒。</p>
+<p>单播发现使用传输模块来执行发现。</p>
+<h1 id="Master选举"><a href="#Master选举" class="headerlink" title="Master选举"></a>Master选举</h1><p>作为Ping过程的一部分，集群的主节点要么当选要么加入假期。这是自动完成的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.ping_timeout（默认为3s）</div></pre></td></tr></table></figure></p>
+<p>允许选举时间的波动去处理速度慢或拥塞网络的情况（较高的值保证失败率少）。一旦一个节点加入时，它会发出一个加入<br>请求到主（discovery.zen.join_timeout）超时时间默认是ping timeout的20倍</p>
+<p>当主节点停止或遇到问题，群集节点萌重新开始执行ping命令，并会选出新的主节点。这轮Ping也可对抗（部分）网络故障，其中一个节点可能认为主节点挂掉。在这种情况下，节点将从其他节点获取当前的主节点</p>
+<p>如果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.master_election.ignore_non_master_pings</div></pre></td></tr></table></figure></p>
+<p>是true，选主期间，从没有资格的节点（当节点的node.master是false）奖杯忽略<br>该值默认值是 false。</p>
+<p>节点可以被排除成为主节点当node.master为false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.minimum_master_nodes</div></pre></td></tr></table></figure>
+<p>设置需要加入一个新的主选举的最小的主合格节点数量，相同的设置控制活的主合格节点的最小数量，应该是活集群的一部分。如果这一要求得不到满足，活动主节点将下台，新的主导选举将开始。</p>
+<p>此设置必须通过一个公式算出来。建议避免仅具有两个主资格的节点中，因为任何一个主合格的节点的丢失将导致不可操作群集。</p>
+<h1 id="故障检测"><a href="#故障检测" class="headerlink" title="故障检测"></a>故障检测</h1><p>有两个故障检测运行过程。首先是由主，来ping集群中的所有其他节点，并验证它们是否还活着。而在另一端，每个节点ping 主节点，以验证它是否还活着或选举过程需要启动。</p>
+<p>以下设置控制使用的故障检测过程 以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.fd</div></pre></td></tr></table></figure></p>
+<p>作前缀：</p>
+<ul>
+<li><p>ping_interval<br>多久一个节点被ping。默认为1s。</p>
+</li>
+<li><p>ping_timeout<br>等待多久ping响应，默认为 30s。</p>
+</li>
+<li><p>ping_retries<br>有多少ping失败/超时导致被视为一个节点失败。默认为3。</p>
+</li>
+</ul>
+<h1 id="集群状态"><a href="#集群状态" class="headerlink" title="集群状态"></a>集群状态</h1><p>主节点是群集中，可以使改变集群状态的唯一节点。主节点一次处理一个集群状态更新，状态改变和发布更新的到集群中的所有其他节点。每个节点接收发布消息，确认它，但还没有立即应用它。如果主节点没有接收来自节点确认的数量至少为discovery.zen.minimum_master_nodes，在时间（由受控discovery.zen.commit_timeout设置，默认值为30秒）内。节点集群状态改变被拒绝。</p>
+<p>一旦足够的节点已作出回应，集群状态改变被提交然后消息将被发送到所有结点。然后节点然后进行新的群集状态适用于他们的内部状态。主节点等待所有节点响应，在去队列处理下一个状态更新之前，直到超时，超时时间是在discovery.zen.publish_timeout默认情况下设置为30秒，时间从发布开始时测量h超时设置可以通过动态的改变集群更新设置API</p>
+<h1 id="无主块"><a href="#无主块" class="headerlink" title="无主块"></a>无主块</h1><p>为了让集群全面运作，必须有一个有效的主节点和一些主资格的节点。主资格的节点必须满足的数目 discovery.zen.minimum_master_nodes，如果被设置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">discovery.zen.no_master_block</div></pre></td></tr></table></figure></p>
+<p>设置控制什么操作被拒绝，当没有有效的主节点时。</p>
+<p>该discovery.zen.no_master_block设置有两个有效的选项：</p>
+<ul>
+<li>all</li>
+</ul>
+<p>对节点的所有的操作，比如读与写操作，将被拒绝。这也适用于读与写集群状态的api，获取索引设置，设置mapping和集群状态api</p>
+<ul>
+<li>write（默认）<br>写操作将被拒绝。读操作会成功。基于最后已知的群集配置。这可能导致局部陈旧数据的读取，因为节点可能从集群的其余部分分离。</li>
+</ul>
+<p>该discovery.zen.no_master_block设置并不适用于基于节点的API（例如群集的统计信息，节点信息和节点统计的API）。请这些API将不会被阻塞，可以在任何可用的节点上运行。</p>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/elasticsearch-introduction/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-            <a href="/post/elasticsearch-introduction/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png"/>
-                </div>
-            </a>
-            
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/ElasticSearch/">ElasticSearch</a>
+
+            </div>
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
         
-        <li class="pagination-prev">
-            
-                <a class="btn btn--default btn--small" href="/tags/搜索引擎/page/2/">
-            
-                <i class="fa fa-angle-left text-base icon-mr"></i>
-                    <span>NEWER POSTS</span>
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-5.5-node/" data-tooltip="Elasticsearch5.5官方文档翻译-节点">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
             </a>
         </li>
         
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
         
-        <li class="pagination-number">page 3 of 3</li>
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -314,6 +380,110 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-5.5-node/" data-tooltip="Elasticsearch5.5官方文档翻译-节点">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-zen-discovery/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -641,6 +811,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/elasticsearch-zen-discovery/';
+                 
+                    this.page.identifier = 'post/elasticsearch-zen-discovery/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
     </body>
