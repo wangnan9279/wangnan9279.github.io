@@ -1,1 +1,1 @@
-http://wangnan.tech/post/elasticsearch-zen-discovery/
+http://wangnan.tech/post/java-gc-collector/

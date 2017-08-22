@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-gc-collector/</loc>
+    <lastmod>2017-08-22T06:08:17.620Z</lastmod>
+    <data>
+        <display>
+        <title>JVM垃圾回收器详解</title>
+        <pubTime>2017-08-22T06:03:13.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-zen-discovery/</loc>
     <lastmod>2017-08-21T01:43:12.311Z</lastmod>
     <data>

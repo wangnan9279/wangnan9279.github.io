@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="wangnan&#39;s blog">
+    <title>JVM垃圾回收器详解 - wangnan&#39;s blog</title>
+    <meta name="author" content="wangnan&#39;s blog">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="JVM垃圾回收器详解">
+<meta property="og:url" content="http://wangnan.tech/post/java-gc-collector/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/gc.png">
+<meta property="og:updated_time" content="2017-08-22T06:08:17.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM垃圾回收器详解">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">wangnan&#39;s blog</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            JVM垃圾回收器详解
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-08-22T14:03:13+08:00">
+	
+		    Aug 22, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Java/">Java</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/39.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于垃圾回收"><span class="toc-text">关于垃圾回收</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器分类"><span class="toc-text">垃圾收集器分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器的指标"><span class="toc-text">垃圾收集器的指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器介绍"><span class="toc-text">垃圾收集器介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代串行收集器"><span class="toc-text">新生代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代串行收集器"><span class="toc-text">老年代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行收集器"><span class="toc-text">并行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代并行回收-Parallel-Scavenge-收集器"><span class="toc-text">新生代并行回收 (Parallel Scavenge) 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代并行回收收集器"><span class="toc-text">老年代并行回收收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CMS-收集器"><span class="toc-text">CMS 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1-收集器-Garbage-First"><span class="toc-text">G1 收集器 (Garbage First)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC-相关参数总结"><span class="toc-text">GC 相关参数总结</span></a></li></ol></span></p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>针对jdk7</p>
+<h1 id="关于垃圾回收"><a href="#关于垃圾回收" class="headerlink" title="关于垃圾回收"></a>关于垃圾回收</h1><p>可以查看我之前的博文：<br><a href="http://wangnan.tech/post/java-memory-manage">JVM内存管理-垃圾回收与内存分配</a></p>
+<h1 id="垃圾收集器分类"><a href="#垃圾收集器分类" class="headerlink" title="垃圾收集器分类"></a>垃圾收集器分类</h1><ul>
+<li>按线程数分</li>
+</ul>
+<p>可以分为串行垃圾回收器和并行垃圾回收器。串行垃圾回收器一次只使用一个线程进行垃圾回收；并行垃圾回收器一次将开启多个线程同时进行垃圾回收。在并行能力较强的 CPU 上，使用并行垃圾回收器可以缩短 GC 的停顿时间。</p>
+<ul>
+<li>按照工作模式分</li>
+</ul>
+<p>可以分为并发式垃圾回收器和独占式垃圾回收器。并发式垃圾回收器与应用程序线程交替工作，以尽可能减少应用程序的停顿时间；独占式垃圾回收器 (Stop the world) 一旦运行，就停止应用程序中的其他所有线程，直到垃圾回收过程完全结束</p>
+<ul>
+<li>按碎片处理方式</li>
+</ul>
+<p>可分为压缩式垃圾回收器和非压缩式垃圾回收器。压缩式垃圾回收器会在回收完成后，对存活对象进行压缩整理，消除回收后的碎片；非压缩式的垃圾回收器不进行这步操作。</p>
+<ul>
+<li>按工作的内存区间</li>
+</ul>
+<p>可分为新生代垃圾回收器和老年代垃圾回收器</p>
+<h1 id="垃圾收集器的指标"><a href="#垃圾收集器的指标" class="headerlink" title="垃圾收集器的指标"></a>垃圾收集器的指标</h1><ul>
+<li>吞吐量</li>
+</ul>
+<p>指在应用程序的生命周期内，应用程序所花费的时间和系统总运行时间的比值。系统总运行时间=应用程序耗时+GC 耗时。如果系统运行了 100min，GC 耗时 1min，那么系统的吞吐量就是 (100-1)/100=99%。<br>垃圾回收器负载：和吞吐量相反，垃圾回收器负载指来记回收器耗时与系统运行总时间的比值。</p>
+<ul>
+<li>停顿时间</li>
+</ul>
+<p>指垃圾回收器正在运行时，应用程序的暂停时间。对于独占回收器而言，停顿时间可能会比较长。使用并发的回收器时，由于垃圾回收器和应用程序交替运行，程序的停顿时间会变短，但是，由于其效率很可能不如独占垃圾回收器，故系统的吞吐量可能会较低。</p>
+<ul>
+<li>垃圾回收频率</li>
+</ul>
+<p>指垃圾回收器多长时间会运行一次。一般来说，对于固定的应用而言，垃圾回收器的频率应该是越低越好。通常增大堆空间可以有效降低垃圾回收发生的频率，但是可能会增加回收产生的停顿时间。</p>
+<ul>
+<li>反应时间</li>
+</ul>
+<p>指当一个对象被称为垃圾后多长时间内，它所占据的内存空间会被释放。</p>
+<ul>
+<li>堆分配</li>
+</ul>
+<p>不同的垃圾回收器对堆内存的分配方式可能是不同的。一个良好的垃圾收集器应该有一个合理的堆内存区间划分。</p>
+<h1 id="垃圾收集器介绍"><a href="#垃圾收集器介绍" class="headerlink" title="垃圾收集器介绍"></a>垃圾收集器介绍</h1><p><img src="http://onxkn9cbz.bkt.clouddn.com/gc.png" alt=""></p>
+<h2 id="新生代串行收集器"><a href="#新生代串行收集器" class="headerlink" title="新生代串行收集器"></a>新生代串行收集器</h2><p>串行收集器主要有两个特点：第一，它仅仅使用单线程进行垃圾回收；第二，它独占式的垃圾回收。</p>
+<p>在串行收集器进行垃圾回收时，Java 应用程序中的线程都需要暂停，等待垃圾回收的完成，这样给用户体验造成较差效果。虽然如此，串行收集器却是一个成熟、经过长时间生产环境考验的极为高效的收集器。新生代串行处理器使用复制算法，实现相对简单，逻辑处理特别高效，且没有线程切换的开销。在诸如单 CPU 处理器或者较小的应用内存等硬件平台不是特别优越的场合，它的性能表现可以超过并行回收器和并发回收器。在 HotSpot 虚拟机中，使用-XX：+UseSerialGC 参数可以指定使用新生代串行收集器和老年代串行收集器。当 JVM 在 Client 模式下运行时，它是默认的垃圾收集器。</p>
+<h2 id="老年代串行收集器"><a href="#老年代串行收集器" class="headerlink" title="老年代串行收集器"></a>老年代串行收集器</h2><p>老年代串行收集器使用的是标记-压缩算法。和新生代串行收集器一样，它也是一个串行的、独占式的垃圾回收器。由于老年代垃圾回收通常会使用比新生代垃圾回收更长的时间，因此，在堆空间较大的应用程序中，一旦老年代串行收集器启动，应用程序很可能会因此停顿几秒甚至更长时间。虽然如此，老年代串行回收器可以和多种新生代回收器配合使用，同时它也可以作为 CMS 回收器的备用回收器。若要启用老年代串行回收器，可以尝试使用以下参数：-XX:+UseSerialGC: 新生代、老年代都使用串行回收器。</p>
+<p>如果使用-XX:+UseParNewGC 参数设置，表示新生代使用并行收集器，老年代使用串行收集器</p>
+<p>如果使用-XX:+UseParallelGC 参数设置，表示新生代和老年代均使用并行回收收集器</p>
+<h2 id="并行收集器"><a href="#并行收集器" class="headerlink" title="并行收集器"></a>并行收集器</h2><p>并行收集器是工作在新生代的垃圾收集器，它只简单地将串行回收器多线程化。它的回收策略、算法以及参数和串行回收器一样。</p>
+<p>并行回收器也是独占式的回收器，在收集过程中，应用程序会全部暂停。但由于并行回收器使用多线程进行垃圾回收，因此，在并发能力比较强的 CPU 上，它产生的停顿时间要短于串行回收器，而在单 CPU 或者并发能力较弱的系统中，并行回收器的效果不会比串行回收器好，由于多线程的压力，它的实际表现很可能比串行回收器差。</p>
+<p>开启并行回收器可以使用参数-XX:+UseParNewGC，该参数设置新生代使用并行收集器，老年代使用串行收集器。</p>
+<p>设置参数-XX:+UseConcMarkSweepGC 可以要求新生代使用并行收集器，老年代使用 CMS。</p>
+<p>并行收集器工作时的线程数量可以使用-XX:ParallelGCThreads 参数指定。一般，最好与 CPU 数量相当，避免过多的线程数影响垃圾收集性能</p>
+<h2 id="新生代并行回收-Parallel-Scavenge-收集器"><a href="#新生代并行回收-Parallel-Scavenge-收集器" class="headerlink" title="新生代并行回收 (Parallel Scavenge) 收集器"></a>新生代并行回收 (Parallel Scavenge) 收集器</h2><p>新生代并行回收收集器也是使用复制算法的收集器。从表面上看，它和并行收集器一样都是多线程、独占式的收集器。但是，并行回收收集器有一个重要的特点：它非常关注系统的吞吐量。</p>
+<p>新生代并行回收收集器可以使用以下参数启用：</p>
+<p>-XX:+UseParallelGC:新生代使用并行回收收集器，老年代使用串行收集器。</p>
+<p>-XX:+UseParallelOldGC:新生代和老年代都是用并行回收收集器。</p>
+<p>新生代并行回收收集器可以使用以下参数启用：</p>
+<p>-XX:+MaxGCPauseMills:设置最大垃圾收集停顿时间，它的值是一个大于 0 的整数。收集器在工作时会调整 Java 堆大小或者其他一些参数，尽可能地把停顿时间控制在 MaxGCPauseMills 以内。如果希望减少停顿时间，而把这个值设置得很小，为了达到预期的停顿时间，JVM 可能会使用一个较小的堆 (一个小堆比一个大堆回收快)，而这将导致垃圾回收变得很频繁，从而增加了垃圾回收总时间，降低了吞吐量。</p>
+<p>-XX:+GCTimeRatio：设置吞吐量大小，它的值是一个 0-100 之间的整数。假设 GCTimeRatio 的值为 n，那么系统将花费不超过 1/(1+n) 的时间用于垃圾收集。比如 GCTimeRatio 等于 19，则系统用于垃圾收集的时间不超过 1/(1+19)=5%。默认情况下，它的取值是 99，即不超过 1%的时间用于垃圾收集。</p>
+<p>除此之外，并行回收收集器与并行收集器另一个不同之处在于，它支持一种自适应的 GC 调节策略，使用-XX:+UseAdaptiveSizePolicy 可以打开自适应 GC 策略。在这种模式下，新生代的大小、eden 和 survivor 的比例、晋升老年代的对象年龄等参数会被自动调整，以达到在堆大小、吞吐量和停顿时间之间的平衡点。在手工调优比较困难的场合，可以直接使用这种自适应的方式，仅指定虚拟机的最大堆、目标的吞吐量 (GCTimeRatio) 和停顿时间 (MaxGCPauseMills)，让虚拟机自己完成调优工作</p>
+<h2 id="老年代并行回收收集器"><a href="#老年代并行回收收集器" class="headerlink" title="老年代并行回收收集器"></a>老年代并行回收收集器</h2><p>老年代的并行回收收集器也是一种多线程并发的收集器。和新生代并行回收收集器一样，它也是一种关注吞吐量的收集器。老年代并行回收收集器使用标记-压缩算法，JDK1.6 之后开始启用。</p>
+<p>使用-XX:+UseParallelOldGC 可以在新生代和老生代都使用并行回收收集器，这是一对非常关注吞吐量的垃圾收集器组合，在对吞吐量敏感的系统中，可以考虑使用。参数-XX:ParallelGCThreads 也可以用于设置垃圾回收时的线程数量。</p>
+<h2 id="CMS-收集器"><a href="#CMS-收集器" class="headerlink" title="CMS 收集器"></a>CMS 收集器</h2><p>与并行回收收集器不同，CMS 收集器主要关注于系统停顿时间。CMS 是 Concurrent Mark Sweep 的缩写，意为并发标记清除，从名称上可以得知，它使用的是标记-清除算法，同时它又是一个使用多线程并发回收的垃圾收集器。</p>
+<p>CMS 工作时，主要步骤有：初始标记、并发标记、重新标记、并发清除和并发重置。其中初始标记和重新标记是独占系统资源的，而并发标记、并发清除和并发重置是可以和用户线程一起执行的。因此，从整体上来说，CMS 收集不是独占式的，它可以在应用程序运行过程中进行垃圾回收。</p>
+<p>根据标记-清除算法，初始标记、并发标记和重新标记都是为了标记出需要回收的对象。并发清理则是在标记完成后，正式回收垃圾对象；并发重置是指在垃圾回收完成后，重新初始化 CMS 数据结构和数据，为下一次垃圾回收做好准备。并发标记、并发清理和并发重置都是可以和应用程序线程一起执行的。</p>
+<p>CMS 收集器在其主要的工作阶段虽然没有暴力地彻底暂停应用程序线程，但是由于它和应用程序线程并发执行，相互抢占 CPU，所以在 CMS 执行期内对应用程序吞吐量造成一定影响。CMS 默认启动的线程数是 (ParallelGCThreads+3)/4),ParallelGCThreads 是新生代并行收集器的线程数，也可以通过-XX:ParallelCMSThreads 参数手工设定 CMS 的线程数量。当 CPU 资源比较紧张时，受到 CMS 收集器线程的影响，应用程序的性能在垃圾回收阶段可能会非常糟糕。</p>
+<p>由于 CMS 收集器不是独占式的回收器，在 CMS 回收过程中，应用程序仍然在不停地工作。在应用程序工作过程中，又会不断地产生垃圾。这些新生成的垃圾在当前 CMS 回收过程中是无法清除的。同时，因为应用程序没有中断，所以在 CMS 回收过程中，还应该确保应用程序有足够的内存可用。因此，CMS 收集器不会等待堆内存饱和时才进行垃圾回收，而是当前堆内存使用率达到某一阈值时，便开始进行回收，以确保应用程序在 CMS 工作过程中依然有足够的空间支持应用程序运行。</p>
+<p>这个回收阈值可以使用-XX:CMSInitiatingOccupancyFraction 来指定，默认是 68。即当老年代的空间使用率达到 68%时，会执行一次 CMS 回收。如果应用程序的内存使用率增长很快，在 CMS 的执行过程中，已经出现了内存不足的情况，此时，CMS 回收将会失败，JVM 将启动老年代串行收集器进行垃圾回收。如果这样，应用程序将完全中断，直到垃圾收集完成，这时，应用程序的停顿时间可能很长。因此，根据应用程序的特点，可以对-XX:CMSInitiatingOccupancyFraction 进行调优。如果内存增长缓慢，则可以设置一个稍大的值，大的阈值可以有效降低 CMS 的触发频率，减少老年代回收的次数可以较为明显地改善应用程序性能。反之，如果应用程序内存使用率增长很快，则应该降低这个阈值，以避免频繁触发老年代串行收集器。</p>
+<p>标记-清除算法将会造成大量内存碎片，离散的可用空间无法分配较大的对象。在这种情况下，即使堆内存仍然有较大的剩余空间，也可能会被迫进行一次垃圾回收，以换取一块可用的连续内存，这种现象对系统性能是相当不利的，为了解决这个问题，CMS 收集器还提供了几个用于内存压缩整理的算法。</p>
+<p>-XX:+UseCMSCompactAtFullCollection 参数可以使 CMS 在垃圾收集完成后，进行一次内存碎片整理。内存碎片的整理并不是并发进行的。-XX:CMSFullGCsBeforeCompaction 参数可以用于设定进行多少次 CMS 回收后，进行一次内存压缩。</p>
+<p>-XX:CMSInitiatingOccupancyFraction 设置为 100，同时设置-XX:+UseCMSCompactAtFullCollection 和-XX:CMSFullGCsBeforeCompaction，日志输出如下：</p>
+<p>关于CMS收集器，深入了解阅读下面的博文<br><a href="https://github.com/pzxwhc/MineKnowContainer/issues/89" target="_blank" rel="external">link</a></p>
+<h2 id="G1-收集器-Garbage-First"><a href="#G1-收集器-Garbage-First" class="headerlink" title="G1 收集器 (Garbage First)"></a>G1 收集器 (Garbage First)</h2><p>G1 收集器的目标是作为一款服务器的垃圾收集器，因此，它在吞吐量和停顿控制上，预期要优于 CMS 收集器。</p>
+<p>与 CMS 收集器相比，G1 收集器是基于标记-压缩算法的。因此，它不会产生空间碎片，也没有必要在收集完成后，进行一次独占式的碎片整理工作。G1 收集器还可以进行非常精确的停顿控制。它可以让开发人员指定当停顿时长为 M 时，垃圾回收时间不超过 N。使用参数-XX:+UnlockExperimentalVMOptions –XX:+UseG1GC 来启用 G1 回收器，设置 G1 回收器的目标停顿时间：-XX:MaxGCPauseMills=20,-XX:GCPauseIntervalMills=200。</p>
+<p>关于G1收集器，深入了解阅读下面的博文<br><a href="https://github.com/pzxwhc/MineKnowContainer/issues/90" target="_blank" rel="external">link</a><br><a href="http://ifeve.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3g1%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" target="_blank" rel="external">link</a></p>
+<h1 id="GC-相关参数总结"><a href="#GC-相关参数总结" class="headerlink" title="GC 相关参数总结"></a>GC 相关参数总结</h1><ol>
+<li>与串行回收器相关的参数<br>-XX:+UseSerialGC:在新生代和老年代使用串行回收器。<br>-XX:+SurvivorRatio:设置 eden 区大小和 survivor 区大小的比例。<br>-XX:+PretenureSizeThreshold:设置大对象直接进入老年代的阈值。当对象的大小超过这个值时，将直接在老年代分配。<br>-XX:MaxTenuringThreshold:设置对象进入老年代的年龄的最大值。每一次 Minor GC 后，对象年龄就加 1。任何大于这个年龄的对象，一定会进入老年代。</li>
+<li>与并行 GC 相关的参数<br>-XX:+UseParNewGC: 在新生代使用并行收集器。<br>-XX:+UseParallelOldGC: 老年代使用并行回收收集器。<br>-XX:ParallelGCThreads：设置用于垃圾回收的线程数。通常情况下可以和 CPU 数量相等。但在 CPU 数量比较多的情况下，设置相对较小的数值也是合理的。<br>-XX:MaxGCPauseMills：设置最大垃圾收集停顿时间。它的值是一个大于 0 的整数。收集器在工作时，会调整 Java 堆大小或者其他一些参数，尽可能地把停顿时间控制在 MaxGCPauseMills 以内。<br>-XX:GCTimeRatio:设置吞吐量大小，它的值是一个 0-100 之间的整数。假设 GCTimeRatio 的值为 n，那么系统将花费不超过 1/(1+n) 的时间用于垃圾收集。<br>-XX:+UseAdaptiveSizePolicy:打开自适应 GC 策略。在这种模式下，新生代的大小，eden 和 survivor 的比例、晋升老年代的对象年龄等参数会被自动调整，以达到在堆大小、吞吐量和停顿时间之间的平衡点。</li>
+<li>与 CMS 回收器相关的参数<br>-XX:+UseConcMarkSweepGC: 新生代使用并行收集器，老年代使用 CMS+串行收集器。<br>-XX:+ParallelCMSThreads: 设定 CMS 的线程数量。<br>-XX:+CMSInitiatingOccupancyFraction:设置 CMS 收集器在老年代空间被使用多少后触发，默认为 68%。<br>-XX:+UseFullGCsBeforeCompaction:设定进行多少次 CMS 垃圾回收后，进行一次内存压缩。<br>-XX:+CMSClassUnloadingEnabled:允许对类元数据进行回收。<br>-XX:+CMSParallelRemarkEndable:启用并行重标记。<br>-XX:CMSInitatingPermOccupancyFraction:当永久区占用率达到这一百分比后，启动 CMS 回收 (前提是-XX:+CMSClassUnloadingEnabled 激活了)。<br>-XX:UseCMSInitatingOccupancyOnly:表示只在到达阈值的时候，才进行 CMS 回收。<br>-XX:+CMSIncrementalMode:使用增量模式，比较适合单 CPU。</li>
+<li>与 G1 回收器相关的参数<br>-XX:+UseG1GC：使用 G1 回收器。<br>-XX:+UnlockExperimentalVMOptions:允许使用实验性参数。<br>-XX:+MaxGCPauseMills:设置最大垃圾收集停顿时间。<br>-XX:+GCPauseIntervalMills:设置停顿间隔时间。</li>
+<li>其他参数<br>-XX:+DisableExplicitGC: 禁用显示 GC。</li>
+</ol>
+<p>（本文完）<br>参考：</p>
+<ul>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-JVMGarbageCollection/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/java/j-lo-JVMGarbageCollection/</a></li>
+<li><a href="https://github.com/pzxwhc/MineKnowContainer/issues/89" target="_blank" rel="external">https://github.com/pzxwhc/MineKnowContainer/issues/89</a></li>
+<li><a href="https://github.com/pzxwhc/MineKnowContainer/issues/90" target="_blank" rel="external">https://github.com/pzxwhc/MineKnowContainer/issues/90</a></li>
+<li><a href="http://ifeve.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3g1%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" target="_blank" rel="external">http://ifeve.com/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3g1%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</a></li>
+<li><a href="http://chenchendefeng.iteye.com/blog/455883" target="_blank" rel="external">http://chenchendefeng.iteye.com/blog/455883</a></li>
+<li><a href="http://www.jianshu.com/p/50d5c88b272d" target="_blank" rel="external">http://www.jianshu.com/p/50d5c88b272d</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/JVM/">JVM</a> <a class="tag tag--primary tag--small t-link" href="/tags/Java/">Java</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-zen-discovery/" data-tooltip="Elasticsearch5.5官方文档翻译-Zen Discovery">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 wangnan&#39;s blog. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-zen-discovery/" data-tooltip="Elasticsearch5.5官方文档翻译-Zen Discovery">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-gc-collector/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">wangnan&#39;s blog</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                96 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/java-gc-collector/';
+                 
+                    this.page.identifier = 'post/java-gc-collector/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
