@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="wangnan&#39;s blog">
+    <title>JVM编译优化 - wangnan&#39;s blog</title>
+    <meta name="author" content="wangnan&#39;s blog">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="JVM编译优化">
+<meta property="og:url" content="http://wangnan.tech/post/java-compile-optimization/index.html">
+<meta property="og:site_name" content="wangnan's blog">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/jvm-compile.png">
+<meta property="og:updated_time" content="2017-08-23T02:11:31.334Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM编译优化">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">wangnan&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">wangnan&#39;s blog</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            JVM编译优化
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-08-23T10:06:45+08:00">
+	
+		    Aug 23, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Java/">Java</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/40.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HotSpot-内的即时编译器"><span class="toc-text">HotSpot 内的即时编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器和编译器各有各的优点"><span class="toc-text">解释器和编译器各有各的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被编译对象和触发条件"><span class="toc-text">被编译对象和触发条件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译过程"><span class="toc-text">编译过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译期优化（早期优化）"><span class="toc-text">编译期优化（早期优化）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时优化（晚期优化）"><span class="toc-text">运行时优化（晚期优化）</span></a></li></ol></li></ol><br>在部分的商用虚拟机中，Java 程序最初是通过解释器（Interpreter ）进行解释执行的，<strong>当虚拟机发现某个方法或代码块的运行特别频繁的时候，就会把这些代码认定为“热点代码”。为了提高热点代码的执行效率，在运行时，即时编译器（Just In Time Compiler ）会把这些代码编译成与本地平台相关的机器码，并进行各种层次的优化。</strong></span></p>
+<h1 id="HotSpot-内的即时编译器"><a href="#HotSpot-内的即时编译器" class="headerlink" title="HotSpot 内的即时编译器"></a>HotSpot 内的即时编译器</h1><h2 id="解释器和编译器各有各的优点"><a href="#解释器和编译器各有各的优点" class="headerlink" title="解释器和编译器各有各的优点"></a>解释器和编译器各有各的优点</h2><ul>
+<li><p>解释器优点：当程序需要迅速启动的时候，解释器可以首先发挥作用，省去了编译的时间，立即执行。解释执行占用更小的内存空间。同时，当编译器进行的激进优化失败的时候，还可以进行逆优化来恢复到解释执行的状态。</p>
+</li>
+<li><p>编译器优点：在程序运行时，随着时间的推移，编译器逐渐发挥作用根据热点探测功能，，将有价值的字节码编译为本地机器指令，以换取更高的程序执行效率。<br>因此，整个虚拟机执行架构中，解释器与编译器经常配合工作。</p>
+</li>
+</ul>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/jvm-compile.png" alt=""></p>
+<p>HotSpot中内置了两个即时编译器，分别称为 Client Compiler和 Server Compiler ，或者简称为 C1编译器和 C2编译器。</p>
+<p>目前的 HotSpot编译器默认的是解释器和其中一个即时编译器配合的方式工作，具体是哪一个编译器，取决于虚拟机运行的模式，HotSpot虚拟机会根据自身版本与计算机的硬件性能自动选择运行模式</p>
+<p>用户也可以使用 -client和 -server参数强制指定虚拟机运行在 Client模式或者 Server模式。这种配合使用的方式称为“混合模式”（Mixed Mode）</p>
+<p>用户可以使用参数 -Xint 强制虚拟机运行于 “解释模式”（Interpreted Mode），这时候编译器完全不介入工作。</p>
+<p>另外，使用 -Xcomp 强制虚拟机运行于 “编译模式”（Compiled Mode），这时候将优先采用编译方式执行，但是解释器仍然要在编译无法进行的情况下接入执行过程。通过虚拟机 -version 命令可以查看当前默认的运行模式。 </p>
+<h2 id="被编译对象和触发条件"><a href="#被编译对象和触发条件" class="headerlink" title="被编译对象和触发条件"></a>被编译对象和触发条件</h2><p>在运行过程中会被即时编译的“热点代码”有两类</p>
+<ul>
+<li>被多次调用的方法</li>
+<li>被多次执行的循环体 </li>
+</ul>
+<p>对于第一种，编译器会将整个方法作为编译对象，这也是标准的JIT 编译方式。</p>
+<p>对于第二种是由循环体出发的，但是编译器依然会以整个方法作为编译对象，因为发生在方法执行过程中，称为栈上替换。 </p>
+<p>判断一段代码是否是热点代码，是不是需要出发即时编译，这样的行为称为<strong>热点探测（Hot Spot Detection）</strong>，探测算法有两种，分别为。 </p>
+<ul>
+<li>基于采样的热点探测（Sample Based Hot Spot Detection）：虚拟机会周期的对各个线程栈顶进行检查，如果某些方法经常出现在栈顶，这个方法就是“热点方法”。好处是实现简单、高效，很容易获取方法调用关系。缺点是很难确认方法的reduce，容易受到线程阻塞或其他外因扰乱。 </li>
+<li>基于计数器的热点探测（Counter Based Hot Spot Detection）：为每个方法（甚至是代码块）建立计数器，执行次数超过阈值就认为是“热点方法”。优点是统计结果精确严谨。缺点是实现麻烦，不能直接获取方法的调用关系。<br>HotSpot 使用的是第二种-基于技术其的热点探测，并且有两类计数器：方法调用计数器（Invocation Counter）和回边计数器（Back Edge Counter）。<br>这两个计数器都有一个确定的阈值，超过后便会触发 JIT 编译。</li>
+</ul>
+<h1 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h1><h2 id="编译期优化（早期优化）"><a href="#编译期优化（早期优化）" class="headerlink" title="编译期优化（早期优化）"></a>编译期优化（早期优化）</h2><p>为了保证JRuby，Groovy等语言编译的字节码也能得到性能优化，JVM将性能优化放在了后期的运行时优化，即JIT运行时编译优化中。<br>具体优化: </p>
+<ol>
+<li>编译期优化主要为语法糖，用来实现Java的各种新的语法特性，比如泛型，变长参数，自动装箱/拆箱。 </li>
+<li>Java语法糖：与字节码无关，编译后会去掉它们。作用仅仅为方便码农写代码，以及将运行时异常在编译期及早发现（如泛型的使用）。 </li>
+<li>泛型与类型擦除<br>Java泛型只在编译期存在，编译完成后的字节码中会替换为原生类型。故称Java泛型为伪泛型。C#的泛型在运行期仍然存在。 </li>
+<li>条件编译<br>if语句中使用常量。比如if(false) {},这个语句块不会被编译到字节码中.这个过程在编译时的控制流分析中完成。</li>
+</ol>
+<h2 id="运行时优化（晚期优化）"><a href="#运行时优化（晚期优化）" class="headerlink" title="运行时优化（晚期优化）"></a>运行时优化（晚期优化）</h2><p>不同JVM的运行时优化策略<br>Hotspot采用解释器与编译器并存的构架。<br>第0层，解释执行，不开启性能监控器，可触发第一层编译<br>第1层，将字节码编译为机器码，进行简单可靠的优化，可以开启性能监控<br>第2层，将字节码编译为机器码，会开启一些编译耗时的优化和一些不可靠的激进</p>
+<p><strong>具体优化</strong> </p>
+<ul>
+<li><p>公共字表达式消除<br>如果一个表达式E已经被计算过了，并且从先前的计算到现在E中所有变量的值都没有发生变化，那么E的这次出现就称为了公共子表达式。对于这种表达式，没有必要花时间再对它进行计算，只需要直接用前面计算过的表达式结果代替E就可以了。</p>
+</li>
+<li><p>数组边界检查消除<br>数组边界检查消除（Array Bounds Checking Elimination）是即时编译器中的一项语言相关的经典优化技术。Java访问数组的时候系统将会自动进行上下界的范围检查，但对于虚拟机的执行子 系统来说，每次数组元素的读写都带有一次隐含的条件判定操作，对于拥有大量数组访问的程序代码，这无疑也是一种性能负担。<br>数组边界检查时必须做的，但数组边界检查在某些情况下可以简化。例如数组下标示一个常量，如foo3，只要在编译器根据数据流分析来确定foo.length的值，并判断下标“3”没有越界，执行的时候就无须判断了。再例如数组访问发生在循环之中，并且使用循环变量来进行数组访问，如果编译器只要通过数据流分析就可以判定循环变量的取值范围永远在区间[0, foo.length)之内，那在整个循环中就可以把数组的上下界检查消除掉，这可以节省很多次的条件判断操作。<br>与语言相关的其他消除操作还有自动装箱消除（Autobox Elimination）、安全点消除（Safepoint Elimination）、消除反射（Dereflection）等。</p>
+</li>
+<li><p>方法内联<br>方法内联是编译器最重要的优化手段之一，除了消除方法调用的成本之外，更重要的是可以为其他优化手段建立良好的基础。<br>逃逸分析<br>逃逸分析（Escape Analysis）并不是直接优化代码的手段，而是为其他优化手段提供依据的分析技术。</p>
+</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="http://blog.csdn.net/chdjj/article/details/24010581" target="_blank" rel="external">http://blog.csdn.net/chdjj/article/details/24010581</a></li>
+<li><a href="http://blog.csdn.net/qq_16681169/article/details/72945113" target="_blank" rel="external">http://blog.csdn.net/qq_16681169/article/details/72945113</a></li>
+<li><a href="http://yueyemaitian.iteye.com/blog/1185297" target="_blank" rel="external">http://yueyemaitian.iteye.com/blog/1185297</a></li>
+<li><a href="http://ifeve.com/jvm-compiler/" target="_blank" rel="external">http://ifeve.com/jvm-compiler/</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/JVM/">JVM</a> <a class="tag tag--primary tag--small t-link" href="/tags/Java/">Java</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-gc-collector/" data-tooltip="JVM垃圾回收器详解">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 wangnan&#39;s blog. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/java-gc-collector/" data-tooltip="JVM垃圾回收器详解">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/java-compile-optimization/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">wangnan&#39;s blog</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                97 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/java-compile-optimization/';
+                 
+                    this.page.identifier = 'post/java-compile-optimization/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>

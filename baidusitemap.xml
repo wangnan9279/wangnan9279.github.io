@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-compile-optimization/</loc>
+    <lastmod>2017-08-23T02:11:31.334Z</lastmod>
+    <data>
+        <display>
+        <title>JVM编译优化</title>
+        <pubTime>2017-08-23T02:06:45.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/java-gc-collector/</loc>
     <lastmod>2017-08-22T06:08:17.620Z</lastmod>
     <data>

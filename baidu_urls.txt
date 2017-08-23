@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-gc-collector/
+http://wangnan.tech/post/java-compile-optimization/
