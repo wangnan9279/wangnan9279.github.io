@@ -1,1 +1,1 @@
-http://wangnan.tech/post/java-compile-optimization/
+http://wangnan.tech/post/architecture-microservice/

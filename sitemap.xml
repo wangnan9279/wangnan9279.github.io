@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/architecture-microservice/</loc>
+    
+    <lastmod>2017-08-30T08:46:17.771Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/rabbitMQ-exchange/</loc>
     
     <lastmod>2017-08-24T07:24:20.745Z</lastmod>
