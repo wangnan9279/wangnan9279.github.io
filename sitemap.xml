@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/about/index.html</loc>
+    
+    <lastmod>2017-08-31T02:30:22.512Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/architecture-microservice/</loc>
     
     <lastmod>2017-08-30T08:46:17.771Z</lastmod>
@@ -306,13 +313,6 @@
     <loc>http://wangnan.tech/post/java-arrayList/</loc>
     
     <lastmod>2017-08-14T06:23:37.172Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-08-07T03:43:51.312Z</lastmod>
     
   </url>
   
