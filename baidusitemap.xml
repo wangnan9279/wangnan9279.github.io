@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-analyzer/</loc>
+    <lastmod>2017-09-18T07:52:06.361Z</lastmod>
+    <data>
+        <display>
+        <title>ES中的分析器和IK分词器插件</title>
+        <pubTime>2017-09-18T07:50:59.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://wangnan.tech/post/es5.x-deploy-problem/</loc>
     <lastmod>2017-09-08T07:13:51.824Z</lastmod>
     <data>
@@ -1381,7 +1402,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://wangnan.tech/post/read-think-like-programmer/</loc>

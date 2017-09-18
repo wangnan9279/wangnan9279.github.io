@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-analyzer/</loc>
+    
+    <lastmod>2017-09-18T07:52:06.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/read/index.html</loc>
+    
+    <lastmod>2017-09-08T07:19:04.962Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/es5.x-deploy-problem/</loc>
     
     <lastmod>2017-09-08T07:13:51.824Z</lastmod>
@@ -474,13 +488,6 @@
     <loc>http://wangnan.tech/post/net-tcp/</loc>
     
     <lastmod>2017-07-14T10:00:45.988Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/read/index.html</loc>
-    
-    <lastmod>2017-07-14T08:04:55.064Z</lastmod>
     
   </url>
   

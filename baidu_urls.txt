@@ -1,1 +1,1 @@
-http://wangnan.tech/post/es5.x-deploy-problem/
+http://wangnan.tech/post/elasticsearch-analyzer/

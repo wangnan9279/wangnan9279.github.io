@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Ghost Stories">
-    <title>Elasticsearch批量操作 - Ghost Stories</title>
+    <title>ES中的分析器和IK分词器插件 - Ghost Stories</title>
     <meta name="author" content="Ghost Stories">
     
     
@@ -14,20 +14,15 @@
     
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="Elasticsearch批量操作">
-<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-bulk/index.html">
+<meta property="og:title" content="ES中的分析器和IK分词器插件">
+<meta property="og:url" content="http://wangnan.tech/post/elasticsearch-analyzer/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/01.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/02.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/03.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/04.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/05.png">
-<meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/06.png">
-<meta property="og:updated_time" content="2017-08-24T07:20:09.991Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/analyer.png">
+<meta property="og:updated_time" content="2017-09-18T07:52:06.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elasticsearch批量操作">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta name="twitter:title" content="ES中的分析器和IK分词器插件">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -39,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" />
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg" />
     
     
     
@@ -200,14 +195,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Elasticsearch批量操作
+            ES中的分析器和IK分词器插件
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-13T10:10:02+08:00">
+    <time itemprop="datePublished" datetime="2017-09-18T15:50:59+08:00">
 	
-		    Sep 13, 2016
+		    Sep 18, 2017
     	
     </time>
     
@@ -224,14 +219,102 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#批量取"><span class="toc-text">批量取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#批量查询"><span class="toc-text">批量查询</span></a></li></ol>
-<a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
-<blockquote>
-<p>elasticsearch提供了批量操作来读取数据和检索</p>
-<h1 id="批量取"><a href="#批量取" class="headerlink" title="批量取"></a>批量取</h1><p>可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，<strong>而不论这些文档可用于搜索还是暂时对查询不可见</strong><br>查看下面的操作：<br><img src="/post/elasticsearch-bulk/01.png" alt="01"><br>elasticsearch返回如下形式的文档：<br><img src="/post/elasticsearch-bulk/02.png" alt="02"><br>前面的范例还可以写成如下的更紧凑的形式：<br><img src="/post/elasticsearch-bulk/03.png" alt="03"><br>这种形式便于获取不同文档有不同目标索引及类型<br>我们来看下面这个查询：<br><img src="/post/elasticsearch-bulk/04.png" alt="04"><br>该查询返回了id为1和3的两个文档，但是第一个文档从索引library_backup中获取，第二个文档则从索引library中获取（因为url中定义索引名为library，因此将它作为默认值），而且第一个文档我们限制只返回otitle字段</p>
-</blockquote>
-<h1 id="批量查询"><a href="#批量查询" class="headerlink" title="批量查询"></a>批量查询</h1><p>允许用户将多个查询请求打包到一组，elasticsearch将输入解析成一行一行的文本，而文本行包含了目标索引、其他参数以及查询串等信息<br>范例：<br><img src="/post/elasticsearch-bulk/05.png" alt="05"><br>查询请求被发送到_msearch端点，请求的偶数行复制携带真正的查询<br>结果：<br><img src="/post/elasticsearch-bulk/06.png" alt="06"><br><strong>批量查询允许我们将多个独立的查询打包到一个请求中</strong><br>（注：内容整理自《深入理解Elasticsearch》）</p>
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/43.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token（词元）"><span class="toc-text">Token（词元）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokenizer-分词器"><span class="toc-text">Tokenizer(分词器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token-Filter-词元处理器"><span class="toc-text">Token Filter(词元处理器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Term-词"><span class="toc-text">Term(词)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Character-Filter-字符过滤器"><span class="toc-text">Character Filter(字符过滤器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analyzer-分析器"><span class="toc-text">Analyzer(分析器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片"><span class="toc-text">图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES中的分词器"><span class="toc-text">ES中的分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器-1"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置过滤器"><span class="toc-text">ES内置过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置的character-filter"><span class="toc-text">ES内置的character filter</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义分析器"><span class="toc-text">自定义分析器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IKAnalyzer"><span class="toc-text">IKAnalyzer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IK简介"><span class="toc-text">IK简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IK-Analyzer-2012特性"><span class="toc-text">IK Analyzer 2012特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li></ol></li></ol></span></p>
+<h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="Token（词元）"><a href="#Token（词元）" class="headerlink" title="Token（词元）"></a>Token（词元）</h2><p>全文搜索引擎会用某种算法对要建索引的文档进行分析， 从文档中提取出若干Tokenizer(分词器)</p>
+<h2 id="Tokenizer-分词器"><a href="#Tokenizer-分词器" class="headerlink" title="Tokenizer(分词器)"></a>Tokenizer(分词器)</h2><p>这些算法叫做Tokenizer(分词器)</p>
+<h2 id="Token-Filter-词元处理器"><a href="#Token-Filter-词元处理器" class="headerlink" title="Token Filter(词元处理器)"></a>Token Filter(词元处理器)</h2><p>这些Token会被进一步处理， 比如转成小写等， 这些处理算法被称为TokenFilter(词元处理器)</p>
+<h2 id="Term-词"><a href="#Term-词" class="headerlink" title="Term(词)"></a>Term(词)</h2><p>被处理后的结果被称为Term(词)</p>
+<h2 id="Character-Filter-字符过滤器"><a href="#Character-Filter-字符过滤器" class="headerlink" title="Character Filter(字符过滤器)"></a>Character Filter(字符过滤器)</h2><p>文本被Tokenizer处理前可能要做一些预处理， 比如去掉里面的HTML标记， 这些处理的算法被称为Character Filter(字符过滤器)</p>
+<h2 id="Analyzer-分析器"><a href="#Analyzer-分析器" class="headerlink" title="Analyzer(分析器)"></a>Analyzer(分析器)</h2><p>这整个的分析算法被称为Analyzer(分析器)</p>
+<p>Analyzer（分析器）由Tokenizer（分词器）和Filter（过滤器）组成</p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/analyer.png" alt="image"></p>
+<h1 id="ES中的分词器"><a href="#ES中的分词器" class="headerlink" title="ES中的分词器"></a>ES中的分词器</h1><h2 id="ES内置分析器"><a href="#ES内置分析器" class="headerlink" title="ES内置分析器"></a>ES内置分析器</h2><ul>
+<li>standard analyzer</li>
+<li>simple analyzer</li>
+<li>stop analyzer</li>
+<li>keyword analyzer</li>
+<li>pattern analyzer</li>
+<li>language analyzers</li>
+<li>snowball analyzer</li>
+<li>custom analyzer</li>
+</ul>
+<h2 id="ES内置分析器-1"><a href="#ES内置分析器-1" class="headerlink" title="ES内置分析器"></a>ES内置分析器</h2><ul>
+<li>standard tokenizer</li>
+<li>edge ngram tokenizer</li>
+<li>keyword tokenizer</li>
+<li>letter analyzer</li>
+<li>lowercase analyzer</li>
+<li>ngram analyzers</li>
+<li>whitespace analyzer</li>
+<li>pattern analyzer</li>
+<li>uax email url analyzer</li>
+<li>path hierarchy analyzer    </li>
+</ul>
+<h2 id="ES内置过滤器"><a href="#ES内置过滤器" class="headerlink" title="ES内置过滤器"></a>ES内置过滤器</h2><ul>
+<li>standard filter    </li>
+<li>ascii folding filter    </li>
+<li>length filter    </li>
+<li>lowercase filter    </li>
+<li>ngram filter    </li>
+<li>edge ngram filter</li>
+<li>porter stem filter    </li>
+<li>shingle filter</li>
+<li>stop filter    stop    </li>
+<li>word delimiter filter    </li>
+<li>stemmer token filter    </li>
+<li>stemmer override filter    </li>
+<li>keyword marker filter    </li>
+<li>keyword repeat filter</li>
+<li>kstem filter        </li>
+<li>snowball filter        </li>
+<li>phonetic filter    </li>
+<li>synonym filter        </li>
+<li>compound word filter     </li>
+<li>reverse filter    </li>
+<li>elision filter</li>
+<li>truncate filter    </li>
+<li>unique filter    </li>
+<li>pattern capture  filter        </li>
+<li>pattern replace filter    </li>
+<li>trim filter</li>
+<li>limit token count filter    </li>
+<li>hunspell filter    </li>
+<li>common grams filter    </li>
+<li>normalization filter    </li>
+</ul>
+<h2 id="ES内置的character-filter"><a href="#ES内置的character-filter" class="headerlink" title="ES内置的character filter"></a>ES内置的character filter</h2><ul>
+<li>mapping char filter  根据配置的映射关系替换字符</li>
+<li>html strip char filter 去掉HTML元素</li>
+<li>pattern replace char filter  用正则表达式处理字符串</li>
+</ul>
+<h1 id="自定义分析器"><a href="#自定义分析器" class="headerlink" title="自定义分析器"></a>自定义分析器</h1><p>ES允许用户通过配置文件elasticsearch.yml自定义分析器Analyzer</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">index:</div><div class="line">       analysis:</div><div class="line">                 analyzer:</div><div class="line">                        myAnalyzer:</div><div class="line">                               tokenizer: standard</div><div class="line">                               filter: [standard, lowercase, stop]</div></pre></td></tr></table></figure>
+<p>也可以使用第三方分析器，比如IKAnalyzer</p>
+<h1 id="IKAnalyzer"><a href="#IKAnalyzer" class="headerlink" title="IKAnalyzer"></a>IKAnalyzer</h1><h2 id="IK简介"><a href="#IK简介" class="headerlink" title="IK简介"></a>IK简介</h2><p>IK Analyzer是一个开源的，基于java语言开发的轻量级的中文分词工具包。从2006年12月推出1.0版开始， IKAnalyzer已经推出了4个大版本。最初，它是以开源项目Luence为应用主体的，结合词典分词和文法分析算法的中文分词组件。从3.0版本开 始，IK发展为面向Java的公用分词组件，独立于Lucene项目，同时提供了对Lucene的默认优化实现。在2012版本中，IK实现了简单的分词 歧义排除算法，标志着IK分词器从单纯的词典分词向模拟语义分词衍化。  </p>
+<h2 id="IK-Analyzer-2012特性"><a href="#IK-Analyzer-2012特性" class="headerlink" title="IK Analyzer 2012特性"></a>IK Analyzer 2012特性</h2><p>1.采用了特有的“正向迭代最细粒度切分算法“，支持细粒度和智能分词两种切分模式；</p>
+<p>2.在系统环境：Core2 i7 3.4G双核，4G内存，window 7 64位， Sun JDK 1.6_29 64位 普通pc环境测试，IK2012具有160万字/秒（3000KB/S）的高速处理能力。</p>
+<p>3.2012版本的智能分词模式支持简单的分词排歧义处理和数量词合并输出。</p>
+<p>4.采用了多子处理器分析模式，支持：英文字母、数字、中文词汇等分词处理，兼容韩文、日文字符</p>
+<p>5.优化的词典存储，更小的内存占用。支持用户词典扩展定义。特别的，在2012版本，词典支持中文，英文，数字混合词语。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>通过git clone <a href="https://github.com/medcl/elasticsearch-analysis-ik，下载分词器源码" target="_blank" rel="external">https://github.com/medcl/elasticsearch-analysis-ik，下载分词器源码</a></li>
+<li>执行命令：mvn clean package，打包生成elasticsearch-analysis-ik-1.2.5.jar</li>
+<li>将这个jar拷贝到ES_HOME/plugins/analysis-ik目录下面，如果没有该目录，则先创建该目录</li>
+<li>ES_HOME/config/elasticsearch.yml文件在文件最后加入如下内容：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">index:</div><div class="line">  analysis:                   </div><div class="line">    analyzer:      </div><div class="line">      ik:</div><div class="line">          alias: [ik_analyzer]</div><div class="line">          type: org.elasticsearch.index.analysis.IkAnalyzerProvider</div><div class="line">      ik_max_word:</div><div class="line">          type: ik</div><div class="line">          use_smart: false</div><div class="line">      ik_smart:</div><div class="line">          type: ik</div><div class="line">          use_smart: true</div><div class="line">index.analysis.analyzer.default.type: ik</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ol>
+<li><p>创建一个索引，名为index。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XPUT http://localhost:9200/index</div></pre></td></tr></table></figure>
+</li>
+<li><p>为索引index创建mapping</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://localhost:9200/index/fulltext/_mapping -d'</div><div class="line">&#123;</div><div class="line">    "fulltext": &#123;</div><div class="line">             "_all": &#123;</div><div class="line">            "analyzer": "ik"</div><div class="line">        &#125;,</div><div class="line">        "properties": &#123;</div><div class="line">            "content": &#123;</div><div class="line">                "type" : "string",</div><div class="line">                "boost" : 8.0,</div><div class="line">                "term_vector" : "with_positions_offsets",</div><div class="line">                "analyzer" : "ik",</div><div class="line">                "include_in_all" : true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl 'http://localhost:9200/index/_analyze?analyzer=ik&amp;pretty=true' -d '</div><div class="line">&#123;</div><div class="line">"text":"世界如此之大"</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.显示结果<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "tokens" : [ &#123;</div><div class="line">    "token" : "text",</div><div class="line">    "start_offset" : 4,</div><div class="line">    "end_offset" : 8,</div><div class="line">    "type" : "ENGLISH",</div><div class="line">    "position" : 1</div><div class="line">  &#125;, &#123;</div><div class="line">    "token" : "世界",</div><div class="line">    "start_offset" : 11,</div><div class="line">    "end_offset" : 13,</div><div class="line">    "type" : "CN_WORD",</div><div class="line">    "position" : 2</div><div class="line">  &#125;, &#123;</div><div class="line">    "token" : "如此",</div><div class="line">    "start_offset" : 13,</div><div class="line">    "end_offset" : 15,</div><div class="line">    "type" : "CN_WORD",</div><div class="line">    "position" : 3</div><div class="line">  &#125;, &#123;</div><div class="line">    "token" : "之大",</div><div class="line">    "start_offset" : 15,</div><div class="line">    "end_offset" : 17,</div><div class="line">    "type" : "CN_WORD",</div><div class="line">    "position" : 4</div><div class="line">  &#125; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
             
         </div>
@@ -251,7 +334,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-sort/"  data-tooltip="Elasticsearch排序">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -259,7 +342,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-rescore/" data-tooltip="Elasticsearch二次评分">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/es5.x-deploy-problem/" data-tooltip="ES5.x部署遇到的问题汇总">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -277,7 +360,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -285,7 +368,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -293,7 +376,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -343,7 +426,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-sort/"  data-tooltip="Elasticsearch排序">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -351,7 +434,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-rescore/" data-tooltip="Elasticsearch二次评分">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/es5.x-deploy-problem/" data-tooltip="ES5.x部署遇到的问题汇总">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -369,7 +452,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -377,7 +460,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -385,7 +468,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -416,7 +499,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -424,7 +507,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -432,7 +515,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-bulk/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elasticsearch-analyzer/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -771,9 +854,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://wangnan.tech/post/elasticsearch-bulk/';
+                 this.page.url = 'http://wangnan.tech/post/elasticsearch-analyzer/';
                  
-                    this.page.identifier = 'post/elasticsearch-bulk/';
+                    this.page.identifier = 'post/elasticsearch-analyzer/';
                  
              };
             (function() {
