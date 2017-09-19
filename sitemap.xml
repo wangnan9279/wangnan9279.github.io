@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/net-why-https/</loc>
+    
+    <lastmod>2017-09-19T06:08:44.936Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-analyzer/</loc>
     
     <lastmod>2017-09-18T07:52:06.361Z</lastmod>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/net-why-https/</loc>
+    <lastmod>2017-09-19T06:08:44.936Z</lastmod>
+    <data>
+        <display>
+        <title>为什么要用 HTTPS</title>
+        <pubTime>2017-09-19T06:05:04.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="网络" url="http://wangnan.tech/categories/%E7%BD%91%E7%BB%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-analyzer/</loc>
     <lastmod>2017-09-18T07:52:06.361Z</lastmod>
     <data>
