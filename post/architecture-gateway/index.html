@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Ghost Stories">
-    <title>Archives - Ghost Stories</title>
+    <title>企业级API网关的设计 - Ghost Stories</title>
     <meta name="author" content="Ghost Stories">
     
     
         <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
     
     
-    <meta name="description" content="Ghost Stories">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="Ghost Stories">
-<meta property="og:url" content="http://wangnan.tech/archives/index.html">
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="企业级API网关的设计">
+<meta property="og:url" content="http://wangnan.tech/post/architecture-gateway/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:description" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/45.jpg">
+<meta property="og:updated_time" content="2017-09-20T01:51:20.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ghost Stories">
-<meta name="twitter:description" content="Ghost Stories">
+<meta name="twitter:title" content="企业级API网关的设计">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/45.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -32,6 +32,9 @@
     
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/45.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/45.jpg" />
     
     
     
@@ -57,7 +60,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -81,7 +84,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -180,26 +183,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/architecture-gateway/">
-                            企业级API网关的设计
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            企业级API网关的设计
+        </h1>
+    
+    
+        <div class="post-meta">
     <time itemprop="datePublished" datetime="2017-09-20T09:49:32+08:00">
 	
 		    Sep 20, 2017
@@ -214,495 +213,148 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/architecture-gateway/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/architecture-gateway/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/45.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/net-why-https/">
-                            为什么要用 HTTPS
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-09-19T14:05:04+08:00">
-	
-		    Sep 19, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/网络/">网络</a>
-
-
     
 </div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/45.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-text">作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离"><span class="toc-text">隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解耦"><span class="toc-text">解耦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚手架"><span class="toc-text">脚手架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#带来的好处"><span class="toc-text">带来的好处</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#企业级API网关需要具备的条件"><span class="toc-text">企业级API网关需要具备的条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#企业环境下，API网关需要考虑哪些要素"><span class="toc-text">企业环境下，API网关需要考虑哪些要素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#业界常用的API网关方案"><span class="toc-text">业界常用的API网关方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何设计一个好的企业级API网关产品"><span class="toc-text">如何设计一个好的企业级API网关产品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网关的高性能设计"><span class="toc-text">网关的高性能设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网关的高可用设计"><span class="toc-text">网关的高可用设计</span></a></li></ol></span></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>是出现在系统边界上的一个面向API的、串行集中式的强管控服务</p>
+<p>API网关的流行，源于近几年来，移动应用与企业间互联需求的兴起。移动应用、企业互联，使得后台服务支持的对象，从以前单一的Web应用，扩展到多种使用场景，且每种使用场景对后台服务的要求都不尽相同。这不仅增加了后台服务的响应量，还增加了后台服务的复杂性。随着微服务架构概念的提出，API网关成为了微服务架构的一个标配组件。</p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><ul>
+<li>第一类作用是<strong>隔离作用</strong>，作为企业系统边界，隔离外网系统与内网系统。</li>
+<li>第二类作用是<strong>解耦作用</strong>，通过解耦，使得微服务系统的各方能够独立、自由、高效、灵活地调整，而不用担心给其他方面带来影响。</li>
+<li>第三类作用是<strong>脚手架作用</strong>，提供了一个地点，方便通过扩展机制对请求进行一系列加工和处理。</li>
+</ul>
+<h2 id="隔离"><a href="#隔离" class="headerlink" title="隔离"></a>隔离</h2><p>API网关部署在防火墙外面，起到一层挡板作用，内部系统只接受API网关转发过来的请求。网关通过白名单或校验规则，对访问进行了初步的过滤。相比防火墙，这种软件实现的过滤规则，更加动态灵活。</p>
+<h2 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h2><p>有了API网关这一层，可以很好的解耦各方的相互依赖关系，让各方更加专注自己的目标。</p>
+<ul>
+<li>解耦功能与非功能</li>
+<li>解耦客户端与服务提供者</li>
+<li>网关层是否需要实现服务的编排？ no</li>
+</ul>
+<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><p>网关层除了<strong>请求的路由、转发</strong>外，还需要负责<strong>安全、鉴权、限流、监控</strong>等。这些功能的实现方式，往往随着业务的变化不断调整。</p>
+<h1 id="带来的好处"><a href="#带来的好处" class="headerlink" title="带来的好处"></a>带来的好处</h1><ul>
+<li>网关层对外部和内部进行了隔离，保障了后台服务的安全性。</li>
+<li>对外访问控制由网络层面转换成了运维层面，减少变更的流程和错误成本</li>
+<li>减少客户端与服务的耦合，服务可以独立发展。通过网关层来做映射。</li>
+<li>通过网关层聚合，减少外部访问的频次，提升访问效率。</li>
+<li>节约后端服务开发成本，减少上线风险。</li>
+<li>为服务熔断，灰度发布，线上测试提供简单方案。</li>
+<li>便于扩展。</li>
+</ul>
+<h2 id="企业级API网关需要具备的条件"><a href="#企业级API网关需要具备的条件" class="headerlink" title="企业级API网关需要具备的条件"></a>企业级API网关需要具备的条件</h2><p>应对大量的对外访问，另一方面，还要给对内的服务提供一定的安全保障。</p>
+<p>除此之外，企业提供的API服务多种多样，API网关要能够对这些API的全生命周期进行便捷的管理，例如<strong>服务发布、调整、下架、计费、监控</strong>等。</p>
+<h2 id="企业环境下，API网关需要考虑哪些要素"><a href="#企业环境下，API网关需要考虑哪些要素" class="headerlink" title="企业环境下，API网关需要考虑哪些要素"></a>企业环境下，API网关需要考虑哪些要素</h2><ol>
+<li>安全性问题</li>
+<li>性能问题</li>
+<li>高可用问题</li>
+<li>扩展性问题</li>
+<li>API高效运维的问题</li>
+<li>API全生命周期管理的问题</li>
+</ol>
+<h1 id="业界常用的API网关方案"><a href="#业界常用的API网关方案" class="headerlink" title="业界常用的API网关方案"></a>业界常用的API网关方案</h1><ul>
+<li>Nginx+ Lua</li>
+<li>SpringCloud Zuul</li>
+<li>MashapeKong</li>
+</ul>
+<h1 id="如何设计一个好的企业级API网关产品"><a href="#如何设计一个好的企业级API网关产品" class="headerlink" title="如何设计一个好的企业级API网关产品"></a>如何设计一个好的企业级API网关产品</h1><p>API 生命周期管理功能<br>开发和使用支持功能<br>安全防护功能<br>流量控制功能<br>请求管理功能<br>API交易功能</p>
+<h2 id="网关的高性能设计"><a href="#网关的高性能设计" class="headerlink" title="网关的高性能设计"></a>网关的高性能设计</h2><p>网关的高性能设计-&gt;事件驱动的并发模型(nio)</p>
+<h1 id="网关的高可用设计"><a href="#网关的高可用设计" class="headerlink" title="网关的高可用设计"></a>网关的高可用设计</h1><p>1、无状态设计原则<br>2、优雅下线原则<br>3、Slow start特性</p>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/net-why-https/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-            <a href="/post/net-why-https/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/44.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/elasticsearch-analyzer/">
-                            ES中的分析器和IK分词器插件
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-09-18T15:50:59+08:00">
-	
-		    Sep 18, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/架构/">架构</a>
 
             </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/elasticsearch-analyzer/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/elasticsearch-analyzer/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/43.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/es5.x-deploy-problem/">
-                            ES5.x部署遇到的问题汇总
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-09-08T15:12:24+08:00">
-	
-		    Sep 08, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/es5.x-deploy-problem/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/es5.x-deploy-problem/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/42.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/architecture-microservice/">
-                            微服务架构解析(附思维导图)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-30T16:31:29+08:00">
-	
-		    Aug 30, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/架构/">架构</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/architecture-microservice/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/architecture-microservice/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/41.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/java-compile-optimization/">
-                            JVM编译优化
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-23T10:06:45+08:00">
-	
-		    Aug 23, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Java/">Java</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/java-compile-optimization/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/java-compile-optimization/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/40.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/java-gc-collector/">
-                            JVM垃圾回收器详解
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-22T14:03:13+08:00">
-	
-		    Aug 22, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Java/">Java</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/java-gc-collector/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/java-gc-collector/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/39.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/elasticsearch-zen-discovery/">
-                            Elasticsearch5.5官方文档翻译-Zen Discovery
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-21T09:40:54+08:00">
-	
-		    Aug 21, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/elasticsearch-zen-discovery/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/elasticsearch-zen-discovery/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/38.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/elasticsearch-5.5-node/">
-                            Elasticsearch5.5官方文档翻译-节点
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-17T10:05:08+08:00">
-	
-		    Aug 17, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/ElasticSearch/">ElasticSearch</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/elasticsearch-5.5-node/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/elasticsearch-5.5-node/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/37.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/java-jvm-optimization/">
-                            JVM性能调优经验总结
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-16T09:51:29+08:00">
-	
-		    Aug 16, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Java/">Java</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><span><br></span></p>
-                    
-                        <a href="/post/java-jvm-optimization/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/java-jvm-optimization/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/36.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
         
         
-        <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/archives/page/2/">
-                    <span>OLDER POSTS</span>
-                <i class="fa fa-angle-right text-base icon-ml"></i>
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/net-why-https/" data-tooltip="为什么要用 HTTPS">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
             </a>
         </li>
         
-        <li class="pagination-number">page 1 of 11</li>
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
 
 
 
@@ -713,6 +365,110 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/net-why-https/" data-tooltip="为什么要用 HTTPS">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/architecture-gateway/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -1040,6 +796,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/architecture-gateway/';
+                 
+                    this.page.identifier = 'post/architecture-gateway/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
     </body>
