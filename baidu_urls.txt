@@ -1,1 +1,1 @@
-http://wangnan.tech/post/architecture-gateway/
+http://wangnan.tech/post/git-rebase/
