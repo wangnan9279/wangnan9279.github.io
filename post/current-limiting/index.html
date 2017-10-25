@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Ghost Stories">
-    <title>MyBatis二级缓存 - Ghost Stories</title>
+    <title>高并发系统限流设计 - Ghost Stories</title>
     <meta name="author" content="Ghost Stories">
     
     
@@ -14,15 +14,16 @@
     
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="MyBatis二级缓存">
-<meta property="og:url" content="http://wangnan.tech/post/mybatis-cache/index.html">
+<meta property="og:title" content="高并发系统限流设计">
+<meta property="og:url" content="http://wangnan.tech/post/current-limiting/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
-<meta property="og:image" content="http://wangnan.tech/post/mybatis-cache/01.png">
-<meta property="og:updated_time" content="2017-07-14T03:29:34.341Z">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/01.jpg">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/current-limiting01.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/current-limiting02.jpg">
+<meta property="og:updated_time" content="2017-10-25T02:15:39.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis二级缓存">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg">
+<meta name="twitter:title" content="高并发系统限流设计">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/01.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +35,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" />
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/01.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/01.jpg" />
     
     
     
@@ -195,20 +196,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            MyBatis二级缓存
+            高并发系统限流设计
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-03T15:19:03+08:00">
+    <time itemprop="datePublished" datetime="2017-10-25T10:07:58+08:00">
 	
-		    Sep 03, 2016
+		    Oct 25, 2017
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
+    <a class="category-link" href="/categories/架构/">架构</a>
 
 
     
@@ -219,40 +220,57 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用配置"><span class="toc-text">使用配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置pom-xml，添加依赖。"><span class="toc-text">配置pom.xml，添加依赖。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局开关"><span class="toc-text">全局开关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置需要缓存的mapper-xml"><span class="toc-text">配置需要缓存的mapper.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置参数在memcached-properties中设置，如果缺失则使用缺省设置。"><span class="toc-text">配置参数在memcached.properties中设置，如果缺失则使用缺省设置。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果需要记录cache操作日志，可由如下配置实现"><span class="toc-text">如果需要记录cache操作日志，可由如下配置实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-text">参考文档</span></a></li></ol>
-<a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" alt=""></p>
-<blockquote>
-<p>MyBatis提供一级缓存和二级缓存，其中一级缓存是sqlSession级别的缓存，不同的sqlSession之间的缓存互不影响。二级缓存是Mapper级别的缓存，多个sqlSession操作同一个Mapper，其二级缓存是可以共享的。</p>
-</blockquote>
-<p>MyBatis有多种二级缓存方案可供选择。其中对Memcached的支持较为成熟，现以Memcached为例介绍与spring项目的集成。</p>
-<h2 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h2><h3 id="配置pom-xml，添加依赖。"><a href="#配置pom-xml，添加依赖。" class="headerlink" title="配置pom.xml，添加依赖。"></a>配置pom.xml，添加依赖。</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.caches<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-memcached<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="全局开关"><a href="#全局开关" class="headerlink" title="全局开关"></a>全局开关</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"cacheEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="配置需要缓存的mapper-xml"><a href="#配置需要缓存的mapper-xml" class="headerlink" title="配置需要缓存的mapper.xml"></a>配置需要缓存的mapper.xml</h3><p>二级缓存是Mapper级别的，可以针对具体的mapper.xml开启二级缓存。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"org.acme.FooMapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.memcached.MemcachedCache"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>开启后，则mapper中所有的select语句默认都将被缓存，此命名空间下所有insert、update、delete语句将会导致空间下的缓存被清空。</p>
-<p>可以针对具体某条语句禁用缓存。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"retObj"</span> <span class="attr">resultMap</span>=<span class="string">"results"</span> <span class="attr">useCache</span>=<span class="string">"false"</span> &gt;</span></div><div class="line">    select id, name, sex from employee   </div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>也可针对某条语句触发刷新动作（默认对应所有插入、更新、删除语句）。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"retObj"</span> <span class="attr">resultMap</span>=<span class="string">"results"</span> <span class="attr">flushCache</span>=<span class="string">"true"</span> &gt;</span></div><div class="line">    select id, name, sex from employee   </div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="配置参数在memcached-properties中设置，如果缺失则使用缺省设置。"><a href="#配置参数在memcached-properties中设置，如果缺失则使用缺省设置。" class="headerlink" title="配置参数在memcached.properties中设置，如果缺失则使用缺省设置。"></a>配置参数在memcached.properties中设置，如果缺失则使用缺省设置。</h3><p>以下是配置参数：<br><img src="/post/mybatis-cache/01.png" alt="01"></p>
-<h3 id="如果需要记录cache操作日志，可由如下配置实现"><a href="#如果需要记录cache操作日志，可由如下配置实现" class="headerlink" title="如果需要记录cache操作日志，可由如下配置实现"></a>如果需要记录cache操作日志，可由如下配置实现</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"org.acme.FooMapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.memcached.LoggingMemcachedCache"</span> /&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>缓存在Memcached中的类需要实现Serializable接口，否则会报错java.io.NotSerializableException。</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.iteye.com/topic/1112327" target="_blank" rel="external">MyBatis 缓存机制深度解剖 / 自定义二级缓存</a></p>
-<p><a href="http://blog.csdn.net/luanlouis/article/details/41408341" target="_blank" rel="external">MyBatis的二级缓存的设计原理</a></p>
-<p><a href="https://dzone.com/articles/caching-over-mybatis-memcached" target="_blank" rel="external">Caching over MyBatis : Memcached Performance Tuning Over MyBatis</a></p>
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/01.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#限流方式"><span class="toc-text">限流方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限流算法"><span class="toc-text">限流算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#令牌桶"><span class="toc-text">令牌桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏桶"><span class="toc-text">漏桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计数器"><span class="toc-text">计数器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#令牌桶vs漏桶"><span class="toc-text">令牌桶vs漏桶</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用级别限流"><span class="toc-text">应用级别限流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#限流总并发-连接-请求数"><span class="toc-text">限流总并发/连接/请求数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限流总资源数"><span class="toc-text">限流总资源数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限流某个接口的总并发-请求数"><span class="toc-text">限流某个接口的总并发/请求数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限流某个接口的时间窗请求数"><span class="toc-text">限流某个接口的时间窗请求数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平滑限流某个接口的请求数"><span class="toc-text">平滑限流某个接口的请求数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式限流"><span class="toc-text">分布式限流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接入层限流"><span class="toc-text">接入层限流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考自文章"><span class="toc-text">参考自文章</span></a></li></ol></span></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>高并发系统时有三把利器用来保护系统：缓存、降级和限流，缓存的目的是提升系统访问速度和增大系统能处理的容量，降级是当服务出问题或者影响到核心流程的性能则需要暂时屏蔽掉，待高峰或者问题解决后再打开，而有些场景并不能用缓存和降级来解决，比如稀缺资源（秒杀、抢购）、写服务（如评论、下单）、频繁的复杂查询（评论的最后几页），因此需有一种手段来限制这些场景的并发/请求量，即限流</p>
+<p>限流的目的是通过对并发访问/请求进行限速或者一个时间窗口内的的请求进行限速来保护系统，一旦达到限制速率则可以拒绝服务（定向到错误页或告知资源没有了）、排队或等待（比如秒杀、评论、下单）、降级（返回托底数据或默认数据，如商品详情页库存默认有货）。</p>
+<h2 id="限流方式"><a href="#限流方式" class="headerlink" title="限流方式"></a>限流方式</h2><ul>
+<li>限制总并发数（比如数据库连接池、线程池）</li>
+<li>限制瞬时并发数（如nginx的limit_conn模块，用来限制瞬时并发连接数）</li>
+<li>限制时间窗口内的平均速率（如Guava的RateLimiter、nginx的limit_req模块，限制每秒的平均速率）</li>
+<li>限制远程接口调用速率</li>
+<li>限制MQ的消费速率。</li>
+<li>可以根据网络连接数、网络流量、CPU或内存负载等来限流</li>
+</ul>
+<h1 id="限流算法"><a href="#限流算法" class="headerlink" title="限流算法"></a>限流算法</h1><h2 id="令牌桶"><a href="#令牌桶" class="headerlink" title="令牌桶"></a>令牌桶</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/current-limiting01.png" alt=""></p>
+<h2 id="漏桶"><a href="#漏桶" class="headerlink" title="漏桶"></a>漏桶</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/current-limiting02.jpg" alt=""></p>
+<h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>有时候我们还使用计数器来进行限流，主要用来限制总并发数，比如数据库连接池、线程池、秒杀的并发数；只要全局总请求数或者一定时间段的总请求数设定的阀值则进行限流，是简单粗暴的总数量限流，而不是平均速率限流</p>
+<h2 id="令牌桶vs漏桶"><a href="#令牌桶vs漏桶" class="headerlink" title="令牌桶vs漏桶"></a>令牌桶vs漏桶</h2><p>令牌桶限制的是平均流入速率，允许突发请求，并允许一定程度突发流量<br>漏桶限制的是常量流出速率，从而平滑突发流入速率</p>
+<h1 id="应用级别限流"><a href="#应用级别限流" class="headerlink" title="应用级别限流"></a>应用级别限流</h1><h2 id="限流总并发-连接-请求数"><a href="#限流总并发-连接-请求数" class="headerlink" title="限流总并发/连接/请求数"></a>限流总并发/连接/请求数</h2><p>如果你使用过Tomcat，其Connector其中一种配置有如下几个参数:</p>
+<ul>
+<li>acceptCount:如果Tomcat的线程都忙于响应，新来的连接会进入队列排队，如果超出排队大小，则拒绝连接</li>
+<li>maxConnections:瞬时最大连接数，超出的会排队等待</li>
+<li>maxThreads:Tomcat能启动用来处理请求的最大线程数，如果请求处理量一直远远大于最大线程数则可能会僵死</li>
+</ul>
+<h2 id="限流总资源数"><a href="#限流总资源数" class="headerlink" title="限流总资源数"></a>限流总资源数</h2><p>可以使用池化技术来限制总资源数：连接池、线程池。比如分配给每个应用的数据库连接是100，那么本应用最多可以使用100个资源，超出了可以等待或者抛异常</p>
+<h2 id="限流某个接口的总并发-请求数"><a href="#限流某个接口的总并发-请求数" class="headerlink" title="限流某个接口的总并发/请求数"></a>限流某个接口的总并发/请求数</h2><p>可以使用Java中的AtomicLong，示意代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line"><span class="keyword">if</span>(atomic.incrementAndGet() &gt; 限流数) &#123;</div><div class="line"><span class="comment">//拒绝请求</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//处理请求</span></div><div class="line">&#125;<span class="keyword">finally</span>&#123;</div><div class="line">atomic.decrementAndGet();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="限流某个接口的时间窗请求数"><a href="#限流某个接口的时间窗请求数" class="headerlink" title="限流某个接口的时间窗请求数"></a>限流某个接口的时间窗请求数</h2><p>使用Guava的Cache,示意代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">LoadingCache counter =</div><div class="line">CacheBuilder.newBuilder()</div><div class="line">.expireAfterWrite(<span class="number">2</span>, TimeUnit.SECONDS)</div><div class="line">.build(newCacheLoader() &#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function">publicAtomicLong <span class="title">load</span><span class="params">(Long seconds)</span>throwsException </span>&#123;</div><div class="line"><span class="keyword">return</span> newAtomicLong(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">longlimit =<span class="number">1000</span>;</div><div class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line"><span class="comment">//得到当前秒longcurrentSeconds = System.currentTimeMillis() /1000;</span></div><div class="line"><span class="keyword">if</span>(counter.get(currentSeconds).incrementAndGet() &gt; limit) &#123;</div><div class="line">System.out.println(<span class="string">"限流了:"</span>+ currentSeconds);</div><div class="line"><span class="keyword">continue</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//业务处理</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="平滑限流某个接口的请求数"><a href="#平滑限流某个接口的请求数" class="headerlink" title="平滑限流某个接口的请求数"></a>平滑限流某个接口的请求数</h2><p>之前的限流方式都不能很好地应对突发请求，即瞬间请求可能都被允许从而导致一些问题；因此在一些场景中需要对突发请求进行整形，整形为平均速率请求处理</p>
+<p>Guava框架提供了令牌桶算法实现</p>
+<p>Guava RateLimiter提供了令牌桶算法实现：平滑突发限流(SmoothBursty)和平滑预热限流(SmoothWarmingUp)实现</p>
+<p><strong>平滑突发限流(SmoothBursty)</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">RateLimiter limiter = RateLimiter.create(<span class="number">5</span>);</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">将得到类似如下的输出：</div><div class="line"><span class="number">0.0</span></div><div class="line"><span class="number">0.198239</span></div><div class="line"><span class="number">0.196083</span></div><div class="line"><span class="number">0.200609</span></div><div class="line"><span class="number">0.199599</span></div><div class="line"><span class="number">0.19961</span></div></pre></td></tr></table></figure></p>
+<p>limiter.acquire(5)表示桶的容量为5且每秒新增5个令牌</p>
+<p><strong>平滑预热限流(SmoothWarmingUp)</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">RateLimiter limiter = RateLimiter.create(<span class="number">5</span>,<span class="number">1000</span>, TimeUnit.MILLISECONDS);</div><div class="line"><span class="keyword">for</span>(inti =<span class="number">1</span>; i &lt;<span class="number">5</span>;i++) &#123;</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">&#125;</div><div class="line">Thread.sleep(<span class="number">1000L</span>);</div><div class="line"><span class="keyword">for</span>(inti =<span class="number">1</span>; i &lt;<span class="number">5</span>;i++) &#123;</div><div class="line">System.out.println(limiter.acquire());</div><div class="line">&#125;</div><div class="line">将得到类似如下的输出：</div><div class="line"><span class="number">0.0</span></div><div class="line"><span class="number">0.51767</span></div><div class="line"><span class="number">0.357814</span></div><div class="line"><span class="number">0.219992</span></div><div class="line"><span class="number">0.199984</span></div><div class="line"><span class="number">0.0</span></div><div class="line"><span class="number">0.360826</span></div><div class="line"><span class="number">0.220166</span></div><div class="line"><span class="number">0.199723</span></div><div class="line"><span class="number">0.199555</span></div></pre></td></tr></table></figure></p>
+<p>SmoothWarmingUp创建方式：RateLimiter.create(doublepermitsPerSecond, long warmupPeriod, TimeUnit unit)<br>permitsPerSecond表示每秒新增的令牌数，warmupPeriod表示在从冷启动速率过渡到平均速率的时间间隔。</p>
+<p>速率是梯形上升速率的，也就是说冷启动时会以一个比较大的速率慢慢到平均速率；然后趋于平均速率（梯形下降到平均速率）。可以通过调节warmupPeriod参数实现一开始就是平滑固定速率。</p>
+<h1 id="分布式限流"><a href="#分布式限流" class="headerlink" title="分布式限流"></a>分布式限流</h1><p>分布式限流最关键的是要将限流服务做成原子化,而解决方案可以使使用redis+lua或者nginx+lua技术进行实现</p>
+<p>详见参考文章</p>
+<h1 id="接入层限流"><a href="#接入层限流" class="headerlink" title="接入层限流"></a>接入层限流</h1><p>接入层通常指请求流量的入口，该层的主要目的有：负载均衡、非法请求过滤、请求聚合、缓存、降级、限流、A/B测试、服务质量监控等等</p>
+<p>对于Nginx接入层限流可以使用Nginx自带了两个模块：连接数限流模块ngx_http_limit_conn_module和漏桶算法实现的请求限流模块ngx_http_limit_req_module。还可以使用OpenResty提供的Lua限流模块lua-resty-limit-traffic进行更复杂的限流场景。</p>
+<p>limit_conn用来对某个KEY对应的总的网络连接数进行限流，可以按照如IP、域名维度进行限流。</p>
+<p>limit_req用来对某个KEY对应的请求的平均速率进行限流，并有两种用法：平滑模式（delay）和允许突发模式(nodelay)。</p>
+<p>OpenResty提供的Lua限流模块lua-resty-limit-traffic进行更复杂的限流场景</p>
+<p>详见参考文章</p>
+<p>（本文完）</p>
+<h1 id="参考自文章"><a href="#参考自文章" class="headerlink" title="参考自文章"></a>参考自文章</h1><ul>
+<li><a href="http://www.jianshu.com/p/0d7ca597ebd2" target="_blank" rel="external">http://www.jianshu.com/p/0d7ca597ebd2</a></li>
+<li><a href="http://www.jianshu.com/p/b7945524a37b" target="_blank" rel="external">http://www.jianshu.com/p/b7945524a37b</a></li>
+<li><a href="http://www.54tianzhisheng.cn/2017/09/23/Guava-limit/" target="_blank" rel="external">http://www.54tianzhisheng.cn/2017/09/23/Guava-limit/</a></li>
+</ul>
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/Mybatis/">Mybatis</a>
-
-            </div>
         
         
             <div class="post-actions-wrap">
@@ -260,7 +278,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-rescore/"  data-tooltip="Elasticsearch二次评分">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -268,7 +286,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/redis-progression/" data-tooltip="Redis进阶内容">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/git-rebase/" data-tooltip="Git rebase详细解析">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -286,7 +304,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -294,7 +312,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -302,7 +320,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -352,7 +370,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elasticsearch-rescore/"  data-tooltip="Elasticsearch二次评分">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -360,7 +378,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/redis-progression/" data-tooltip="Redis进阶内容">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/git-rebase/" data-tooltip="Git rebase详细解析">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -378,7 +396,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -386,7 +404,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -394,7 +412,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-cache/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -425,7 +443,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/mybatis-cache/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -433,7 +451,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/mybatis-cache/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -441,7 +459,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/mybatis-cache/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/current-limiting/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -780,9 +798,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://wangnan.tech/post/mybatis-cache/';
+                 this.page.url = 'http://wangnan.tech/post/current-limiting/';
                  
-                    this.page.identifier = 'post/mybatis-cache/';
+                    this.page.identifier = 'post/current-limiting/';
                  
              };
             (function() {

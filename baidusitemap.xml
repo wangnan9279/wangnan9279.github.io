@@ -4,6 +4,24 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/current-limiting/</loc>
+    <lastmod>2017-10-25T02:15:39.504Z</lastmod>
+    <data>
+        <display>
+        <title>高并发系统限流设计</title>
+        <pubTime>2017-10-25T02:07:58.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="架构" url="http://wangnan.tech/categories/%E6%9E%B6%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/git-rebase/</loc>
     <lastmod>2017-10-16T09:04:12.195Z</lastmod>
     <data>
