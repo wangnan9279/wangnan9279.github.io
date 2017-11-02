@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ghost Stories">
+    <title>Logstash学习笔记 - Ghost Stories</title>
+    <meta name="author" content="Ghost Stories">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Logstash学习笔记">
+<meta property="og:url" content="http://wangnan.tech/post/logstash-note/index.html">
+<meta property="og:site_name" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash-note-01.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash-note-04.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash-note-02.png">
+<meta property="og:updated_time" content="2017-11-02T09:16:00.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Logstash学习笔记">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash.png">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/logstash.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/logstash.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Ghost Stories</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ghost Stories</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Logstash学习笔记
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-02T17:06:12+08:00">
+	
+		    Nov 02, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/ELKstack/">ELKstack</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/logstash.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单使用示例"><span class="toc-text">简单使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-命令行输入内容然后让logstash输出内容"><span class="toc-text">1.命令行输入内容然后让logstash输出内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-命令行输入内容然后让logstash以某种格式输出"><span class="toc-text">2.命令行输入内容然后让logstash以某种格式输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-命令行输入内容然后让logstash使用Elasticsearch存储"><span class="toc-text">3.命令行输入内容然后让logstash使用Elasticsearch存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-使用过滤器解析日志存到es中"><span class="toc-text">4.使用过滤器解析日志存到es中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-从文件获取日志保存到es中"><span class="toc-text">5.从文件获取日志保存到es中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#logstash详解"><span class="toc-text">logstash详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构"><span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置语法"><span class="toc-text">配置语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#plugin的安装"><span class="toc-text">plugin的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行方式"><span class="toc-text">运行方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件配置"><span class="toc-text">插件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入插件-Input"><span class="toc-text">输入插件(Input)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码插件-Codec"><span class="toc-text">编码插件(Codec)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤器插件-Filter"><span class="toc-text">过滤器插件(Filter)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output配置"><span class="toc-text">output配置</span></a></li></ol></li></ol></li></ol></span></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>先介绍下ELK stack</p>
+<p><strong>Elasticsearch</strong> </p>
+<p>Elasticsearch 是基于 JSON 的分布式搜索和分析引擎，专为实现水平扩展、高可用和管理便捷性而设计</p>
+<p><strong>Logstash</strong></p>
+<p>Logstash 是动态数据收集管道，拥有可扩展的插件生态系统，能够与 Elasticsearch 产生强大的协同作用。</p>
+<p><strong>Kibana</strong></p>
+<p>Kibana 能够以图表的形式呈现数据，并且具有可扩展的用户界面，供您全方位配置和管理 Elastic Stack</p>
+<p><strong>ELK典型使用场景</strong></p>
+<p>用Elasticsearch作为后台数据的存储，kibana用来前端的报表展示。Logstash在其过程中担任搬运工的角色</p>
+<p>我们先把logstash安装然后简单用起来，然后详细解析logstash</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>依赖:jdk7及以上版本 </p>
+<p>Logstash版本:2.3.4</p>
+<p>步骤：</p>
+<ol>
+<li>官网下载tar.gz包</li>
+</ol>
+<p>链接地址：<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="external">链接</a></p>
+<ol>
+<li>扔到机器上解压<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf logstash-2.3.4.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>安装完成</p>
+<h2 id="简单使用示例"><a href="#简单使用示例" class="headerlink" title="简单使用示例"></a>简单使用示例</h2><h3 id="1-命令行输入内容然后让logstash输出内容"><a href="#1-命令行输入内容然后让logstash输出内容" class="headerlink" title="1.命令行输入内容然后让logstash输出内容"></a>1.命令行输入内容然后让logstash输出内容</h3><p>进到bin目录下运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./logstash -e &apos;input &#123; stdin &#123; &#125; &#125; output &#123; stdout &#123;&#125; &#125;&apos;</div></pre></td></tr></table></figure>
+<p>logstach输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Settings: Default pipeline workers: 2</div><div class="line">Pipeline main started</div></pre></td></tr></table></figure>
+<p>表示启动成功</p>
+<p>在控制台输入123，然后logstash输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">123</div><div class="line">2017-11-02T02:42:50.836Z localhost.localdomain 123</div></pre></td></tr></table></figure>
+<p>解释：</p>
+<p>每位系统管理员都肯定写过很多类似这样的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat randdata | awk &apos;&#123;print $2&#125;&apos; | sort | uniq -c | tee sortdata。</div></pre></td></tr></table></figure>
+<p>这个管道符 | 可以算是 Linux 世界最伟大的发明之一(另一个是“一切皆文件”)。<br>Logstash 就像管道符一样！</p>
+<p>你输入(就像命令行的 cat )数据，然后处理过滤(就像 awk 或者 uniq 之类)数据，最后输出(就像 tee )到其他地方。</p>
+<p>当然实际上，Logstash 是用不同的线程来实现这些的</p>
+<p>数据在线程之间以 事件 的形式流传。不要叫行，因为 logstash 可以处理多行事件。</p>
+<p>Logstash 会给事件添加一些额外信息。最重要的就是 @timestamp，用来标记事件的发生时间。因为这个字段涉及到 Logstash 的内部流转，所以必须是一个 joda 对象，如果你尝试自己给一个字符串字段重命名为 @timestamp 的话，Logstash 会直接报错。所以，请使用 filters/date 插件 来管理这个特殊字段</p>
+<p>此外，大多数时候，还可以见到另外几个：</p>
+<ul>
+<li>host 标记事件发生在哪里。</li>
+<li>type 标记事件的唯一类型。</li>
+<li>tags 标记事件的某方面属性。这是一个数组，一个事件可以有多个标签。</li>
+</ul>
+<p>-e参数允许Logstash直接通过命令行接受设置。这点尤其快速的帮助我们反复的测试配置是否正确而不用写配置文件</p>
+<p>以上例子我们在运行logstash中，定义了一个叫”stdin”的input还有一个”stdout”的output，无论我们输入什么字符，Logstash都会按照某种格式来返回我们输入的字符</p>
+<h3 id="2-命令行输入内容然后让logstash以某种格式输出"><a href="#2-命令行输入内容然后让logstash以某种格式输出" class="headerlink" title="2.命令行输入内容然后让logstash以某种格式输出"></a>2.命令行输入内容然后让logstash以某种格式输出</h3><p>运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./logstash -e &apos;input &#123; stdin &#123; &#125; &#125; output &#123; stdout &#123; codec =&gt; rubydebug &#125; &#125;&apos;</div></pre></td></tr></table></figure>
+<p>logstach输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Settings: Default pipeline workers: 2</div><div class="line">Pipeline main started</div></pre></td></tr></table></figure>
+<p>表示启动成功</p>
+<p>在控制台输入123，然后logstash输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">123</div><div class="line">&#123;</div><div class="line">       &quot;message&quot; =&gt; &quot;123&quot;,</div><div class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</div><div class="line">    &quot;@timestamp&quot; =&gt; &quot;2017-11-02T02:51:55.681Z&quot;,</div><div class="line">          &quot;host&quot; =&gt; &quot;localhost.localdomain&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>命令解释：<br>codec 指定了数据输出类型是rubydebug类型，还可以是json类型等等</p>
+<h3 id="3-命令行输入内容然后让logstash使用Elasticsearch存储"><a href="#3-命令行输入内容然后让logstash使用Elasticsearch存储" class="headerlink" title="3.命令行输入内容然后让logstash使用Elasticsearch存储"></a>3.命令行输入内容然后让logstash使用Elasticsearch存储</h3><p>-e参数在命令行中指定配置是很常用的方式，不过如果需要配置更多设置则需要很长的内容。这种情况，我们首先创建一个简单的配置文件</p>
+<p>建一个文件名是”logstash.conf”的配置文件并且保存在和Logstash相同的目录中,配置一个已经按照好的es的ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">input &#123; stdin &#123; &#125; &#125;  </div><div class="line">output &#123;  </div><div class="line">  elasticsearch &#123; host =&gt; &quot;xxx.xxx.xxx.xx&quot; &#125;  </div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到bin目录运行logstash -f参数用于指定配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.logstash -f logstash.conf</div></pre></td></tr></table></figure>
+<p>logstach输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Settings: Default pipeline workers: 2</div><div class="line">Pipeline main started</div></pre></td></tr></table></figure>
+<p>表示启动成功</p>
+<p>输入123，logstach输出如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">123</div><div class="line">&#123;</div><div class="line">       &quot;message&quot; =&gt; &quot;123&quot;,</div><div class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</div><div class="line">    &quot;@timestamp&quot; =&gt; &quot;2017-11-02T03:02:48.516Z&quot;,</div><div class="line">          &quot;host&quot; =&gt; &quot;localhost.localdomain&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后到es的head插件中查看,es中已经存在一条数据了：<br><img src="http://onxkn9cbz.bkt.clouddn.com/logstash-note-01.png" alt="image"></p>
+<p>你将发现Logstash可以足够灵巧的在Elasticsearch上建立索引… 每天会按照默认格式是logstash-YYYY.MM.DD来建立索引。在午夜(GMT)，Logstash自动按照时间戳更新索引。我们可以根据追溯多长时间的数据作为依据来制定保持多少数据，当然你也可以把比较老的数据迁移到其他的地方(重新索引)来方便查询，</p>
+<h3 id="4-使用过滤器解析日志存到es中"><a href="#4-使用过滤器解析日志存到es中" class="headerlink" title="4.使用过滤器解析日志存到es中"></a>4.使用过滤器解析日志存到es中</h3><p>在bin目录下创建一个配置文件 logstash-filter.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">input &#123; stdin &#123; &#125; &#125;</div><div class="line">  </div><div class="line">filter &#123;  </div><div class="line">  grok &#123;  </div><div class="line">    match =&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;COMBINEDAPACHELOG&#125;&quot; &#125;  </div><div class="line">  &#125;  </div><div class="line">  date &#123;  </div><div class="line">    match =&gt; [ &quot;timestamp&quot; , &quot;dd/MMM/yyyy:HH:mm:ss Z&quot; ]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">output &#123;  </div><div class="line">  elasticsearch &#123; hosts =&gt; &quot;192.168.102.13&quot; &#125;</div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./logstash -f logstash-filter.conf</div></pre></td></tr></table></figure>
+<p>logstach输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Settings: Default pipeline workers: 2</div><div class="line">Pipeline main started</div></pre></td></tr></table></figure>
+<p>表示启动成功</p>
+<p>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 - - [11/Dec/2013:00:01:45 -0800] &quot;GET /xampp/status.php HTTP/1.1&quot; 200 3891 &quot;http://cadenza/xampp/navi.php&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:25.0) Gecko/20100101 Firefox/25.0&quot;</div></pre></td></tr></table></figure>
+<p>logstash输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;message&quot; =&gt; &quot;127.0.0.1 - - [11/Dec/2013:00:01:45 -0800] \&quot;GET /xampp/status.php HTTP/1.1\&quot; 200 3891 \&quot;http://cadenza/xampp/navi.php\&quot; \&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:25.0) Gecko/20100101 Firefox/25.0\&quot;  &quot;,</div><div class="line">       &quot;@version&quot; =&gt; &quot;1&quot;,</div><div class="line">     &quot;@timestamp&quot; =&gt; &quot;2013-12-11T08:01:45.000Z&quot;,</div><div class="line">           &quot;host&quot; =&gt; &quot;localhost.localdomain&quot;,</div><div class="line">       &quot;clientip&quot; =&gt; &quot;127.0.0.1&quot;,</div><div class="line">          &quot;ident&quot; =&gt; &quot;-&quot;,</div><div class="line">           &quot;auth&quot; =&gt; &quot;-&quot;,</div><div class="line">      &quot;timestamp&quot; =&gt; &quot;11/Dec/2013:00:01:45 -0800&quot;,</div><div class="line">           &quot;verb&quot; =&gt; &quot;GET&quot;,</div><div class="line">        &quot;request&quot; =&gt; &quot;/xampp/status.php&quot;,</div><div class="line">    &quot;httpversion&quot; =&gt; &quot;1.1&quot;,</div><div class="line">       &quot;response&quot; =&gt; &quot;200&quot;,</div><div class="line">          &quot;bytes&quot; =&gt; &quot;3891&quot;,</div><div class="line">       &quot;referrer&quot; =&gt; &quot;\&quot;http://cadenza/xampp/navi.php\&quot;&quot;,</div><div class="line">          &quot;agent&quot; =&gt; &quot;\&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:25.0) Gecko/20100101 Firefox/25.0\&quot;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后到es的head插件中查看,es中已经存在一条数据了：<br><img src="http://onxkn9cbz.bkt.clouddn.com/logstash-note-04.png" alt="image"></p>
+<p>Logstash(使用了grok过滤器)能够将一行的日志数据(Apache的”combined log”格式)分割设置为不同的数据字段。这一点对于日后解析和查询我们自己的日志数据非常有用。比如：HTTP的返回状态码，IP地址相关等等，非常的容易。很少有匹配规则没有被grok包含，所以如果你正尝试的解析一些常见的日志格式，或许已经有人为了做了这样的工作。</p>
+<p>另外一个过滤器是date filter。这个过滤器来负责解析出来日志中的时间戳并将值赋给timestamp字段</p>
+<h3 id="5-从文件获取日志保存到es中"><a href="#5-从文件获取日志保存到es中" class="headerlink" title="5.从文件获取日志保存到es中"></a>5.从文件获取日志保存到es中</h3><p>在bin目录下创建一个配置文件 logstash-apache.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">input &#123;</div><div class="line">  file &#123;  </div><div class="line">    path =&gt; &quot;/opt/logstash-2.3.4/logs/*&quot;          </div><div class="line">    start_position =&gt; beginning  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">filter &#123;                                                 </div><div class="line">    grok &#123;  </div><div class="line">      match =&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;COMBINEDAPACHELOG&#125;&quot; &#125;  </div><div class="line">    &#125;  </div><div class="line">  date &#123;  </div><div class="line">    match =&gt; [ &quot;timestamp&quot; , &quot;dd/MMM/yyyy:HH:mm:ss Z&quot; ]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">output &#123;  </div><div class="line">  elasticsearch &#123;  </div><div class="line">    hosts =&gt; &quot;192.168.102.13&quot;</div><div class="line">  &#125;  </div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./logstash -f logstash-apache.conf</div></pre></td></tr></table></figure>
+<p>logstach输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Settings: Default pipeline workers: 2</div><div class="line">Pipeline main started</div></pre></td></tr></table></figure>
+<p>表示启动成功</p>
+<p>去es插件中可以看到apache的日志数据已经导入到ES中了</p>
+<p>此外，你也许还会发现Logstash不会重复处理文件中已经处理过得events。因为Logstash已经记录了文件处理的位置，这样就只处理文件中新加入的行数</p>
+<h1 id="logstash详解"><a href="#logstash详解" class="headerlink" title="logstash详解"></a>logstash详解</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>从 Logstash 的名字就能看出，它主要负责跟日志相关的各类操作，在此之前，我们先来看看日志管理的三个境界吧</p>
+<ul>
+<li><p>境界一<br>『昨夜西风凋碧树。独上高楼，望尽天涯路』，在各台服务器上用传统的 linux 工具（如 cat, tail, sed, awk, grep 等）对日志进行简单的分析和处理，基本上可以认为是命令级别的操作，成本很低，速度很快，但难以复用，也只能完成基本的操作。</p>
+</li>
+<li><p>境界二<br>『衣带渐宽终不悔，为伊消得人憔悴』，服务器多了之后，分散管理的成本变得越来越多，所以会利用 rsyslog 这样的工具，把各台机器上的日志汇总到某一台指定的服务器上，进行集中化管理。这样带来的问题是日志量剧增，小作坊式的管理基本难以满足需求。</p>
+</li>
+<li><p>境界三<br>『众里寻他千百度，蓦然回首，那人却在灯火阑珊处』，随着日志量的增大，我们从日志中获取去所需信息，并找到各类关联事件的难度会逐渐加大，这个时候，就是 Logstash 登场的时候了</p>
+</li>
+</ul>
+<p>Logstash 的主要优势，一个是在支持各类插件的前提下提供统一的管道进行日志处理（就是 input-filter-output 这一套），二个是灵活且性能不错</p>
+<p>logstash里面最基本的概念（先不管codec）</p>
+<p>logstash收集日志基本流程: input–&gt;filter–&gt;output </p>
+<p>input:从哪里收集日志</p>
+<p>filter:对日志进行过滤</p>
+<p>output:输出哪里</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>Logstash 是由 JRuby 编写的，使用基于消息的简单架构，在 JVM 上运行。理念非常简单，如果说 MapReduce 框架分为 Mapper 和 Reducer 两大模块，那么 Logstash 有仨</p>
+<ul>
+<li>Collect: 数据输入。对应 input</li>
+<li>Enrich: 数据处理。对应 filter</li>
+<li>Transport: 数据输出。对应 output</li>
+</ul>
+<p>虽然模块仅仅比 MapReduce 框架多了一个，但是无三不成几，通过不同的拓扑结构，可以完成各类数据处理应用。不过这里我们主要还是以日志汇总处理系统的思路来进行介绍，一个典型的架构为：</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/logstash-note-02.png" alt="image"></p>
+<h2 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h2><p>Logstash 设计了自己的 DSL —— 有点像 Puppet 的 DSL，或许因为都是用 Ruby 语言写的吧 —— 包括有区域，注释，数据类型(布尔值，字符串，数值，数组，哈希)，条件判断，字段引用等。</p>
+<p><strong>区段(section)</strong><br>Logstash 用 {} 来定义区域。区域内可以包括插件区域定义，你可以在一个区域内定义多个插件。插件区域内则可以定义键值对设置。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">input &#123;</div><div class="line">    stdin &#123;&#125;</div><div class="line">    syslog &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>数据类型</strong></p>
+<ul>
+<li><p>bool</p>
+<blockquote>
+<p>debug =&gt; true</p>
+</blockquote>
+</li>
+<li><p>string</p>
+<blockquote>
+<p>host =&gt; “hostname”</p>
+</blockquote>
+</li>
+<li><p>number</p>
+<blockquote>
+<p>port =&gt; 514</p>
+</blockquote>
+</li>
+<li><p>array</p>
+<blockquote>
+<p>match =&gt; [“datetime”, “UNIX”, “ISO8601”]</p>
+</blockquote>
+</li>
+<li><p>hash</p>
+<blockquote>
+<p>options =&gt; {<br>  key1 =&gt; “value1”,<br>  key2 =&gt; “value2”<br>}</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>字段引用(field reference)</strong><br>如果你想在 Logstash 配置中使用字段的值，只需要把字段的名字写在中括号 [] 里就行了，这就叫字段引用。</p>
+<p>对于 嵌套字段(也就是多维哈希表，或者叫哈希的哈希)，每层的字段名都写在 [] 里就可以了。比如，你可以从 geoip 里这样获取 longitude 值(是的，这是个笨办法，实际上有单独的字段专门存这个数据的)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[geoip][location][0]</div></pre></td></tr></table></figure>
+<p><strong>条件判断(condition)</strong></p>
+<p>Logstash从 1.3.0 版开始支持条件判断和表达式<br>表达式支持下面这些操作符：</p>
+<ul>
+<li>==(等于), !=(不等于), &lt;(小于), &gt;(大于), &lt;=(小于等于), &gt;=(大于等于)</li>
+<li>=~(匹配正则), !~（不匹配正则）</li>
+<li>n(包含), not in(不包含)</li>
+<li>and(与), or(或), nand(非与), xor(非或)</li>
+<li>()(复合表达式), !()(对复合表达式结果取反)</li>
+</ul>
+<p>通常来说，你都会在表达式里用到字段引用。为了尽量展示全面各种表达式，下面虚拟一个示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if &quot;_grokparsefailure&quot; not in [tags] &#123;</div><div class="line">&#125; else if [status] !~ /^2\d\d/ or ( [url] == &quot;/noc.gif&quot; nand [geoip][city] != &quot;beijing&quot; ) &#123;</div><div class="line">&#125; else &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>命令行参数</strong><br>Logstash 提供了一个 shell 脚本叫 logstash 方便快速运行。它支持以下参数：</p>
+<ul>
+<li>-e</li>
+</ul>
+<p>执行。我们在 “Hello World” 的时候已经用过这个参数了。事实上你可以不写任何具体配置，直接运行 </p>
+<ul>
+<li>–config 或 -f</li>
+</ul>
+<p>文件。真实运用中，我们会写很长的配置，甚至可能超过 shell 所能支持的 1024 个字符长度。所以我们必把配置固化到文件里，然后通过 bin/logstash -f agent.conf 这样的形式来运行</p>
+<p>此外，logstash 还提供一个方便我们规划和书写配置的小功能。你可以直接用 bin/logstash -f /etc/logstash.d/ 来运行。logstash 会自动读取 /etc/logstash.d/ 目录下所有 *.conf 的文本文件，然后在自己内存里拼接成一个完整的大配置文件，再去执行。</p>
+<ul>
+<li>–configtest 或 -t</li>
+</ul>
+<p>测试。用来测试 Logstash 读取到的配置文件语法是否能正常解析</p>
+<ul>
+<li>–log 或 -l</li>
+</ul>
+<p>日志。Logstash 默认输出日志到标准错误。生产环境下你可以通过 bin/logstash -l logs/logstash.log 命令来统一存储日志</p>
+<ul>
+<li>–pipeline-workers 或 -w</li>
+</ul>
+<p>运行 filter 和 output 的 pipeline 线程数量。默认是 CPU 核数</p>
+<ul>
+<li>–pipeline-batch-size 或 -b</li>
+</ul>
+<p>每个 Logstash pipeline 线程，在执行具体的 filter 和 output 函数之前，最多能累积的日志条数。默认是 125 条。越大性能越好，同样也会消耗越多的 JVM 内存</p>
+<ul>
+<li>–pipeline-batch-delay 或 -u</li>
+</ul>
+<p>每个 Logstash pipeline 线程，在打包批量日志的时候，最多等待几毫秒。默认是 5 ms</p>
+<ul>
+<li>–pluginpath 或 -P</li>
+</ul>
+<p>可以写自己的插件，然后用 bin/logstash –pluginpath /path/to/own/plugins 加载它们</p>
+<ul>
+<li>–verbose</li>
+</ul>
+<p>输出一定的调试日志</p>
+<ul>
+<li>–debug</li>
+</ul>
+<p>输出更多的调试日志</p>
+<p><strong>配置文件</strong></p>
+<p>从 Logstash 5.0 开始，新增了 $LS_HOME/config/logstash.yml 文件，可以将所有的命令行参数都通过 YAML 文件方式设置。同时为了反映命令行配置参数的层级关系，参数也都改成用.而不是-了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pipeline:</div><div class="line">    workers: 24</div><div class="line">    batch:</div><div class="line">        size: 125</div><div class="line">        delay: 5</div></pre></td></tr></table></figure>
+<h2 id="plugin的安装"><a href="#plugin的安装" class="headerlink" title="plugin的安装"></a>plugin的安装</h2><p>从 logstash 1.5.0 版本开始，logstash 将所有的插件都独立拆分成 gem 包。这样，每个插件都可以独立更新，不用等待 logstash 自身做整体更新的时候才能使用了。</p>
+<p>为了达到这个目标，logstash 配置了专门的 plugins 管理命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Usage:</div><div class="line">    bin/logstash-plugin [OPTIONS] SUBCOMMAND [ARG] ...</div><div class="line"></div><div class="line">Parameters:</div><div class="line">    SUBCOMMAND                    subcommand</div><div class="line">    [ARG] ...                     subcommand arguments</div><div class="line"></div><div class="line">Subcommands:</div><div class="line">    install                       Install a plugin</div><div class="line">    uninstall                     Uninstall a plugin</div><div class="line">    update                        Install a plugin</div><div class="line">    list                          List all installed plugins</div><div class="line"></div><div class="line">Options:</div><div class="line">    -h, --help                    print help</div></pre></td></tr></table></figure>
+<h2 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h2><ol>
+<li>标准的 service 方式</li>
+</ol>
+<p>采用 RPM、DEB 发行包安装的读者，推荐采用这种方式</p>
+<ol>
+<li>最基础的 nohup 方式</li>
+</ol>
+<p>想要维持一个长期后台运行的 logstash，你需要同时在命令前面加 nohup，后面加 &amp;。</p>
+<ol>
+<li>更优雅的 SCREEN 方式（不详细说了）</li>
+<li>最推荐的 daemontools 方式（不详细说了）</li>
+</ol>
+<h2 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h2><p>下面只列出列表，详细配置可查看官方文档</p>
+<h3 id="输入插件-Input"><a href="#输入插件-Input" class="headerlink" title="输入插件(Input)"></a>输入插件(Input)</h3><ul>
+<li>读取文件(File)</li>
+<li>标准输入(Stdin)</li>
+<li>读取 Syslog 数据</li>
+<li>读取网络数据(TCP)</li>
+</ul>
+<h3 id="编码插件-Codec"><a href="#编码插件-Codec" class="headerlink" title="编码插件(Codec)"></a>编码插件(Codec)</h3><p>Codec 是 logstash 从 1.3.0 版开始新引入的概念</p>
+<p>在此之前，logstash 只支持纯文本形式输入，然后以过滤器处理它。但现在，我们可以在输入 期处理不同类型的数据，这全是因为有了 codec 设置</p>
+<p>这里需要纠正之前的一个概念。Logstash 不只是一个input | filter | output 的数据流，而是一个 input | decode | filter | encode | output 的数据流！</p>
+<p>codec 就是用来 decode、encode 事件的</p>
+<p>codec 的引入，使得 logstash 可以更好更方便的与其他有自定义数据格式的运维产品共存，比如 graphite、fluent、netflow、collectd，以及使用 msgpack、json、edn 等通用数据格式的其他产品等</p>
+<ul>
+<li>json</li>
+<li>合并多行数据(Multiline)</li>
+<li>collectd</li>
+<li>netflow</li>
+</ul>
+<h3 id="过滤器插件-Filter"><a href="#过滤器插件-Filter" class="headerlink" title="过滤器插件(Filter)"></a>过滤器插件(Filter)</h3><p>名为过滤器，其实提供的不单单是过滤的功能。在本章我们就会重点介绍几个插件，它们扩展了进入过滤器的原始数据，进行复杂的逻辑处理，甚至可以无中生有的添加新的 logstash 事件到后续的流程中去</p>
+<ul>
+<li>date</li>
+<li>grok</li>
+<li>dissect</li>
+<li>geoip</li>
+<li>json</li>
+<li>kv</li>
+<li>metrices</li>
+<li>mutate</li>
+<li>ruby</li>
+<li>split</li>
+<li>elapsed</li>
+</ul>
+<h3 id="output配置"><a href="#output配置" class="headerlink" title="output配置"></a>output配置</h3><ul>
+<li>elasticsearch</li>
+<li>email</li>
+<li>exec</li>
+<li>file</li>
+<li>nagios</li>
+<li>statsd</li>
+<li>stdout</li>
+<li>tcp</li>
+<li>hdfs</li>
+</ul>
+<p>（本文完）<br>参考自：</p>
+<ul>
+<li><a href="https://kibana.logstash.es/content/logstash/" target="_blank" rel="external">https://kibana.logstash.es/content/logstash/</a></li>
+<li><a href="http://blog.csdn.net/wp500/article/details/41040213" target="_blank" rel="external">http://blog.csdn.net/wp500/article/details/41040213</a></li>
+<li><a href="http://www.cnblogs.com/xing901022/p/4802822.html" target="_blank" rel="external">http://www.cnblogs.com/xing901022/p/4802822.html</a></li>
+<li><a href="http://wdxtub.com/2016/07/24/logstash-guide/" target="_blank" rel="external">http://wdxtub.com/2016/07/24/logstash-guide/</a></li>
+<li><a href="http://wdxtub.com/2016/07/26/elk-guide/" target="_blank" rel="external">http://wdxtub.com/2016/07/26/elk-guide/</a></li>
+<li><a href="http://yincheng.site/logstash" target="_blank" rel="external">http://yincheng.site/logstash</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Logstash/">Logstash</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/current-limiting/" data-tooltip="高并发系统限流设计">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Ghost Stories. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/current-limiting/" data-tooltip="高并发系统限流设计">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-note/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ghost Stories</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                105 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/logstash-note/';
+                 
+                    this.page.identifier = 'post/logstash-note/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
