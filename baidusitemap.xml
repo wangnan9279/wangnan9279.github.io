@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/logstash-elasticsearch/</loc>
+    <lastmod>2017-11-07T02:08:13.655Z</lastmod>
+    <data>
+        <display>
+        <title>Logstash输出到Elasticsearch笔记</title>
+        <pubTime>2017-11-07T02:05:46.000Z</pubTime>
+        
+        <tag>Logstash</tag>
+         
+         
+           
+             
+              <breadCrumb title="ELKstack" url="http://wangnan.tech/categories/ELKstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/logstash-grok/</loc>
     <lastmod>2017-11-06T01:52:42.475Z</lastmod>
     <data>

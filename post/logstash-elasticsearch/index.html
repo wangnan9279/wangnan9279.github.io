@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ghost Stories">
+    <title>Logstash输出到Elasticsearch笔记 - Ghost Stories</title>
+    <meta name="author" content="Ghost Stories">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Logstash输出到Elasticsearch笔记">
+<meta property="og:url" content="http://wangnan.tech/post/logstash-elasticsearch/index.html">
+<meta property="og:site_name" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/03.jpg">
+<meta property="og:updated_time" content="2017-11-07T02:08:13.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Logstash输出到Elasticsearch笔记">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/03.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/03.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/03.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Ghost Stories</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ghost Stories</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Logstash输出到Elasticsearch笔记
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-07T10:05:46+08:00">
+	
+		    Nov 07, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/ELKstack/">ELKstack</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#output配置中elasticsearch配置"><span class="toc-text">output配置中elasticsearch配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#action"><span class="toc-text">action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hosts"><span class="toc-text">hosts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#document-type"><span class="toc-text">document_type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#template"><span class="toc-text">template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#template-name"><span class="toc-text">template_name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#template-overwrite"><span class="toc-text">template_overwrite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#manage-template"><span class="toc-text">manage_template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#order参数"><span class="toc-text">order参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为elasticsearch配置模板"><span class="toc-text">为elasticsearch配置模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用默认自带的索引模板"><span class="toc-text">使用默认自带的索引模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在logstash收集端自定义配置模板"><span class="toc-text">在logstash收集端自定义配置模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在elasticsearc服务端自定义配置模板"><span class="toc-text">在elasticsearc服务端自定义配置模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态模板"><span class="toc-text">静态模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态模板"><span class="toc-text">动态模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模板结构"><span class="toc-text">模板结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol></span></p>
+<h1 id="output配置中elasticsearch配置"><a href="#output配置中elasticsearch配置" class="headerlink" title="output配置中elasticsearch配置"></a>output配置中elasticsearch配置</h1><h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><ul>
+<li>index   给一个文档建立索引</li>
+<li>delete  通过id值删除一个文档（这个action需要指定一个id值）</li>
+<li>create  插入一条文档信息，如果这条文档信息在索引中已经存在，那么本次插入工作失败</li>
+<li>update  通过id值更新一个文档。更新有个特殊的案例upsert，如果被更新的文档还不存在，那么就会用到upsert</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">action =&gt; &quot;index&quot;</div></pre></td></tr></table></figure>
+<h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><p>写入事件所用的索引。可以动态的使用%{foo}语法，它的默认值是：<br>“logstash-%{+YYYY.MM.dd}”，以天为单位分割的索引，使你可以很容易的删除老的数据或者搜索指定时间范围内的数据。</p>
+<p>索引不能包含大写字母。推荐使用以周为索引的ISO 8601格式，例如logstash-%{+xxxx.ww}</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index =&gt; &quot;tomcat_logs_index_%&#123;+YYYY.MM.dd&#125;&quot;</div></pre></td></tr></table></figure>
+<h2 id="hosts"><a href="#hosts" class="headerlink" title="hosts"></a>hosts</h2><p>是一个数组类型的值 </p>
+<p>意http协议使用的是http地址，端口是9200，示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hosts =&gt; [&quot;192.168.102.209:9200&quot;, &quot;192.168.102.216:9200&quot;]</div></pre></td></tr></table></figure>
+<h2 id="document-type"><a href="#document-type" class="headerlink" title="document_type"></a>document_type</h2><p>定义es索引的type，一般你应该让同一种类型的日志存到同一种type中，比如debug日志和error日志存到不同的type中</p>
+<p>如果不设置默认type为logs</p>
+<h2 id="template"><a href="#template" class="headerlink" title="template"></a>template</h2><p>如果你愿意，你可以设置指向你自己模板的路径。如果没有设置，那么默认的模板会被使用</p>
+<h2 id="template-name"><a href="#template-name" class="headerlink" title="template_name"></a>template_name</h2><p>这个配置项用来定义在Elasticsearch中模板的命名</p>
+<p>注意删除旧的模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XDELETE &lt;http://localhost:9200/_template/OldTemplateName?pretty&gt;</div></pre></td></tr></table></figure>
+<h2 id="template-overwrite"><a href="#template-overwrite" class="headerlink" title="template_overwrite"></a>template_overwrite</h2><p>布尔类型 默认为false<br>设置为true表示如果你有一个自定义的模板叫logstash，那么将会用你自定义模板覆盖默认模板logstash</p>
+<h2 id="manage-template"><a href="#manage-template" class="headerlink" title="manage_template"></a>manage_template</h2><p>布尔类型 默认为true<br>设置为false将关闭logstash自动管理模板功能<br>比如你定义了一个自定义模板，更加字段名动态生成字段，那么应该设置为false</p>
+<h2 id="order参数"><a href="#order参数" class="headerlink" title="order参数"></a>order参数</h2><p>ELK Stack 在入门学习过程中，必然会碰到自己修改定制索引映射(mapping)乃至模板(template)的问题。<br>这时候，不少比较认真看 Logstash 文档的新用户会通过下面这段配置来制定自己的模板策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">output &#123;</div><div class="line">    elasticsearch &#123;</div><div class="line">        host =&gt; &quot;127.0.0.1&quot;</div><div class="line">        manage_template =&gt; true</div><div class="line">        template =&gt; &quot;/path/to/mytemplate&quot;</div><div class="line">        template_name =&gt; &quot;myname&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然而随后就发现，自己辛辛苦苦修改出来的模板，通过 curl -XGET ‘<a href="http://127.0.0.1:9200/_template/myname" target="_blank" rel="external">http://127.0.0.1:9200/_template/myname</a>‘ 看也确实上传成功了，但实际新数据索引创建出来，就是没生效！</p>
+<p>这个原因是：Logstash 默认会上传一个名叫 logstash 的模板到 ES 里。如果你在使用上面这个配置之前，曾经运行过 Logstash（一般来说都会），那么 ES 里就已经存在这么一个模板了。你可以curl -XGET ‘<a href="http://127.0.0.1:9200/_template/logstash" target="_blank" rel="external">http://127.0.0.1:9200/_template/logstash</a>‘ 验证。</p>
+<p>这个时候，ES 里就变成有两个模板，logstash 和 myname，都匹配 logstash-* 索引名，要求设置一定的映射规则了。</p>
+<p>ES 会按照一定的规则来尝试自动 merge 多个都匹配上了的模板规则，最终运用到索引上</p>
+<p>其中要点就是：<strong>template 是可以设置 order 参数的！而不写这个参数，默认的 order 值就是 0。order 值越大，在 merge 规则的时候优先级越高。</strong></p>
+<p>所以，解决这个问题的办法很简单：在你自定义的 template 里，加一行，变成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;template&quot; : &quot;logstash-*&quot;,</div><div class="line">    &quot;order&quot; : 1,</div><div class="line">    &quot;settings&quot; : &#123; ... &#125;,</div><div class="line">    &quot;mappings&quot; : &#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，其实如果只从 Logstash 配置角度出发，其实更简单的办法是：直接修改原来默认的 logstash 模板，然后模板名称也不要改，就好了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output &#123;</div><div class="line">    elasticsearch &#123;</div><div class="line">        host =&gt; &quot;127.0.0.1&quot;</div><div class="line">        manage_template =&gt; true</div><div class="line">        template_overwrite =&gt; true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="为elasticsearch配置模板"><a href="#为elasticsearch配置模板" class="headerlink" title="为elasticsearch配置模板"></a>为elasticsearch配置模板</h1><p>在使用logstash收集日志的时候，我们一般会使用logstash自带的动态索引模板，虽然无须我们做任何定制操作，就能把我们的日志数据推送到elasticsearch索引集群中</p>
+<p>但是在我们查询的时候，就会发现，默认的索引模板常常把我们不需要分词的字段，给分词了，这样以来，我们的比较重要的聚合统计就不准确了： </p>
+<p>所以这时候，就需要我们自定义一些索引模板了</p>
+<p>在logstash与elasticsearch集成的时候，总共有如下几种使用模板的方式： </p>
+<ol>
+<li><p>使用默认自带的索引模板 ，大部分的字段都会分词，适合开发和时候快速验证使用 </p>
+</li>
+<li><p>在logstash收集端自定义配置模板，因为分散在收集机器上，维护比较麻烦 </p>
+</li>
+<li><p>在elasticsearc服务端自定义配置模板，由elasticsearch负责加载模板，可动态更改，全局生效，维护比较容易 </p>
+</li>
+</ol>
+<h2 id="使用默认自带的索引模板"><a href="#使用默认自带的索引模板" class="headerlink" title="使用默认自带的索引模板"></a>使用默认自带的索引模板</h2><p>ElasticSearch默认自带了一个名字为”logstash”的模板，默认应用于Logstash写入数据到ElasticSearch使用</p>
+<p>优点：最简单，无须任何配置</p>
+<p>缺点：无法自定义一些配置，例如：分词方式</p>
+<h2 id="在logstash收集端自定义配置模板"><a href="#在logstash收集端自定义配置模板" class="headerlink" title="在logstash收集端自定义配置模板"></a>在logstash收集端自定义配置模板</h2><p>使用第二种，适合小规模集群的日志收集</p>
+<p>需要在logstash的output插件中使用template指定本机器上的一个模板json路径， 例如  template =&gt; “/tmp/logstash.json” </p>
+<p>优点：配置简单</p>
+<p>缺点：因为分散在Logstash Indexer机器上，维护起来比较麻烦</p>
+<h2 id="在elasticsearc服务端自定义配置模板"><a href="#在elasticsearc服务端自定义配置模板" class="headerlink" title="在elasticsearc服务端自定义配置模板"></a>在elasticsearc服务端自定义配置模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">manage_template =&gt; false//关闭logstash自动管理模板功能  </div><div class="line">template_name =&gt; &quot;xxx&quot;//映射模板的名字</div></pre></td></tr></table></figure>
+<p>第三种需要在elasticsearch的集群中的config/templates路径下配置模板json，在elasticsearch中索引模板可分为两种</p>
+<h3 id="静态模板"><a href="#静态模板" class="headerlink" title="静态模板"></a>静态模板</h3><p>适合索引字段数据固定的场景，一旦配置完成，不能向里面加入多余的字段，否则会报错 </p>
+<p>优点：scheam已知，业务场景明确，不容易出现因字段随便映射从而造成元数据撑爆es内存，从而导致es集群全部宕机，维护比较容易，可动态更改，全局生效。</p>
+<p>缺点：字段数多的情况下配置稍繁琐 </p>
+<p>一个静态索引模板配置例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">  &quot;xxx&quot; : &#123;  </div><div class="line">      &quot;template&quot;: &quot;xxx-*&quot;,  </div><div class="line">        &quot;settings&quot;: &#123;  </div><div class="line">            &quot;index.number_of_shards&quot;: 3,  </div><div class="line">            &quot;number_of_replicas&quot;: 0   </div><div class="line">        &#125;,  </div><div class="line">    &quot;mappings&quot; : &#123;  </div><div class="line">      &quot;logs&quot; : &#123;  </div><div class="line">        &quot;properties&quot; : &#123;  </div><div class="line">          &quot;@timestamp&quot; : &#123; //这是专门给kibana用的一个字段，时间索引</div><div class="line">            &quot;type&quot; : &quot;date&quot;,  </div><div class="line">            &quot;format&quot; : &quot;dateOptionalTime&quot;,  </div><div class="line">            &quot;doc_values&quot; : true  </div><div class="line">          &#125;,  </div><div class="line">          &quot;@version&quot; : &#123;  </div><div class="line">            &quot;type&quot; : &quot;string&quot;,  </div><div class="line">            &quot;index&quot; : &quot;not_analyzed&quot;,  </div><div class="line">            &quot;doc_values&quot; : true      </div><div class="line">          &#125;,  </div><div class="line">          &quot;id&quot; : &#123;  </div><div class="line">            &quot;type&quot; : &quot;string&quot;,  </div><div class="line">            &quot;index&quot; : &quot;not_analyzed&quot;  </div><div class="line">          &#125;,  </div><div class="line">          &quot;name&quot; : &#123;  </div><div class="line">            &quot;type&quot; : &quot;string&quot;,  </div><div class="line">            &quot;index&quot; : &quot;not_analyzed&quot;  </div><div class="line">          &#125;</div><div class="line">        &#125;  </div><div class="line">      &#125;  </div><div class="line">    &#125;  </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="动态模板"><a href="#动态模板" class="headerlink" title="动态模板"></a>动态模板</h3><p>适合字段数不明确，大量字段的配置类型相同的场景，多加字段不会报错 </p>
+<p>优点：可动态添加任意字段，无须改动scheaml， </p>
+<p>缺点：如果添加的字段非常多，有可能造成es集群宕机 </p>
+<p>一个动态索引模板配置例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">  &quot;template&quot; : &quot;xxx-*&quot;,  </div><div class="line">  &quot;settings&quot; : &#123;  </div><div class="line">   &quot;index.number_of_shards&quot;: 5,  </div><div class="line">   &quot;number_of_replicas&quot;: 0    </div><div class="line">  </div><div class="line">&#125;,  </div><div class="line">  &quot;mappings&quot; : &#123;  </div><div class="line">    &quot;_default_&quot; : &#123;  </div><div class="line">      &quot;_all&quot; : &#123;&quot;enabled&quot; : true, &quot;omit_norms&quot; : true&#125;,  </div><div class="line">      &quot;dynamic_templates&quot; : [ &#123;  </div><div class="line">        &quot;message_field&quot; : &#123;  </div><div class="line">          &quot;match&quot; : &quot;message&quot;,  </div><div class="line">          &quot;match_mapping_type&quot; : &quot;string&quot;,  </div><div class="line">          &quot;mapping&quot; : &#123;  </div><div class="line">            &quot;type&quot; : &quot;string&quot;, &quot;index&quot; : &quot;analyzed&quot;, &quot;omit_norms&quot; : true,  </div><div class="line">            &quot;fielddata&quot; : &#123; &quot;format&quot; : &quot;disabled&quot; &#125;  </div><div class="line">          &#125;  </div><div class="line">        &#125;  </div><div class="line">      &#125;, &#123;  </div><div class="line">        &quot;string_fields&quot; : &#123;  </div><div class="line">          &quot;match&quot; : &quot;*&quot;,  </div><div class="line">          &quot;match_mapping_type&quot; : &quot;string&quot;,  </div><div class="line">          &quot;mapping&quot; : &#123;  </div><div class="line">            &quot;type&quot; : &quot;string&quot;, &quot;index&quot; : &quot;not_analyzed&quot;, &quot;doc_values&quot; : true  </div><div class="line">          &#125;  </div><div class="line">        &#125;  </div><div class="line">      &#125; ],  </div><div class="line">      &quot;properties&quot; : &#123;  </div><div class="line">        &quot;@timestamp&quot;: &#123; &quot;type&quot;: &quot;date&quot; &#125;,  </div><div class="line">        &quot;@version&quot;: &#123; &quot;type&quot;: &quot;string&quot;, &quot;index&quot;: &quot;not_analyzed&quot; &#125;, </div><div class="line">        &quot;geoip&quot;  : &#123;  </div><div class="line">          &quot;dynamic&quot;: true,  </div><div class="line">          &quot;properties&quot; : &#123;  </div><div class="line">            &quot;ip&quot;: &#123; &quot;type&quot;: &quot;ip&quot; &#125;,  </div><div class="line">            &quot;location&quot; : &#123; &quot;type&quot; : &quot;geo_point&quot; &#125;,  </div><div class="line">            &quot;latitude&quot; : &#123; &quot;type&quot; : &quot;float&quot; &#125;,  </div><div class="line">            &quot;longitude&quot; : &#123; &quot;type&quot; : &quot;float&quot; &#125;  </div><div class="line">          &#125;  </div><div class="line">        &#125;  </div><div class="line">      &#125;  </div><div class="line">    &#125;  </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只设置message字段分词，其他的字段默认都不分词 </p>
+<h3 id="模板结构"><a href="#模板结构" class="headerlink" title="模板结构"></a>模板结构</h3><ul>
+<li>通用设置 主要是模板匹配索引的过滤规则，影响该模板对哪些索引生效</li>
+<li>settings：配置索引的公共参数，比如索引的replicas，以及分片数shards等参数</li>
+<li>mappings：最重要的一部分，在这部分中配置每个type下的每个field的相关属性，比如field类型（string,long,date等等），是否分词，是否在内存中缓存等等属性都在这部分配置</li>
+<li>aliases：索引别名，索引别名可用在索引数据迁移等用途上。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;logstash&quot; : &#123;</div><div class="line">    &quot;order&quot; : 0,</div><div class="line">    &quot;template&quot; : &quot;logstash-*&quot;,</div><div class="line">    &quot;settings&quot; : &#123;</div><div class="line">      &quot;index&quot; : &#123;</div><div class="line">        &quot;refresh_interval&quot; : &quot;5s&quot;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;mappings&quot; : &#123;</div><div class="line">      &quot;_default_&quot; : &#123;</div><div class="line">        &quot;dynamic_templates&quot; : [ &#123;</div><div class="line">          &quot;message_field&quot; : &#123;</div><div class="line">            &quot;mapping&quot; : &#123;</div><div class="line">              &quot;fielddata&quot; : &#123;</div><div class="line">                &quot;format&quot; : &quot;disabled&quot;</div><div class="line">              &#125;,</div><div class="line">              &quot;index&quot; : &quot;analyzed&quot;,</div><div class="line">              &quot;omit_norms&quot; : true,</div><div class="line">              &quot;type&quot; : &quot;string&quot;</div><div class="line">            &#125;,</div><div class="line">            &quot;match_mapping_type&quot; : &quot;string&quot;,</div><div class="line">            &quot;match&quot; : &quot;message&quot;</div><div class="line">          &#125;</div><div class="line">        &#125;, &#123;</div><div class="line">          &quot;string_fields&quot; : &#123;</div><div class="line">            &quot;mapping&quot; : &#123;</div><div class="line">              &quot;fielddata&quot; : &#123;</div><div class="line">                &quot;format&quot; : &quot;disabled&quot;</div><div class="line">              &#125;,</div><div class="line">              &quot;index&quot; : &quot;analyzed&quot;,</div><div class="line">              &quot;omit_norms&quot; : true,</div><div class="line">              &quot;type&quot; : &quot;string&quot;,</div><div class="line">              &quot;fields&quot; : &#123;</div><div class="line">                &quot;raw&quot; : &#123;</div><div class="line">                  &quot;ignore_above&quot; : 256,</div><div class="line">                  &quot;index&quot; : &quot;not_analyzed&quot;,</div><div class="line">                  &quot;type&quot; : &quot;string&quot;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line">            &#125;,</div><div class="line">            &quot;match_mapping_type&quot; : &quot;string&quot;,</div><div class="line">            &quot;match&quot; : &quot;*&quot;</div><div class="line">          &#125;</div><div class="line">        &#125; ],</div><div class="line">        &quot;_all&quot; : &#123;</div><div class="line">          &quot;omit_norms&quot; : true,</div><div class="line">          &quot;enabled&quot; : true</div><div class="line">        &#125;,</div><div class="line">        &quot;properties&quot; : &#123;</div><div class="line">          &quot;@timestamp&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;date&quot;</div><div class="line">          &#125;,</div><div class="line">          &quot;geoip&quot; : &#123;</div><div class="line">            &quot;dynamic&quot; : true,</div><div class="line">            &quot;properties&quot; : &#123;</div><div class="line">              &quot;ip&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;ip&quot;</div><div class="line">              &#125;,</div><div class="line">              &quot;latitude&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;float&quot;</div><div class="line">              &#125;,</div><div class="line">              &quot;location&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;geo_point&quot;</div><div class="line">              &#125;,</div><div class="line">              &quot;longitude&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;float&quot;</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          &#125;,</div><div class="line">          &quot;@version&quot; : &#123;</div><div class="line">            &quot;index&quot; : &quot;not_analyzed&quot;,</div><div class="line">            &quot;type&quot; : &quot;string&quot;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;aliases&quot; : &#123; &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们创建一个自定义Template动态模板，这个模板指定匹配所有以”go_logsindex“开始的索引，并且指定允许添加新字段，匹配所有string类型的新字段会创建一个raw的嵌套字段，这个raw嵌套字段类型也是string，但是是not_analyzed不分词的（主要用于解决一些analyzed的string字段无法做统计，但可以使用这个raw嵌套字段做统计）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;template&quot;: &quot;go_logs_index_*&quot;,</div><div class="line">  &quot;order&quot;:0,</div><div class="line">  &quot;settings&quot;: &#123;</div><div class="line">      &quot;index.number_of_replicas&quot;: &quot;1&quot;,</div><div class="line">      &quot;index.number_of_shards&quot;: &quot;5&quot;,</div><div class="line">      &quot;index.refresh_interval&quot; : &quot;10s&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;mappings&quot;: &#123;</div><div class="line">    &quot;_default_&quot;: &#123;</div><div class="line">      &quot;_all&quot;: &#123;</div><div class="line">        &quot;enabled&quot;: false</div><div class="line">      &#125;,</div><div class="line">      &quot;dynamic_templates&quot;: [</div><div class="line">        &#123;</div><div class="line">          &quot;my_template&quot;: &#123;</div><div class="line">            &quot;match_mapping_type&quot;: &quot;string&quot;,</div><div class="line">            &quot;mapping&quot;: &#123;</div><div class="line">              &quot;type&quot;: &quot;string&quot;,</div><div class="line">              &quot;fields&quot;: &#123;</div><div class="line">                &quot;raw&quot;: &#123;</div><div class="line">                  &quot;type&quot;: &quot;string&quot;,</div><div class="line">                  &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    &quot;go&quot;: &#123;</div><div class="line">      &quot;properties&quot;: &#123;</div><div class="line">        &quot;timestamp&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;msg&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;analyzer&quot;: &quot;ik&quot;,</div><div class="line">          &quot;search_analyzer&quot;: &quot;ik_smart&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;file&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;line&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;threadid&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;info&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;type&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;@timestamp&quot;: &#123;</div><div class="line">          &quot;format&quot;: &quot;strict_date_optional_time||epoch_millis&quot;,</div><div class="line">          &quot;type&quot;: &quot;date&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;@version&quot;: &#123;</div><div class="line">          &quot;type&quot;: &quot;string&quot;,</div><div class="line">          &quot;index&quot;: &quot;not_analyzed&quot;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第三种方式统一管理Template最好，推荐使用第三种方式，但是具体问题具体分析。例如场景是Logstash 和ElasticSearch都在一台服务器，第二种就比较好</p>
+<p>定制索引模板，是搜索业务中一项比较重要的步骤，需要注意的地方有很多，比如：<br>1.字段数固定吗<br>2.字段类型是什么<br>3.分不分词<br>4.索引不索引<br>5.存储不存储<br>6.排不排序<br>7.是否加权 </p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Logstash/">Logstash</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/logstash-grok/" data-tooltip="Logstash中的Grok正则捕获">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Ghost Stories. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/logstash-grok/" data-tooltip="Logstash中的Grok正则捕获">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-elasticsearch/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ghost Stories</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                107 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/logstash-elasticsearch/';
+                 
+                    this.page.identifier = 'post/logstash-elasticsearch/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
