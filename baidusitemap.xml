@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/logstash-kafka-input/</loc>
+    <lastmod>2017-11-16T08:07:46.830Z</lastmod>
+    <data>
+        <display>
+        <title>logstash用kafka作为输入源</title>
+        <pubTime>2017-11-16T08:06:41.000Z</pubTime>
+        
+        <tag>Logstash</tag>
+         
+         
+           
+             
+              <breadCrumb title="ELKstack" url="http://wangnan.tech/categories/ELKstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://wangnan.tech/post/logstash-elasticsearch/</loc>
     <lastmod>2017-11-07T02:08:13.655Z</lastmod>
     <data>
@@ -160,7 +181,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://wangnan.tech/post/es5.x-deploy-problem/</loc>

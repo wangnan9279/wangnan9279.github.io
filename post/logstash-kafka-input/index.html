@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Ghost Stories">
-    <title>Category: Mybatis - Ghost Stories</title>
+    <title>logstash用kafka作为输入源 - Ghost Stories</title>
     <meta name="author" content="Ghost Stories">
     
     
         <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
     
     
-    <meta name="description" content="Ghost Stories">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="Ghost Stories">
-<meta property="og:url" content="http://wangnan.tech/categories/Mybatis/index.html">
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="logstash用kafka作为输入源">
+<meta property="og:url" content="http://wangnan.tech/post/logstash-kafka-input/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:description" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/04.jpg">
+<meta property="og:updated_time" content="2017-11-16T08:07:46.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ghost Stories">
-<meta name="twitter:description" content="Ghost Stories">
+<meta name="twitter:title" content="logstash用kafka作为输入源">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/04.jpg">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -32,6 +32,9 @@
     
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/04.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/04.jpg" />
     
     
     
@@ -57,7 +60,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -81,7 +84,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -180,422 +183,183 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybaits-sql/">
-                            Mybatis-动态SQL
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-01-13T15:44:39+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            logstash用kafka作为输入源
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-16T16:06:41+08:00">
 	
-		    Jan 13, 2017
+		    Nov 16, 2017
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
+    <a class="category-link" href="/categories/ELKstack/">ELKstack</a>
 
 
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybaits-sql/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/mybaits-sql/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-mapper/">
-                            Mybatis映射器
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-01-08T13:40:42+08:00">
-	
-		    Jan 08, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
     
 </div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/04.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#input中参数解释"><span class="toc-text">input中参数解释</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动"><span class="toc-text">启动</span></a></li></ol></span></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>依赖:jdk7及以上版本 </p>
+<p>Logstash版本:2.3.4</p>
+<p>步骤：</p>
+<ol>
+<li>官网下载tar.gz包</li>
+</ol>
+<p>链接地址：<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="external">链接</a></p>
+<ol>
+<li>扔到机器上解压<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf logstash-2.3.4.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.安装kafka input插件，顺便把output也安装了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bin/logstash-plugin install logstash-output-kafka</div><div class="line">bin/logstash-plugin install logstash-input-kafka</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>bin文件夹中添加文件 logstash.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">input &#123;</div><div class="line">    kafka &#123;</div><div class="line">        zk_connect =&gt; &quot;xxx:2181&quot;</div><div class="line">        topic_id =&gt; &quot;xxx&quot;</div><div class="line">        reset_beginning =&gt; true</div><div class="line">        consumer_threads =&gt; 5  </div><div class="line">        decorate_events =&gt; false </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">output &#123;</div><div class="line">        elasticsearch &#123;</div><div class="line">			action =&gt; &quot;index&quot;</div><div class="line">	        hosts =&gt; [&quot;xxx&quot;]</div><div class="line">            index =&gt; &quot;logs-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">			document_type =&gt; &quot;logs&quot;</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="input中参数解释"><a href="#input中参数解释" class="headerlink" title="input中参数解释"></a>input中参数解释</h2><ul>
+<li>zk_connect</li>
+</ul>
+<p>kafka连接的zk地址，通过这个配置项获取kafka的数据</p>
+<ul>
+<li>group_id</li>
+</ul>
+<p>消费者分组，可以通过组 ID 去指定，不同的组之间消费是相互不受影响的，相互隔离。</p>
+<ul>
+<li>topic_id</li>
+</ul>
+<p>指定消费话题，也是必填项目，指定消费某个 topic ，这个其实就是订阅某个主题，然后去消费。</p>
+<ul>
+<li>reset_beginning</li>
+</ul>
+<p>logstash 启动后从什么位置开始读取数据，默认是结束位置，也就是说 logstash 进程会以从上次读取结束时的偏移量开始继续读取，如果之前没有消费过，那么就开始从头读取.如果你是要导入原有数据，把这个设定改成 “true”， logstash 进程就从头开始读取.有点类似 cat ，但是读到最后一行不会终止，而是变成 tail -F ，继续监听相应数据。</p>
+<ul>
+<li>decorate_events</li>
+</ul>
+<p>在输出消息的时候会输出自身的信息包括:消费消息的大小， topic 来源以及 consumer 的 group 信息。</p>
+<ul>
+<li>rebalance_max_retries</li>
+</ul>
+<p>当有新的 consumer(logstash) 加入到同一 group 时，将会 reblance ，此后将会有 partitions 的消费端迁移到新的 consumer 上，如果一个 consumer 获得了某个 partition 的消费权限，那么它将会向 zookeeper 注册， Partition Owner registry 节点信息，但是有可能此时旧的 consumer 尚没有释放此节点，此值用于控制，注册节点的重试次数。</p>
+<ul>
+<li>consumer_timeout_ms</li>
+</ul>
+<p>指定时间内没有消息到达就抛出异常，一般不需要改。</p>
+<p>以上是相对重要参数的使用示例，更多参数可以选项可以跟据 <a href="https://github.com/joekiller/logstash-kafka/blob/master/README.md" target="_blank" rel="external">https://github.com/joekiller/logstash-kafka/blob/master/README.md</a> 查看 input 默认参数。</p>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/logstash -f logstash.conf &amp;</div></pre></td></tr></table></figure>
+<p>启动后es中将会写入指定topic中的日志数据</p>
+<p>还可以自定义es的模板和配置logstash的filter截取一些需要的业务字段，此处不详细说明</p>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-mapper/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-            <a href="/post/mybatis-mapper/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-config/">
-                            Mybaits-配置
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-01-03T14:26:18+08:00">
-	
-		    Jan 03, 2017
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Logstash/">Logstash</a>
 
             </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-config/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
         
-            <a href="/post/mybatis-config/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/logstash-elasticsearch/" data-tooltip="Logstash输出到Elasticsearch笔记">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
             </a>
-            
+        </li>
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-lifecycle/">
-                            Mybaits-基本构成和生命周期
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-12-28T14:58:53+08:00">
-	
-		    Dec 28, 2016
-    	
-    </time>
-    
-        <span>in </span>
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
         
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
-
-            </div>
             
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-lifecycle/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
             
-        </div>
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
         
-            <a href="/post/mybatis-lifecycle/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
             </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybtis-introduction/">
-                            Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-12-11T16:17:20+08:00">
-	
-		    Dec 11, 2016
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybtis-introduction/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/mybtis-introduction/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-cache/">
-                            MyBatis二级缓存
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-09-03T15:19:03+08:00">
-	
-		    Sep 03, 2016
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-cache/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/mybatis-cache/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-where-trim/">
-                            Mybatis-trim标签
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-07-18T16:11:20+08:00">
-	
-		    Jul 18, 2016
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-where-trim/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/mybatis-where-trim/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/post/mybatis-getting-started/">
-                            Java项目中使用Mybatis入门程序
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-18T17:35:41+08:00">
-	
-		    May 18, 2016
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/Mybatis/">Mybatis</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <!-- toc -->
-                    
-                        <a href="/post/mybatis-getting-started/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a href="/post/mybatis-getting-started/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-        <li class="pagination-number">page 1 of 1</li>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
 
 
 
@@ -606,6 +370,110 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/logstash-elasticsearch/" data-tooltip="Logstash输出到Elasticsearch笔记">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/logstash-kafka-input/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -933,6 +801,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/logstash-kafka-input/';
+                 
+                    this.page.identifier = 'post/logstash-kafka-input/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
     </body>

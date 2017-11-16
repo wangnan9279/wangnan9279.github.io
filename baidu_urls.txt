@@ -1,1 +1,1 @@
-http://wangnan.tech/post/logstash-elasticsearch/
+http://wangnan.tech/post/logstash-kafka-input/
