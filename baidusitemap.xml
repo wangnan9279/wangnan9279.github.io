@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/elkstack-es01/</loc>
+    <lastmod>2017-11-22T09:14:06.773Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch架构原理</title>
+        <pubTime>2017-11-22T09:11:46.000Z</pubTime>
+        
+        <tag>Elasticsearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ELKstack" url="http://wangnan.tech/categories/ELKstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/logstash-kafka-input/</loc>
     <lastmod>2017-11-16T08:07:46.830Z</lastmod>
     <data>
