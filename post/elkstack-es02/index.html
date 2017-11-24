@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ghost Stories">
+    <title>Elasticsearch数据接口用例 - Ghost Stories</title>
+    <meta name="author" content="Ghost Stories">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Elasticsearch数据接口用例">
+<meta property="og:url" content="http://wangnan.tech/post/elkstack-es02/index.html">
+<meta property="og:site_name" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/06.jpg">
+<meta property="og:updated_time" content="2017-11-24T05:57:26.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch数据接口用例">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/06.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/06.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/06.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Ghost Stories</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ghost Stories</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Elasticsearch数据接口用例
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-24T13:56:15+08:00">
+	
+		    Nov 24, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/ELKstack/">ELKstack</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/06.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#增删改查"><span class="toc-text">增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据写入"><span class="toc-text">数据写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据获取"><span class="toc-text">数据获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据删除"><span class="toc-text">数据删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新"><span class="toc-text">数据更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搜索请求"><span class="toc-text">搜索请求</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全文搜索"><span class="toc-text">全文搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#querystring-语法"><span class="toc-text">querystring 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整语法"><span class="toc-text">完整语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚合请求"><span class="toc-text">聚合请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#堆叠聚合示例"><span class="toc-text">堆叠聚合示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道聚合示例"><span class="toc-text">管道聚合示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#buckets-path-语法"><span class="toc-text">buckets_path 语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#See-Also"><span class="toc-text">See Also</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#search-请求参数"><span class="toc-text">search 请求参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#script"><span class="toc-text">script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态提交"><span class="toc-text">动态提交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#固定文件"><span class="toc-text">固定文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他语言"><span class="toc-text">其他语言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reindex"><span class="toc-text">reindex</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Perl-客户端"><span class="toc-text">Perl 客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logstash-做-reindex"><span class="toc-text">Logstash 做 reindex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reindex-API"><span class="toc-text">reindex API</span></a></li></ol></li></ol></span></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>增删改查</li>
+<li>搜索请求</li>
+<li>script</li>
+<li>reindex</li>
+</ul>
+<h1 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h1><p>增删改查是数据库的基础操作方法。ES 虽然不是数据库，但是很多场合下，都被人们当做一个文档型 NoSQL 数据库在使用，原因自然是因为在接口和分布式架构层面的相似性。虽然在 Elastic Stack 场景下，数据的写入和查询，分别由 Logstash 和 Kibana 代劳，作为测试、调研和排错时的基本功，还是需要了解一下 ES 的增删改查用法的。</p>
+<h2 id="数据写入"><a href="#数据写入" class="headerlink" title="数据写入"></a>数据写入</h2><p>ES 的一大特点，就是全 RESTful 接口处理 JSON 请求。所以，数据写入非常简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># curl -XPOST http://127.0.0.1:9200/logstash-2015.06.21/testlog -d &apos;&#123;</div><div class="line">    &quot;date&quot; : &quot;1434966686000&quot;,</div><div class="line">    &quot;user&quot; : &quot;chenlin7&quot;,</div><div class="line">    &quot;mesg&quot; : &quot;first message into Elasticsearch&quot;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>命令返回响应结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;_index&quot;:&quot;logstash-2015.06.21&quot;,&quot;_type&quot;:&quot;testlog&quot;,&quot;_id&quot;:&quot;AU4ew3h2nBE6n0qcyVJK&quot;,&quot;_version&quot;:1,&quot;created&quot;:true&#125;</div></pre></td></tr></table></figure>
+<h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>可以看到，在数据写入的时候，会返回该数据的 <code>_id</code>。这就是后续用来获取数据的关键：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># curl -XGET http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK</div></pre></td></tr></table></figure>
+<p>命令返回响应结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;_index&quot;:&quot;logstash-2015.06.21&quot;,&quot;_type&quot;:&quot;testlog&quot;,&quot;_id&quot;:&quot;AU4ew3h2nBE6n0qcyVJK&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;_source&quot;:&#123;</div><div class="line">    &quot;date&quot; : &quot;1434966686000&quot;,</div><div class="line">    &quot;user&quot; : &quot;chenlin7&quot;,</div><div class="line">    &quot;mesg&quot; : &quot;first message into Elasticsearch&quot;</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
+<p>这个 <code>_source</code> 里的内容，正是之前写入的数据。</p>
+<p>如果觉得这个返回看起来有点太过麻烦，可以使用 <code>curl -XGET http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK/_source</code> 来指明只获取源数据部分。</p>
+<p>更进一步的，如果你只想看数据中的一部分字段内容，可以使用 <code>curl -XGET http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK?fields=user,mesg</code> 来指明获取字段，结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;_index&quot;:&quot;logstash-2015.06.21&quot;,&quot;_type&quot;:&quot;testlog&quot;,&quot;_id&quot;:&quot;AU4ew3h2nBE6n0qcyVJK&quot;,&quot;_version&quot;:1,&quot;found&quot;:true,&quot;fields&quot;:&#123;&quot;user&quot;:[&quot;chenlin7&quot;],&quot;mesg&quot;:[&quot;first message into Elasticsearch&quot;]&#125;&#125;</div></pre></td></tr></table></figure>
+<h2 id="数据删除"><a href="#数据删除" class="headerlink" title="数据删除"></a>数据删除</h2><p>要删除数据，修改发送的 HTTP 请求方法为 DELETE 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># curl -XDELETE http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK</div></pre></td></tr></table></figure>
+<p>删除不单针对单条数据，还可以删除整个整个索引。甚至可以用通配符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># curl -XDELETE http://127.0.0.1:9200/logstash-2015.06.0*</div></pre></td></tr></table></figure>
+<p>在 Elasticsearch 2.x 之前，可以通过查询语句删除，也可以删除某个 <code>_type</code> 内的数据。现在都已经不再内置支持，改为 <code>Delete by Query</code> 插件。因为这种方式本身对性能影响较大！</p>
+<h2 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h2><p>已经写过的数据，同样还是可以修改的。有两种办法，一种是全量提交，即指明 <code>_id</code> 再发送一次写入请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># curl -XPOST http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK -d &apos;&#123;</div><div class="line">    &quot;date&quot; : &quot;1434966686000&quot;,</div><div class="line">    &quot;user&quot; : &quot;chenlin7&quot;,</div><div class="line">    &quot;mesg&quot; &quot; &quot;first message into Elasticsearch but version 2&quot;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>另一种是局部更新，使用 <code>/_update</code> 接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># curl -XPOST &apos;http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK/_update&apos; -d &apos;&#123;</div><div class="line">    &quot;doc&quot; : &#123;</div><div class="line">        &quot;user&quot; : &quot;someone&quot;</div><div class="line">    &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># curl -XPOST &apos;http://127.0.0.1:9200/logstash-2015.06.21/testlog/AU4ew3h2nBE6n0qcyVJK/_update&apos; -d &apos;&#123;</div><div class="line">    &quot;script&quot; : &quot;ctx._source.user = \&quot;someone\&quot;&quot;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<h1 id="搜索请求"><a href="#搜索请求" class="headerlink" title="搜索请求"></a>搜索请求</h1><p>上节介绍的，都是针对单条数据的操作。在 ES 环境中，更多的是搜索和聚合请求。在 5.0 之前版本中，数据获取和数据搜索甚至有极大的区别：刚写入的数据，可以通过 translog 立刻获取；但是却要等到 refresh 成为一个 segment 后，才能被搜索到。从 5.0 版本开始，Elasticsearch 稍作了改动，不再维护 doc-id 到 translog offset 的映射关系，一旦 GET 请求到这个还不能搜到的数据，就强制 refresh 出来 segment，这样就可以搜索了。这个改动降低了数据获取的性能，但是节省了不少内存，减少了 young GC 次数，对写入性能的提升是很有好处的。</p>
+<p>本节介绍 ES 的搜索语法。</p>
+<h2 id="全文搜索"><a href="#全文搜索" class="headerlink" title="全文搜索"></a>全文搜索</h2><p>ES 对搜索请求，有简易语法和完整语法两种方式。简易语法作为以后在 Kibana 上最常用的方式，一定是需要学会的。而在命令行里，我们可以通过最简单的方式来做到。还是上节输入的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># curl -XGET http://127.0.0.1:9200/logstash-2015.06.21/testlog/_search?q=first</div></pre></td></tr></table></figure>
+<p>可以看到返回结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;took&quot;:240,&quot;timed_out&quot;:false,&quot;_shards&quot;:&#123;&quot;total&quot;:27,&quot;successful&quot;:27,&quot;failed&quot;:0&#125;,&quot;hits&quot;:&#123;&quot;total&quot;:1,&quot;max_score&quot;:0.11506981,&quot;hits&quot;:[&#123;&quot;_index&quot;:&quot;logstash-2015.06.21&quot;,&quot;_type&quot;:&quot;testlog&quot;,&quot;_id&quot;:&quot;AU4ew3h2nBE6n0qcyVJK&quot;,&quot;_score&quot;:0.11506981,&quot;_source&quot;:&#123;</div><div class="line">    &quot;date&quot; : &quot;1434966686000&quot;,</div><div class="line">    &quot;user&quot; : &quot;chenlin7&quot;,</div><div class="line">    &quot;mesg&quot; : &quot;first message into Elasticsearch&quot;</div><div class="line">&#125;&#125;]&#125;&#125;</div></pre></td></tr></table></figure>
+<p>还可以用下面语句搜索，结果是一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># curl -XGET http://127.0.0.1:9200/logstash-2015.06.21/testlog/_search?q=user:&quot;chenlin7&quot;</div></pre></td></tr></table></figure>
+<h3 id="querystring-语法"><a href="#querystring-语法" class="headerlink" title="querystring 语法"></a>querystring 语法</h3><p>上例中，<code>?q=</code>后面写的，就是 querystring 语法。鉴于这部分内容会在 Kibana 上经常使用，这里详细解析一下语法：</p>
+<ul>
+<li>全文检索：直接写搜索的单词，如上例中的 <code>first</code>；</li>
+<li>单字段的全文检索：在搜索单词之前加上字段名和冒号，比如如果知道单词 first 肯定出现在 mesg 字段，可以写作 <code>mesg:first</code>；</li>
+<li>单字段的精确检索：在搜索单词前后加双引号，比如 <code>user:&quot;chenlin7&quot;</code>；</li>
+<li>多个检索条件的组合：可以使用 <code>NOT</code>, <code>AND</code> 和 <code>OR</code> 来组合检索，注意必须是大写。比如 <code>user:(&quot;chenlin7&quot; OR &quot;chenlin&quot;) AND NOT mesg:first</code>；</li>
+<li>字段是否存在：<code>_exists_:user</code> 表示要求 user 字段存在，<code>_missing_:user</code> 表示要求 user 字段不存在；</li>
+<li>通配符：用 <code>?</code> 表示单字母，<code>*</code> 表示任意个字母。比如 <code>fir?t mess*</code>；</li>
+<li>正则：需要比通配符更复杂一点的表达式，可以使用正则。比如 <code>mesg:/mes{2}ages?/</code>。注意 ES 中正则性能很差，而且支持的功能也不是特别强大，尽量不要使用。ES 支持的正则语法见：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax</a>；</li>
+<li>近似搜索：用 <code>~</code> 表示搜索单词可能有一两个字母写的不对，请 ES 按照相似度返回结果。比如 <code>frist~</code>；</li>
+<li>范围搜索：对数值和时间，ES 都可以使用范围搜索，比如：<code>rtt:&gt;300</code>，<code>date:[&quot;now-6h&quot; TO &quot;now&quot;}</code> 等。其中，<code>[]</code> 表示端点数值包含在范围内，<code>{}</code> 表示端点数值不包含在范围内；</li>
+</ul>
+<h3 id="完整语法"><a href="#完整语法" class="headerlink" title="完整语法"></a>完整语法</h3><p>ES 支持各种类型的检索请求，除了可以用 querystring 语法表达的以外，还有很多其他类型，具体列表和示例可参见：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-queries.html" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-queries.html</a>。</p>
+<p>作为最简单和常用的示例，这里展示一下 term query 的写法，相当于 querystring 语法中的 <code>user:&quot;chenlin7&quot;</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># curl -XGET http://127.0.0.1:9200/_search -d &apos;</div><div class="line">&#123;</div><div class="line">  &quot;query&quot;: &#123;</div><div class="line">    &quot;term&quot;: &#123;</div><div class="line">      &quot;user&quot;: &quot;chenlin7&quot; </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<h2 id="聚合请求"><a href="#聚合请求" class="headerlink" title="聚合请求"></a>聚合请求</h2><p>在检索范围确定之后，ES 还支持对结果集做聚合查询，返回更直接的聚合统计结果。在 ES 1.0 版本之前，这个接口叫 Facet，1.0 版本之后，这个接口改为 Aggregation。</p>
+<p>Kibana 分别在 v3 中使用 Facet，v4 中使用 Aggregation。不过总的来说，Aggregation 是 Facet 接口的强化升级版本，我们直接了解 Aggregation 即可。本书后续章节也会介绍如何在 Kibana 的 v3 版本中使用 aggregation 接口做二次开发。</p>
+<h3 id="堆叠聚合示例"><a href="#堆叠聚合示例" class="headerlink" title="堆叠聚合示例"></a>堆叠聚合示例</h3><p>在 Elasticsearch 1.x 系列中，aggregation 分为 bucket 和 metric 两种，分别用作词元划分和数值计算。而其中的 bucket aggregation，还支持在自身结果集的基础上，叠加新的 aggregation。这就是 aggregation 比 facet 最领先的地方。比如实现一个时序百分比统计，在 facet 接口就无法直接完成，而在 aggregation 接口就很简单了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># curl -XPOST &apos;http://127.0.0.1:9200/logstash-2015.06.22/_search?size=0&amp;pretty&apos; -d&apos;&#123;</div><div class="line">    &quot;aggs&quot; : &#123;</div><div class="line">        &quot;percentile_over_time&quot; : &#123;</div><div class="line">            &quot;date_histogram&quot; : &#123;</div><div class="line">                &quot;field&quot;    : &quot;@timestamp&quot;,</div><div class="line">                &quot;interval&quot; : &quot;1h&quot;</div><div class="line">            &#125;,</div><div class="line">            &quot;aggs&quot; : &#123;</div><div class="line">                &quot;percentile_one_time&quot; : &#123;</div><div class="line">                    &quot;percentiles&quot; : &#123;</div><div class="line">                        &quot;field&quot; : &quot;requesttime&quot;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>得到结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;took&quot; : 151595,</div><div class="line">  &quot;timed_out&quot; : false,</div><div class="line">  &quot;_shards&quot; : &#123;</div><div class="line">    &quot;total&quot; : 81,</div><div class="line">    &quot;successful&quot; : 81,</div><div class="line">    &quot;failed&quot; : 0</div><div class="line">  &#125;,</div><div class="line">  &quot;hits&quot; : &#123;</div><div class="line">    &quot;total&quot; : 3307142043,</div><div class="line">    &quot;max_score&quot; : 1.0,</div><div class="line">    &quot;hits&quot; : [ ]</div><div class="line">  &#125;,</div><div class="line">  &quot;aggregations&quot; : &#123;</div><div class="line">    &quot;percentile_over_time&quot; : &#123;</div><div class="line">      &quot;buckets&quot; : [ &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;22/Jun/2015:22:00:00 +0000&quot;,</div><div class="line">        &quot;key&quot; : 1435010400000,</div><div class="line">        &quot;doc_count&quot; : 459273981,</div><div class="line">        &quot;percentile_one_time&quot; : &#123;</div><div class="line">          &quot;values&quot; : &#123;</div><div class="line">            &quot;1.0&quot; : 0.004,</div><div class="line">            &quot;5.0&quot; : 0.006,</div><div class="line">            &quot;25.0&quot; : 0.023,</div><div class="line">            &quot;50.0&quot; : 0.035,</div><div class="line">            &quot;75.0&quot; : 0.08774675719725569,</div><div class="line">            &quot;95.0&quot; : 0.25732934416125663,</div><div class="line">            &quot;99.0&quot; : 0.7508899754871812</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;, &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;23/Jun/2015:00:00:00 +0000&quot;,</div><div class="line">        &quot;key&quot; : 1435017600000,</div><div class="line">        &quot;doc_count&quot; : 768620219,</div><div class="line">        &quot;percentile_one_time&quot; : &#123;</div><div class="line">          &quot;values&quot; : &#123;</div><div class="line">            &quot;1.0&quot; : 0.004,</div><div class="line">            &quot;5.0&quot; : 0.007000000000000001,</div><div class="line">            &quot;25.0&quot; : 0.025,</div><div class="line">            &quot;50.0&quot; : 0.03987809503972864,</div><div class="line">            &quot;75.0&quot; : 0.10297843567746187,</div><div class="line">            &quot;95.0&quot; : 0.30047269327062875,</div><div class="line">            &quot;99.0&quot; : 1.015495933753329</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;, &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;23/Jun/2015:02:00:00 +0000&quot;,</div><div class="line">        &quot;key&quot; : 1435024800000,</div><div class="line">        &quot;doc_count&quot; : 849467060,</div><div class="line">        &quot;percentile_one_time&quot; : &#123;</div><div class="line">          &quot;values&quot; : &#123;</div><div class="line">            &quot;1.0&quot; : 0.004,</div><div class="line">            &quot;5.0&quot; : 0.008,</div><div class="line">            &quot;25.0&quot; : 0.027000000000000003,</div><div class="line">            &quot;50.0&quot; : 0.0439999899006102,</div><div class="line">            &quot;75.0&quot; : 0.1160416197625958,</div><div class="line">            &quot;95.0&quot; : 0.3383140614483838,</div><div class="line">            &quot;99.0&quot; : 1.0275839684542212</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125; ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="管道聚合示例"><a href="#管道聚合示例" class="headerlink" title="管道聚合示例"></a>管道聚合示例</h3><p>在 Elasticsearch 2.x 中，新增了 pipeline aggregation 类型。可以在已有 aggregation 返回的数组数据之后，再对这组数值做一次运算。最常见的，就是对时序数据求移动平均值。比如对响应时间做周期为 7，移动窗口为 30，alpha, beta, gamma 参数均为 0.5 的 holt-winters 季节性预测 2 个未来值的请求如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;aggs&quot; : &#123;</div><div class="line">        &quot;my_date_histo&quot; : &#123;</div><div class="line">            &quot;date_histogram&quot; : &#123;</div><div class="line">                 &quot;field&quot; : &quot;@timestamp&quot;,</div><div class="line">                 &quot;interval&quot; : &quot;1h&quot;</div><div class="line">            &#125;,</div><div class="line">            &quot;aggs&quot; : &#123;</div><div class="line">                &quot;avgtime&quot; : &#123;</div><div class="line">                    &quot;avg&quot; : &#123; &quot;field&quot; : &quot;requesttime&quot; &#125;</div><div class="line">                &#125;,</div><div class="line">                &quot;the_movavg&quot; : &#123;</div><div class="line">                    &quot;moving_avg&quot; : &#123;</div><div class="line">                        &quot;buckets_path&quot; : &quot;avgtime&quot;,</div><div class="line">                        &quot;window&quot; : 30,</div><div class="line">                        &quot;model&quot; : &quot;holt_winters&quot;,</div><div class="line">                        &quot;predict&quot; : 2,</div><div class="line">                        &quot;settings&quot; : &#123;</div><div class="line">                            &quot;type&quot; : &quot;mult&quot;,</div><div class="line">                            &quot;alpha&quot; : 0.5,</div><div class="line">                            &quot;beta&quot; : 0.5,</div><div class="line">                            &quot;gamma&quot; : 0.5,</div><div class="line">                            &quot;period&quot; : 7,</div><div class="line">                            &quot;pad&quot; : true</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>响应如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;took&quot; : 12,</div><div class="line">  &quot;timed_out&quot; : false,</div><div class="line">  &quot;_shards&quot; : &#123;</div><div class="line">    &quot;total&quot; : 10,</div><div class="line">    &quot;successful&quot; : 10,</div><div class="line">    &quot;failed&quot; : 0</div><div class="line">  &#125;,</div><div class="line">  &quot;hits&quot; : &#123;</div><div class="line">    &quot;total&quot; : 111331,</div><div class="line">    &quot;max_score&quot; : 0.0,</div><div class="line">    &quot;hits&quot; : [  ]</div><div class="line">  &#125;,</div><div class="line">  &quot;aggregations&quot; : &#123;</div><div class="line">    &quot;my_date_histo&quot; : &#123;</div><div class="line">      &quot;buckets&quot; : [ &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;2015-12-24T02:00:00.000Z&quot;,</div><div class="line">        &quot;key&quot; : 1450922400000,</div><div class="line">        &quot;doc_count&quot; : 1462,</div><div class="line">        &quot;avgtime&quot; : &#123;</div><div class="line">          &quot;value&quot; : 508.25649794801643</div><div class="line">        &#125;</div><div class="line">      &#125;, &#123;</div><div class="line">        ...</div><div class="line">      &#125;, &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;2015-12-24T17:00:00.000Z&quot;,</div><div class="line">        &quot;key&quot; : 1450976400000,</div><div class="line">        &quot;doc_count&quot; : 1664,</div><div class="line">        &quot;avgtime&quot; : &#123;</div><div class="line">          &quot;value&quot; : 504.7067307692308</div><div class="line">        &#125;,</div><div class="line">        &quot;the_movavg&quot; : &#123;</div><div class="line">          &quot;value&quot; : 500.9766851760192</div><div class="line">        &#125;</div><div class="line">      &#125;, &#123;</div><div class="line">        ...</div><div class="line">      &#125;, &#123;</div><div class="line">        &quot;key_as_string&quot; : &quot;2015-12-25T09:00:00.000Z&quot;,</div><div class="line">        &quot;key&quot; : 1451034000000,</div><div class="line">        &quot;doc_count&quot; : 0,</div><div class="line">        &quot;the_movavg&quot; : &#123;</div><div class="line">          &quot;value&quot; : 493.9519632950849,</div><div class="line">          &quot;value_as_string&quot; : &quot;1970-01-01T00:00:00.493Z&quot;</div><div class="line">        &#125;</div><div class="line">    &#125; ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，在第一个移动窗口还没满足之前，是没有移动平均值的；而在实际数据已经结束以后，虽然没有平均值了，但是预测的移动平均值却还有数。</p>
+<h4 id="buckets-path-语法"><a href="#buckets-path-语法" class="headerlink" title="buckets_path 语法"></a>buckets_path 语法</h4><p>由于 aggregation 是有堆叠层级关系的，所以 pipeline aggregation 在引用 metric aggregation 时也就会涉及到层级的问题。在上例中，<code>the_movavg</code> 和 <code>avgtime</code> 是同一层级，所以 <code>buckets_path</code> 直接写 <code>avgtime</code> 即可。但是如果我们把 <code>the_movavg</code> 上提一层，跟 <code>my_date_histo</code> 同级，这个 <code>buckets_path</code> 怎么写才行呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;buckets_path&quot; : &quot;my_date_histo&gt;avgtime&quot;</div></pre></td></tr></table></figure>
+<p>如果用的是返回的数值有多个值的聚合，比如 <code>percentiles</code> 或者 <code>extended_stats</code>，则是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;buckets_path&quot; : &quot;percentile_over_time&gt;percentile_one_time.95&quot;</div></pre></td></tr></table></figure>
+<p>ES 目前能支持的聚合请求列表，参见：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html</a>。</p>
+<h4 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h4><p>Holt Winters 预测算法，见：<a href="https://en.wikipedia.org/wiki/Holt-Winters" target="_blank" rel="external">https://en.wikipedia.org/wiki/Holt-Winters</a>。其在运维领域最著名的运用是 RRDtool 中的 <a href="http://rrdtool.org/rrdtool/doc/rrdtool.en.html" target="_blank" rel="external">HWPREDICT</a>。</p>
+<h2 id="search-请求参数"><a href="#search-请求参数" class="headerlink" title="search 请求参数"></a>search 请求参数</h2><ul>
+<li>from</li>
+</ul>
+<p>从索引的第几条数据开始返回，默认是 0；</p>
+<ul>
+<li>size</li>
+</ul>
+<p>返回多少条数据，默认是 10。</p>
+<p>注意：Elasticsearch 集群实际是需要给 coordinate node 返回 <code>shards number * (from + size)</code> 条数据，然后在单机上进行排序，最后给客户端返回这个 size 大小的数据的。所以请谨慎使用 from 和 size 参数。</p>
+<p>此外，Elasticsearch 2.x 还新增了一个索引级别的动态控制配置项：<code>index.max_result_window</code>，默认为 10000。即 <code>from + size</code> 大于 10000 的话，Elasticsearch 直接拒绝掉这次请求不进行具体搜索，以保护节点。</p>
+<p>另外，Elasticsearch 2.x 还提供了一个小优化：当设置 <code>&quot;size&quot;:0</code> 时，自动改变 <code>search_type</code> 为 count。跳过搜索过程的 fetch 阶段。</p>
+<ul>
+<li>timeout</li>
+</ul>
+<p>coordinate node 等待超时时间。到达该阈值后，coordinate node 直接把当前收到的数据返回给客户端，不再继续等待 data node 后续的返回了。</p>
+<p><strong> 注意：这个参数只是为了配合客户端程序，并不能取消掉 data node 上搜索任务还在继续运行和占用资源。</strong></p>
+<ul>
+<li>terminate_after</li>
+</ul>
+<p>各 data node 上，扫描单个分片时，找到多少条记录后，就认为足够了。这个参数可以切实保护 data node 上搜索任务不会长期运行和占用资源。但是也就意味着搜索范围没有覆盖全部索引，是一个抽样数据。准确率是不好判断的。</p>
+<ul>
+<li>request_cache</li>
+</ul>
+<p>各 data node 上，在分片级别，对请求的响应(仅限于 <code>hits.total</code> 数值、aggregation 和 suggestion 的结果集)做的缓存。注意：这个缓存的键值要求很严格，请求的 JSON 必须一字不易，缓存才能命中。</p>
+<p>另外，<code>request_cache</code> 参数不能写在请求 JSON 里，只能以 URL 参数的形式存在。示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://localhost:9200/_search?request_cache=true -d &apos;</div><div class="line">&#123;</div><div class="line">    &quot;size&quot; : 0,</div><div class="line">    &quot;timeout&quot; : &quot;120s&quot;,</div><div class="line">    &quot;terminate_after&quot; : 1000000,</div><div class="line">    &quot;query&quot; : &#123; &quot;match_all&quot; : &#123;&#125; &#125;,</div><div class="line">    &quot;aggs&quot; : &#123; &quot;terms&quot; : &#123; &quot;terms&quot; : &#123; &quot;field&quot; : &quot;keyname&quot; &#125; &#125; &#125;</div><div class="line">&#125;</div><div class="line">&apos;</div></pre></td></tr></table></figure>
+<h1 id="script"><a href="#script" class="headerlink" title="script"></a>script</h1><p>Elasticsearch 中，可以使用自定义脚本扩展功能。包括评分、过滤函数和聚合字段等方面。内置脚本引擎历经 MVEL、Groovy、Lucene expression 的变换后，Elastic.co 最终决定实现一个自己专用的 Painless 脚本语言，并在 5.0 版正式发布。</p>
+<p>作为 Elastic Stack 场景，我们只介绍在聚合字段方面使用 script 的方式。</p>
+<h2 id="动态提交"><a href="#动态提交" class="headerlink" title="动态提交"></a>动态提交</h2><p>最简单易用的方式，就是在正常的请求体中，把 <code>field</code> 换成 <code>script</code> 提交。比如一个标准的 terms agg 改成 script 方式，写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># curl 127.0.0.1:9200/logstash-2015.06.29/_search -d &apos;&#123;</div><div class="line">    &quot;aggs&quot; : &#123;</div><div class="line">        &quot;clientip_top10&quot; : &#123;</div><div class="line">            &quot;terms&quot; : &#123;</div><div class="line">                &quot;script&quot; : &#123;</div><div class="line">                    &quot;lang&quot; : &quot;painless&quot;,</div><div class="line">                    &quot;inline&quot; : &quot;doc[&apos;clientip&apos;].value&quot;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>在 script 中，有三种方式引用数据：<code>doc[&#39;clientip&#39;].value</code>、<code>_field[&#39;clientip&#39;].value</code> 和 <code>_source.clientip</code>。其区别在于：</p>
+<ul>
+<li><code>doc[].value</code> 读取 doc value 内的数据；</li>
+<li><code>_field[]</code> 读取 field 设置 <code>&quot;store&quot;:true</code> 的存储内容；</li>
+<li><code>_source.obj.attr</code> 读取 <code>_source</code> 的 JSON 内容。</li>
+</ul>
+<p>这也意味着，前者必须读取的是最终的词元字段数据，而后者可以返回任意的数据结构。</p>
+<p><strong>注意</strong>：如果有分词，且未禁用 fielddata 的话，<code>doc[].value</code> 读取到的是分词后的数据。所以请注意使用 <code>doc[&#39;clientip.keyword&#39;].value</code> 写法。</p>
+<h2 id="固定文件"><a href="#固定文件" class="headerlink" title="固定文件"></a>固定文件</h2><p>为了和动态提交的语法有区别，调用固定文件的写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># curl 127.0.0.1:9200/logstash-2015.06.29/_search -d &apos;&#123;</div><div class="line">    &quot;aggs&quot; : &#123;</div><div class="line">        &quot;clientip_subnet_top10&quot; : &#123;</div><div class="line">            &quot;terms&quot; : &#123;</div><div class="line">                &quot;script&quot; : &#123;</div><div class="line">                   &quot;file&quot; : &quot;getvalue&quot;,</div><div class="line">                    &quot;lang&quot; : &quot;groovy&quot;,</div><div class="line">                    &quot;params&quot; : &#123;</div><div class="line">                        &quot;fieldname&quot;: &quot;clientip.keyword&quot;,</div><div class="line">                        &quot;pattern&quot;: &quot;^((?:\d&#123;1,3&#125;\.?)&#123;3&#125;)\.\d&#123;1,3&#125;$&quot;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>上例要求在 ES 集群的所有数据节点上，都保存有一个 <code>/etc/elasticsearch/scripts/getvalue.groovy</code> 文件，并且该脚本文件可以接收 <code>fieldname</code> 和 <code>pattern</code> 两个变量。试举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env groovy</div><div class="line">matcher = ( doc[fieldname].value =~ /$&#123;pattern&#125;/ )</div><div class="line">if (matcher.matches()) &#123;</div><div class="line">    matcher[0][1]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意</strong>：ES 进程默认每分钟扫描一次 <code>/etc/elasticsearch/scripts/</code> 目录，并尝试加载该目录下所有文件作为 script。所以，不要在该目录内做文件编辑等工作，不要分发 .svn 等目录到生成环境，这些临时或者隐藏文件都会被 ES 进程加载然后报错。</p>
+<h2 id="其他语言"><a href="#其他语言" class="headerlink" title="其他语言"></a>其他语言</h2><p>ES 支持通过插件方式，扩展脚本语言的支持，目前默认自带的语言包括：</p>
+<ul>
+<li>painless</li>
+<li>lucene expression</li>
+<li>groovy</li>
+<li>mustache</li>
+</ul>
+<p>而 github 上目前已有以下语言插件支持，基本覆盖了所有 JVM 上的可用语言：</p>
+<ul>
+<li><a href="https://github.com/elastic/elasticsearch-lang-mvel" target="_blank" rel="external">https://github.com/elastic/elasticsearch-lang-mvel</a></li>
+<li><a href="https://github.com/elastic/elasticsearch-lang-javascript" target="_blank" rel="external">https://github.com/elastic/elasticsearch-lang-javascript</a></li>
+<li><a href="https://github.com/elastic/elasticsearch-lang-python" target="_blank" rel="external">https://github.com/elastic/elasticsearch-lang-python</a></li>
+<li><a href="https://github.com/hiredman/elasticsearch-lang-clojure" target="_blank" rel="external">https://github.com/hiredman/elasticsearch-lang-clojure</a></li>
+<li><a href="https://github.com/felipehummel/elasticsearch-lang-scala" target="_blank" rel="external">https://github.com/felipehummel/elasticsearch-lang-scala</a></li>
+<li><a href="https://github.com/fcheung/elasticsearch-jruby" target="_blank" rel="external">https://github.com/fcheung/elasticsearch-jruby</a></li>
+</ul>
+<h1 id="reindex"><a href="#reindex" class="headerlink" title="reindex"></a>reindex</h1><p>Elasticsearch 本身不提供对索引的 rename，mapping 的 alter 等操作。所以，如果有需要对全索引数据进行导出，或者修改某个已有字段的 mapping 设置等情况下，我们只能通过 scroll API 导出全部数据，然后重新做一次索引写入。这个过程，叫做 reindex。</p>
+<p>之前完成这个过程只能自己写程序或者用 logstash。5.0 中，Elasticsearch 将这个过程内置为 reindex API，但是要注意：这个接口并没有什么黑科技，其本质仅仅是将这段相同逻辑的代码预置分发而已。如果有复杂的数据变更操作等细节需求，依然需要自己编程完成。</p>
+<p>下面分别给出这三种方法的示例：</p>
+<h2 id="Perl-客户端"><a href="#Perl-客户端" class="headerlink" title="Perl 客户端"></a>Perl 客户端</h2><p>Elastic 官方提供各种语言的客户端库，其中，Perl 库提供了对 reindex 比较方便的写法和示例。通过 <code>cpanm Search::Elasticsearch</code> 命令安装库完毕后，使用以下程序即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">use Search::Elasticsearch;</div><div class="line"> </div><div class="line">my $es   = Search::Elasticsearch-&gt;new(</div><div class="line">    nodes =&gt; [&apos;192.168.0.2:9200&apos;]</div><div class="line">);</div><div class="line">my $bulk = $es-&gt;bulk_helper(</div><div class="line">    index   =&gt; &apos;new_index&apos;,</div><div class="line">);</div><div class="line"> </div><div class="line">$bulk-&gt;reindex(</div><div class="line">    source  =&gt; &#123;</div><div class="line">        index       =&gt; &apos;old_index&apos;,</div><div class="line">        size        =&gt; 500,         # default</div><div class="line">        search_type =&gt; &apos;scan&apos;       # default</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="Logstash-做-reindex"><a href="#Logstash-做-reindex" class="headerlink" title="Logstash 做 reindex"></a>Logstash 做 reindex</h2><p>在最新版的 Logstash 中，对 logstash-input-elasticsearch 插件做了一定的修改，使得通过 logstash 完成 reindex 成为可能。</p>
+<p>reindex 操作的 logstash 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">input &#123;</div><div class="line">  elasticsearch &#123;</div><div class="line">    hosts =&gt; [ &quot;192.168.0.2&quot; ]</div><div class="line">    index =&gt; &quot;old_index&quot;</div><div class="line">    size =&gt; 500</div><div class="line">    scroll =&gt; &quot;5m&quot;</div><div class="line">    docinfo =&gt; true</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">output &#123;</div><div class="line">  elasticsearch &#123;</div><div class="line">    hosts =&gt; [ &quot;192.168.0.3&quot; ]</div><div class="line">    index =&gt; &quot;%&#123;[@metadata][_index]&#125;&quot;</div><div class="line">    document_type =&gt; &quot;%&#123;[@metadata][_type]&#125;&quot;</div><div class="line">    document_id =&gt; &quot;%&#123;[@metadata][_id]&#125;&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你做 reindex 的源索引并不是 logstash 记录的内容，也就是没有 <code>@timestamp</code>, <code>@version</code> 这两个 logstash 字段，那么可以在上面配置中添加一段 filter 配置，确保前后索引字段完全一致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">filter &#123;</div><div class="line">  mutate &#123;</div><div class="line">    remove_field =&gt; [ &quot;@timestamp&quot;, &quot;@version&quot; ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="reindex-API"><a href="#reindex-API" class="headerlink" title="reindex API"></a>reindex API</h2><p>简单的 reindex，可以很容易的完成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://localhost:9200/_reindex -d &apos;</div><div class="line">&#123;</div><div class="line">  &quot;source&quot;: &#123;</div><div class="line">    &quot;index&quot;: &quot;logstash-2016.10.29&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;dest&quot;: &#123;</div><div class="line">    &quot;index&quot;: &quot;logstash-new-2016.10.29&quot;</div><div class="line">  &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>复杂需求，也能通过配合其他 API，比如 script、pipeline 等来满足一些，下面举一个复杂的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://localhost:9200/_reindex?requests_per_second=10000 -d &apos;</div><div class="line">&#123;</div><div class="line">  &quot;source&quot;: &#123;</div><div class="line">    &quot;remote&quot;: &#123;</div><div class="line">      &quot;host&quot;: &quot;http://192.168.0.2:9200&quot;,</div><div class="line">    &#125;,</div><div class="line">    &quot;index&quot;: &quot;metricbeat-*&quot;,</div><div class="line">    &quot;query&quot;: &#123;</div><div class="line">      &quot;match&quot;: &#123;</div><div class="line">        &quot;host&quot;: &quot;webserver&quot;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  &quot;dest&quot;: &#123;</div><div class="line">    &quot;index&quot;: &quot;metricbeat&quot;,</div><div class="line">    &quot;pipeline&quot;: &quot;ingest-rule-1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;script&quot;: &#123;</div><div class="line">    &quot;lang&quot;: &quot;painless&quot;,</div><div class="line">    &quot;inline&quot;: &quot;ctx._index = &apos;metricbeat-&apos; + (ctx._index.substring(&apos;metricbeat-&apos;.length(), ctx._index.length())) + &apos;-1&apos;&quot;</div><div class="line">  &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
+<p>上面这个请求的作用，是将来自 192.168.0.2 集群的 metricbeat-2016.10.29 索引中，有关 <code>host:webserver</code> 的数据，读取出来以后，经过 localhost 集群的 <code>ingest-rule-1</code> 规则处理，在写入 localhost 集群的 metricbeat-2016.10.29-1 索引中。</p>
+<p>注意：读取远端集群数据需要先配置对应的 <code>reindex.remote.whitelist:192.168.0.2:9200</code> 到 elasticsearch.yml 的白名单里。</p>
+<p>通过 reindex 接口运行的任务可以通过同样是 5.0 新引入的任务管理接口进行取消、修改等操作。详细介绍见后续任务管理章节。</p>
+<p>（本文完）</p>
+<p>文本整理自《ELKstack权威指南》</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Elasticsearch/">Elasticsearch</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elkstack-es01/" data-tooltip="Elasticsearch架构原理">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Ghost Stories. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elkstack-es01/" data-tooltip="Elasticsearch架构原理">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/elkstack-es02/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ghost Stories</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                110 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/elkstack-es02/';
+                 
+                    this.page.identifier = 'post/elkstack-es02/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
