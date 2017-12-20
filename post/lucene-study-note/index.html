@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ghost Stories">
+    <title>Lucene学习笔记 - Ghost Stories</title>
+    <meta name="author" content="Ghost Stories">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="Lucene学习笔记">
+<meta property="og:url" content="http://wangnan.tech/post/lucene-study-note/index.html">
+<meta property="og:site_name" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/09.jpg">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene01.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene02.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene03.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene04.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene05.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene06.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene07.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene08.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene09.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene15.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene16.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene11.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene12.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene13.png">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/lucene14.png">
+<meta property="og:updated_time" content="2017-12-20T08:57:59.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lucene学习笔记">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/09.jpg">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/09.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/09.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Ghost Stories</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ghost Stories</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/gmail.png" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/wechat-samll.jpg" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-comments"></i>
+                        <span class="sidebar-button-desc">Wechat</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://www.jianshu.com/u/244399b1d776" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-desktop"></i>
+                        <span class="sidebar-button-desc">JianShu</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-coffee"></i>
+                        <span class="sidebar-button-desc">Zhihu</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Lucene学习笔记
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-12-20T16:54:36+08:00">
+	
+		    Dec 20, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Lucene/">Lucene</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/09.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#全文检索原理（铺垫）"><span class="toc-text">全文检索原理（铺垫）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据分类"><span class="toc-text">数据分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索分类"><span class="toc-text">搜索分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对非结构化数据（全文数据）搜索方法"><span class="toc-text">对非结构化数据（全文数据）搜索方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全文检索的过程"><span class="toc-text">全文检索的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引里面究竟存些什么？-Index"><span class="toc-text">索引里面究竟存些什么？(Index)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何创建索引？-Indexing"><span class="toc-text">如何创建索引？(Indexing)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何对索引进行搜索？-Search"><span class="toc-text">如何对索引进行搜索？(Search)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全文检索原理总结"><span class="toc-text">全文检索原理总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lucene简介（主要内容）"><span class="toc-text">Lucene简介（主要内容）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引结构"><span class="toc-text">索引结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引过程"><span class="toc-text">索引过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心类：IndexWriter"><span class="toc-text">核心类：IndexWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索过程"><span class="toc-text">搜索过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心类-IndexSearcher"><span class="toc-text">核心类 IndexSearcher</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序包和索引与搜索过程的对应关系"><span class="toc-text">程序包和索引与搜索过程的对应关系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三部分：Lucene-相似度评分算法（similarity）"><span class="toc-text">第三部分：Lucene 相似度评分算法（similarity）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TF-IDF-词频-逆文档频率-算法"><span class="toc-text">TF/IDF(词频/逆文档频率)算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#铺垫：向量空间模型-Vector-Space-Model"><span class="toc-text">铺垫：向量空间模型-Vector Space Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算文档得分需要考虑以下因子"><span class="toc-text">计算文档得分需要考虑以下因子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TF-IDF评分公式"><span class="toc-text">TF/IDF评分公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BM25算法"><span class="toc-text">BM25算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索流程映射到TF-IDF算法公式"><span class="toc-text">搜索流程映射到TF/IDF算法公式</span></a></li></ol></li></ol></span></p>
+<blockquote>
+<p>概要：</p>
+<ol>
+<li>全文检索的原理和基本概念（铺垫）</li>
+<li>Lucene简介，索引文档和检索文档的过程（主要）</li>
+<li>Lucene 相似度评分算法（拓展）</li>
+</ol>
+</blockquote>
+<h1 id="全文检索原理（铺垫）"><a href="#全文检索原理（铺垫）" class="headerlink" title="全文检索原理（铺垫）"></a>全文检索原理（铺垫）</h1><h2 id="数据分类"><a href="#数据分类" class="headerlink" title="数据分类"></a>数据分类</h2><p>生活中的数据总体分为三种：</p>
+<ul>
+<li>结构化数据，固定格式和长度，如数据库数据，元数据等</li>
+<li>非结构化数据，无固定格式和长度，如邮件，word文档，商品描述信息，非结构化数据也称为为全文数据</li>
+<li>半结构化数据，如XML，HTML等，当然根据需要按结构化数据来处理，也可抽取出纯文本按非结构化数据来处理</li>
+</ul>
+<h2 id="搜索分类"><a href="#搜索分类" class="headerlink" title="搜索分类"></a>搜索分类</h2><p>按照数据的分类，搜索也分为两种：</p>
+<ul>
+<li>对结构化数据的搜索，如对数据库的搜索，用SQL语句</li>
+<li>对非结构化数据的搜索，如用Google和百度搜索</li>
+</ul>
+<h2 id="对非结构化数据（全文数据）搜索方法"><a href="#对非结构化数据（全文数据）搜索方法" class="headerlink" title="对非结构化数据（全文数据）搜索方法"></a>对非结构化数据（全文数据）搜索方法</h2><ul>
+<li>顺序扫描法(Serial Scanning)</li>
+</ul>
+<p>从头到尾的扫描，比如windows的搜索文件，Linux下的grep命令，这种方法比较原始，但对于小数据量的文件，这种方法还是最直接，最方便的。但是对于大量的文件，这种方法就很慢了。</p>
+<ul>
+<li>全文检索（Full-text Search）</li>
+</ul>
+<p>有人可能会说，对非结构化数据顺序扫描很慢，对结构化数据的搜索却相对较快（由于结构化数据有一定的结构可以采取一定的搜索算法加快速度），那么把我们的非结构化数据想办法弄得有一定结构不就行了吗？</p>
+<p>这就是全文检索的基本思路：也即将非结构化数据中的一部分信息提取出来，重新组织，使其变得有一定结构，然后对此有一定结构的数据进行搜索，从而达到搜索相对较快的目的。</p>
+<p>这部分从非结构化数据中提取出的然后重新组织的信息，我们称之<strong>索引</strong></p>
+<p>直观的例子就是字典，可以按照偏旁部首和读音去找到对应的页数范围</p>
+<p><strong>这种先建立索引，再对索引进行搜索的过程就叫全文检索(Full-text Search)</strong></p>
+<h2 id="全文检索的过程"><a href="#全文检索的过程" class="headerlink" title="全文检索的过程"></a>全文检索的过程</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene01.png" alt="image"></p>
+<p>提出三个问题：</p>
+<ul>
+<li>索引里面究竟存些什么？(Index)</li>
+<li>如何创建索引？(Indexing)</li>
+<li>如何对索引进行搜索？(Search)</li>
+</ul>
+<h3 id="索引里面究竟存些什么？-Index"><a href="#索引里面究竟存些什么？-Index" class="headerlink" title="索引里面究竟存些什么？(Index)"></a>索引里面究竟存些什么？(Index)</h3><p>非结构化数据中所存储的信息：文件-&gt;字符串</p>
+<p>而我们想搜索的是：字符串-&gt;文件</p>
+<p>如果索引总能够保存从字符串到文件的映射，则会大大提高搜索速度。保存这种信息的索引称为<strong>反向索引</strong>或者<strong>倒排索引</strong></p>
+<p>反向索引报错信息一般如下：<br>假设有100个文档，id为1-100，我们得到如下的结构</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene02.png" alt="image"></p>
+<p>左边报错的一系列字符串，称为<strong>词典</strong><br>右边的文档链表称为<strong>倒排表</strong></p>
+<p>比如说，我们要寻找包含字符”lucene”而且包含”solr”的文档，只需要下面几步：</p>
+<ol>
+<li>取出包含字符串“lucene”的文档链表。</li>
+<li>取出包含字符串“solr”的文档链表。</li>
+<li>通过合并链表，找出既包含“lucene”又包含“solr”的文件。</li>
+</ol>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene03.png" alt="image"></p>
+<p>索引反映出了全文搜索优势：一次索引，多次使用。</p>
+<h3 id="如何创建索引？-Indexing"><a href="#如何创建索引？-Indexing" class="headerlink" title="如何创建索引？(Indexing)"></a>如何创建索引？(Indexing)</h3><p>通过一个例子讲解</p>
+<p><strong>第一步，准备一些要索引的文档（Document）</strong></p>
+<blockquote>
+<p>文件一：Students should be allowed to go out with their friends, but not allowed to drink beer.</p>
+<p>文件二：My friend Jerry went to school to see his students but found them drunk which is not allowed.</p>
+</blockquote>
+<p><strong>第二步，将原文档传给分词组件（Tokenizer）</strong></p>
+<p>分词组件做的几件事：</p>
+<ol>
+<li>将文档分成一个一个单独的单词</li>
+<li>去除标点符号</li>
+<li>去除停词(Stop word)：语言中最普通的一些单词，比如：the”,“a”，“this” 由于没有特别的意义，因而大多数情况下不能成为搜索的关键词</li>
+</ol>
+<p>经过分词(Tokenizer)后得到的结果称为词元(Token)：<br>“Students”，“allowed”，“go”，“their”，“friends”，“allowed”，“drink”，“beer”，“My”，“friend”，“Jerry”，“went”，“school”，“see”，“his”，“students”，“found”，“them”，“drunk”，“allowed”。</p>
+<p><strong>第三步，将词元（Token）传给语言处理组件（Linguistic Processor）</strong></p>
+<p>对于英语，语言处理组件做的几件事：</p>
+<ol>
+<li>变为小写(Lowercase)。</li>
+<li>将单词缩减为词根形式，如“cars”到“car”等。这种操作称为：stemming。</li>
+<li>将单词转变为词根形式，如“drove”到“drive”等。这种操作称为：lemmatization。</li>
+</ol>
+<p>语言处理组件(linguistic processor)的结果称为词(Term)</p>
+<p>在我们的例子中，经过语言处理，得到的词(Term)如下：</p>
+<p>“student”，“allow”，“go”，“their”，“friend”，“allow”，“drink”，“beer”，“my”，“friend”，“jerry”，“go”，“school”，“see”，“his”，“student”，“find”，“them”，“drink”，“allow”。</p>
+<p>也正是因为有语言处理的步骤，搜索“drive”，“driving”，“drove”，“driven”也能够被搜到,因为在我们的索引中，“driving”，“drove”，“driven”都会经过语言处理而变成“drive”，</p>
+<p><strong>第四步，将得到的词(Term)传给索引组件(Indexer)</strong></p>
+<ol>
+<li>利用得到的词(Term)创建一个字典。</li>
+</ol>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene04.png" alt="image"></p>
+<p>2.对字典按字母顺序进行排序</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene05.png" alt="image"></p>
+<ol>
+<li>合并相同的词(Term)成为文档倒排(Posting List)链表。</li>
+</ol>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene06.png" alt="image"></p>
+<p>在此表中，有几个定义：</p>
+<ul>
+<li>Document Frequency 即文档频次，表示总共有多少文件包含此词(Term)。</li>
+<li>Frequency 即词频率，表示此文件中包含了几个此词(Term)</li>
+</ul>
+<h3 id="如何对索引进行搜索？-Search"><a href="#如何对索引进行搜索？-Search" class="headerlink" title="如何对索引进行搜索？(Search)"></a>如何对索引进行搜索？(Search)</h3><p><strong>第一步：用户输入查询语句</strong></p>
+<p><strong>第二步：搜索应用程序对用户输入查询语句进行词法分析，语法分析，及语言处理</strong><br>步骤和索引过程中的语言处理几乎相同</p>
+<p><strong>第三步：搜索索引，得到符合语法树的文档</strong></p>
+<p><strong>第四步：根据得到的文档和查询语句的相关性，对结果进行排序。</strong></p>
+<h2 id="全文检索原理总结"><a href="#全文检索原理总结" class="headerlink" title="全文检索原理总结"></a>全文检索原理总结</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene07.png" alt="image"></p>
+<p>刚才说的信息检索技术(Information retrieval)中的基本理论，Lucene就是对这种基本理论的一种基本的的实践。</p>
+<h1 id="Lucene简介（主要内容）"><a href="#Lucene简介（主要内容）" class="headerlink" title="Lucene简介（主要内容）"></a>Lucene简介（主要内容）</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>官网介绍：</p>
+<blockquote>
+<p>Apache LuceneTM is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.</p>
+</blockquote>
+<p>Lucene是一个高效的，可扩展的，基于Java的全文检索库</p>
+<p>要注意的是它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能，</p>
+<p>由于是它不是一个完整的搜索应用程序，所以有一些基于Lucene的开源搜索引擎产生，比如Elasticsearch和solr</p>
+<h2 id="索引结构"><a href="#索引结构" class="headerlink" title="索引结构"></a>索引结构</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene08.png" alt="image"></p>
+<ul>
+<li>index<br>同一文件夹中的所有的文件构成一个Lucene 索引</li>
+<li>Segment<br>一个索引可以包含多个段，段与段之间是独立的，添加新文档可以生成新的段，不同的段可以合并</li>
+<li>Document</li>
+<li>文档是我们建索引的基本单位，不同的文档是保存在不同的段中的，一个段可以包含多 个文档</li>
+<li>Field<br>一篇文档包含不同类型的信息，可以分开索引，比如标题，时间，正文，作者等</li>
+<li>Term<br>词是索引的最小单位，是经过词法分析和语言处理后的字符串</li>
+</ul>
+<p>lucene 的索引结构中，即保存了正向信息，也保存了反向信息<br>正向：索引(Index) –&gt; 段(segment) –&gt; 文档<br>(Document) –&gt; 域(Field) –&gt; 词(Term)<br>反向：<br>词(Term) –&gt; 文档(Document</p>
+<p>组件：<br><img src="http://onxkn9cbz.bkt.clouddn.com/lucene09.png" alt="image"></p>
+<ul>
+<li>被索引的文档用Document对象表示。</li>
+<li>IndexWriter通过函数addDocument将文档添加到索引中，实现创建索引的过程</li>
+<li>Lucene的索引是应用反向索引。</li>
+<li>当用户有请求时，Query代表用户的查询语句。</li>
+<li>IndexSearcher通过函数search搜索Lucene Index。</li>
+<li>IndexSearcher计算term weight和score并且将结果返回给用户。</li>
+<li>返回给用户的文档集合用TopDocsCollector表示。</li>
+</ul>
+<p>此图简单介绍全文检索的流程对应的Lucene实现的包结构：</p>
+<p>再详细到对Lucene API 的调用实现索引和搜索过程</p>
+<h2 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h2><h3 id="核心类：IndexWriter"><a href="#核心类：IndexWriter" class="headerlink" title="核心类：IndexWriter"></a>核心类：IndexWriter</h3><p>IndexWriter 是 Lucene 用来创建索引的一个核心的类，他的作用是把 Document 对象加到索引中。</p>
+<p>lucene6.5中构造方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public IndexWriter(Directory d, IndexWriterConfig conf)</div></pre></td></tr></table></figure>
+<ul>
+<li>Directory </li>
+</ul>
+<p>这个类代表了 Lucene 的索引的存储的位置，这是一个抽象类，它目前有两个实现，第一个是 FSDirectory，它表示一个存储在文件系统中的索引的位置。第二个是 RAMDirectory，它表示一个存储在内存当中的索引的位置。</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene15.png" alt="image"></p>
+<ul>
+<li>IndexWriterConfig 是一个配置类，属性如下</li>
+</ul>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene16.png" alt="image"></p>
+<p>IndexWriterConfig主要包含了下面的信息：</p>
+<ul>
+<li><p>OpenMode 打开模式（CREATE-清空重建，APPEND-总是追加，CREATE_OR_APPEND-创建或追加）</p>
+</li>
+<li><p>Analyzer<br>分析器  在一个文档被索引之前，首先需要对文档内容进行分词处理</p>
+</li>
+<li><p>Similarity 影响打分的标准化因子(normalization<br>factor)部分，对文档的打分分两个部分，一部分是索引阶段计算的，与查询语句无关，一部分是搜索阶段计算的，与查询语句相关</p>
+</li>
+<li><p>Codec 编解码器 用来写入段的</p>
+</li>
+<li><p>MergePolicy 段合并策略</p>
+</li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Index &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws IOException &#123;</div><div class="line"></div><div class="line">        //写索引类</div><div class="line">        IndexWriter writer;</div><div class="line"></div><div class="line">        //索引目录</div><div class="line">        String indexDir = &quot;C:\\lucene\\index&quot;;</div><div class="line"></div><div class="line">        //储存方式</div><div class="line">        Directory directory = FSDirectory.open(Paths.get(indexDir));</div><div class="line"></div><div class="line">        //写索引类配置</div><div class="line">        IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());</div><div class="line">        config.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);</div><div class="line">        writer = new IndexWriter(directory, config);</div><div class="line"></div><div class="line">        //生成Document对象，Document对象就是对文档各个属性的封装</div><div class="line">        String dataDir = &quot;C:\\lucene\\data\\123.txt&quot;;//文件，里边要有.txt文件</div><div class="line">        File file = new File(dataDir);</div><div class="line">        Document doc = new Document();</div><div class="line">        doc.add(new Field(&quot;filename&quot;, file.getName(), TextField.TYPE_STORED));</div><div class="line">        doc.add(new Field(&quot;contents&quot;, new FileReader(file), TextField.TYPE_NOT_STORED));</div><div class="line"></div><div class="line">        //写入索引，将生成的Document（目录）对象写入到索引中</div><div class="line">        writer.addDocument(doc);</div><div class="line"></div><div class="line">        //关闭</div><div class="line">        writer.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="搜索过程"><a href="#搜索过程" class="headerlink" title="搜索过程"></a>搜索过程</h2><h3 id="核心类-IndexSearcher"><a href="#核心类-IndexSearcher" class="headerlink" title="核心类 IndexSearcher"></a>核心类 IndexSearcher</h3><p>IndexSearcher 是用来在建立好的索引上进行搜索的。它只能以只读的方式打开一个索引，所以可以有多个 IndexSearcher 的实例在一个索引上进行操作。</p>
+<p>步骤：</p>
+<ul>
+<li>IndexReader将磁盘上的索引信息读入到内存，INDEX_DIR就是索引文件存放的位置。</li>
+<li>创建IndexSearcher准备进行搜索。</li>
+<li>创建Analyer用来对查询语句进行词法分析和语言处理。</li>
+<li>创建QueryParser用来对查询语句进行语法分析。</li>
+<li>QueryParser调用parser进行语法分析，形成查询语法树，放到Query中。</li>
+<li>IndexSearcher调用search对查询语法树Query进行搜索，得到结果TopDocs</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class Searcher &#123;</div><div class="line">    //这个方法是搜索索引的方法，传入索引路径和查询表达式</div><div class="line">    public static void search(String indexDir,String query) throws IOException, ParseException &#123;</div><div class="line">        //打开索引目录</div><div class="line">        Directory dir= FSDirectory.open(Paths.get(indexDir));</div><div class="line">        // 创建搜索的Query</div><div class="line">        IndexSearcher searcher=new IndexSearcher(DirectoryReader.open(dir));</div><div class="line">        // 使用标准的分词器</div><div class="line">        Analyzer analyzer = new StandardAnalyzer();</div><div class="line">        // 在content中搜索，创建parser确定要搜索的内容，其中，第2个参数为搜索的域</div><div class="line">        QueryParser parser=new QueryParser(&quot;contents&quot;,analyzer);</div><div class="line">        // 创建Query表示搜索域为content中，包含搜索内容为query1的文档</div><div class="line">        Query query1=parser.parse(query);</div><div class="line">        long start=System.currentTimeMillis();</div><div class="line">        // 开始搜索</div><div class="line">        TopDocs hits=searcher.search(query1,11);</div><div class="line">        long end=System.currentTimeMillis();</div><div class="line">        System.out.println(hits.totalHits);</div><div class="line">        System.out.println(end-start);//计算搜搜时间等</div><div class="line">        //获取搜索的地址等</div><div class="line">        for(ScoreDoc scoreDoc:hits.scoreDocs)&#123;</div><div class="line">            Document doc=searcher.doc(scoreDoc.doc);</div><div class="line">            System.out.println(doc.get(&quot;fullpath&quot;));//地址，完整的</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws IOException, ParseException &#123;</div><div class="line">        String indexDir=&quot;C:\\lucene\\index&quot;;//索引，index时建立的</div><div class="line">        String query=&quot;food&quot;;//搜索的word</div><div class="line">        search(indexDir, query);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="程序包和索引与搜索过程的对应关系"><a href="#程序包和索引与搜索过程的对应关系" class="headerlink" title="程序包和索引与搜索过程的对应关系"></a>程序包和索引与搜索过程的对应关系</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene11.png" alt="image"></p>
+<ul>
+<li>Lucene的analysis模块主要负责词法分析及语言处理而形成Term。</li>
+<li>Lucene的index模块主要负责索引的创建，里面有IndexWriter。</li>
+<li>Lucene的store模块主要负责索引的读写。</li>
+<li>Lucene的QueryParser主要负责语法分析。</li>
+<li>Lucene的search模块主要负责对索引的搜索。</li>
+<li>Lucene的similarity模块主要负责对相关性打分的实现。</li>
+</ul>
+<h1 id="第三部分：Lucene-相似度评分算法（similarity）"><a href="#第三部分：Lucene-相似度评分算法（similarity）" class="headerlink" title="第三部分：Lucene 相似度评分算法（similarity）"></a>第三部分：Lucene 相似度评分算法（similarity）</h1><ul>
+<li><p>TF/IDF (词频/逆文档频率)算法，ES5.0之前，TF/IDF是默认的评分算法,TF/IDF源于<strong>向量空间模型(Vector Space Model)</strong></p>
+</li>
+<li><p>BM25算法，ES5.0及之后（2017-05-04发布的5.4版本），BM25是默认的评分算法,BM25源于<strong>概率相关模型(probabilistic relevance model)</strong></p>
+</li>
+</ul>
+<p>虽然听着好像差别巨大，但，两者都使用 词频, 逆文档频率 这些概念，且公式也很相似。<strong>其区别在于如何处理出现频繁的词</strong></p>
+<h2 id="TF-IDF-词频-逆文档频率-算法"><a href="#TF-IDF-词频-逆文档频率-算法" class="headerlink" title="TF/IDF(词频/逆文档频率)算法"></a>TF/IDF(词频/逆文档频率)算法</h2><h3 id="铺垫：向量空间模型-Vector-Space-Model"><a href="#铺垫：向量空间模型-Vector-Space-Model" class="headerlink" title="铺垫：向量空间模型-Vector Space Model"></a>铺垫：向量空间模型-Vector Space Model</h3><p>问题：给定文档d 和 查询q，相似度如何计算呢？</p>
+<p>定义V(q) 和 V(d) 是 d和q 分词完成后，利用每个词出现次数所形成的向量</p>
+<p>相似度就等于文档d 和 查询q 的 加权查询向量V(q)和V(d)的 <strong>余弦相似度</strong></p>
+<h2 id="计算文档得分需要考虑以下因子"><a href="#计算文档得分需要考虑以下因子" class="headerlink" title="计算文档得分需要考虑以下因子"></a>计算文档得分需要考虑以下因子</h2><ul>
+<li><p>文档权重（document boost）：<strong>索引期</strong>赋予某个文档的权重值</p>
+</li>
+<li><p>字段权重（field boost）:<strong>查询期</strong>赋予某个字段的权重值</p>
+</li>
+<li><p>词频(trem frequency)：一个基于词项的因子，用来表示一个词项在某个文档中出现多少次，<strong>词频越高，文档得分越高</strong> <em>比如：查询关键词是A，文档1和文档1都匹配上了，但是文档1中出现了2次A,文档2中出现了1次A,那么在这个项目中，文档1分数更高</em></p>
+</li>
+<li><p>逆文档频率(inverse document frequency):一个基于词项的因子,用来告诉评分公式该词项有多么<strong>罕见</strong>，逆文档频率越低，词项越罕见，评分公式利用该因子为包含罕见词项的文档加权<br><em>比如：查询关键词是A和B,如果文档1命中了A,文档2命中了B,但是在整个文档范围内，A出现的次数比B少，那么在这个项目中，文档1分数更高</em></p>
+</li>
+<li><p>协调因子（coord）：基于文档中词项命中个数的协调因子，<strong>一个文档中命中了查询中的词项越多，得分越高</strong><br><em>比如：查询关键词被分词为A和B,如果文档1命中了A和B,文档2命中了A,那么在这个项目上，文档1的分数更高</em></p>
+</li>
+<li><p>长度范数(length norm):每个字段的基于词项个数的归一化因子，一个字段包含的词项越多，改因子的权重越低，<em>*这意味着lucene评分公式更”喜欢”包含更少词项的字段</em><br><em>比如：查询关键词是A,文档1和2都匹配上了A,但是文档1内容长度比文档1短，那么在这个项目中，文档1分数更高</em></p>
+</li>
+<li><p>查询范数（query norm）：一个基于查询的归一化因子，它等于<strong>查询中词项的权重平方和</strong>，<strong>查询范数使得不同查询的得分能相互比较，尽管这种比较通常是困难且不可行的</strong></p>
+</li>
+</ul>
+<h2 id="TF-IDF评分公式"><a href="#TF-IDF评分公式" class="headerlink" title="TF/IDF评分公式"></a>TF/IDF评分公式</h2><p><strong>Lucene理论评分公式</strong><br>注意，你并不需要深入理解这个公式的来龙去脉，了解它的工作原理非常重要</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene12.png" alt="image"></p>
+<p>上面的公式理论形式糅合了布尔检索模型和向量空间检索模型，我们可以不讨论这个理论评分公式，直接跳到lucene实际评分公式<br><strong>Lucene实际评分公式</strong><br>现在让我来看看Lucene实际评分公式：</p>
+<p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene13.png" alt="image"></p>
+<p>解释：这是一个关于<strong>查询q</strong>和<strong>文档d</strong>的函数，有两个因子coord和queryNorm并不直接依赖查询词项，而是与查询词项的一个<strong>求和公式</strong>相乘，<strong>求和公式</strong>中的每个加数由以下因子连乘所得：词频 逆文档频率 词项权重 长度范数</p>
+<p>由这个公式我们可以导出一些规则：</p>
+<ul>
+<li>越多罕见的词项被匹配上，文档分数越高</li>
+<li>文档字段越短，文档分数越高</li>
+<li>权重越高（无论是索引期还查询期赋予的权重值），文档得分越高</li>
+</ul>
+<h2 id="BM25算法"><a href="#BM25算法" class="headerlink" title="BM25算法"></a>BM25算法</h2><p>BM 是 Best Matching (最佳匹配) 的缩写，它被认为是 当今最先进的排序函数</p>
+<p>BM25源于 概率相关模型(probabilistic relevance mode), BM25和TF/IDF实际的打分函数有非常多的相似之处</p>
+<p>BM25 同样使用词频、逆向文档频率以及字段长归一化，但是每个因子的定义都有细微区别。与其详细解释 BM25 公式，不如将关注点放在 BM25 所能带来的实际好处上</p>
+<p>接下来对比下BM25与TFIDF的区别：</p>
+<p>对于词频，BM25 有一个上限，文档里出现 5 到 10 次的词会比那些只出现一两次的对相关度有着显著影响。，文档中出现 20 次的词几乎与那些出现上千次的词有着相同的影响。</p>
+<h2 id="搜索流程映射到TF-IDF算法公式"><a href="#搜索流程映射到TF-IDF算法公式" class="headerlink" title="搜索流程映射到TF/IDF算法公式"></a>搜索流程映射到TF/IDF算法公式</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/lucene14.png" alt="image"></p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Lucene/">Lucene</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elkstack-es03/" data-tooltip="Elasticsearch性能优化">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Ghost Stories. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/elkstack-es03/" data-tooltip="Elasticsearch性能优化">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/lucene-study-note/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ghost Stories</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                112 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/lucene-study-note/';
+                 
+                    this.page.identifier = 'post/lucene-study-note/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>

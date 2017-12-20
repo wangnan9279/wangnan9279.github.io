@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/lucene-study-note/</loc>
+    
+    <lastmod>2017-12-20T08:57:59.303Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/elkstack-es03/</loc>
     
     <lastmod>2017-11-27T03:14:58.224Z</lastmod>
