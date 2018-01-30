@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/elasticsearch-how-to/</loc>
+    <lastmod>2018-01-30T05:45:42.052Z</lastmod>
+    <data>
+        <display>
+        <title>ES官方调优指南翻译</title>
+        <pubTime>2018-01-30T05:43:28.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/lucene-study-note/</loc>
     <lastmod>2017-12-20T08:57:59.303Z</lastmod>
     <data>
