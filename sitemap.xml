@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/read/index.html</loc>
+    
+    <lastmod>2018-04-11T08:56:28.200Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-how-to/</loc>
     
     <lastmod>2018-01-30T05:49:28.401Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://wangnan.tech/post/logstash-kafka-input/</loc>
     
     <lastmod>2017-11-16T08:07:46.830Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/read/index.html</loc>
-    
-    <lastmod>2017-11-07T07:58:05.913Z</lastmod>
     
   </url>
   
