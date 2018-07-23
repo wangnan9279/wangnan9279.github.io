@@ -4,11 +4,31 @@
 
     
   <url>
-    <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
-    <lastmod>2018-06-13T06:47:08.451Z</lastmod>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
+    <lastmod>2018-07-23T06:40:46.939Z</lastmod>
     <data>
         <display>
-        <title>《Hadoop权威指南》精华-初识Hadoop</title>
+        <title>《Hadoop权威指南》书摘-MapReduce概述</title>
+        <pubTime>2018-07-23T06:38:03.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="BigData" url="http://wangnan.tech/categories/BigData/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
+    <lastmod>2018-07-23T06:37:08.946Z</lastmod>
+    <data>
+        <display>
+        <title>《Hadoop权威指南》书摘-初识Hadoop</title>
         <pubTime>2018-02-12T05:43:28.000Z</pubTime>
         
         <tag>Hadoop</tag>

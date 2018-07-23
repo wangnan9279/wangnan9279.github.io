@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
+    
+    <lastmod>2018-07-23T06:40:46.939Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
     
-    <lastmod>2018-06-13T06:47:08.451Z</lastmod>
+    <lastmod>2018-07-23T06:37:08.946Z</lastmod>
     
   </url>
   
