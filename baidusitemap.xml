@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide03/</loc>
+    <lastmod>2018-07-26T08:15:28.325Z</lastmod>
+    <data>
+        <display>
+        <title>《Hadoop权威指南》书摘-HDFS概述</title>
+        <pubTime>2018-07-26T08:14:32.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="BigData" url="http://wangnan.tech/categories/BigData/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
     <lastmod>2018-07-23T06:40:46.939Z</lastmod>
     <data>

@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[《Hadoop权威指南》书摘-HDFS概述]]></title>
+      <url>%2Fpost%2Fhadoop-definitive-guide03%2F</url>
+      <content type="text"><![CDATA[转载请注明出处：http://wangnan.tech 简书:http://www.jianshu.com/u/244399b1d776 设计 超大文件，已经有储存PB级数据的Hadoop集群了 流式数据访问，一次写入，多次读取 商用硬件 不需要运行在昂贵的硬件上 低时间延迟的数据访问 大量的小文件 多用户写入，任意修改文件 概念数据块 chunk默认为128MBHDFS中小于一个快大小的文件不会占据整个快的空间 分块好处： 一个文件的大小可以大于网络中任意一个磁盘的容量 使用抽象块而非整个文件作为储存单元，大大简化了储存子系统的设计 块适合数据备份而提供数据容错性和高可用性 namenode 和 datanode管理节点 管理文件系统的命名空间，维护这文件系统树内所有文件和目录，还记录这每个文件中各个块所在数据节点的信息 没有管理节点，文件系统将无法使用 容错机制： 备份元数据持久状态文件，一般是将持久状态写入本地磁盘的同时，写入一个远程挂载的网络文件系统（NFS） 运行一个辅助namenode,作为主备 工作节点 它根据需要储存并检索数据块，并且定期向namenode发送他们所储存的块的列表 块缓存通常datanode从磁盘读取块，但是对于访问频繁的文件，其对应的的块可能被显式地缓存在datanode的内存中，以堆外缓存的形式存在 高可用hadoop配置了一对 active-standy namenode 当活动namenode失效，备用namenode就会接管它的任务并开始服务于来自客户端的请求，不会有任何明显的中断 数据流文件读取 客户端通过RPC调用namenode，以确定文件起始块的位置,对于每一个块，namenode返回存在该快副本的datanode地址，此外，这些datanode根据他们与客户端的距离来排序，如果该客户端本身就是一个datanode，那么该客户端将会从保存有相应数据块复本的本地datanode读取数据 文件写入 客户端通过RPC调用namenode，在文件系统的命名空间中新建一个文件，此时该文件中还没有相应的数据块 namenode执行各种不同的检查以确保这个文件不存在以及客户端有新建该文件的权限，如果通过，就为创建新文件记录一条记录 写入时，将数据分成一个个数据包，并写入内部队列，挑选出适合存储数据复本的一组datanode，并据此来要求namenode分配新的数据块 思考题：namenode选择再哪个datanode储存复本]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[《Hadoop权威指南》书摘-MapReduce概述]]></title>
       <url>%2Fpost%2Fhadoop-definitive-guide02%2F</url>
       <content type="text"><![CDATA[转载请注明出处：http://wangnan.tech 简书:http://www.jianshu.com/u/244399b1d776 MapReduce是一种可用于数据处理的编程模型，MapReduce程序本质上是并行运行的，因此可以将大规模数据分析任务分发给任何一个拥有足够多机器的数据中心，它的优势在于处理大规模数据 map和reduceMapReduce任务可以分为两个处理阶段：map阶段和reduce阶段，每个阶段都以键值对作为输入和输出 一些概念jobMapReduce job 是客户端需要执行的一个工作单元,它包括输入数据，MapReduce程序和配置信息 taskHadoop将 job 分成若干 task 执行，task包括两类:map任务和reduce任务，这些任务运行在集群的节点上，并通过YARN进行调度，如果任务失败，它将在另一个不同的节点上自动重新调度运行 splithadoop将MapReduce的输入数据划分成等长的小数据块，成为split，hadoop为每个分片创建一个map任务 对于大多数作业来说，一个合理的分片大小趋向于HDFS的一个块的大小，默认是123MB 数据本地化优化Hadoop在储存有输入数据（HDFS中的数据）的节点上运行map任务，可以获得最佳性能，因为它无需使用宝贵的集群带宽资源，但是有时储存该分片的hdfs数据块副本所在的节点可能在运行其他的map任务，此时调度需要从某一个数据块所在的机架中的一个节点上寻找一个空闲的map槽（slot）来运行该map任务分片，仅仅在非常偶然的情况下会发生，这将导致机架之间发生网络传输 思考题：为什么最近分片大小应该与块大小相同 思考题：为什么map任务将其输出写入本地磁盘，而不是HDFS reducereduce任务并不具备数据本地化优势，单个reduce任务的输入通常来自于所有mapper的输出，reduce的输出通常储存在HDFS中以实现可靠储存，reduce输出的每个HDFS块，第一个副本储存在本地节点上，其他复本出于可靠性考虑储存在其他机架的节点上 reduce数据流图 reduce任务的数量并非由输入数据的大小决定，相反是独立的 partition如果有好多个reduce任务，每个map任务就会针对输出进行分区（partition）,即为每个reduce任务建一个分区，每个分区有许多键，但每个建对应的键值对记录都在同一个分区中，分区可以由用户定义的分区函数控制，但通常默认的partitioner通过哈希函数来分区，很高效 shuffle多个reduce任务的数据流如图，map和reduce任务之间的数据流成为shuffle（混洗），因为每个reduce任务的输入都来自许多map任务，shuffle一般比图中所示的更负责，而且调整shuffle参数对作业总执行时间影响比较大 当数据完全可以并行，无需shuffle时，可能出现无reduce任务的情况，这种情况下，唯一的非本地节点数据传输是map任务 combiner函数能帮助减少mapper和reducer之间的数据传输量]]></content>
