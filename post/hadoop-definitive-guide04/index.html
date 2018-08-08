@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/01.png">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/02.png">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/03.png">
-<meta property="og:updated_time" content="2018-07-27T06:55:54.496Z">
+<meta property="og:updated_time" content="2018-07-27T07:10:32.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Hadoop权威指南》书摘-关于YARN">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png">
@@ -276,7 +276,7 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行机制"><span class="toc-text">运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源请求"><span class="toc-text">资源请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用生命期"><span class="toc-text">应用生命期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建YARN应用"><span class="toc-text">构建YARN应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN和MapReduce对比"><span class="toc-text">YARN和MapReduce对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN中的调度"><span class="toc-text">YARN中的调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#调度选项"><span class="toc-text">调度选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度器配置"><span class="toc-text">调度器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容量调度器配置"><span class="toc-text">容量调度器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公平调度器配置"><span class="toc-text">公平调度器配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟调度"><span class="toc-text">延迟调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要资源公平性"><span class="toc-text">主要资源公平性</span></a></li></ol></li></ol></span></p>
-<p><strong>转载请注明出处：<a href="http://wangnan.tech">http://wangnan.tech</a> 简书:<a href="http://www.jianshu.com/u/244399b1d776" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776</a></strong></p>
+<p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="external">https://zhuanlan.zhihu.com/c_121958856</a></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Apache YARN (Yet Another Resource Negotiaor的缩写)是Hadoop的集群资源管理系统，YARN被引入Hadoop2，最初是为了改善MapReduce的实现，但他具有足够的通用性，同样可以支持其他分布式计算模型</p>
 <p>YARN提供请求和使用集群资源的API，但这些API很少直接用于用户代码，用户代码用的是分布式计算框架提供的更高层API,如图，一些分布式计算框架（MapReduce Spark）作为YARN应用运行在集群计算层（YARN）和集群储存层（HDFS和Hbase）上</p>
 <p><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop04/01.png" alt=""></p>
@@ -345,7 +345,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/hadoop-definitive-guide05/"  data-tooltip="《Hadoop权威指南》书摘-关于Hive">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -437,7 +437,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/hadoop-definitive-guide05/"  data-tooltip="《Hadoop权威指南》书摘-关于Hive">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -850,7 +850,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                117 posts found
+                118 posts found
             </p>
         </div>
     </div>

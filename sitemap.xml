@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wangnan.tech/post/hadoop-definitive-guide04/</loc>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide05/</loc>
     
-    <lastmod>2018-07-27T06:55:54.496Z</lastmod>
+    <lastmod>2018-08-08T06:21:12.678Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide03/</loc>
     
-    <lastmod>2018-07-26T08:15:28.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
-    
-    <lastmod>2018-07-23T06:40:46.939Z</lastmod>
+    <lastmod>2018-07-27T07:19:31.824Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
     
-    <lastmod>2018-07-23T06:37:08.946Z</lastmod>
+    <lastmod>2018-07-27T07:10:43.015Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
+    
+    <lastmod>2018-07-27T07:10:38.259Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide04/</loc>
+    
+    <lastmod>2018-07-27T07:10:32.725Z</lastmod>
     
   </url>
   

@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ghost Stories">
+    <title>《Hadoop权威指南》书摘-关于Hive - Ghost Stories</title>
+    <meta name="author" content="Ghost Stories">
+    
+    
+        <link rel="icon" href="http://wangnan.tech/assets/images/favicon.ico">
+    
+    
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="《Hadoop权威指南》书摘-关于Hive">
+<meta property="og:url" content="http://wangnan.tech/post/hadoop-definitive-guide05/index.html">
+<meta property="og:site_name" content="Ghost Stories">
+<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hive.png">
+<meta property="og:updated_time" content="2018-08-08T06:21:12.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Hadoop权威指南》书摘-关于Hive">
+<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hive.png">
+<meta name="twitter:creator" content="@twitter">
+    
+        <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
+    
+    
+        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hive.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hive.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
+    <!--STYLES END-->
+    
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0df8e38c5e76634531942b2634b055eb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Ghost Stories</a>
+    </div>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/about">
+        
+        
+            <i class="fa fa-lg fa-favicon.ico"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ghost Stories</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>2gether thru life</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/read"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                        <span class="sidebar-button-desc">read</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">about</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/gmail.png" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/wechat-samll.jpg" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-comments"></i>
+                        <span class="sidebar-button-desc">Wechat</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://www.jianshu.com/u/244399b1d776" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-desktop"></i>
+                        <span class="sidebar-button-desc">JianShu</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-coffee"></i>
+                        <span class="sidebar-button-desc">Zhihu</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            《Hadoop权威指南》书摘-关于Hive
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-08-08T14:15:38+08:00">
+	
+		    Aug 08, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/BigData/">BigData</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop/hive.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hive-shell-环境"><span class="toc-text">hive shell 环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行hive"><span class="toc-text">运行hive</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hive与传统数据库相比"><span class="toc-text">hive与传统数据库相比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读时模式vs写时模式"><span class="toc-text">读时模式vs写时模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新、事务、索引"><span class="toc-text">更新、事务、索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他-sql-on-hadoop技术"><span class="toc-text">其他 sql-on-hadoop技术</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HiveQL"><span class="toc-text">HiveQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表"><span class="toc-text">表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#托管表和外部表"><span class="toc-text">托管表和外部表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分区和桶"><span class="toc-text">分区和桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#储存格式"><span class="toc-text">储存格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入数据"><span class="toc-text">导入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表的丢弃"><span class="toc-text">表的丢弃</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表的查询"><span class="toc-text">表的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#排序和聚集"><span class="toc-text">排序和聚集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MapReduce脚本"><span class="toc-text">MapReduce脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连接"><span class="toc-text">连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户自定义函数"><span class="toc-text">用户自定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写UDF"><span class="toc-text">写UDF</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写UDAF"><span class="toc-text">写UDAF</span></a></li></ol></span></p>
+<p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="external">https://zhuanlan.zhihu.com/c_121958856</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>hive是一个构建在hadoop上的数据仓框架</p>
+<p>hive的设计目的是让精通SQL技能但java编程技能将对较弱的分析师能够对Fackbook存放在HDFS中的大规模数据集执行查询</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>hive把sql查询转换为一系列hadoop集群上运行的作业</p>
+<p>hive把数据组织为表，通过这种方式储存在hdfs上的数据赋予结构，元数据储存在metastore数据库中</p>
+<p>安装过程很简单，必须在本地安装和集群上相同的版本的hadoop</p>
+<p>下载一个hive的发布版本，解压，添加环境变量 启动hive shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxf apache-hive-x.y.z-bin.tar.gz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export HIVE_HOME = xxx</div><div class="line">export PATH = $PATH:$HIVE_HOME/bin</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hive</div></pre></td></tr></table></figure>
+<h1 id="hive-shell-环境"><a href="#hive-shell-环境" class="headerlink" title="hive shell 环境"></a>hive shell 环境</h1><p>hive shell 环境使我们和hive交互，发出hiveQL命令的主要方式，HiveQL是sql的一种方言</p>
+<p>HiveSQL一般是大小写不敏感的，tab键会自动补全hive的关键字和函数</p>
+<p>也可以非交互式模式允许hive的shell环境，使用-f 运行脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hive -f script.q</div></pre></td></tr></table></figure></p>
+<p>对于较短的脚本，可以用 -e 选项在行内嵌入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hive -e &apos;select * from xxx&apos;</div></pre></td></tr></table></figure></p>
+<p>hive会默认把运行时信息打印输出到 standard error ，可以使用-S选项强制不显示这些消息</p>
+<p>hive shell 其他特性：<br>使用！前缀来运行宿主操作系统命令<br>使用dfs命令来访问hadoop文件系统</p>
+<h1 id="运行hive"><a href="#运行hive" class="headerlink" title="运行hive"></a>运行hive</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>hive配置文件为hive-site.xml在conf目录下</p>
+<p>也可以传递 –config参数指定配置文件目录</p>
+<p>配置文件中可以指定hadoop属性：fa-deaultFS和yarn.resourcemanager.adress，如果没有设定，默认值是使用本地文件系统和本地job runner</p>
+<p>hive还允许用hive命令传递 –hiveconf选择来对单个会话设置属性</p>
+<p>还可以在一个会话中使用SET命令更改设置</p>
+<p>设置属性有一个优先级层次，从高到低</p>
+<ol>
+<li>hive set命令</li>
+<li>-hiveconf 选择</li>
+<li>配置文件中的值</li>
+<li>hive默认值</li>
+</ol>
+<p><strong>执行引擎</strong><br>hive的原始设计是以MapReduce作为执行引擎，目前还有包括执行引擎，Tez ,另外hive对spark的支持也在开发中，</p>
+<p>tez和spark都是通用有向无环图DAG引擎，他们比MapReduce更加灵活，性能也更优越，比如，在使用MapReduce时，中间作业的输出会被物化储存到hdfs上，tez和spark则不同，他们可以根据hive规划器的请求，把中间结果写在本地磁盘，甚至是内存中缓存，以避免额外的复制开销</p>
+<p><strong>metastore</strong><br>metastore是hive元数据的集中储存地，包括两部分：服务和后台数据的储存，默认情况下，metastore服务和hive服务运行在同一个JVM中，它包含一个内嵌的以本地磁盘作为储存的Derby数据库实例</p>
+<p>如果要支持多会话，需要使用一个独立的数据库，这种配置称为本地metastore配置</p>
+<p>对于独立的metastore,Mysql是一种受欢迎的选择</p>
+<h1 id="hive与传统数据库相比"><a href="#hive与传统数据库相比" class="headerlink" title="hive与传统数据库相比"></a>hive与传统数据库相比</h1><h2 id="读时模式vs写时模式"><a href="#读时模式vs写时模式" class="headerlink" title="读时模式vs写时模式"></a>读时模式vs写时模式</h2><p>在传统数据库中，表的模式是在加载数据时强制确定的，如果加载时不符合，则拒绝加载，这被称为 写时模式 schema on write</p>
+<p>hive对数据的验证并不在加载数据时，而是在查询时，这被称为 读时模式 schema on read</p>
+<p>读时模式可以使数据加载非常迅速，因为他不需要读取数据来进行解析</p>
+<p>写时模式有利于提升查询性能</p>
+<h2 id="更新、事务、索引"><a href="#更新、事务、索引" class="headerlink" title="更新、事务、索引"></a>更新、事务、索引</h2><p>直到现在，hive还没有考虑这些特性，因为hive被设计为用MapReduce操作HDFS数据，这样的环境下，全表扫描是常态操作</p>
+<p>0.14.0b版本开始，hive可以对表做一些更细粒度的更新，也就是说，可以使用INSERT INTO TABLE ..VALUES 插入少量通过sql计算出来的值</p>
+<p>0.7.0发布版本还引入了 表级和分区级 的锁，锁由zookeeper透明管理</p>
+<p>hive索引分成两类：紧凑(compact)索引和位图(bitmap)索引</p>
+<h2 id="其他-sql-on-hadoop技术"><a href="#其他-sql-on-hadoop技术" class="headerlink" title="其他 sql-on-hadoop技术"></a>其他 sql-on-hadoop技术</h2><ul>
+<li>Impala</li>
+<li>Apache Drill</li>
+<li>Spark SQL</li>
+</ul>
+<h1 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h1><p>注意点：<br>hive有四种复杂数据类型：ARRAY MAP STRUCT UNION</p>
+<h1 id="表"><a href="#表" class="headerlink" title="表"></a>表</h1><p>hive的表在逻辑上由储存的数据和描述表中数据形式的相关元数据组成</p>
+<p>数据一般存放在hdfs中，但它也可以放在其他任何hadoop文件系统中，包括本地文件系统或者S3</p>
+<p>HIVE把元数据存在关系型数据库中，而不是放在HDFS中</p>
+<p>hive也提供了命名空间的支持，可以通过dbname.tablename完全限定一张表</p>
+<h2 id="托管表和外部表"><a href="#托管表和外部表" class="headerlink" title="托管表和外部表"></a>托管表和外部表</h2><p>hive创建表，默认情况是hive负责管理，这意味着hive把数据移入它的”仓库目录”</p>
+<p>另一种选择是创建一个外部表（external table），这会让hive到仓库目录以外的位置访问数据</p>
+<p><strong>区别</strong><br>两种表的区别表现在LOAD和DROP命令的语义上</p>
+<p>托管表：LOAD 会把文件移动到表的仓库目录  DROP 后数据会扯到消失<br>外部表： hive知道数据并不是自己管理，因此不会把数据转移到自己的仓库目录，甚至，它不会检查这一外部位置是否存在 DROP外部表时，hive不会碰数据，只会删除元数据</p>
+<p>如何选择？<br>作为一个经验法则，如果所有的处理都由hive完成，应该使用托管表<br>外部表可以用于从hive导出数据提供其他应用程序使用</p>
+<h2 id="分区和桶"><a href="#分区和桶" class="headerlink" title="分区和桶"></a>分区和桶</h2><p>hive把表组织成为分区（partition),这是一种根据分区列的值对表进行粗略划分的机制，使用分区可以加快数据分片的查询速度</p>
+<p>表或者分区可以进一步分为桶（bucket），它会为数据提供额外的结构以获取更高效的查询处理</p>
+<p><strong>分区</strong></p>
+<ul>
+<li>一个表可以多个维度来进行分区</li>
+<li>我们把数据加载到分区表的时候，要显示的指定分区值</li>
+<li>SHOW PARTITIONS 命令可以让hive告诉我们表中有哪些分区</li>
+<li>PARTITIONED BY 子句中的列定义是表中正式的列，成为分区列，但是，数据文件并不包含这些列的值，因为他们源于目录名</li>
+</ul>
+<p><strong>桶</strong></p>
+<ul>
+<li>桶可以是 取样或者说采样更高效</li>
+<li><p>使用CLUSTERED BY 子句来指定划分桶的列和要划分的桶的个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE XXX(id int,name string)</div><div class="line">CLUSTERED BY(ID) INTO 4 BUCKETS</div></pre></td></tr></table></figure>
+</li>
+<li><p>桶中的数据可以根据一个或者多个列另外进行排序</p>
+</li>
+<li>物理上，每个桶就是表或者分区目录里的一个文件</li>
+</ul>
+<h2 id="储存格式"><a href="#储存格式" class="headerlink" title="储存格式"></a>储存格式</h2><p>hive从两个维度对表进行管理，分别是行格式（row format）和文件格式（file format）</p>
+<p>行格式指一行中的字段如何储存，按照hive的术语，行格式由定义serDe定义，serDe是“序列化和反序列化工具”(serializer-Deserializer)的合成词</p>
+<p>文件格式指一行中字段容器的格式，最简单的格式是纯文本文件，也可以使用面向行的和面向列的二进制格式</p>
+<p><strong>默认储存格式</strong><br>hive默认行内分隔符不是制表符，而是ASC2控制码集合中的Control-A,因为它出现在字段文本中的可能性比较小，在hive中无法对分隔符进行转义，因此，挑选一个不会在数据字段中用到的字符作为分隔符非常重要</p>
+<p>集合类元素的默认分隔符是Control-B<br>默认的映射建分隔符为字符control-C</p>
+<p><strong>二进制储存格式：顺序文件，Avro数据文件，Parquet文件，RCFILE与ORCFile</strong></p>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><ul>
+<li>INSERT语句<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INSERT OVERWRITE TABLE target</div><div class="line">select col1,col2</div><div class="line">from source</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>overwrite关键字意味着目标表的内容会被select语句的结果替换掉</p>
+<ul>
+<li><p>CREATE TABLE…AS SELECT 语句<br>可以把hive的查询的输出结果存放到一个新的表中</p>
+</li>
+<li><p>表的修改<br>重命名表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE source rename to target</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>添加新列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE target ADD COLUMNS(col3 string)</div></pre></td></tr></table></figure></p>
+<h2 id="表的丢弃"><a href="#表的丢弃" class="headerlink" title="表的丢弃"></a>表的丢弃</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP table xxx</div></pre></td></tr></table></figure>
+<p>如果要删除表内所有数据，但是要保留表的定义，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TRUNCATE TABLE xxx</div></pre></td></tr></table></figure>
+<p>可以使用LIKE关键字创建一个与第一个表模式相同的新表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE xxx LIKE xxx;</div></pre></td></tr></table></figure>
+<h1 id="表的查询"><a href="#表的查询" class="headerlink" title="表的查询"></a>表的查询</h1><h2 id="排序和聚集"><a href="#排序和聚集" class="headerlink" title="排序和聚集"></a>排序和聚集</h2><ul>
+<li><p>ORDER BY<br>order by将对输入执行并行全排序</p>
+</li>
+<li><p>SORT BY<br>很多情况，并不需要结果是全局排序的，sort by为每个reducer产生一个排序文件</p>
+</li>
+<li><p>DISTRIBUTE BY<br>在有些情况下，你需要控制某个特定行应该到哪个reducer，目的是为了进行后续的聚集操作</p>
+</li>
+</ul>
+<h2 id="MapReduce脚本"><a href="#MapReduce脚本" class="headerlink" title="MapReduce脚本"></a>MapReduce脚本</h2><p>和Hadoop Streaming类似，TRANSFORM MAP REDUCE 子句可以在hive中调用外部脚本或程序</p>
+<p>比如写了一下脚本 xxx.py</p>
+<p>然后sql语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ADD FILE /xxx/xxx /xxx/xxx.py</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT TRANSFORM(a,b,c) USING &apos;xxx.py&apos; AS year,temperature</div></pre></td></tr></table></figure>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><ul>
+<li>内连接 JOIN（俩边都匹配上的才会是一行）</li>
+<li>外连接 OUTER JOIN（只要有一边有就可以）</li>
+<li>半连接 （右表只能在on子句中出现）</li>
+<li>map连接（可以利用分桶的表，作用于左侧表的桶的mapper加载右侧表中对应的桶即可执行连接）</li>
+</ul>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
+<li>视图是select语句定义的虚表</li>
+<li>在hive中，创建视图时并不把视图物化到硬盘，视图的select语句只是在执行引用视图的语句时才执行</li>
+</ul>
+<h1 id="用户自定义函数"><a href="#用户自定义函数" class="headerlink" title="用户自定义函数"></a>用户自定义函数</h1><p>你要写的查询有时候无法轻松或者不能使用hive提供的内置函数表示，通过编写用户自定义函数（user-defined function UDF）hive可以方便地插入用户写的处理代码并在查询中调用他们</p>
+<p>UDF必须用Java语言编写，Hive本身就是java写的</p>
+<p>UDF有三种：普通UDF,用户自己聚集函数（UDAF）,用户定义表生成函数（UDTF）</p>
+<ul>
+<li>UDF 操作用于与单个数据行，且产生一个数据行作为输出</li>
+<li>UDAF 接受多个输入数据行，并产生一个输出数据行</li>
+<li>UDTF 操作作用于单个数据行，且产生多个数据行（即一个表）作为 输出</li>
+</ul>
+<h2 id="写UDF"><a href="#写UDF" class="headerlink" title="写UDF"></a>写UDF</h2><ul>
+<li>一个UDF必须是org.apache.hadoop.hive.ql.exec.UDF的子类</li>
+<li>一个UDF必须至少实现了evaluate()方法</li>
+<li>hive支持在udf是使用java基本类型</li>
+<li>为了在hive中使用UDF,我们 需要把变异后的java类打包成一个jar文件，然后在metastore中注册这个函数并使用CREATE FUNCTION语句为它起名</li>
+<li>如果是集群上，则应该将JAR文件复制到HDFS</li>
+<li>UDF对大小写不敏感</li>
+<li>利用TEMPORARY 关键字可以创建一个仅在hive会话期间有效的函数，也就是说这个函数 没有在metastore中持久化储存</li>
+</ul>
+<h1 id="写UDAF"><a href="#写UDAF" class="headerlink" title="写UDAF"></a>写UDAF</h1><p>必须实现下面五个方法</p>
+<ul>
+<li>init()</li>
+<li>iterate()</li>
+<li>terminatePartial()</li>
+<li>merge()</li>
+<li>terminate()</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Hadoop/">Hadoop</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/hadoop-definitive-guide04/" data-tooltip="《Hadoop权威指南》书摘-关于YARN">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 Ghost Stories. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/hadoop-definitive-guide04/" data-tooltip="《Hadoop权威指南》书摘-关于YARN">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://wangnan.tech/post/hadoop-definitive-guide05/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/ice_bear.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ghost Stories</h4>
+        
+            <div id="about-card-bio"><p>2gether thru life</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Backend Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Nanjing,China
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
+                            <h3 class="media-heading">Elasticsearch简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
+                            <h3 class="media-heading">Java项目中使用Mybatis入门程序</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
+                            <h3 class="media-heading">Swagger简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
+                            <h3 class="media-heading">Sublime Text 3简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
+                            <h3 class="media-heading">Java反射简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 8, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
+                            <h3 class="media-heading">Redis初识</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
+                            <h3 class="media-heading">Java代理简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 13, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
+                            <h3 class="media-heading">Java注解简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 18, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
+                            <h3 class="media-heading">Java ThreadLocal 简介</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 23, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
+                            <h3 class="media-heading">《年轻可以一无所有》书摘</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jun 28, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc --></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                118 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-ivwiy10zeb8fifc4swnhkwneuk64y53w2scmdmtp8thi9cqfxh31aowtroaz.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://wangnan.tech/post/hadoop-definitive-guide05/';
+                 
+                    this.page.identifier = 'post/hadoop-definitive-guide05/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'wangnan9279';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
