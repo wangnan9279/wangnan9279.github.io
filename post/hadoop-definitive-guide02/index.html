@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop02/01.png">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop02/02.png">
 <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop02/03.png">
-<meta property="og:updated_time" content="2018-07-27T07:10:38.259Z">
+<meta property="og:updated_time" content="2018-08-08T06:36:58.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Hadoop权威指南》书摘-MapReduce概述">
 <meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png">
@@ -63,7 +63,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="4">
+<header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -87,7 +87,7 @@
         
     
 
-<nav id="sidebar" data-behavior="4">
+<nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -155,18 +155,6 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/read"
-                            
-                        >
-                    
-                        <i class="sidebar-button-icon fa fa-lg fa-book"></i>
-                        <span class="sidebar-button-desc">read</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link "
                              href="/about"
                             
                         >
@@ -179,33 +167,6 @@
         </ul>
         
             <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
-                    
-                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-                        <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://twitter.com/wangnan9279" target="_blank" rel="noopener">
-                    
-                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/gmail.png" target="_blank" rel="noopener">
-                    
-                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                        <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
             
                 <li class="sidebar-button">
                     
@@ -227,7 +188,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="noopener">
+                        <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/ghoststories" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-coffee"></i>
                         <span class="sidebar-button-desc">Zhihu</span>
@@ -240,7 +201,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="4"
+            <div id="main" data-behavior="5"
                  class="
                         hasCoverMetaIn
                         ">
@@ -276,7 +237,7 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#map和reduce"><span class="toc-text">map和reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-text">reduce</span></a></li></ol></span></p>
-<p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="external">https://zhuanlan.zhihu.com/c_121958856</a></p>
+<p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/ghoststories" target="_blank" rel="external">https://zhuanlan.zhihu.com/ghoststories</a></p>
 <p>MapReduce是一种可用于数据处理的编程模型，MapReduce程序本质上是并行运行的，因此可以将大规模数据分析任务分发给任何一个拥有足够多机器的数据中心，它的优势在于处理大规模数据</p>
 <h3 id="map和reduce"><a href="#map和reduce" class="headerlink" title="map和reduce"></a>map和reduce</h3><p>MapReduce任务可以分为两个处理阶段：map阶段和reduce阶段，每个阶段都以键值对作为输入和输出<br><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop02/01.png" alt=""></p>
 <h3 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h3><p><strong>job</strong><br>MapReduce job 是客户端需要执行的一个工作单元,它包括输入数据，MapReduce程序和配置信息</p>
@@ -398,7 +359,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -470,7 +431,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
     <i id="btn-close-shareoptions" class="fa fa-close"></i>
     <ul class="share-options">
         

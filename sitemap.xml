@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wangnan.tech/post/hadoop-definitive-guide05/</loc>
+    <loc>http://wangnan.tech/about/index.html</loc>
     
-    <lastmod>2018-08-08T06:21:12.678Z</lastmod>
+    <lastmod>2018-08-21T05:45:12.547Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide03/</loc>
     
-    <lastmod>2018-07-27T07:19:31.824Z</lastmod>
+    <lastmod>2018-08-08T06:37:07.733Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
     
-    <lastmod>2018-07-27T07:10:43.015Z</lastmod>
+    <lastmod>2018-08-08T06:37:02.173Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
     
-    <lastmod>2018-07-27T07:10:38.259Z</lastmod>
+    <lastmod>2018-08-08T06:36:58.189Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide05/</loc>
+    
+    <lastmod>2018-08-08T06:36:50.926Z</lastmod>
     
   </url>
   
@@ -152,13 +159,6 @@
     <loc>http://wangnan.tech/post/architecture-microservice/</loc>
     
     <lastmod>2017-08-31T06:26:04.486Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/about/index.html</loc>
-    
-    <lastmod>2017-08-31T02:30:22.512Z</lastmod>
     
   </url>
   

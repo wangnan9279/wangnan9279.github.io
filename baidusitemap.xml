@@ -3,29 +3,10 @@
 
 
     
-  <url>
-    <loc>http://wangnan.tech/post/hadoop-definitive-guide05/</loc>
-    <lastmod>2018-08-08T06:21:12.678Z</lastmod>
-    <data>
-        <display>
-        <title>《Hadoop权威指南》书摘-关于Hive</title>
-        <pubTime>2018-08-08T06:15:38.000Z</pubTime>
-        
-        <tag>Hadoop</tag>
-         
-         
-           
-             
-              <breadCrumb title="BigData" url="http://wangnan.tech/categories/BigData/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide03/</loc>
-    <lastmod>2018-07-27T07:19:31.824Z</lastmod>
+    <lastmod>2018-08-08T06:37:07.733Z</lastmod>
     <data>
         <display>
         <title>《Hadoop权威指南》书摘-HDFS概述</title>
@@ -45,7 +26,7 @@
     
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide01/</loc>
-    <lastmod>2018-07-27T07:10:43.015Z</lastmod>
+    <lastmod>2018-08-08T06:37:02.173Z</lastmod>
     <data>
         <display>
         <title>《Hadoop权威指南》书摘-初识Hadoop</title>
@@ -65,11 +46,31 @@
     
   <url>
     <loc>http://wangnan.tech/post/hadoop-definitive-guide02/</loc>
-    <lastmod>2018-07-27T07:10:38.259Z</lastmod>
+    <lastmod>2018-08-08T06:36:58.189Z</lastmod>
     <data>
         <display>
         <title>《Hadoop权威指南》书摘-MapReduce概述</title>
         <pubTime>2018-07-23T06:38:03.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="BigData" url="http://wangnan.tech/categories/BigData/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/hadoop-definitive-guide05/</loc>
+    <lastmod>2018-08-08T06:36:50.926Z</lastmod>
+    <data>
+        <display>
+        <title>《Hadoop权威指南》书摘-关于Hive</title>
+        <pubTime>2018-08-08T06:15:38.000Z</pubTime>
         
         <tag>Hadoop</tag>
          
@@ -419,7 +420,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://wangnan.tech/post/rabbitMQ-exchange/</loc>
