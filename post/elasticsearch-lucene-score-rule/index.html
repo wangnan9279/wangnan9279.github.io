@@ -17,13 +17,13 @@
 <meta property="og:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-lucene-score-rule/02.png">
-<meta property="og:updated_time" content="2017-08-24T07:19:43.193Z">
+<meta property="og:updated_time" content="2018-12-17T06:23:30.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch如何评分?-Apache Lucene默认评分公式解释">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -35,8 +35,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" />
     
     
     
@@ -111,7 +111,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                        <span class="sidebar-button-desc">home</span>
+                        <span class="sidebar-button-desc">Home</span>
                     </a>
             </li>
             
@@ -123,7 +123,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                        <span class="sidebar-button-desc">categories</span>
+                        <span class="sidebar-button-desc">Categories</span>
                     </a>
             </li>
             
@@ -135,7 +135,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                        <span class="sidebar-button-desc">tags</span>
+                        <span class="sidebar-button-desc">Tags</span>
                     </a>
             </li>
             
@@ -147,7 +147,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                        <span class="sidebar-button-desc">archives</span>
+                        <span class="sidebar-button-desc">Archives</span>
                     </a>
             </li>
             
@@ -159,7 +159,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                        <span class="sidebar-button-desc">about</span>
+                        <span class="sidebar-button-desc">About</span>
                     </a>
             </li>
             
@@ -169,7 +169,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/wechat-samll.jpg" target="_blank" rel="noopener">
+                        <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
                         <span class="sidebar-button-desc">Wechat</span>
@@ -190,7 +190,7 @@
                         <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/ghoststories" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
-                        <span class="sidebar-button-desc">Zhihu</span>
+                        <span class="sidebar-button-desc">ZhiHu</span>
                     </a>
             </li>
             
@@ -246,7 +246,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><span class="toc-text">lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#何时文档被匹配上"><span class="toc-text">何时文档被匹配上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算文档得分需要考虑以下因子"><span class="toc-text">计算文档得分需要考虑以下因子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TF-IDF评分公式"><span class="toc-text">TF/IDF评分公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lucene理论评分公式"><span class="toc-text">Lucene理论评分公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lucene实际评分公式"><span class="toc-text">Lucene实际评分公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticsearch如何看评分"><span class="toc-text">elasticsearch如何看评分</span></a></li></ol></li></ol>
 <a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" alt=""></p>
 <h1 id="lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释"><a href="#lucene默认评分机制：TF-IDF-词频-逆文档频率-算法默认评分公式解释" class="headerlink" title="lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释"></a>lucene默认评分机制：TF/IDF(词频/逆文档频率)算法默认评分公式解释</h1><h2 id="何时文档被匹配上"><a href="#何时文档被匹配上" class="headerlink" title="何时文档被匹配上"></a>何时文档被匹配上</h2><p>当一个文档经过lucene返回，则意味着该文档与用户提交的查询时匹配的，在这种情况下，每个返回的文档都会有一个得分，得分越高，文档相关度更高，但是，<strong>同一个文档针对不同查询的得分是不同的，比较某个文档在不同查询中的分数是没有意义的</strong>，这是因为文档得分依赖多个因子，除了权重和查询本身的结构，还包括匹配的词项的数目，词项所在字段，以及用于查询规范化的匹配类型等。</p>
 <h3 id="计算文档得分需要考虑以下因子"><a href="#计算文档得分需要考虑以下因子" class="headerlink" title="计算文档得分需要考虑以下因子"></a>计算文档得分需要考虑以下因子</h3><ul>
 <li><p>文档权重（document boost）：<strong>索引期</strong>赋予某个文档的权重值</p>
@@ -546,7 +546,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -571,7 +571,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -596,7 +596,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-1eeb83c0143434ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -621,7 +621,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-e6a274bd932cc627.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -646,7 +646,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -671,7 +671,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-62f90e62a67ab070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/244/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -696,7 +696,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -721,7 +721,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -746,7 +746,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -771,7 +771,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-04062861cf5e850f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     

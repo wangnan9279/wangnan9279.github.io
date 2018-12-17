@@ -17,13 +17,13 @@
 <meta property="og:title" content="Java8-流-使用流">
 <meta property="og:url" content="http://wangnan.tech/post/java8-stream-use/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-stream-use/02.png">
-<meta property="og:updated_time" content="2017-07-14T03:39:12.826Z">
+<meta property="og:updated_time" content="2018-12-17T05:51:39.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-流-使用流">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -35,8 +35,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/java8.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/java8.png" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp" />
     
     
     
@@ -111,7 +111,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                        <span class="sidebar-button-desc">home</span>
+                        <span class="sidebar-button-desc">Home</span>
                     </a>
             </li>
             
@@ -123,7 +123,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                        <span class="sidebar-button-desc">categories</span>
+                        <span class="sidebar-button-desc">Categories</span>
                     </a>
             </li>
             
@@ -135,7 +135,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                        <span class="sidebar-button-desc">tags</span>
+                        <span class="sidebar-button-desc">Tags</span>
                     </a>
             </li>
             
@@ -147,7 +147,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                        <span class="sidebar-button-desc">archives</span>
+                        <span class="sidebar-button-desc">Archives</span>
                     </a>
             </li>
             
@@ -159,7 +159,7 @@
                         >
                     
                         <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                        <span class="sidebar-button-desc">about</span>
+                        <span class="sidebar-button-desc">About</span>
                     </a>
             </li>
             
@@ -169,7 +169,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="http://onxkn9cbz.bkt.clouddn.com/wechat-samll.jpg" target="_blank" rel="noopener">
+                        <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
                         <span class="sidebar-button-desc">Wechat</span>
@@ -190,7 +190,7 @@
                         <a  class="sidebar-button-link " href="https://zhuanlan.zhihu.com/ghoststories" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
-                        <span class="sidebar-button-desc">Zhihu</span>
+                        <span class="sidebar-button-desc">ZhiHu</span>
                     </a>
             </li>
             
@@ -246,7 +246,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#筛选和切片"><span class="toc-text">筛选和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用谓词筛选"><span class="toc-text">用谓词筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#筛选各异的元素"><span class="toc-text">筛选各异的元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#截断流"><span class="toc-text">截断流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跳过元素"><span class="toc-text">跳过元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#映射"><span class="toc-text">映射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对流中每个元素应用函数"><span class="toc-text">对流中每个元素应用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流的扁平化"><span class="toc-text">流的扁平化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找和匹配"><span class="toc-text">查找和匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检查谓词是否至少匹配一个元素"><span class="toc-text">检查谓词是否至少匹配一个元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查谓词是否匹配所有元素"><span class="toc-text">检查谓词是否匹配所有元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找元素"><span class="toc-text">查找元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#规约"><span class="toc-text">规约</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#求和"><span class="toc-text">求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最大值和最小值"><span class="toc-text">最大值和最小值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结下目前说到的操作"><span class="toc-text">总结下目前说到的操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数值流"><span class="toc-text">数值流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始类型流特化"><span class="toc-text">原始类型流特化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数值范围"><span class="toc-text">数值范围</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建流"><span class="toc-text">构建流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#由值创建流"><span class="toc-text">由值创建流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#由数组创建流"><span class="toc-text">由数组创建流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#由文件生成流"><span class="toc-text">由文件生成流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建无限流"><span class="toc-text">创建无限流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
 <a id="more"></a>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/java8.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp" alt=""></p>
 <h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><h2 id="用谓词筛选"><a href="#用谓词筛选" class="headerlink" title="用谓词筛选"></a>用谓词筛选</h2><p><strong>filter方法</strong><br>会接收一个谓词（一个返回Boolean）作为参数，并返回一个包括所有符号谓词的元素的流</p>
 <!--more-->
 <p>例子:筛选所有的素菜<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; vegetarianMenu = menu.stream().filter(Dish::isVegetarian).collect(toList());</div></pre></td></tr></table></figure></p>
@@ -578,7 +578,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -603,7 +603,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/mybatis.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -628,7 +628,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/03.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-1eeb83c0143434ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -653,7 +653,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-e6a274bd932cc627.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -678,7 +678,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -703,7 +703,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/redis.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-62f90e62a67ab070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/244/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -728,7 +728,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -753,7 +753,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -778,7 +778,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/java.png" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -803,7 +803,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
-                            <img class="media-image" src="http://onxkn9cbz.bkt.clouddn.com/photo08.jpg" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-04062861cf5e850f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
