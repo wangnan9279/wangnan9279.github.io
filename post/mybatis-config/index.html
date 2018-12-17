@@ -17,7 +17,6 @@
 <meta property="og:title" content="Mybaits-配置">
 <meta property="og:url" content="http://wangnan.tech/post/mybatis-config/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/03.png">
@@ -33,10 +32,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/13.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/14.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-config/15.png">
-<meta property="og:updated_time" content="2018-12-17T06:47:46.730Z">
+<meta property="og:updated_time" content="2018-12-17T07:05:28.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybaits-配置">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
+<meta name="twitter:image" content="http://wangnan.tech/post/mybatis-config/01.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -75,7 +74,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="5">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -99,7 +98,7 @@
         
     
 
-<nav id="sidebar" data-behavior="5">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -182,6 +181,15 @@
             
                 <li class="sidebar-button">
                     
+                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
                         <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
@@ -222,7 +230,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="5"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
@@ -257,7 +265,9 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><img src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#properties元素"><span class="toc-text">properties元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#property子元素"><span class="toc-text">property子元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#properties"><span class="toc-text">properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序参数传递"><span class="toc-text">程序参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优先级"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setting"><span class="toc-text">setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeAliases"><span class="toc-text">typeAliases</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统定义的别名"><span class="toc-text">系统定义的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义别名"><span class="toc-text">自定义别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件："><span class="toc-text">配置文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解-自动扫描"><span class="toc-text">注解+自动扫描</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeHandler"><span class="toc-text">typeHandler</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ObjectFactory"><span class="toc-text">ObjectFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#environment"><span class="toc-text">environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引入映射器方法"><span class="toc-text">引入映射器方法</span></a></li></ol><br><a id="more"></a><br>Mybatis配置XML文件的层次结构</p>
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#properties元素"><span class="toc-text">properties元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#property子元素"><span class="toc-text">property子元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#properties"><span class="toc-text">properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序参数传递"><span class="toc-text">程序参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优先级"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setting"><span class="toc-text">setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeAliases"><span class="toc-text">typeAliases</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统定义的别名"><span class="toc-text">系统定义的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义别名"><span class="toc-text">自定义别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件："><span class="toc-text">配置文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解-自动扫描"><span class="toc-text">注解+自动扫描</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typeHandler"><span class="toc-text">typeHandler</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ObjectFactory"><span class="toc-text">ObjectFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#environment"><span class="toc-text">environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引入映射器方法"><span class="toc-text">引入映射器方法</span></a></li></ol>
+<a id="more"></a>
+<p>Mybatis配置XML文件的层次结构</p>
 <p><img src="/post/mybatis-config/01.png" alt=""></p>
 <p>这些层次是不能够颠倒顺序的，如果颠倒顺序，mybatis解析xml文件时会出现异常</p>
 <h1 id="properties元素"><a href="#properties元素" class="headerlink" title="properties元素"></a>properties元素</h1><p>properties元素提供三种配置方式</p>
@@ -469,7 +479,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -541,7 +551,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <i id="btn-close-shareoptions" class="fa fa-close"></i>
     <ul class="share-options">
         
@@ -785,7 +795,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     

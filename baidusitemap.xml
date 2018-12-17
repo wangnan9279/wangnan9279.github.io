@@ -4,6 +4,226 @@
 
     
   <url>
+    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
+    <lastmod>2018-12-17T07:09:24.475Z</lastmod>
+    <data>
+        <display>
+        <title>Java代理简介</title>
+        <pubTime>2016-06-13T09:58:52.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-bulk/</loc>
+    <lastmod>2018-12-17T07:07:40.533Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch批量操作</title>
+        <pubTime>2016-09-13T02:10:02.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
+    <lastmod>2018-12-17T07:07:13.196Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch排序</title>
+        <pubTime>2016-09-18T03:02:09.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-update/</loc>
+    <lastmod>2018-12-17T07:06:59.589Z</lastmod>
+    <data>
+        <display>
+        <title>Elasticsearch数据更新API</title>
+        <pubTime>2016-09-23T08:26:59.000Z</pubTime>
+        
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybtis-introduction/</loc>
+    <lastmod>2018-12-17T07:06:00.318Z</lastmod>
+    <data>
+        <display>
+        <title>Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较</title>
+        <pubTime>2016-12-11T08:17:20.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
+    <lastmod>2018-12-17T07:05:54.279Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis-trim标签</title>
+        <pubTime>2016-07-18T08:11:20.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
+    <lastmod>2018-12-17T07:05:48.910Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis映射器</title>
+        <pubTime>2017-01-08T05:40:42.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
+    <lastmod>2018-12-17T07:05:42.818Z</lastmod>
+    <data>
+        <display>
+        <title>Mybaits-基本构成和生命周期</title>
+        <pubTime>2016-12-28T06:58:53.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-config/</loc>
+    <lastmod>2018-12-17T07:05:28.627Z</lastmod>
+    <data>
+        <display>
+        <title>Mybaits-配置</title>
+        <pubTime>2017-01-03T06:26:18.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
+    <lastmod>2018-12-17T07:05:19.584Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis二级缓存</title>
+        <pubTime>2016-09-03T07:19:03.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
+    <lastmod>2018-12-17T07:05:14.192Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis-动态SQL</title>
+        <pubTime>2017-01-13T07:44:39.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-introduction/</loc>
     <lastmod>2018-12-17T06:54:28.164Z</lastmod>
     <data>
@@ -33,146 +253,6 @@
         
         <tag>Java</tag>
          
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybtis-introduction/</loc>
-    <lastmod>2018-12-17T06:48:17.333Z</lastmod>
-    <data>
-        <display>
-        <title>Mybaits-Java ORM来源于历史、Hibernate和MyBatis比较</title>
-        <pubTime>2016-12-11T08:17:20.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
-    <lastmod>2018-12-17T06:48:11.306Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis-trim标签</title>
-        <pubTime>2016-07-18T08:11:20.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
-    <lastmod>2018-12-17T06:48:05.809Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis映射器</title>
-        <pubTime>2017-01-08T05:40:42.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
-    <lastmod>2018-12-17T06:48:00.204Z</lastmod>
-    <data>
-        <display>
-        <title>Mybaits-基本构成和生命周期</title>
-        <pubTime>2016-12-28T06:58:53.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-config/</loc>
-    <lastmod>2018-12-17T06:47:46.730Z</lastmod>
-    <data>
-        <display>
-        <title>Mybaits-配置</title>
-        <pubTime>2017-01-03T06:26:18.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
-    <lastmod>2018-12-17T06:47:37.884Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis-动态SQL</title>
-        <pubTime>2017-01-13T07:44:39.000Z</pubTime>
-        
-        <tag>Mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mybatis" url="http://wangnan.tech/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
-    <lastmod>2018-12-17T06:47:30.471Z</lastmod>
-    <data>
-        <display>
-        <title>MyBatis二级缓存</title>
-        <pubTime>2016-09-03T07:19:03.000Z</pubTime>
-        
         <tag>Mybatis</tag>
          
          
@@ -216,26 +296,6 @@
            
              
               <breadCrumb title="工具" url="http://wangnan.tech/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
-    <lastmod>2018-12-17T06:24:39.104Z</lastmod>
-    <data>
-        <display>
-        <title>Java代理简介</title>
-        <pubTime>2016-06-13T09:58:52.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
           
         </display>
     </data>
@@ -748,66 +808,6 @@
            
              
               <breadCrumb title="Java" url="http://wangnan.tech/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-update/</loc>
-    <lastmod>2018-12-17T06:06:05.735Z</lastmod>
-    <data>
-        <display>
-        <title>Elasticsearch数据更新API</title>
-        <pubTime>2016-09-23T08:26:59.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
-    <lastmod>2018-12-17T06:05:51.234Z</lastmod>
-    <data>
-        <display>
-        <title>Elasticsearch排序</title>
-        <pubTime>2016-09-18T03:02:09.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-bulk/</loc>
-    <lastmod>2018-12-17T06:04:25.439Z</lastmod>
-    <data>
-        <display>
-        <title>Elasticsearch批量操作</title>
-        <pubTime>2016-09-13T02:10:02.000Z</pubTime>
-        
-        <tag>ElasticSearch</tag>
-         
-         
-           
-             
-              <breadCrumb title="ElasticSearch" url="http://wangnan.tech/categories/ElasticSearch/"/>
           
         </display>
     </data>

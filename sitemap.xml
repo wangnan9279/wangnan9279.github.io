@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
+    
+    <lastmod>2018-12-17T07:09:24.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-bulk/</loc>
+    
+    <lastmod>2018-12-17T07:07:40.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
+    
+    <lastmod>2018-12-17T07:07:13.196Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/elasticsearch-update/</loc>
+    
+    <lastmod>2018-12-17T07:06:59.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybtis-introduction/</loc>
+    
+    <lastmod>2018-12-17T07:06:00.318Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
+    
+    <lastmod>2018-12-17T07:05:54.279Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
+    
+    <lastmod>2018-12-17T07:05:48.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
+    
+    <lastmod>2018-12-17T07:05:42.818Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-config/</loc>
+    
+    <lastmod>2018-12-17T07:05:28.627Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
+    
+    <lastmod>2018-12-17T07:05:19.584Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
+    
+    <lastmod>2018-12-17T07:05:14.192Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangnan.tech/post/elasticsearch-introduction/</loc>
     
     <lastmod>2018-12-17T06:54:28.164Z</lastmod>
@@ -12,55 +89,6 @@
     <loc>http://wangnan.tech/post/mybatis-getting-started/</loc>
     
     <lastmod>2018-12-17T06:53:13.577Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybtis-introduction/</loc>
-    
-    <lastmod>2018-12-17T06:48:17.333Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-where-trim/</loc>
-    
-    <lastmod>2018-12-17T06:48:11.306Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-mapper/</loc>
-    
-    <lastmod>2018-12-17T06:48:05.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-lifecycle/</loc>
-    
-    <lastmod>2018-12-17T06:48:00.204Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-config/</loc>
-    
-    <lastmod>2018-12-17T06:47:46.730Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybaits-sql/</loc>
-    
-    <lastmod>2018-12-17T06:47:37.884Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/mybatis-cache/</loc>
-    
-    <lastmod>2018-12-17T06:47:30.471Z</lastmod>
     
   </url>
   
@@ -82,13 +110,6 @@
     <loc>http://wangnan.tech/post/tool-Sublime-introduction/</loc>
     
     <lastmod>2018-12-17T06:25:03.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/java-proxy-introduction/</loc>
-    
-    <lastmod>2018-12-17T06:24:39.104Z</lastmod>
     
   </url>
   
@@ -264,27 +285,6 @@
     <loc>http://wangnan.tech/post/java-annotation-introduction/</loc>
     
     <lastmod>2018-12-17T06:07:34.547Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-update/</loc>
-    
-    <lastmod>2018-12-17T06:06:05.735Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-sort/</loc>
-    
-    <lastmod>2018-12-17T06:05:51.234Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangnan.tech/post/elasticsearch-bulk/</loc>
-    
-    <lastmod>2018-12-17T06:04:25.439Z</lastmod>
     
   </url>
   

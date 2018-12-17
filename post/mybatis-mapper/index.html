@@ -17,7 +17,6 @@
 <meta property="og:title" content="Mybatis映射器">
 <meta property="og:url" content="http://wangnan.tech/post/mybatis-mapper/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/03.png">
@@ -32,10 +31,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/12.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/13.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-mapper/14.png">
-<meta property="og:updated_time" content="2018-12-17T06:48:05.809Z">
+<meta property="og:updated_time" content="2018-12-17T07:05:48.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis映射器">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
+<meta name="twitter:image" content="http://wangnan.tech/post/mybatis-mapper/01.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -74,7 +73,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="5">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -98,7 +97,7 @@
         
     
 
-<nav id="sidebar" data-behavior="5">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -181,6 +180,15 @@
             
                 <li class="sidebar-button">
                     
+                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
                         <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
@@ -221,7 +229,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="5"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
@@ -256,7 +264,8 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><img src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#映射器主要元素"><span class="toc-text">映射器主要元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#select"><span class="toc-text">select</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单例子"><span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动映射"><span class="toc-text">自动映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递多个参数"><span class="toc-text">传递多个参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Map传递"><span class="toc-text">使用Map传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用注解传递"><span class="toc-text">使用注解传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JavaBean传递"><span class="toc-text">使用JavaBean传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap"><span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#insert"><span class="toc-text">insert</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主键回填和自定义"><span class="toc-text">主键回填和自定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update与delete"><span class="toc-text">update与delete</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数"><span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参数配置"><span class="toc-text">参数配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程支持"><span class="toc-text">存储过程支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符串替换和处理（-和-）"><span class="toc-text">特殊字符串替换和处理（#和$）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sql元素"><span class="toc-text">sql元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#resultMap-1"><span class="toc-text">resultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#元素构成"><span class="toc-text">元素构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor元素"><span class="toc-text">constructor元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用map存储结果集"><span class="toc-text">使用map存储结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用POJO储存结果集"><span class="toc-text">使用POJO储存结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#级联"><span class="toc-text">级联</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存"><span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统缓存"><span class="toc-text">系统缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义缓存"><span class="toc-text">自定义缓存</span></a></li></ol></li></ol><br><a id="more"></a></p>
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#映射器主要元素"><span class="toc-text">映射器主要元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#select"><span class="toc-text">select</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单例子"><span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动映射"><span class="toc-text">自动映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递多个参数"><span class="toc-text">传递多个参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Map传递"><span class="toc-text">使用Map传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用注解传递"><span class="toc-text">使用注解传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JavaBean传递"><span class="toc-text">使用JavaBean传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap"><span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#insert"><span class="toc-text">insert</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主键回填和自定义"><span class="toc-text">主键回填和自定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update与delete"><span class="toc-text">update与delete</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数"><span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参数配置"><span class="toc-text">参数配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程支持"><span class="toc-text">存储过程支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符串替换和处理（-和-）"><span class="toc-text">特殊字符串替换和处理（#和$）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sql元素"><span class="toc-text">sql元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#resultMap-1"><span class="toc-text">resultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#元素构成"><span class="toc-text">元素构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor元素"><span class="toc-text">constructor元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用map存储结果集"><span class="toc-text">使用map存储结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用POJO储存结果集"><span class="toc-text">使用POJO储存结果集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#级联"><span class="toc-text">级联</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存"><span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统缓存"><span class="toc-text">系统缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义缓存"><span class="toc-text">自定义缓存</span></a></li></ol></li></ol>
+<a id="more"></a>
 <h1 id="映射器主要元素"><a href="#映射器主要元素" class="headerlink" title="映射器主要元素"></a>映射器主要元素</h1><ul>
 <li>select  查询（可以自定义参数,返回结果集）</li>
 <li>insert 插入（执行后返回一个整数，代表插入的条数）</li>
@@ -466,7 +475,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -538,7 +547,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <i id="btn-close-shareoptions" class="fa fa-close"></i>
     <ul class="share-options">
         
@@ -782,7 +791,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     

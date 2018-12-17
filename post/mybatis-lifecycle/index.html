@@ -17,7 +17,6 @@
 <meta property="og:title" content="Mybaits-基本构成和生命周期">
 <meta property="og:url" content="http://wangnan.tech/post/mybatis-lifecycle/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/03.png">
@@ -28,10 +27,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/08.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/09.png">
 <meta property="og:image" content="http://wangnan.tech/post/mybatis-lifecycle/10.png">
-<meta property="og:updated_time" content="2018-12-17T06:48:00.204Z">
+<meta property="og:updated_time" content="2018-12-17T07:05:42.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybaits-基本构成和生命周期">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp">
+<meta name="twitter:image" content="http://wangnan.tech/post/mybatis-lifecycle/01.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -70,7 +69,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="5">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -94,7 +93,7 @@
         
     
 
-<nav id="sidebar" data-behavior="5">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -177,6 +176,15 @@
             
                 <li class="sidebar-button">
                     
+                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
                         <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
@@ -217,7 +225,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="5"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
@@ -252,7 +260,8 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><img src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本构成"><span class="toc-text">基本构成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactory"><span class="toc-text">SqlSessionFactory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis提供两种模式去创建SqlSessionFactory"><span class="toc-text">Mybatis提供两种模式去创建SqlSessionFactory**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuration类"><span class="toc-text">Configuration类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用XML方式构建"><span class="toc-text">使用XML方式构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用代码方式构建"><span class="toc-text">使用代码方式构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSession"><span class="toc-text">SqlSession</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SqlSession使用方法"><span class="toc-text">SqlSession使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SqlSession用途"><span class="toc-text">SqlSession用途</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射器"><span class="toc-text">映射器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#推荐XML文件配置方式的原因"><span class="toc-text">推荐XML文件配置方式的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XML实现"><span class="toc-text">XML实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解方式实现"><span class="toc-text">注解方式实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑问"><span class="toc-text">疑问</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactoryBuilder"><span class="toc-text">SqlSessionFactoryBuilder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactory-1"><span class="toc-text">SqlSessionFactory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSession-1"><span class="toc-text">SqlSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapper"><span class="toc-text">Mapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol><br><a id="more"></a></p>
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本构成"><span class="toc-text">基本构成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactory"><span class="toc-text">SqlSessionFactory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis提供两种模式去创建SqlSessionFactory"><span class="toc-text">Mybatis提供两种模式去创建SqlSessionFactory**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuration类"><span class="toc-text">Configuration类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用XML方式构建"><span class="toc-text">使用XML方式构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用代码方式构建"><span class="toc-text">使用代码方式构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSession"><span class="toc-text">SqlSession</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SqlSession使用方法"><span class="toc-text">SqlSession使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SqlSession用途"><span class="toc-text">SqlSession用途</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射器"><span class="toc-text">映射器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#推荐XML文件配置方式的原因"><span class="toc-text">推荐XML文件配置方式的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XML实现"><span class="toc-text">XML实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解方式实现"><span class="toc-text">注解方式实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑问"><span class="toc-text">疑问</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactoryBuilder"><span class="toc-text">SqlSessionFactoryBuilder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSessionFactory-1"><span class="toc-text">SqlSessionFactory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlSession-1"><span class="toc-text">SqlSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapper"><span class="toc-text">Mapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
+<a id="more"></a>
 <blockquote>
 <h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><ul>
 <li>SqlSessionFactoryBuilder(构造器):它会根据配置信息或者代码来生成SqlSessionFactory(工厂接口)</li>
@@ -420,7 +429,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -492,7 +501,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <i id="btn-close-shareoptions" class="fa fa-close"></i>
     <ul class="share-options">
         
@@ -736,7 +745,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     

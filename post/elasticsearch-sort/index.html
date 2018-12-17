@@ -17,7 +17,7 @@
 <meta property="og:title" content="Elasticsearch排序">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-sort/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-005026a4dc0b7f27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/460/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/03.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/08.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/09.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-sort/10.png">
-<meta property="og:updated_time" content="2018-12-17T06:05:51.234Z">
+<meta property="og:updated_time" content="2018-12-17T07:07:13.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch排序">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-005026a4dc0b7f27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/460/format/webp">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -43,8 +43,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-005026a4dc0b7f27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/460/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-005026a4dc0b7f27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/460/format/webp" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" />
     
     
     
@@ -70,7 +70,7 @@
             <!-- Define author's picture -->
 
 
-<header id="header" data-behavior="5">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Ghost Stories</a>
@@ -94,7 +94,7 @@
         
     
 
-<nav id="sidebar" data-behavior="5">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -177,6 +177,15 @@
             
                 <li class="sidebar-button">
                     
+                        <a  class="sidebar-button-link " href="https://github.com/wangnan9279" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
                         <a  class="sidebar-button-link " href="https://upload-images.jianshu.io/upload_images/79431-35dc28cc6de6e839.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" target="_blank" rel="noopener">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-external-link"></i>
@@ -217,7 +226,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="5"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
@@ -254,7 +263,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基于多值字段的排序"><span class="toc-text">基于多值字段的排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于多值geo字段的排序"><span class="toc-text">基于多值geo字段的排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于嵌套对象的排序"><span class="toc-text">基于嵌套对象的排序</span></a></li></ol>
 <a id="more"></a>
-<p><img src="https://upload-images.jianshu.io/upload_images/79431-005026a4dc0b7f27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/460/format/webp" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" alt=""></p>
 <blockquote>
 <p>当你发送请求至elasticsearch,返回文档默认按文档得分降序排序，这是通常我们想要了，然而，有时候我们希望能改变这种排序方式</p>
 </blockquote>
@@ -379,7 +388,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -451,7 +460,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <i id="btn-close-shareoptions" class="fa fa-close"></i>
     <ul class="share-options">
         
@@ -695,7 +704,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
                         </a>
                     </div>
                     
