@@ -17,12 +17,12 @@
 <meta property="og:title" content="ES中的分析器和IK分词器插件">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-analyzer/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/analyer.png">
-<meta property="og:updated_time" content="2017-09-18T07:52:06.361Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-27660e8a42b51714.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/513/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-d65616497a39d77b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/530/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:11:13.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES中的分析器和IK分词器插件">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-27660e8a42b51714.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/513/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/43.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-27660e8a42b51714.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/513/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-27660e8a42b51714.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/513/format/webp" />
     
     
     
@@ -243,7 +243,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/43.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token（词元）"><span class="toc-text">Token（词元）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokenizer-分词器"><span class="toc-text">Tokenizer(分词器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token-Filter-词元处理器"><span class="toc-text">Token Filter(词元处理器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Term-词"><span class="toc-text">Term(词)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Character-Filter-字符过滤器"><span class="toc-text">Character Filter(字符过滤器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analyzer-分析器"><span class="toc-text">Analyzer(分析器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片"><span class="toc-text">图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES中的分词器"><span class="toc-text">ES中的分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器-1"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置过滤器"><span class="toc-text">ES内置过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置的character-filter"><span class="toc-text">ES内置的character filter</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义分析器"><span class="toc-text">自定义分析器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IKAnalyzer"><span class="toc-text">IKAnalyzer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IK简介"><span class="toc-text">IK简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IK-Analyzer-2012特性"><span class="toc-text">IK Analyzer 2012特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li></ol></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-27660e8a42b51714.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/513/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token（词元）"><span class="toc-text">Token（词元）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokenizer-分词器"><span class="toc-text">Tokenizer(分词器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token-Filter-词元处理器"><span class="toc-text">Token Filter(词元处理器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Term-词"><span class="toc-text">Term(词)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Character-Filter-字符过滤器"><span class="toc-text">Character Filter(字符过滤器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analyzer-分析器"><span class="toc-text">Analyzer(分析器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片"><span class="toc-text">图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES中的分词器"><span class="toc-text">ES中的分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置分析器-1"><span class="toc-text">ES内置分析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置过滤器"><span class="toc-text">ES内置过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES内置的character-filter"><span class="toc-text">ES内置的character filter</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义分析器"><span class="toc-text">自定义分析器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IKAnalyzer"><span class="toc-text">IKAnalyzer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IK简介"><span class="toc-text">IK简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IK-Analyzer-2012特性"><span class="toc-text">IK Analyzer 2012特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li></ol></li></ol></span></p>
 <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="Token（词元）"><a href="#Token（词元）" class="headerlink" title="Token（词元）"></a>Token（词元）</h2><p>全文搜索引擎会用某种算法对要建索引的文档进行分析， 从文档中提取出若干Tokenizer(分词器)</p>
 <h2 id="Tokenizer-分词器"><a href="#Tokenizer-分词器" class="headerlink" title="Tokenizer(分词器)"></a>Tokenizer(分词器)</h2><p>这些算法叫做Tokenizer(分词器)</p>
 <h2 id="Token-Filter-词元处理器"><a href="#Token-Filter-词元处理器" class="headerlink" title="Token Filter(词元处理器)"></a>Token Filter(词元处理器)</h2><p>这些Token会被进一步处理， 比如转成小写等， 这些处理算法被称为TokenFilter(词元处理器)</p>
@@ -251,7 +251,7 @@
 <h2 id="Character-Filter-字符过滤器"><a href="#Character-Filter-字符过滤器" class="headerlink" title="Character Filter(字符过滤器)"></a>Character Filter(字符过滤器)</h2><p>文本被Tokenizer处理前可能要做一些预处理， 比如去掉里面的HTML标记， 这些处理的算法被称为Character Filter(字符过滤器)</p>
 <h2 id="Analyzer-分析器"><a href="#Analyzer-分析器" class="headerlink" title="Analyzer(分析器)"></a>Analyzer(分析器)</h2><p>这整个的分析算法被称为Analyzer(分析器)</p>
 <p>Analyzer（分析器）由Tokenizer（分词器）和Filter（过滤器）组成</p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><img src="http://onxkn9cbz.bkt.clouddn.com/analyer.png" alt="image"></p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><img src="https://upload-images.jianshu.io/upload_images/79431-d65616497a39d77b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/530/format/webp" alt="image"></p>
 <h1 id="ES中的分词器"><a href="#ES中的分词器" class="headerlink" title="ES中的分词器"></a>ES中的分词器</h1><h2 id="ES内置分析器"><a href="#ES内置分析器" class="headerlink" title="ES内置分析器"></a>ES内置分析器</h2><ul>
 <li>standard analyzer</li>
 <li>simple analyzer</li>

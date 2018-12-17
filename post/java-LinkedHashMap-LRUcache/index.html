@@ -17,11 +17,11 @@
 <meta property="og:title" content="Java-LinkedHashMap与LRUcache整理">
 <meta property="og:url" content="http://wangnan.tech/post/java-LinkedHashMap-LRUcache/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/28.jpg">
-<meta property="og:updated_time" content="2017-07-19T07:59:30.895Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-24ae55ead8346990.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:27:55.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-LinkedHashMap与LRUcache整理">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/28.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-24ae55ead8346990.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -33,8 +33,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/28.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/28.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-24ae55ead8346990.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-24ae55ead8346990.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
     
     
     
@@ -242,7 +242,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/28.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-缓存介绍"><span class="toc-text">LRU 缓存介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-24ae55ead8346990.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LRU-缓存介绍"><span class="toc-text">LRU 缓存介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></span></p>
 <h1 id="LRU-缓存介绍"><a href="#LRU-缓存介绍" class="headerlink" title="LRU 缓存介绍"></a>LRU 缓存介绍</h1><p>我们平时总会有一个电话本记录所有朋友的电话，但是，如果有朋友经常联系，那些朋友的电话号码不用翻电话本我们也能记住，但是，如果长时间没有联系了，要再次联系那位朋友的时候，我们又不得不求助电话本，但是，通过电话本查找还是很费时间的。但是，我们大脑能够记住的东西是一定的，<strong>我们只能记住自己最熟悉的，而长时间不熟悉的自然就忘记了</strong>。</p>
 <p>其实，计算机也用到了同样的一个概念，我们用缓存来存放以前读取的数据，而不是直接丢掉，这样，再次读取的时候，可以直接在缓存里面取，而不用再重新查找一遍，这样系统的反应能力会有很大提高。但是，<strong>当我们读取的个数特别大的时候，我们不可能把所有已经读取的数据都放在缓存里，毕竟内存大小是一定的，我们一般把最近常读取的放在缓存里（相当于我们把最近联系的朋友的姓名和电话放在大脑里一样）</strong>。</p>
 <p>LRU 缓存利用了这样的一种思想。<strong>LRU 是 Least Recently Used 的缩写</strong>，翻译过来就是“最近最少使用”，也就是说，<strong>LRU 缓存把最近最少使用的数据移除，让给最新读取的数据。而往往最常读取的，也是读取次数最多的，所以，利用 LRU 缓存，我们能够提高系统的 performance。</strong></p>

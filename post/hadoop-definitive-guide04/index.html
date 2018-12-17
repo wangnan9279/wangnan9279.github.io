@@ -17,14 +17,14 @@
 <meta property="og:title" content="《Hadoop权威指南》书摘-关于YARN">
 <meta property="og:url" content="http://wangnan.tech/post/hadoop-definitive-guide04/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/01.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/02.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop04/03.png">
-<meta property="og:updated_time" content="2018-07-27T07:10:32.725Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-7a260170b3afe591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/666/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-95558482420867c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/683/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-58255ed56bfb1ba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/483/format/webp">
+<meta property="og:updated_time" content="2018-12-17T02:57:04.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Hadoop权威指南》书摘-关于YARN">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -36,8 +36,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp" />
     
     
     
@@ -245,18 +245,18 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop/hadoop.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行机制"><span class="toc-text">运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源请求"><span class="toc-text">资源请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用生命期"><span class="toc-text">应用生命期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建YARN应用"><span class="toc-text">构建YARN应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN和MapReduce对比"><span class="toc-text">YARN和MapReduce对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN中的调度"><span class="toc-text">YARN中的调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#调度选项"><span class="toc-text">调度选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度器配置"><span class="toc-text">调度器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容量调度器配置"><span class="toc-text">容量调度器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公平调度器配置"><span class="toc-text">公平调度器配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟调度"><span class="toc-text">延迟调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要资源公平性"><span class="toc-text">主要资源公平性</span></a></li></ol></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行机制"><span class="toc-text">运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源请求"><span class="toc-text">资源请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用生命期"><span class="toc-text">应用生命期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建YARN应用"><span class="toc-text">构建YARN应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN和MapReduce对比"><span class="toc-text">YARN和MapReduce对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN中的调度"><span class="toc-text">YARN中的调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#调度选项"><span class="toc-text">调度选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度器配置"><span class="toc-text">调度器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容量调度器配置"><span class="toc-text">容量调度器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公平调度器配置"><span class="toc-text">公平调度器配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟调度"><span class="toc-text">延迟调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要资源公平性"><span class="toc-text">主要资源公平性</span></a></li></ol></li></ol></span></p>
 <p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/c_121958856" target="_blank" rel="external">https://zhuanlan.zhihu.com/c_121958856</a></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Apache YARN (Yet Another Resource Negotiaor的缩写)是Hadoop的集群资源管理系统，YARN被引入Hadoop2，最初是为了改善MapReduce的实现，但他具有足够的通用性，同样可以支持其他分布式计算模型</p>
 <p>YARN提供请求和使用集群资源的API，但这些API很少直接用于用户代码，用户代码用的是分布式计算框架提供的更高层API,如图，一些分布式计算框架（MapReduce Spark）作为YARN应用运行在集群计算层（YARN）和集群储存层（HDFS和Hbase）上</p>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop04/01.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-7a260170b3afe591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/666/format/webp" alt=""></p>
 <h1 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h1><p>YARN通过两类长期运行的守护进程提供自己的核心服务：</p>
 <ul>
 <li>资源管理器（resource manager） 管理集群上资源使用</li>
 <li>节点管理器（noede manager）运行在集群中所以节点上且能够启动和监控容器</li>
 </ul>
 <p><strong>容器</strong><br>容器用于执行特定应用程序的进程，每个容器都有资源限制（内存，cpu等）一个容器可以是一个unix进程，也可以是一个linux cgroup 取决于yarn的配置</p>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop04/02.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-95558482420867c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/683/format/webp" alt=""></p>
 <p>为了在yarn上运行一个应用，首先，客户端联系资源管理器，要求它运行一个application master进程，然后，资源管理器找到一个能够子啊容器中启动application master 的节点管理器</p>
 <p>application master一旦运行起来做些什么依赖于应用本身，所以可以看出，yarn本身不会为应用的各部分（client,master和进程）彼此通信提供任何手段</p>
 <h2 id="资源请求"><a href="#资源请求" class="headerlink" title="资源请求"></a>资源请求</h2><p>yarn有一个灵活的资源请求模型，当请求多个容器时，可以指定每个容器需要的计算机资源数量（内存和cpu），还可以指定对容器本地限制要求</p>
@@ -283,7 +283,7 @@
 <li>容量调度器</li>
 <li>公平调度器</li>
 </ul>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/hadoop04/03.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-58255ed56bfb1ba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/483/format/webp" alt=""></p>
 <p><strong>FIFO调度器</strong><br>将应用防止正在一个队列中，然后按照提交的顺序运行应用</p>
 <p>优点：简单易懂，不需要配置<br>缺点: 不适合共享集群，大的应用会占用集群的所有资源呢，</p>
 <p>在一个共享集群中更时候使用容量或者公平调度器，他们允许长时间允许的作业可以及时完成，同事允许正在进行的较小的临时查询的用户能够在合理的时间内得到返回结果</p>

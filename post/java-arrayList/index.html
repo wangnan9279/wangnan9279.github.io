@@ -17,11 +17,11 @@
 <meta property="og:title" content="Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容">
 <meta property="og:url" content="http://wangnan.tech/post/java-arrayList/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg">
-<meta property="og:updated_time" content="2017-08-14T06:23:37.172Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-d6973a0090c265ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:20:06.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-ArrayList快速失败机制/CopyOnWriteArrayList/扩容">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-d6973a0090c265ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -33,8 +33,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/33.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-d6973a0090c265ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-d6973a0090c265ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp" />
     
     
     
@@ -242,7 +242,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/33.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-迭代ArrayList时做add或remove操作会发生什么？"><span class="toc-text">1.迭代ArrayList时做add或remove操作会发生什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#答案"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速失败（fast-fail）机制"><span class="toc-text">快速失败（fast-fail）机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-CopyOnWriteArrayList"><span class="toc-text">2.CopyOnWriteArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是CopyOnWrite容器"><span class="toc-text">什么是CopyOnWrite容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的应用场景"><span class="toc-text">CopyOnWrite的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的缺点"><span class="toc-text">CopyOnWrite的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存占用问题"><span class="toc-text">内存占用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据一致性问题"><span class="toc-text">数据一致性问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩容"><span class="toc-text">扩容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-d6973a0090c265ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-迭代ArrayList时做add或remove操作会发生什么？"><span class="toc-text">1.迭代ArrayList时做add或remove操作会发生什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#答案"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速失败（fast-fail）机制"><span class="toc-text">快速失败（fast-fail）机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-CopyOnWriteArrayList"><span class="toc-text">2.CopyOnWriteArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是CopyOnWrite容器"><span class="toc-text">什么是CopyOnWrite容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的应用场景"><span class="toc-text">CopyOnWrite的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWrite的缺点"><span class="toc-text">CopyOnWrite的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存占用问题"><span class="toc-text">内存占用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据一致性问题"><span class="toc-text">数据一致性问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩容"><span class="toc-text">扩容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></span></p>
 <h1 id="1-迭代ArrayList时做add或remove操作会发生什么？"><a href="#1-迭代ArrayList时做add或remove操作会发生什么？" class="headerlink" title="1.迭代ArrayList时做add或remove操作会发生什么？"></a>1.迭代ArrayList时做add或remove操作会发生什么？</h1><h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><p>会抛出 java.util.ConcurrentModificationException </p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
 <li>对JAVA集合进行遍历删除时务必要用迭代器</li>

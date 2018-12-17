@@ -17,16 +17,16 @@
 <meta property="og:title" content="TCP协议三次握手四次挥手整理">
 <meta property="og:url" content="http://wangnan.tech/post/tcp-shakehands/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-6fdd85bed4ea6d46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/tcp-shakehands/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/tcp-shakehands/04.png">
 <meta property="og:image" content="http://wangnan.tech/post/tcp-shakehands/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/tcp-shakehands/05.png">
 <meta property="og:image" content="http://wangnan.tech/post/tcp-shakehands/03.png">
-<meta property="og:updated_time" content="2017-08-24T07:16:55.920Z">
+<meta property="og:updated_time" content="2018-12-17T02:54:40.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP协议三次握手四次挥手整理">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-6fdd85bed4ea6d46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/24.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-6fdd85bed4ea6d46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-6fdd85bed4ea6d46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
     
     
     
@@ -247,7 +247,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/24.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的三次握手"><span class="toc-text">TCP协议中的三次握手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要三次握手"><span class="toc-text">为什么要三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SYN攻击"><span class="toc-text">SYN攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的四次挥手"><span class="toc-text">TCP协议中的四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图-1"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释（以客户端发起断开为例子）"><span class="toc-text">解释（以客户端发起断开为例子）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图-1"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要四次分手"><span class="toc-text">为什么要四次分手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#来个完整的图"><span class="toc-text">来个完整的图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="toc-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><span class="toc-text">为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</span></a></li></ol></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-6fdd85bed4ea6d46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的三次握手"><span class="toc-text">TCP协议中的三次握手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要三次握手"><span class="toc-text">为什么要三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SYN攻击"><span class="toc-text">SYN攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议中的四次挥手"><span class="toc-text">TCP协议中的四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接上图-1"><span class="toc-text">直接上图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释（以客户端发起断开为例子）"><span class="toc-text">解释（以客户端发起断开为例子）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来个更清晰的图-1"><span class="toc-text">来个更清晰的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要四次挥手"><span class="toc-text">为什么要四次挥手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#来个完整的图"><span class="toc-text">来个完整的图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="toc-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><span class="toc-text">为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</span></a></li></ol></li></ol></span></p>
 <h1 id="TCP协议中的三次握手"><a href="#TCP协议中的三次握手" class="headerlink" title="TCP协议中的三次握手"></a>TCP协议中的三次握手</h1><h2 id="直接上图"><a href="#直接上图" class="headerlink" title="直接上图"></a>直接上图</h2><p><img src="/post/tcp-shakehands/01.png" alt=""></p>
 <h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><ol>
 <li>第一次握手：客户端发送<strong>syn包</strong>(syn=j)到服务器，并进入<strong>SYN_SEND</strong>状态，等待服务器确认;</li>
@@ -268,7 +268,7 @@
 <li>Server端收到ACK后，”<strong>就知道可以断开连接了</strong>“。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，<strong>那好，我Client端也可以关闭连接了</strong>。Ok，TCP连接就这样关闭了！</li>
 </ul>
 <h2 id="来个更清晰的图-1"><a href="#来个更清晰的图-1" class="headerlink" title="来个更清晰的图"></a>来个更清晰的图</h2><p><img src="/post/tcp-shakehands/05.png" alt=""></p>
-<h2 id="为什么要四次分手"><a href="#为什么要四次分手" class="headerlink" title="为什么要四次分手"></a>为什么要四次分手</h2><p>那四次分手又是为何呢？TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。<strong>TCP是全双工模式</strong>，这就意味着，当主机1发出FIN报文段时，<strong>只是表示主机1已经没有数据要发送了</strong>，主机1告诉主机2，它的数据已经全部发送完毕了；但是，<strong>这个时候主机1还是可以接受来自主机2的数据</strong>；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，<strong>但是主机2还是可以发送数据到主机1的</strong>；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<h2 id="为什么要四次挥手"><a href="#为什么要四次挥手" class="headerlink" title="为什么要四次挥手"></a>为什么要四次挥手</h2><p>那四次挥手又是为何呢？TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。<strong>TCP是全双工模式</strong>，这就意味着，当主机1发出FIN报文段时，<strong>只是表示主机1已经没有数据要发送了</strong>，主机1告诉主机2，它的数据已经全部发送完毕了；但是，<strong>这个时候主机1还是可以接受来自主机2的数据</strong>；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，<strong>但是主机2还是可以发送数据到主机1的</strong>；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
 <h1 id="来个完整的图"><a href="#来个完整的图" class="headerlink" title="来个完整的图"></a>来个完整的图</h1><p><img src="/post/tcp-shakehands/03.png" alt=""></p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="为什么连接的时候是三次握手，关闭的时候却是四次握手？"><a href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？" class="headerlink" title="为什么连接的时候是三次握手，关闭的时候却是四次握手？"></a>为什么连接的时候是三次握手，关闭的时候却是四次握手？</h2><p>答：因为当Server端收到Client端的SYN连接请求报文后，<strong>可以直接发送SYN+ACK报文</strong>。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，<strong>因此不能一起发送</strong>。故需要四步握手。</p>
 <h2 id="为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？"><a href="#为什么TIME-WAIT状态需要经过2MSL-最大报文段生存时间-才能返回到CLOSE状态？" class="headerlink" title="为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？"></a>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</h2><p>答：虽然按道理，四个报文都发送完毕，我们可以直接进入CLOSE状态了，但是我们必须假象网络是不可靠的，<strong>有可以最后一个ACK丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。</strong></p>

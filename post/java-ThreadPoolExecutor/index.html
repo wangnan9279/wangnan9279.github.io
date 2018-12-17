@@ -17,12 +17,12 @@
 <meta property="og:title" content="Java-ThreadPoolExecutor">
 <meta property="og:url" content="http://wangnan.tech/post/java-ThreadPoolExecutor/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/31.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-4c5250ccfeea7489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/java-ThreadPoolExecutor/01.png">
-<meta property="og:updated_time" content="2017-07-25T08:25:30.540Z">
+<meta property="og:updated_time" content="2018-12-17T03:22:42.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-ThreadPoolExecutor">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/31.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-4c5250ccfeea7489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/31.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/31.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-4c5250ccfeea7489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-4c5250ccfeea7489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
     
     
     
@@ -243,7 +243,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/31.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参数介绍"><span class="toc-text">参数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#corePoolSize"><span class="toc-text">corePoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maximumPoolSize"><span class="toc-text">maximumPoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keepAliveTime"><span class="toc-text">keepAliveTime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#workQueue"><span class="toc-text">workQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拒绝策略（添加任务失败后如何处理该任务"><span class="toc-text">拒绝策略（添加任务失败后如何处理该任务)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种方法将线程添加到线程队列"><span class="toc-text">三种方法将线程添加到线程队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池的排除策略"><span class="toc-text">线程池的排除策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-4c5250ccfeea7489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参数介绍"><span class="toc-text">参数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#corePoolSize"><span class="toc-text">corePoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maximumPoolSize"><span class="toc-text">maximumPoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keepAliveTime"><span class="toc-text">keepAliveTime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#workQueue"><span class="toc-text">workQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拒绝策略（添加任务失败后如何处理该任务"><span class="toc-text">拒绝策略（添加任务失败后如何处理该任务)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种方法将线程添加到线程队列"><span class="toc-text">三种方法将线程添加到线程队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池的排除策略"><span class="toc-text">线程池的排除策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></span></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>从Java5开始，Java提供了自己的线程池。每次只执行指定数量的线程，java.util.concurrent.ThreadPoolExecutor 就是这样的线程池</p>
 <h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,<span class="keyword">int</span> maximumPoolSize,<span class="keyword">long</span> keepAliveTime,TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,RejectedExecutionHandler handler)</span></span>;</div></pre></td></tr></table></figure>
 <h2 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h2><h3 id="corePoolSize"><a href="#corePoolSize" class="headerlink" title="corePoolSize"></a>corePoolSize</h3><p>核心线程数，指保留的线程池大小（不超过maximumPoolSize值时，线程池中最多有corePoolSize 个线程工作）。 </p>

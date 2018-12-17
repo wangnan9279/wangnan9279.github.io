@@ -17,12 +17,12 @@
 <meta property="og:title" content="JVM垃圾回收器详解">
 <meta property="og:url" content="http://wangnan.tech/post/java-gc-collector/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/gc.png">
-<meta property="og:updated_time" content="2017-08-22T06:08:17.620Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-ef494d28c439e8cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-53192cd5725d94a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/601/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:21:39.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收器详解">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-ef494d28c439e8cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/39.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-ef494d28c439e8cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-ef494d28c439e8cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
     
     
     
@@ -243,7 +243,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/39.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于垃圾回收"><span class="toc-text">关于垃圾回收</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器分类"><span class="toc-text">垃圾收集器分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器的指标"><span class="toc-text">垃圾收集器的指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器介绍"><span class="toc-text">垃圾收集器介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代串行收集器"><span class="toc-text">新生代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代串行收集器"><span class="toc-text">老年代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行收集器"><span class="toc-text">并行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代并行回收-Parallel-Scavenge-收集器"><span class="toc-text">新生代并行回收 (Parallel Scavenge) 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代并行回收收集器"><span class="toc-text">老年代并行回收收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CMS-收集器"><span class="toc-text">CMS 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1-收集器-Garbage-First"><span class="toc-text">G1 收集器 (Garbage First)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC-相关参数总结"><span class="toc-text">GC 相关参数总结</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-ef494d28c439e8cc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于垃圾回收"><span class="toc-text">关于垃圾回收</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器分类"><span class="toc-text">垃圾收集器分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器的指标"><span class="toc-text">垃圾收集器的指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集器介绍"><span class="toc-text">垃圾收集器介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代串行收集器"><span class="toc-text">新生代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代串行收集器"><span class="toc-text">老年代串行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行收集器"><span class="toc-text">并行收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代并行回收-Parallel-Scavenge-收集器"><span class="toc-text">新生代并行回收 (Parallel Scavenge) 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#老年代并行回收收集器"><span class="toc-text">老年代并行回收收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CMS-收集器"><span class="toc-text">CMS 收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1-收集器-Garbage-First"><span class="toc-text">G1 收集器 (Garbage First)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC-相关参数总结"><span class="toc-text">GC 相关参数总结</span></a></li></ol></span></p>
 <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>针对jdk7</p>
 <h1 id="关于垃圾回收"><a href="#关于垃圾回收" class="headerlink" title="关于垃圾回收"></a>关于垃圾回收</h1><p>可以查看我之前的博文：<br><a href="http://wangnan.tech/post/java-memory-manage">JVM内存管理-垃圾回收与内存分配</a></p>
 <h1 id="垃圾收集器分类"><a href="#垃圾收集器分类" class="headerlink" title="垃圾收集器分类"></a>垃圾收集器分类</h1><ul>
@@ -282,7 +282,7 @@
 <li>堆分配</li>
 </ul>
 <p>不同的垃圾回收器对堆内存的分配方式可能是不同的。一个良好的垃圾收集器应该有一个合理的堆内存区间划分。</p>
-<h1 id="垃圾收集器介绍"><a href="#垃圾收集器介绍" class="headerlink" title="垃圾收集器介绍"></a>垃圾收集器介绍</h1><p><img src="http://onxkn9cbz.bkt.clouddn.com/gc.png" alt=""></p>
+<h1 id="垃圾收集器介绍"><a href="#垃圾收集器介绍" class="headerlink" title="垃圾收集器介绍"></a>垃圾收集器介绍</h1><p><img src="https://upload-images.jianshu.io/upload_images/79431-53192cd5725d94a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/601/format/webp" alt=""></p>
 <h2 id="新生代串行收集器"><a href="#新生代串行收集器" class="headerlink" title="新生代串行收集器"></a>新生代串行收集器</h2><p>串行收集器主要有两个特点：第一，它仅仅使用单线程进行垃圾回收；第二，它独占式的垃圾回收。</p>
 <p>在串行收集器进行垃圾回收时，Java 应用程序中的线程都需要暂停，等待垃圾回收的完成，这样给用户体验造成较差效果。虽然如此，串行收集器却是一个成熟、经过长时间生产环境考验的极为高效的收集器。新生代串行处理器使用复制算法，实现相对简单，逻辑处理特别高效，且没有线程切换的开销。在诸如单 CPU 处理器或者较小的应用内存等硬件平台不是特别优越的场合，它的性能表现可以超过并行回收器和并发回收器。在 HotSpot 虚拟机中，使用-XX：+UseSerialGC 参数可以指定使用新生代串行收集器和老年代串行收集器。当 JVM 在 Client 模式下运行时，它是默认的垃圾收集器。</p>
 <h2 id="老年代串行收集器"><a href="#老年代串行收集器" class="headerlink" title="老年代串行收集器"></a>老年代串行收集器</h2><p>老年代串行收集器使用的是标记-压缩算法。和新生代串行收集器一样，它也是一个串行的、独占式的垃圾回收器。由于老年代垃圾回收通常会使用比新生代垃圾回收更长的时间，因此，在堆空间较大的应用程序中，一旦老年代串行收集器启动，应用程序很可能会因此停顿几秒甚至更长时间。虽然如此，老年代串行回收器可以和多种新生代回收器配合使用，同时它也可以作为 CMS 回收器的备用回收器。若要启用老年代串行回收器，可以尝试使用以下参数：-XX:+UseSerialGC: 新生代、老年代都使用串行回收器。</p>

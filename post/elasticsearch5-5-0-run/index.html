@@ -17,20 +17,20 @@
 <meta property="og:title" content="Elasticsearch5.5.0源码-编译、导入IDEA、启动">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch5-5-0-run/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/32.jpg">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run01.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run03.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run04.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run05.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run06.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run07.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-72bdb5cc3831e3d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-48108e41f9c7cdb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-0c9fc5d7d4e90e59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/370/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-154b84551fd0e93d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/465/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-6dd9c4ce81c138ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/565/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-ec42bc8e517f1c9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-60189d45dec23c56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/835/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch5-5-0-run/08.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run09.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run10.png">
-<meta property="og:updated_time" content="2017-07-26T06:23:54.630Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-b391c53daf704f83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-01f51d6a252df875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:21:29.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch5.5.0源码-编译、导入IDEA、启动">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/32.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-72bdb5cc3831e3d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -42,8 +42,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/32.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/32.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-72bdb5cc3831e3d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-72bdb5cc3831e3d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" />
     
     
     
@@ -251,7 +251,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/32.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-环境与准备工作"><span class="toc-text">1.环境与准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-获取代码"><span class="toc-text">2.获取代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-编译代码"><span class="toc-text">3.编译代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-idea打开项目"><span class="toc-text">4.idea打开项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-启动main函数"><span class="toc-text">5.启动main函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-运行main方法"><span class="toc-text">6.运行main方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-浏览器访问"><span class="toc-text">7.浏览器访问</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-72bdb5cc3831e3d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-环境与准备工作"><span class="toc-text">1.环境与准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-获取代码"><span class="toc-text">2.获取代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-编译代码"><span class="toc-text">3.编译代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-idea打开项目"><span class="toc-text">4.idea打开项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-启动main函数"><span class="toc-text">5.启动main函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-运行main方法"><span class="toc-text">6.运行main方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-浏览器访问"><span class="toc-text">7.浏览器访问</span></a></li></ol></span></p>
 <h1 id="1-环境与准备工作"><a href="#1-环境与准备工作" class="headerlink" title="1.环境与准备工作"></a>1.环境与准备工作</h1><ol>
 <li>WINDOWS 10</li>
 <li>IDEA 17.2</li>
@@ -259,16 +259,16 @@
 <li>Gradle 4.0.1</li>
 </ol>
 <h1 id="2-获取代码"><a href="#2-获取代码" class="headerlink" title="2.获取代码"></a>2.获取代码</h1><p>gitlab地址：<br><a href="https://github.com/elastic/elasticsearch" target="_blank" rel="external">elasticsearch</a></p>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run01.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-48108e41f9c7cdb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
 <p>复制到sourcetree中，tag选择 v5.5.0</p>
 <p>如果不使用sourcetree可以使用git命令操作<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout v5.5.0</div></pre></td></tr></table></figure></p>
 <h1 id="3-编译代码"><a href="#3-编译代码" class="headerlink" title="3.编译代码"></a>3.编译代码</h1><p>到代码根目录 elasticsearch下面运行：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle idea</div></pre></td></tr></table></figure></p>
 <p>等待漫长的依赖下载过程后，运行：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle build -x test</div></pre></td></tr></table></figure></p>
 <p>对源码进行编译</p>
-<h1 id="4-idea打开项目"><a href="#4-idea打开项目" class="headerlink" title="4.idea打开项目"></a>4.idea打开项目</h1><p><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run03.png" alt=""></p>
+<h1 id="4-idea打开项目"><a href="#4-idea打开项目" class="headerlink" title="4.idea打开项目"></a>4.idea打开项目</h1><p><img src="https://upload-images.jianshu.io/upload_images/79431-0c9fc5d7d4e90e59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/370/format/webp" alt=""></p>
 <p>配置好gradle的文件地址，其他的直接使用默认设置，直接next</p>
-<p>文件结构是这样的：<br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run04.png" alt=""></p>
-<h1 id="5-启动main函数"><a href="#5-启动main函数" class="headerlink" title="5.启动main函数"></a>5.启动main函数</h1><p>打开类：org.elasticsearch.bootstrap.Elasticsearch<br>运行里面的main函数<br>需要添加一些启动参数：<br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run05.png" alt=""><br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run06.png" alt=""><br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run07.png" alt=""></p>
+<p>文件结构是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/79431-154b84551fd0e93d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/465/format/webp" alt=""></p>
+<h1 id="5-启动main函数"><a href="#5-启动main函数" class="headerlink" title="5.启动main函数"></a>5.启动main函数</h1><p>打开类：org.elasticsearch.bootstrap.Elasticsearch<br>运行里面的main函数<br>需要添加一些启动参数：<br><img src="https://upload-images.jianshu.io/upload_images/79431-6dd9c4ce81c138ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/565/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/79431-ec42bc8e517f1c9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/79431-60189d45dec23c56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/835/format/webp" alt=""></p>
 <p><strong>-Des.path.home</strong><br>指定es的目录地址，elasticsearch在启动中会加载一些默认配置以及插件,我们直接加载elasticsearch安装目录下的配置和插件即可</p>
 <p>如果不配置会报错：<br>Exception in thread “main” java.lang.IllegalStateException: path.home is not configured</p>
 <p><strong>-Dlog4j2.disable.jmx=true</strong><br>为elasticsearch在启动过程中使用到了jmx,我们这里禁止使用即可</p>
@@ -280,8 +280,8 @@
 <li>如果报错：java.lang.IllegalStateException: Unsupported transport.type []</li>
 </ol>
 <p>解决方案：去官网下个zip包：<br><a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="external">https://www.elastic.co/downloads/elasticsearch</a><br><img src="/post/elasticsearch5-5-0-run/08.png" alt=""><br>解压后把里面config、modules、plugins 复制到elasticsearch/core里面</p>
-<h1 id="6-运行main方法"><a href="#6-运行main方法" class="headerlink" title="6.运行main方法"></a>6.运行main方法</h1><p>控制台看到如下说明启动成功<br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run09.png" alt=""></p>
-<h1 id="7-浏览器访问"><a href="#7-浏览器访问" class="headerlink" title="7.浏览器访问"></a>7.浏览器访问</h1><p><a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a><br><img src="http://onxkn9cbz.bkt.clouddn.com/elasticsearch5-5-0-run10.png" alt=""></p>
+<h1 id="6-运行main方法"><a href="#6-运行main方法" class="headerlink" title="6.运行main方法"></a>6.运行main方法</h1><p>控制台看到如下说明启动成功<br><img src="https://upload-images.jianshu.io/upload_images/79431-b391c53daf704f83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
+<h1 id="7-浏览器访问"><a href="#7-浏览器访问" class="headerlink" title="7.浏览器访问"></a>7.浏览器访问</h1><p><a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a><br><img src="https://upload-images.jianshu.io/upload_images/79431-01f51d6a252df875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/453/format/webp" alt=""></p>
 
             
         </div>

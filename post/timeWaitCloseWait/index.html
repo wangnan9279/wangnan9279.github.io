@@ -17,12 +17,12 @@
 <meta property="og:title" content="TIME_WAIT和CLOSE_WAIT">
 <meta property="og:url" content="http://wangnan.tech/post/timeWaitCloseWait/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/25.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-3a19d39c05ed5438.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta property="og:image" content="http://wangnan.tech/post/timeWaitCloseWait/01.png">
-<meta property="og:updated_time" content="2017-07-14T10:03:38.289Z">
+<meta property="og:updated_time" content="2018-12-17T03:30:35.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TIME_WAIT和CLOSE_WAIT">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/25.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-3a19d39c05ed5438.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/25.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/25.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-3a19d39c05ed5438.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-3a19d39c05ed5438.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
     
     
     
@@ -243,7 +243,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/25.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT"><span class="toc-text">TIME_WAIT和CLOSE_WAIT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何解决存在大量TIME-WAIT和CLOSE-WAIT的问题"><span class="toc-text">如何解决存在大量TIME_WAIT和CLOSE_WAIT的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#减少TIME-WAIT状态"><span class="toc-text">减少TIME_WAIT状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少CLOSE-WAIT状态"><span class="toc-text">减少CLOSE_WAIT状态</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-3a19d39c05ed5438.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TIME-WAIT和CLOSE-WAIT"><span class="toc-text">TIME_WAIT和CLOSE_WAIT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何解决存在大量TIME-WAIT和CLOSE-WAIT的问题"><span class="toc-text">如何解决存在大量TIME_WAIT和CLOSE_WAIT的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#减少TIME-WAIT状态"><span class="toc-text">减少TIME_WAIT状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#减少CLOSE-WAIT状态"><span class="toc-text">减少CLOSE_WAIT状态</span></a></li></ol></span></p>
 <h1 id="TIME-WAIT和CLOSE-WAIT"><a href="#TIME-WAIT和CLOSE-WAIT" class="headerlink" title="TIME_WAIT和CLOSE_WAIT"></a>TIME_WAIT和CLOSE_WAIT</h1><p>在服务器的日常维护过程中，会经常用到下面的命令：</p>
 <blockquote>
 <p>netstat -n | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’    </p>

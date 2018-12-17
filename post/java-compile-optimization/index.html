@@ -17,12 +17,12 @@
 <meta property="og:title" content="JVM编译优化">
 <meta property="og:url" content="http://wangnan.tech/post/java-compile-optimization/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/jvm-compile.png">
-<meta property="og:updated_time" content="2017-08-23T02:11:31.334Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-07c9bb57c523b4d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-7bcc1f2be00bb562.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/646/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:13:52.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM编译优化">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-07c9bb57c523b4d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/40.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-07c9bb57c523b4d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-07c9bb57c523b4d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" />
     
     
     
@@ -243,14 +243,14 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/40.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HotSpot-内的即时编译器"><span class="toc-text">HotSpot 内的即时编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器和编译器各有各的优点"><span class="toc-text">解释器和编译器各有各的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被编译对象和触发条件"><span class="toc-text">被编译对象和触发条件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译过程"><span class="toc-text">编译过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译期优化（早期优化）"><span class="toc-text">编译期优化（早期优化）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时优化（晚期优化）"><span class="toc-text">运行时优化（晚期优化）</span></a></li></ol></li></ol><br>在部分的商用虚拟机中，Java 程序最初是通过解释器（Interpreter ）进行解释执行的，<strong>当虚拟机发现某个方法或代码块的运行特别频繁的时候，就会把这些代码认定为“热点代码”。为了提高热点代码的执行效率，在运行时，即时编译器（Just In Time Compiler ）会把这些代码编译成与本地平台相关的机器码，并进行各种层次的优化。</strong></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-07c9bb57c523b4d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HotSpot-内的即时编译器"><span class="toc-text">HotSpot 内的即时编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器和编译器各有各的优点"><span class="toc-text">解释器和编译器各有各的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被编译对象和触发条件"><span class="toc-text">被编译对象和触发条件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译过程"><span class="toc-text">编译过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译期优化（早期优化）"><span class="toc-text">编译期优化（早期优化）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时优化（晚期优化）"><span class="toc-text">运行时优化（晚期优化）</span></a></li></ol></li></ol><br>在部分的商用虚拟机中，Java 程序最初是通过解释器（Interpreter ）进行解释执行的，<strong>当虚拟机发现某个方法或代码块的运行特别频繁的时候，就会把这些代码认定为“热点代码”。为了提高热点代码的执行效率，在运行时，即时编译器（Just In Time Compiler ）会把这些代码编译成与本地平台相关的机器码，并进行各种层次的优化。</strong></span></p>
 <h1 id="HotSpot-内的即时编译器"><a href="#HotSpot-内的即时编译器" class="headerlink" title="HotSpot 内的即时编译器"></a>HotSpot 内的即时编译器</h1><h2 id="解释器和编译器各有各的优点"><a href="#解释器和编译器各有各的优点" class="headerlink" title="解释器和编译器各有各的优点"></a>解释器和编译器各有各的优点</h2><ul>
 <li><p>解释器优点：当程序需要迅速启动的时候，解释器可以首先发挥作用，省去了编译的时间，立即执行。解释执行占用更小的内存空间。同时，当编译器进行的激进优化失败的时候，还可以进行逆优化来恢复到解释执行的状态。</p>
 </li>
 <li><p>编译器优点：在程序运行时，随着时间的推移，编译器逐渐发挥作用根据热点探测功能，，将有价值的字节码编译为本地机器指令，以换取更高的程序执行效率。<br>因此，整个虚拟机执行架构中，解释器与编译器经常配合工作。</p>
 </li>
 </ul>
-<p><img src="http://onxkn9cbz.bkt.clouddn.com/jvm-compile.png" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/79431-7bcc1f2be00bb562.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/646/format/webp" alt=""></p>
 <p>HotSpot中内置了两个即时编译器，分别称为 Client Compiler和 Server Compiler ，或者简称为 C1编译器和 C2编译器。</p>
 <p>目前的 HotSpot编译器默认的是解释器和其中一个即时编译器配合的方式工作，具体是哪一个编译器，取决于虚拟机运行的模式，HotSpot虚拟机会根据自身版本与计算机的硬件性能自动选择运行模式</p>
 <p>用户也可以使用 -client和 -server参数强制指定虚拟机运行在 Client模式或者 Server模式。这种配合使用的方式称为“混合模式”（Mixed Mode）</p>

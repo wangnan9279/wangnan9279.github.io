@@ -17,13 +17,13 @@
 <meta property="og:title" content="微服务架构解析(附思维导图)">
 <meta property="og:url" content="http://wangnan.tech/post/architecture-microservice/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/41.jpg">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/microservices01.png">
-<meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/microservices03.png">
-<meta property="og:updated_time" content="2017-08-31T06:26:04.486Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-675cd8394eced84f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/563/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-cf53d8fd4fb84566.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-1c74eda021186282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:updated_time" content="2018-12-17T03:12:22.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务架构解析(附思维导图)">
-<meta name="twitter:image" content="http://onxkn9cbz.bkt.clouddn.com/41.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-675cd8394eced84f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/563/format/webp">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -35,8 +35,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="http://onxkn9cbz.bkt.clouddn.com/41.jpg"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://onxkn9cbz.bkt.clouddn.com/41.jpg" />
+        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-675cd8394eced84f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/563/format/webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-675cd8394eced84f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/563/format/webp" />
     
     
     
@@ -244,8 +244,8 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="http://onxkn9cbz.bkt.clouddn.com/41.jpg" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思维导图"><span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传统开发模式和微服务的区别"><span class="toc-text">传统开发模式和微服务的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务架构特征"><span class="toc-text">微服务架构特征</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方的定义："><span class="toc-text">官方的定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大概的标准"><span class="toc-text">大概的标准</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SOA和微服务的区别"><span class="toc-text">SOA和微服务的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实践微服务"><span class="toc-text">实践微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端如何访问这些服务"><span class="toc-text">客户端如何访问这些服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#每个服务之间如何通信"><span class="toc-text">每个服务之间如何通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务发现服务注册"><span class="toc-text">服务发现服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务挂了，如何解决"><span class="toc-text">服务挂了，如何解决</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></span></p>
-<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="http://onxkn9cbz.bkt.clouddn.com/microservices01.png" alt=""><br><img src="http://onxkn9cbz.bkt.clouddn.com/microservices03.png" alt=""></p>
+            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-675cd8394eced84f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/563/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思维导图"><span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传统开发模式和微服务的区别"><span class="toc-text">传统开发模式和微服务的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微服务架构特征"><span class="toc-text">微服务架构特征</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方的定义："><span class="toc-text">官方的定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大概的标准"><span class="toc-text">大概的标准</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SOA和微服务的区别"><span class="toc-text">SOA和微服务的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实践微服务"><span class="toc-text">实践微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端如何访问这些服务"><span class="toc-text">客户端如何访问这些服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#每个服务之间如何通信"><span class="toc-text">每个服务之间如何通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务发现服务注册"><span class="toc-text">服务发现服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务挂了，如何解决"><span class="toc-text">服务挂了，如何解决</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></span></p>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="https://upload-images.jianshu.io/upload_images/79431-cf53d8fd4fb84566.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/79431-1c74eda021186282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>微服务架构（Microservice Architecture）是一种架构概念</p>
 <p>旨在通过将功能分解到各个离散的服务中以实现对解决方案的解耦</p>
 <p>将功能分解到离散的各个服务当中，从而降低系统的耦合性，并提供更加灵活的服务支持。</p>
