@@ -17,13 +17,13 @@
 <meta property="og:title" content="JVM内存模型整理">
 <meta property="og:url" content="http://wangnan.tech/post/java-memory/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/vrXDzOGqiZVj2ed.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-memory/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-memory/02.png">
-<meta property="og:updated_time" content="2018-12-17T03:35:54.208Z">
+<meta property="og:updated_time" content="2019-09-24T08:36:04.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM内存模型整理">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/vrXDzOGqiZVj2ed.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -35,8 +35,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/24/vrXDzOGqiZVj2ed.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/24/vrXDzOGqiZVj2ed.png" />
     
     
     
@@ -255,7 +255,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内存模型图"><span class="toc-text">内存模型图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#详细介绍"><span class="toc-text">详细介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序计数器PC"><span class="toc-text">程序计数器PC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机栈"><span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地方法栈"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java堆"><span class="toc-text">Java堆</span></a></li></ol></li></ol>
 <a id="more"></a>
-<p><img src="https://upload-images.jianshu.io/upload_images/79431-9973d5493466523a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" alt=""><br><!--more--></p>
+<p><img src="https://i.loli.net/2019/09/24/vrXDzOGqiZVj2ed.png" alt=""><br><!--more--></p>
 <ul>
 <li>一般地大家讲到的Java内存其实就是Jvm内存</li>
 <li>Java代码是运行在Java虚拟机之上的，由Java虚拟机通过解释执行(解释器)或编译执行(即时编译器)来完成，故Java内存模型，也就是指Java虚拟机的运行时内存模型。</li>

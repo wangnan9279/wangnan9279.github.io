@@ -17,14 +17,14 @@
 <meta property="og:title" content="《Hadoop权威指南》书摘-MapReduce概述">
 <meta property="og:url" content="http://wangnan.tech/post/hadoop-definitive-guide02/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/iaJnuj4XeqwR6C5.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-afc5d832da3986d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/719/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-145c928440af4cd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/628/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-4d3b339f5eba475b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/632/format/webp">
-<meta property="og:updated_time" content="2019-02-11T03:36:16.573Z">
+<meta property="og:updated_time" content="2019-09-24T07:40:05.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Hadoop权威指南》书摘-MapReduce概述">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/iaJnuj4XeqwR6C5.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -36,8 +36,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/24/iaJnuj4XeqwR6C5.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/24/iaJnuj4XeqwR6C5.png" />
     
     
     
@@ -254,7 +254,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-923e4afdf70e9574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/464/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#map和reduce"><span class="toc-text">map和reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-text">reduce</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://i.loli.net/2019/09/24/iaJnuj4XeqwR6C5.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#map和reduce"><span class="toc-text">map和reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念"><span class="toc-text">一些概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-text">reduce</span></a></li></ol></span></p>
 <p><strong>转载请注明出处</strong><br>独立博客：<a href="http://wangnan.tech">http://wangnan.tech</a><br>简书:<a href="http://www.jianshu.com/u/244399b1d776**" target="_blank" rel="external">http://www.jianshu.com/u/244399b1d776**</a><br>知乎：<a href="https://zhuanlan.zhihu.com/ghoststories" target="_blank" rel="external">https://zhuanlan.zhihu.com/ghoststories</a></p>
 <p>MapReduce是一种可用于数据处理的编程模型，MapReduce程序本质上是并行运行的，因此可以将大规模数据分析任务分发给任何一个拥有足够多机器的数据中心，它的优势在于处理大规模数据</p>
 <h3 id="map和reduce"><a href="#map和reduce" class="headerlink" title="map和reduce"></a>map和reduce</h3><p>MapReduce任务可以分为两个处理阶段：map阶段和reduce阶段，每个阶段都以键值对作为输入和输出<br><img src="https://upload-images.jianshu.io/upload_images/79431-afc5d832da3986d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/719/format/webp" alt=""></p>

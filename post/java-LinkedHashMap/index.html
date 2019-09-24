@@ -17,12 +17,12 @@
 <meta property="og:title" content="Java-LinkedHashMap整理">
 <meta property="og:url" content="http://wangnan.tech/post/java-LinkedHashMap/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-b396d879a27c7de2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/hUpETKZRcieINy8.png">
 <meta property="og:image" content="http://wangnan.tech/post/java-LinkedHashMap/01.png">
-<meta property="og:updated_time" content="2018-12-17T03:28:56.444Z">
+<meta property="og:updated_time" content="2019-09-24T08:23:13.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-LinkedHashMap整理">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-b396d879a27c7de2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/hUpETKZRcieINy8.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -34,8 +34,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-b396d879a27c7de2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-b396d879a27c7de2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/24/hUpETKZRcieINy8.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/24/hUpETKZRcieINy8.png" />
     
     
     
@@ -252,7 +252,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><span><br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/79431-b396d879a27c7de2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#成员变量"><span class="toc-text">成员变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#储存"><span class="toc-text">储存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取"><span class="toc-text">读取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序模式"><span class="toc-text">排序模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对比下几种Map"><span class="toc-text">对比下几种Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-1"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashtable"><span class="toc-text">Hashtable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedHashMap-1"><span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TreeMap"><span class="toc-text">TreeMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></span></p>
+            <p><span><br><a id="more"></a><br><img src="https://i.loli.net/2019/09/24/hUpETKZRcieINy8.png" alt=""><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#成员变量"><span class="toc-text">成员变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#储存"><span class="toc-text">储存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取"><span class="toc-text">读取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序模式"><span class="toc-text">排序模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对比下几种Map"><span class="toc-text">对比下几种Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-1"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashtable"><span class="toc-text">Hashtable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedHashMap-1"><span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TreeMap"><span class="toc-text">TreeMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></span></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
 <li><p>HashMap 是无序的，HashMap 在 put 的时候是根据 key 的 hashcode 进行 hash 然后放入对应的地方。所以遍历 HashMap 的顺序跟 put 的顺序不同</p>
 </li>
