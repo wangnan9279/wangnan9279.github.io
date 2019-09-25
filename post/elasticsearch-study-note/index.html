@@ -17,11 +17,11 @@
 <meta property="og:title" content="Elasticsearch学习笔记">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-study-note/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
-<meta property="og:updated_time" content="2018-12-17T06:20:48.057Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png">
+<meta property="og:updated_time" content="2019-09-25T09:54:29.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch学习笔记">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -33,8 +33,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" />
     
     
     
@@ -253,7 +253,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#与关系型数据库对比"><span class="toc-text">与关系型数据库对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础概念"><span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cluster"><span class="toc-text">cluster</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node"><span class="toc-text">node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type"><span class="toc-text">Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mapping"><span class="toc-text">mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#document"><span class="toc-text">document</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shards-amp-replicas"><span class="toc-text">shards&replicas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#analysis"><span class="toc-text">analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#highlight"><span class="toc-text">highlight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#score"><span class="toc-text">score</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#refresh"><span class="toc-text">refresh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-text">sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存"><span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置："><span class="toc-text">安装配置：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览你的集群"><span class="toc-text">浏览你的集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群健康："><span class="toc-text">集群健康：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列举出所有索引："><span class="toc-text">列举出所有索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个索引："><span class="toc-text">创建一个索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个文档："><span class="toc-text">创建一个文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除一个索引："><span class="toc-text">删除一个索引：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改你的数据"><span class="toc-text">修改你的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新文档："><span class="toc-text">更新文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文档"><span class="toc-text">删除文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量操作："><span class="toc-text">批量操作：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览你的数据"><span class="toc-text">浏览你的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询API"><span class="toc-text">查询API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询语句："><span class="toc-text">查询语句：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规定数目"><span class="toc-text">规定数目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规定返回指定的field"><span class="toc-text">规定返回指定的field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match"><span class="toc-text">match:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aggregations"><span class="toc-text">Aggregations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#suggest"><span class="toc-text">suggest</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展"><span class="toc-text">拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方文档："><span class="toc-text">官方文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticSearch中文社区："><span class="toc-text">elasticSearch中文社区：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticsearch-索引优化"><span class="toc-text">elasticsearch 索引优化:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他相似功能产品对比："><span class="toc-text">与其他相似功能产品对比：</span></a></li></ol></li></ol>
 <a id="more"></a>
-<p><img src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" alt=""></p>
+<p><img src="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" alt=""></p>
 <blockquote>
 <p>Elasticsearch是一个可伸缩的开源全文搜索和分析引擎，它使你可以快速且接近实时的去保存，查询和分析海量的数据，他的潜在应用场景是作为一些有复杂搜索功能和需求的应用的搜索<br>引擎</p>
 </blockquote>
@@ -672,7 +672,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-1eeb83c0143434ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/YqklGrO6c4oaTUL.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -697,7 +697,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-e6a274bd932cc627.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/UrT3etJkoHQN7vz.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -722,7 +722,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -747,7 +747,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/fSiV6E5CYoMK9uF.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -772,7 +772,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -797,7 +797,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-62f90e62a67ab070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/244/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/NLX2v7dwDOUfrnT.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -822,7 +822,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -847,7 +847,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -872,7 +872,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -897,7 +897,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-04062861cf5e850f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/mrJdjGTfvuKnQob.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -925,7 +925,7 @@ curl -XPOST &apos;localhost:9200/bank/_search?pretty&apos;-d &apos;
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                118 posts found
+                116 posts found
             </p>
         </div>
     </div>

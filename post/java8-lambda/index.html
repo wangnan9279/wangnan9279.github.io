@@ -17,16 +17,16 @@
 <meta property="og:title" content="Java8-Lambda表达式">
 <meta property="og:url" content="http://wangnan.tech/post/java8-lambda/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/04.png">
 <meta property="og:image" content="http://wangnan.tech/post/java8-lambda/05.png">
-<meta property="og:updated_time" content="2018-12-17T05:51:26.008Z">
+<meta property="og:updated_time" content="2019-09-25T10:11:31.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8-Lambda表达式">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" />
     
     
     
@@ -258,7 +258,7 @@
         <div class="main-content-wrap">
             <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lambda管中窥豹"><span class="toc-text">Lambda管中窥豹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在哪里以及如何使用Lamdda"><span class="toc-text">在哪里以及如何使用Lamdda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数式接口"><span class="toc-text">函数式接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FunctionalInterface"><span class="toc-text">@FunctionalInterface</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用函数式接口"><span class="toc-text">使用函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Predicate"><span class="toc-text">Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#consumer"><span class="toc-text">consumer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-text">Function</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类型检查，类型推断以及限制"><span class="toc-text">类型检查，类型推断以及限制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类型检查"><span class="toc-text">类型检查</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用局部变量"><span class="toc-text">使用局部变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法引用"><span class="toc-text">方法引用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#复合lambda表达式"><span class="toc-text">复合lambda表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#逆序"><span class="toc-text">逆序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较器链"><span class="toc-text">比较器链</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#谓词复合"><span class="toc-text">谓词复合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数复合"><span class="toc-text">函数复合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
 <a id="more"></a>
-<p><img src="https://upload-images.jianshu.io/upload_images/79431-cb92a9e9a8693c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/225/format/webp" alt=""></p>
+<p><img src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" alt=""></p>
 <blockquote>
 <p>Lambda表达式，它可以很简洁地表示一个行为或传递代码，现在你可以把Lambda表达式看作匿名功能，它基本上就是没有声明名称的方法，但和匿名类一样，它也可以作为参数传递给一个方法</p>
 </blockquote>
@@ -599,7 +599,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-1eeb83c0143434ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/YqklGrO6c4oaTUL.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -624,7 +624,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-e6a274bd932cc627.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/UrT3etJkoHQN7vz.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -649,7 +649,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -674,7 +674,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/fSiV6E5CYoMK9uF.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -699,7 +699,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -724,7 +724,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-62f90e62a67ab070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/244/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/NLX2v7dwDOUfrnT.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -749,7 +749,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -774,7 +774,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -799,7 +799,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -824,7 +824,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-04062861cf5e850f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/mrJdjGTfvuKnQob.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -852,7 +852,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                118 posts found
+                116 posts found
             </p>
         </div>
     </div>

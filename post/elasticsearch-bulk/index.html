@@ -17,17 +17,17 @@
 <meta property="og:title" content="Elasticsearch批量操作">
 <meta property="og:url" content="http://wangnan.tech/post/elasticsearch-bulk/index.html">
 <meta property="og:site_name" content="Ghost Stories">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
+<meta property="og:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/01.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/02.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/03.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/04.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/05.png">
 <meta property="og:image" content="http://wangnan.tech/post/elasticsearch-bulk/06.png">
-<meta property="og:updated_time" content="2018-12-17T07:07:40.533Z">
+<meta property="og:updated_time" content="2019-09-25T10:12:39.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch批量操作">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png">
 <meta name="twitter:creator" content="@twitter">
     
         <link rel="publisher" href="https://plus.google.com/google_plus_business"/>
@@ -39,8 +39,8 @@
         <meta property="og:image" content="http://wangnan.tech/assets/images/ice_bear.jpg"/>
     
     
-        <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" />
+        <meta property="og:image" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" />
     
     
     
@@ -257,9 +257,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#批量取"><span class="toc-text">批量取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#批量查询"><span class="toc-text">批量查询</span></a></li></ol>
-<a id="more"></a>
-<p><img src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" alt=""></p>
+            <p><span><br><a id="more"></a><br><h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#批量取"><span class="toc-text">批量取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#批量查询"><span class="toc-text">批量查询</span></a></li></ol><br><!-- more --><br><img src="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" alt=""></span></p>
 <blockquote>
 <p>elasticsearch提供了批量操作来读取数据和检索</p>
 <h1 id="批量取"><a href="#批量取" class="headerlink" title="批量取"></a>批量取</h1><p>可以通过_mget端点操作，一个请求获取多个文档，elasticsearch会返回哪些被索引的文档，<strong>而不论这些文档可用于搜索还是暂时对查询不可见</strong><br>查看下面的操作：<br><img src="/post/elasticsearch-bulk/01.png" alt="01"><br>elasticsearch返回如下形式的文档：<br><img src="/post/elasticsearch-bulk/02.png" alt="02"><br>前面的范例还可以写成如下的更紧凑的形式：<br><img src="/post/elasticsearch-bulk/03.png" alt="03"><br>这种形式便于获取不同文档有不同目标索引及类型<br>我们来看下面这个查询：<br><img src="/post/elasticsearch-bulk/04.png" alt="04"><br>该查询返回了id为1和3的两个文档，但是第一个文档从索引library_backup中获取，第二个文档则从索引library中获取（因为url中定义索引名为library，因此将它作为默认值），而且第一个文档我们限制只返回otitle字段</p>
@@ -536,7 +534,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-swagger-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-1eeb83c0143434ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/YqklGrO6c4oaTUL.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -561,7 +559,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/tool-Sublime-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-e6a274bd932cc627.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/509/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/UrT3etJkoHQN7vz.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -586,7 +584,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/elasticsearch-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-c6d398af52f4b48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/558/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/wOcjeg83JZbDn2E.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -611,7 +609,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/mybatis-getting-started/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-74576230a7ae676d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/414/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/fSiV6E5CYoMK9uF.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -636,7 +634,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-reflection-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -661,7 +659,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/redis-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-62f90e62a67ab070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/244/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/NLX2v7dwDOUfrnT.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -686,7 +684,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-proxy-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -711,7 +709,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-annotation-introduction/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -736,7 +734,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/java-ThreadLocal/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-ecfaca092a4a12a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/24/4kPOL3i5aAqcfNs.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -761,7 +759,7 @@
                     
                     <div class="media-left">
                         <a class="link-unstyled" href="http://wangnan.tech/post/read-youth/">
-                            <img class="media-image" src="https://upload-images.jianshu.io/upload_images/79431-04062861cf5e850f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/510/format/webp" width="90" height="90"/>
+                            <img class="media-image" src="https://i.loli.net/2019/09/25/mrJdjGTfvuKnQob.png" width="90" height="90"/>
                         </a>
                     </div>
                     
@@ -789,7 +787,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                118 posts found
+                116 posts found
             </p>
         </div>
     </div>
